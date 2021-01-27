@@ -1,49 +1,65 @@
-import passport from 'passport';
-import pool from '../modules/pool';
+import passport, { use } from 'passport';
 import { comparePassword } from '../modules/encryption';
 import { Strategy } from 'passport-local';
+import { PersonDB } from '../models/Person';
+import { userInfo } from 'os';
 
 passport.serializeUser((user: any, done: any): void => {
   done(null, user.id);
 });
 
 passport.deserializeUser((id: any, done: any): void => {
-  pool
-    .query('SELECT * FROM "user" WHERE id = $1', [id])
+  PersonDB.findById(id)
     .then((result: any): void => {
-      const user = result && result.rows && result.rows[0];
-
+      const user = result;
       if (user) {
+        //removing password from being sent
         delete user.password;
-        done(null, user);
+        //saving user info in an object to be used later
+        const useInfo = {
+          username: user.username,
+          _id: user._id,
+        };
+        done(null, userInfo);
       } else {
-        done(null, null);
+        done(null, false, { message: 'Incorrect credentials' });
       }
     })
-    .catch((error: string): void => {
+    .catch((error: string) => {
       console.log(`Error with query during deserializing user ${error}`);
       done(error, null);
     });
 });
 
+// Does actual work of logging in
 passport.use(
   'local',
-  new Strategy((username: string, password: string, done: Function): void => {
-    pool
-      .query('SELECT * FROM "user" WHERE username = $1', [username])
-      .then((result: any) => {
-        const user = result && result.rows && result.rows[0];
-        if (user && comparePassword(password, user.password)) {
-          done(null, user);
-        } else {
-          done(null, null);
-        }
-      })
-      .catch((error: any) => {
-        console.log(`Error with query for user ${error}`);
-        done(error, null);
-      });
-  })
+  new Strategy(
+    {
+      passReqToCallback: true,
+      usernameField: 'username',
+    },
+    (req, username, password, done) => {
+      PersonDB.find({ username })
+        .then((result: any) => {
+          const user = result && result[0];
+          if (user && comparePassword(password, user.password)) {
+            // all good! Passwords match!
+            done(null, user);
+          } else if (user) {
+            // not good! Passwords don't match!
+            done(null, false, { message: 'Incorrect credentials.' });
+          } else {
+            // not good! No user with that name
+            done(null, false);
+          }
+        })
+        .catch((error: any) => {
+          console.log(`Error with finding user ${error}`);
+          done(null, {});
+        });
+    }
+  )
 );
 
 export default passport;
