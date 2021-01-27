@@ -2,9 +2,11 @@ import cookieSession from 'cookie-session';
 import { badSecret, exampleBadSecret } from '../constants/warnings';
 
 const serverSessionSecret = (): string | undefined => {
-  if (!process.env.SERVER_SESSION_SECRET ||
-      process.env.SERVER_SESSION_SECRET.length < 8 ||
-      process.env.SERVER_SESSION_SECRET === exampleBadSecret) {
+  if (
+    !process.env.SERVER_SESSION_SECRET ||
+    process.env.SERVER_SESSION_SECRET.length < 8 ||
+    process.env.SERVER_SESSION_SECRET === exampleBadSecret
+  ) {
     console.log(badSecret);
   }
 

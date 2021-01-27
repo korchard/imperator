@@ -1,44 +1,47 @@
-import express, { Express } from 'express';
-import bodyParser from 'body-parser';
-import sessionMiddleware from './modules/session-middleware';
-import passport from './strategies/user.strategy';
-import userRouter from './routes/user.router';
+import express from 'express';
+// import sessionMiddleware from './modules/session-middleware';
+// import passport from './strategies/user.strategy';
+// import userRouter from './routes/user.router';
 import mongoose from 'mongoose';
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 
-const app: Express = express();
+mongoose.connect(
+  `${process.env.MONGO_URI}`,
+  {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  (err) => {
+    if (err) throw err;
+    console.log('Connected To Mongo');
+  }
+);
+
+const app = express();
 
 // Body parser middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Passport Session Configuration //
-app.use(sessionMiddleware);
+// app.use(sessionMiddleware);
 
 // start up passport sessions
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 /* Routes */
-app.use('/api/user', userRouter);
+// app.use('/api/user', userRouter);
 
 // Serve static files
-app.use(express.static('build'));
+// app.use(express.static('build'));
 
 // App Set //
 const PORT: number | string = process.env.PORT || 5000;
-
 /** Listen * */
-const options = { useNewUrlParser: true, useUnifiedTopology: true };
-mongoose.set('useFindAndModify', false);
-
-mongoose
-  .connect(process.env.MONGO_URI, options)
-  .then(() =>
-    app.listen(PORT, (): void => console.log(`Server running on port: ${PORT}`))
-  )
-  .catch((error) => {
-    throw error;
-  });
+app.listen(5000, () => {
+  console.log('Server running in TS');
+});
 
 export default app;
