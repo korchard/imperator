@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, connect, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const RegisterForm = () => {
   const errors = useSelector((store) => store.errors);
@@ -67,4 +67,4 @@ const RegisterForm = () => {
   );
 };
 
-export default connect()(RegisterForm);
+export default RegisterForm;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector, connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 const LoginForm = () => {
   const [user, setUser] = useState({ username: '', password: '' });
   const dispatch = useDispatch();
@@ -67,4 +67,4 @@ const LoginForm = () => {
   );
 };
 
-export default connect()(LoginForm);
+export default LoginForm;

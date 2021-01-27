@@ -24,4 +24,4 @@ const RegisterPage = () => {
   );
 };
 
-export default connect()(RegisterPage);
+export default RegisterPage;
