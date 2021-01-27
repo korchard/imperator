@@ -1,5 +1,7 @@
 import cookieSession from 'cookie-session';
 import { badSecret, exampleBadSecret } from '../constants/warnings';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const serverSessionSecret = (): string | undefined => {
   if (

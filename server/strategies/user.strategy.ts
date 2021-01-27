@@ -1,4 +1,5 @@
 import passport from 'passport';
+import mongoose from 'mongoose';
 import { comparePassword } from '../modules/encryption';
 import { Strategy } from 'passport-local';
 import { PersonDB } from '../models/Person';
@@ -7,9 +8,10 @@ passport.serializeUser((user: any, done: any): void => {
   done(null, user.id);
 });
 
-passport.deserializeUser((id: any, done: any): void => {
-  PersonDB.findById(id)
+passport.deserializeUser((id: string, done: any): void => {
+  PersonDB.findOne({ _id: id })
     .then((result: any): void => {
+      console.log(result);
       const user = result;
       if (user) {
         //removing password from being sent
@@ -33,32 +35,26 @@ passport.deserializeUser((id: any, done: any): void => {
 // Does actual work of logging in
 passport.use(
   'local',
-  new Strategy(
-    {
-      passReqToCallback: true,
-      usernameField: 'username',
-    },
-    (req, username, password, done) => {
-      PersonDB.find({ username })
-        .then((result: any) => {
-          const user = result && result[0];
-          if (user && comparePassword(password, user.password)) {
-            // all good! Passwords match!
-            done(null, user);
-          } else if (user) {
-            // not good! Passwords don't match!
-            done(null, false, { message: 'Incorrect credentials.' });
-          } else {
-            // not good! No user with that name
-            done(null, false);
-          }
-        })
-        .catch((error: any) => {
-          console.log(`Error with finding user ${error}`);
-          done(null, {});
-        });
-    }
-  )
+  new Strategy((username: string, password: string, done) => {
+    PersonDB.findOne({ username })
+      .then((result: any) => {
+        const user = result;
+        if (user && comparePassword(password, user.password)) {
+          // all good! Passwords match!
+          done(null, user);
+        } else if (user) {
+          // not good! Passwords don't match!
+          done(null, false, { message: 'Incorrect credentials.' });
+        } else {
+          // not good! No user with that name
+          done(null, false);
+        }
+      })
+      .catch((error: any) => {
+        console.log(`Error with finding user ${error}`);
+        done(null, {});
+      });
+  })
 );
 
 export default passport;

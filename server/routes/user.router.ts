@@ -3,6 +3,7 @@ import express from 'express';
 import rejectUnauthenticated from '../modules/authentication-middleware';
 import userStrategy from '../strategies/user.strategy';
 import { encryptPassword } from '../modules/encryption';
+import { PersonDB } from '../models/Person';
 
 const router: express.Router = express.Router();
 
@@ -15,6 +16,18 @@ router.post(
   (req: Request, res: Response, next: express.NextFunction): void => {
     const username: string | null = <string>req.body.username;
     const password: string | null = encryptPassword(req.body.password);
+    const newUser = new PersonDB({
+      username,
+      password,
+    });
+    newUser
+      .save()
+      .then(() => {
+        res.sendStatus(201);
+      })
+      .catch((err) => {
+        next(err);
+      });
   }
 );
 
