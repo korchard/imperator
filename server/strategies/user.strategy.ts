@@ -1,8 +1,7 @@
-import passport, { use } from 'passport';
+import passport from 'passport';
 import { comparePassword } from '../modules/encryption';
 import { Strategy } from 'passport-local';
 import { PersonDB } from '../models/Person';
-import { userInfo } from 'os';
 
 passport.serializeUser((user: any, done: any): void => {
   done(null, user.id);
@@ -20,7 +19,7 @@ passport.deserializeUser((id: any, done: any): void => {
           username: user.username,
           _id: user._id,
         };
-        done(null, userInfo);
+        done(null, useInfo);
       } else {
         done(null, false, { message: 'Incorrect credentials' });
       }

@@ -18,13 +18,13 @@ router.post(
   }
 );
 
-// router.post(
-//   '/login',
-//   userStrategy.authenticate('local'),
-//   (req: Request, res: Response): void => {
-//     res.sendStatus(200);
-//   }
-// );
+router.post(
+  '/login',
+  userStrategy.authenticate('local'),
+  (req: Request, res: Response): void => {
+    res.sendStatus(200);
+  }
+);
 
 router.post('/logout', (req: Request, res: Response): void => {
   req.logout();
