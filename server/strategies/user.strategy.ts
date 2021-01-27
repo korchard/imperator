@@ -11,7 +11,6 @@ passport.serializeUser((user: any, done: any): void => {
 passport.deserializeUser((id: string, done: any): void => {
   PersonDB.findOne({ _id: id })
     .then((result: any): void => {
-      console.log(result);
       const user = result;
       if (user) {
         //removing password from being sent

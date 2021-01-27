@@ -1,35 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import mapStoreToProps from '../../redux/mapStoreToProps';
-
-// CUSTOM COMPONENTS
+import { useHistory } from 'react-router-dom';
 import RegisterForm from '../RegisterForm/RegisterForm';
 
-class RegisterPage extends Component {
-  state = {
-    username: '',
-    password: '',
-  };
+const RegisterPage = () => {
+  const history = useHistory();
+  return (
+    <div>
+      <RegisterForm />
 
-  render() {
-    return (
-      <div>
-        <RegisterForm />
+      <center>
+        <button
+          type='button'
+          className='btn btn_asLink'
+          onClick={() => {
+            history.push('/login');
+          }}
+        >
+          Login
+        </button>
+      </center>
+    </div>
+  );
+};
 
-        <center>
-          <button
-            type="button"
-            className="btn btn_asLink"
-            onClick={() => {
-              this.props.history.push('/login');
-            }}
-          >
-            Login
-          </button>
-        </center>
-      </div>
-    );
-  }
-}
-
-export default connect(mapStoreToProps)(RegisterPage);
+export default connect()(RegisterPage);
