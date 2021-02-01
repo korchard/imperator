@@ -1,0 +1,34 @@
+// MongoDB Playground
+// To disable this template go to Settings | MongoDB | Use Default Template For Playground.
+// Make sure you are connected to enable completions and to be able to run a playground.
+// Use Ctrl+Space inside a snippet or a string literal to trigger completions.
+
+// Select the database to use.
+use('aurelius');
+
+
+db.companies.aggregate(
+[
+    {
+        $match: {
+            "billing.plan": "irure"
+        }
+    }, 
+    {
+        $count: 'irure'
+        }
+]);
+
+// db.companies.aggregate(
+// [{
+//     $lookup: {
+//         from: 'projects',
+//         localField: 'projects',
+//         foreignField: '_id',
+//         as: 'string'
+//     }
+// }, {
+//     $match: {
+//         company: "AQUOAVO"
+//     }
+// }]);
