@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Target"
+  },
+  {
+    "projects": "id ref projects"
+  },
+  {
+    "collection": "id ref collection"
+  },
+  {
+    "recommendations": "recommendations id ref"
+  },
+  {
+    "hashtags": "hashtags id ref"
+  },
+  {
+    "notes": "notes id ref"
+  },
+  {
+    "documents": "documents id ref"
+  }, 
+  {
+    "teamMembers": "teamMembers id ref"
+  },
+  {
+    "billing": {
+      "customerId": String,
+      "plan": "Enterprise",
+      "status": String,
+      "subscriptionId": String,
+      "trialStart": 2,
+      "trialEnd": 3,
+      "default": {}
+    }
+  },
+  {
+    "activeUntil": "2019-08-23T06:32:59 +05:00"
+  },
+  {
+    "jira": {
+      "domain": String,
+      "email": String,
+      "api_token": String,
+      "default": {}
+    }
+  },
+  {
+   "zapier": {
+      "api_key": String,
+      "hooks": {
+        "insights": String,
+        "default": {}
+      },
+      "default": {}
+    }
+  },
+  {
+    "timestamp": "billing id ref"
+  }
+]
+
