@@ -25,7 +25,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Router>
