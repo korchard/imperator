@@ -13,7 +13,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
+// import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
@@ -87,8 +87,8 @@ const App = () => {
             // - else shows LandingPage at "/home"
             exact
             path='/home'
-            component={LandingPage}
-            authRedirect='/user'
+            component={LoginPage}
+            authRedirect='/login'
           />
 
           {/* If none of the other routes matched, we will show a 404. */}
