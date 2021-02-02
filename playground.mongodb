@@ -46,26 +46,83 @@ use('aurelius');
 //total billing plan by types 
 
 
-db.companies.aggregate([
-    {$match: {company: "AQUOAVO"}},
-    {
-        $lookup: 
-        {
-        from: 'projects',
-        localField: 'projects',
-        foreignField: '_id',
-        as: 'totalactions'
-        },
-    },
-        {$project: {"_id": 0, "totalactions": 1}},
-        {$unwind: "$totalactions"},
-        {$unwind: "$totalactions.insights"},
-        {$count: 'total_insights'}
+// db.companies.aggregate([
+//     {$match: {company: "AQUOAVO"}},
+//     {
+//         $lookup: 
+//         {
+//         from: 'projects',
+//         localField: 'projects',
+//         foreignField: '_id',
+//         as: 'totalactions'
+//         },
+//     },
+//         {$project: {"_id": 0, "totalactions": 1}},
+//         {$unwind: "$totalactions"},
+//         {$unwind: "$totalactions.insights"},
+//         {$count: 'total_insights'}
 
         
-]).pretty()
+// ]).pretty()
 
 //ability to get total insights from a project linked to a company
 
-
-
+db.companies.aggregate([
+    {$count: 'Total_Companies'}, 
+    {
+        $lookup: {
+            from: "hashtags",
+            pipeline: [{
+                $group: {
+                    '_id': 0,
+                'count': {$sum: 1}
+                }
+                }],
+            as: "hashtags"
+        },
+    }, {
+        $lookup: {
+            from: "insights",
+            pipeline: [{
+                $group: {
+                    '_id': 0,
+                'count': {$sum: 1}
+                }
+                }],
+            as: "insights"
+        },
+    }, {
+        $lookup: {
+            from: "notes",
+            pipeline: [{
+                $group: {
+                    '_id': 0,
+                'count': {$sum: 1}
+                }
+                }],
+            as: "notes"
+        },
+    }, {
+        $lookup: {
+            from: "projects",
+            pipeline: [{
+                $group: {
+                    '_id': 0,
+                'count': {$sum: 1}
+                }
+                }],
+            as: "projects"
+        }
+    },
+    {$unwind: {path: "$hashtags"}},
+    {$unwind: {path: "$insights"}},
+    {$unwind: {path: "$notes"}},
+    {$unwind: {path: "$projects"}},
+    {$project: {
+        'total': {$sum: [
+            "$notes.count", "$hashtags.count", "$insights.count", "$projects.count"
+        ]},
+    }
+    }
+]);
+//gets total actions 
