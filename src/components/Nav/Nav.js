@@ -8,13 +8,16 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 // npm install react-icons --save
 // nav icons 
 //  login/out
-import { FaRegUserCircle } from 'react-icons/fa'; 
+import { FaRegUserCircle } from 'react-icons/fa';
 // operational
-import { BsFillGearFill } from 'react-icons/bs'; 
+import { BsFillGearFill } from 'react-icons/bs';
 // anyitcal 
-import { DiGoogleAnalytics } from 'react-icons/di'; 
+import { DiGoogleAnalytics } from 'react-icons/di';
 // strategic 
-import { GrAnalytics } from 'react-icons/gr'; 
+import { SiMicrostrategy } from 'react-icons/si';
+// imperator 
+import { AiOutlineTable } from 'react-icons/ai';
+
 
 const Nav = (props) => {
   let loginLinkData = {
@@ -23,47 +26,51 @@ const Nav = (props) => {
   };
 
   if (props.store.user._id != null) {
-    loginLinkData.path = '/user';
-    loginLinkData.text = 'Home';
+    loginLinkData.path = '/operational';
+    loginLinkData.text = 'Operational';
+
   }
 
   return (
     <div className='nav'>
       <Link to='/home'>
-        <h2 className='nav-title'>Prime Solo Project</h2>
+        <div>
+          <img src="../img/logo.svg" alt="logo" className="nav-logo"></img>
+        </div>
       </Link>
       <div className='nav-right'>
-        <Link className='nav-link' to={loginLinkData.path}>
-          {/* Show this link if they are logged in or not,
-          but call this link 'Home' if they are logged in,
-          and call this link 'Login / Register' if they are not */}
-          {loginLinkData.text}
-        </Link>
+        {props.store.user._id ? null 
+    :          <Link className='nav-link' to={loginLinkData.path}>  
+            {loginLinkData.text}
+            </Link> } 
         {/* Show the link to the info page and the logout button if the user is logged in */}
         {props.store.user._id && (
           <>
-            <Link className='nav-link' to='/info'>
-              Info Page
-            </Link>
-            <Link className='nav-link' to='/operational'>
-              <BsFillGearFill/> Operational 
-            </Link>
-            <Link className='nav-link' to='/imperator'>
-              <FaRegUserCircle/> Imperator
-            </Link>
-            <Link className='nav-link' to='/strategic'>
-              <GrAnalytics/> Strategic 
-            </Link>
-            <Link className='nav-link' to='/analytical'>
-              <DiGoogleAnalytics/> Analytical
-            </Link>
+            <div>
+              <Link className='nav-link' to='/operational'>
+                  <BsFillGearFill /> <span className="icon-btn">Operational</span>
+              </Link>
+            </div>
+            <div>
+              <Link className='nav-link' to='/imperator'>
+                  <AiOutlineTable /> <span className="icon-btn">Imperator</span>
+              </Link>
+            </div>
+            <div>
+              <Link className='nav-link' to='/strategic'>
+                  <SiMicrostrategy /> <span className="icon-btn">Strategic</span>
+              </Link>
+            </div>
+            <div>
+              <Link className='nav-link' to='/analytical'>
+                  <DiGoogleAnalytics /> <span className="icon-btn">Analytical</span>
+              </Link>
+            </div>
             <LogOutButton className='nav-link' />
           </>
         )}
         {/* Always show this link since the about page is not protected */}
-        <Link className='nav-link' to='/about'>
-          About
-        </Link>
+
       </div>
     </div>
   );
