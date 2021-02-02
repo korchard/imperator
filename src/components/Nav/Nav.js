@@ -5,16 +5,16 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-// npm install react-icons --sav
+// npm install react-icons --save
 // nav icons 
 //  login/out
-import { FaRegUserCircle } from 'react-icons/lib/fa'; 
+import { FaRegUserCircle } from 'react-icons/fa'; 
 // operational
-import { BsFillGearFill } from 'react-icons/lib/bs'; 
+import { BsFillGearFill } from 'react-icons/bs'; 
 // anyitcal 
-import { DiGoogleAnalytics } from 'react-icons/lib/di'; 
+import { DiGoogleAnalytics } from 'react-icons/di'; 
 // strategic 
-import { GrAnalytics } from 'react-icons/lib/gr'; 
+import { GrAnalytics } from 'react-icons/gr'; 
 
 const Nav = (props) => {
   let loginLinkData = {
@@ -43,6 +43,18 @@ const Nav = (props) => {
         {props.store.user._id && (
           <>
             <Link className='nav-link' to='/info'>
+              Info Page
+            </Link>
+            <Link className='nav-link' to='/operational'>
+              <BsFillGearFill/> Operational 
+            </Link>
+            <Link className='nav-link' to='/imperator'>
+              <BsFillGearFill/> Imperator
+            </Link>
+            <Link className='nav-link' to='/strategic'>
+              <BsFillGearFill/> Strategic 
+            </Link>
+            <Link className='nav-link' to='/analytical'>
               Info Page
             </Link>
             <LogOutButton className='nav-link' />
