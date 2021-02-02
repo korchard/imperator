@@ -1,5 +1,6 @@
 import express from 'express';
 import sessionMiddleware from './modules/session-middleware';
+import bodyParser from 'body-parser';
 import passport from './strategies/user.strategy';
 import userRouter from './routes/user.router';
 import mongoose from 'mongoose';
@@ -22,8 +23,10 @@ mongoose.connect(
 const app = express();
 
 // Body parser middleware
-app.use(express.json());
-app.use(express.urlencoded());
+// app.use(express.json());
+// app.use(express.urlencoded());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 // Passport Session Configuration //
 app.use(sessionMiddleware);
