@@ -5,6 +5,17 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
+// npm install react-icons --sav
+// nav icons 
+//  login/out
+import { FaRegUserCircle } from 'react-icons/lib/fa'; 
+// operational
+import { BsFillGearFill } from 'react-icons/lib/bs'; 
+// anyitcal 
+import { DiGoogleAnalytics } from 'react-icons/lib/di'; 
+// strategic 
+import { GrAnalytics } from 'react-icons/lib/gr'; 
+
 const Nav = (props) => {
   let loginLinkData = {
     path: '/login',

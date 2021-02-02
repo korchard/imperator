@@ -16,6 +16,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import Operational from '../Operational/Operational';
 
 import './App.css';
 
@@ -58,6 +59,35 @@ const App = () => {
             exact
             path='/info'
             component={InfoPage}
+          />
+
+
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path='/operational'
+            component={Operational}
+          />
+
+        <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path='/imperator'
+            component={Imperator}
+          />
+
+        <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path='/strategic'
+            component={Strategic}
+          />
+
+        <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path='/analytical'
+            component={Analytical}
           />
 
           {/* When a value is supplied for the authRedirect prop the user will
