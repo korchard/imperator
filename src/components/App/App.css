@@ -5,8 +5,9 @@ body,
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  margin-left: 250px;
 }
 
 img {
@@ -110,3 +111,5 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 }
+
+
