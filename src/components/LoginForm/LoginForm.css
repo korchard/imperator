@@ -1,3 +1,14 @@
 .login {
-  background-color: black;
+  margin-top: 20%;
+  color: rgb(11, 53, 77);
+}
+
+.loginbtn {
+  padding-left: 60%;
+}
+
+.nav-logo2 {
+  height: 70px;
+  width: 70px;
+  margin: 32px 9px 16px 9px;
 }
