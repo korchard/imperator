@@ -21,7 +21,6 @@ import Analytical from '../Analytical/Analytical.tsx';
 import Imperator from '../Imperator/Imperator.tsx';
 import Strategic from '../Strategic/Strategic.tsx';
 
-
 import './App.css';
 
 const App = () => {
@@ -59,7 +58,6 @@ const App = () => {
             component={InfoPage}
           />
 
-
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
@@ -67,26 +65,26 @@ const App = () => {
             component={Operational}
           />
 
-        <ProtectedRoute
+          <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
             path='/imperator'
             component={Imperator}
           />
 
-        <ProtectedRoute
+          <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
             path='/strategic'
             component={Strategic}
-          /> 
+          />
 
-        <ProtectedRoute
+          <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
             path='/analytical'
             component={Analytical}
-          /> 
+          />
 
           {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
@@ -107,15 +105,6 @@ const App = () => {
             exact
             path='/registration'
             component={RegisterPage}
-            authRedirect='/user'
-          />
-          <ProtectedRoute
-            // with authRedirect:
-            // - if logged in, redirects to "/user"
-            // - else shows LandingPage at "/home"
-            exact
-            path='/imperator'
-            component={LandingPage}
             authRedirect='/user'
           />
 

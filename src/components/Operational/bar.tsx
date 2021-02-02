@@ -1,24 +1,27 @@
-import React, {useState} from 'react';
-import Chart from "react-apexcharts";
+import React, { useState } from 'react';
+import Chart from 'react-apexcharts';
 
-const Operational: React.FC = () => {
-    const [options, setOptions] = useState({
-        options: {
-            chart: {
-                id: 'basic-bar'
-            },
-            xaxis: {
-                categories: [100, 200, 300]
-            }
-        }
-    })
+const Bar: React.FC = () => {
+  const [opt, setOptions] = useState({
+    options: {
+      chart: {
+        id: 'basic-bar',
+      },
+      xaxis: {
+        categories: [100, 200, 300],
+      },
+    },
+    series: [
+      {
+        name: 'series-1',
+        data: [1, 2, 5, 7],
+      },
+    ],
+  });
   return (
-    <div >
-        
-        
+    <div>
+      <Chart options={opt.options} series={opt.series} type='bar' width='500' />
     </div>
   );
-}
-
-
-export default Operational;
+};
+export default Bar;
