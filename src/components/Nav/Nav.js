@@ -48,22 +48,22 @@ const Nav = (props) => {
           <>
             <div>
               <Link className='nav-link' to='/operational'>
-                  <BsFillGearFill /> <span className="icon-btn">Operational</span>
+                  <BsFillGearFill /><span className="icon-btn">Operational</span>
               </Link>
             </div>
             <div>
               <Link className='nav-link' to='/imperator'>
-                  <AiOutlineTable /> <span className="icon-btn">Imperator</span>
+                  <AiOutlineTable /><span className="icon-btn">Imperator</span>
               </Link>
             </div>
             <div>
               <Link className='nav-link' to='/strategic'>
-                  <SiMicrostrategy /> <span className="icon-btn">Strategic</span>
+                  <SiMicrostrategy /><span className="icon-btn">Strategic</span>
               </Link>
             </div>
             <div>
               <Link className='nav-link' to='/analytical'>
-                  <DiGoogleAnalytics /> <span className="icon-btn">Analytical</span>
+                  <DiGoogleAnalytics /><span className="icon-btn">Analytical</span>
               </Link>
             </div>
             <LogOutButton className='nav-link' />

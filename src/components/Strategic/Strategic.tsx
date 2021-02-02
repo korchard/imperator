@@ -3,7 +3,7 @@ import React from 'react';
 function Strategic() {
   return (
     <div>
-    <h1>Strategic</h1>
+      <h1>Strategic</h1>
     </div>
   );
 }
