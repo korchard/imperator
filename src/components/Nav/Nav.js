@@ -49,10 +49,10 @@ const Nav = (props) => {
               <BsFillGearFill/> Operational 
             </Link>
             <Link className='nav-link' to='/imperator'>
-              <BsFillGearFill/> Imperator
+              <FaRegUserCircle/> Imperator
             </Link>
             <Link className='nav-link' to='/strategic'>
-              <BsFillGearFill/> Strategic 
+              <GrAnalytics/> Strategic 
             </Link>
             <Link className='nav-link' to='/analytical'>
               <DiGoogleAnalytics/> Analytical
