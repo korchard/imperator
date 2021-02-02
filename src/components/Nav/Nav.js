@@ -55,7 +55,7 @@ const Nav = (props) => {
               <BsFillGearFill/> Strategic 
             </Link>
             <Link className='nav-link' to='/analytical'>
-              Info Page
+              <DiGoogleAnalytics/> Analytical
             </Link>
             <LogOutButton className='nav-link' />
           </>
