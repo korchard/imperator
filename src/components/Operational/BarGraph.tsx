@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Chart from 'react-apexcharts';
 
-const Bar: React.FC = () => {
+const BarGraph: React.FC = () => {
   const [opt, setOptions] = useState({
     options: {
       chart: {
@@ -24,4 +24,4 @@ const Bar: React.FC = () => {
     </div>
   );
 };
-export default Bar;
+export default BarGraph;
