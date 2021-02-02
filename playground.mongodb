@@ -32,3 +32,6 @@ db.companies.aggregate(
 //         company: "AQUOAVO"
 //     }
 // }]);
+
+db.users.countDocuments({})
+//total user count
