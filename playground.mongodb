@@ -40,7 +40,32 @@ use('aurelius');
 
 // db.companies.find({}, {"billing.plan": true})
 
-db.companies.aggregate([
-    {$unwind: "$billing.plan"}, {$sortByCount: "$billing.plan"}
-])
+// db.companies.aggregate([
+//     {$unwind: "$billing.plan"}, {$sortByCount: "$billing.plan"}
+// ])
 //total billing plan by types 
+
+
+db.companies.aggregate([
+    {$match: {company: "AQUOAVO"}},
+    {
+        $lookup: 
+        {
+        from: 'projects',
+        localField: 'projects',
+        foreignField: '_id',
+        as: 'totalactions'
+        },
+    },
+        {$project: {"_id": 0, "totalactions": 1}},
+        {$unwind: "$totalactions"},
+        {$unwind: "$totalactions.insights"},
+        {$count: 'total_insights'}
+
+        
+]).pretty()
+
+//ability to get total insights from a project linked to a company
+
+
+
