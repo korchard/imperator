@@ -7,17 +7,17 @@
 use('aurelius');
 
 
-db.companies.aggregate(
-[
-    {
-        $match: {
-            "billing.plan": "irure"
-        }
-    }, 
-    {
-        $count: 'irure'
-        }
-]);
+// db.companies.aggregate(
+// [
+//     {
+//         $match: {
+//             "billing.plan": "irure"
+//         }
+//     }, 
+//     {
+//         $count: 'irure'
+//         }
+// ]);
 
 // db.companies.aggregate(
 // [{
@@ -33,5 +33,14 @@ db.companies.aggregate(
 //     }
 // }]);
 
-db.users.countDocuments({})
+// db.users.countDocuments({})
 //total user count
+
+// db.companies.find({hashtags: {$exists: true}}).count()
+
+// db.companies.find({}, {"billing.plan": true})
+
+db.companies.aggregate([
+    {$unwind: "$billing.plan"}, {$sortByCount: "$billing.plan"}
+])
+//total billing plan by types 
