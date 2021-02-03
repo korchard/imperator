@@ -146,4 +146,45 @@ input {
   display: block;
 }
 
-
+.search-input { 
+  -webkit-writing-mode: horizontal-tb !important;
+      text-rendering: auto;
+      color: -internal-light-dark(black, white);
+      letter-spacing: normal;
+      word-spacing: normal;
+      text-transform: none;
+      text-indent: 0px;
+      text-shadow: none;
+      display: inline-block;
+      text-align: start;
+      appearance: textfield;
+      background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+      -webkit-rtl-ordering: logical;
+      cursor: text;
+      margin: 0em;
+      font: 400 13.3333px Arial;
+      padding: 1px 2px;
+      border-width: 2px;
+      border-style: inset;
+      border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+      border-image: initial;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      color: #024058;
+      height: 40px;
+      border-radius: 2px;
+      border: solid 2px #acbcc4;
+      background-color: rgba(221,233,233,0.5);
+      font-size: 16px;
+      font-weight: 500;
+      padding: 0 16px;
+      -webkit-letter-spacing: 0.19px;
+      -moz-letter-spacing: 0.19px;
+      -ms-letter-spacing: 0.19px;
+      letter-spacing: 0.19px;
+      -webkit-transition: border 0.3s;
+      transition: border 0.3s;
+      padding-left: 30px;
+      width: 300px;
+}
