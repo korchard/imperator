@@ -1,9 +1,10 @@
 import React from 'react';
 
-function Analytical() {
+const Analytical = () => {
   return (
     <div>
-    <h1>Analytical</h1>
+      <h1>Analytical</h1> 
+      <input className="search-input" placeholder="Search users"/>
     </div>
   );
 }
