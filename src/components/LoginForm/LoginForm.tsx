@@ -56,6 +56,7 @@ const LoginForm: React.FC<Props> = () => {
                     <label htmlFor='username'>
                     Username:
                     <input
+                        className="loginForm"
                         type='text'
                         name='username'
                         required
@@ -68,6 +69,7 @@ const LoginForm: React.FC<Props> = () => {
                     <label htmlFor='password'>
                     Password:
                     <input
+                        className="loginForm"
                         type='password'
                         name='password'
                         required
@@ -77,7 +79,10 @@ const LoginForm: React.FC<Props> = () => {
                     </label>
                 </div>
                 <div>
-                    <input className='btn loginbtn' type='submit' name='submit' value='Log In' />
+                    <button className='linkBtn'>Forgot Password?</button>
+                </div>
+                <div>
+                    <input className='btn' type='submit' name='submit' value='Log In' />
                 </div>
             </form>
         </div>
