@@ -1,8 +1,8 @@
-import { Schema, Model, model } from 'mongoose'
+import { Schema, Model, model } from 'mongoose';
 
 class HashtagGroupModel extends Model {
   get id() {
-    return this._id
+    return this._id;
   }
 }
 const HashtagGroupsSchema = new Schema(
@@ -21,31 +21,28 @@ const HashtagGroupsSchema = new Schema(
   },
   {
     timestamps: true,
-  },
+  }
 )
   .set('toJSON', { virtuals: true })
-  .loadClass(HashtagGroupModel)
+  .loadClass(HashtagGroupModel);
 
 /**
  * Pre middleware
  */
-HashtagGroupsSchema.pre('remove', async function() {
+HashtagGroupsSchema.pre('remove', async function (this: any) {
   try {
-    const Hashtags = (await import('./Hashtag')).HashtagDB
+    const Hashtags = (await import('./Hashtag')).HashtagDB;
 
     // Remove documents from all references
     await Hashtags.update(
       { hashtagGroups: { $elemMatch: { $eq: this._id } } },
       { $pull: { hashtagGroups: this._id } },
-      { multi: true },
-    ).exec()
+      { multi: true }
+    ).exec();
 
-    return Promise.resolve()
+    return Promise.resolve();
   } catch (err) {
-    return Promise.reject(err)
+    return Promise.reject(err);
   }
-})
-export const HashtagGroupDB = model(
-  'HashtagGroup',
-  HashtagGroupsSchema,
-)
+});
+export const HashtagGroupDB = model('HashtagGroup', HashtagGroupsSchema);

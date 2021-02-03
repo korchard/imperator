@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import passport from './strategies/user.strategy';
 import userRouter from './routes/user.router';
 import dataRouter from './routes/data.router';
+import planCountRouter from './routes/planCount.router';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -41,6 +42,7 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/data', dataRouter);
+app.use('/api/planCount', planCountRouter);
 
 // Serve static files
 app.use(express.static('build'));
@@ -48,8 +50,10 @@ app.use(express.static('build'));
 // App Set //
 const PORT: number | string = process.env.PORT || 5000;
 /** Listen * */
-app.listen(5000, () => {
-  console.log(`Server running in TS running on port:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(5000, () => {
+    console.log(`Server running in TS running on port:${PORT}`);
+  });
+}
 
 export default app;

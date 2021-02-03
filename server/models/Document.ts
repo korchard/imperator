@@ -1,8 +1,8 @@
-import { Schema, Model, model } from 'mongoose'
+import { Schema, Model, model } from 'mongoose';
 
 class DocumentModel extends Model {
   get id() {
-    return this._id
+    return this._id;
   }
 }
 
@@ -51,55 +51,52 @@ const DocumentsSchema = new Schema(
   },
   {
     timestamps: true,
-  },
+  }
 )
   .set('toJSON', { virtuals: true })
-  .loadClass(DocumentModel)
+  .loadClass(DocumentModel);
 
-DocumentsSchema.pre('remove', async function() {
+DocumentsSchema.pre('remove', async function (this: any) {
   try {
-    const Projects = (await import('./Project')).ProjectDB
-    const Companies = (await import('./Company')).CompanyDB
-    const Collections = (await import('./Collection')).CollectionDB
-    const Hashtags = (await import('./Hashtag')).HashtagDB
-    const Insights = (await import('./Insight')).InsightDB
+    const Projects = (await import('./Project')).ProjectDB;
+    const Companies = (await import('./Company')).CompanyDB;
+    const Collections = (await import('./Collection')).CollectionDB;
+    const Hashtags = (await import('./Hashtag')).HashtagDB;
+    const Insights = (await import('./Insight')).InsightDB;
     // Remove documents from all referenced parents
     await Companies.update(
       { documents: { $elemMatch: { $eq: this._id } } },
-      { $pull: { documents: this._id } },
-    ).exec()
+      { $pull: { documents: this._id } }
+    ).exec();
     await Projects.update(
       { documents: { $elemMatch: { $eq: this._id } } },
-      { $pull: { documents: this._id } },
-    ).exec()
+      { $pull: { documents: this._id } }
+    ).exec();
     await Collections.update(
       { documents: { $elemMatch: { $eq: this._id } } },
       { $pull: { documents: this._id } },
-      { multi: true },
-    ).exec()
+      { multi: true }
+    ).exec();
     await Hashtags.update(
       { documents: { $elemMatch: { $eq: this._id } } },
       { $pull: { documents: this._id } },
-      { multi: true },
-    ).exec()
+      { multi: true }
+    ).exec();
     await Insights.update(
       { documents: { $elemMatch: { $eq: this._id } } },
       { $pull: { documents: this._id } },
-      { multi: true },
-    ).exec()
-    return Promise.resolve()
+      { multi: true }
+    ).exec();
+    return Promise.resolve();
   } catch (err) {
-    return Promise.reject(err)
+    return Promise.reject(err);
   }
-})
+});
 
-DocumentsSchema.index({ name: 'text' }) // for matching/sorting (add further $text index in same object)
-DocumentsSchema.index({ name: 1 }) // for secondary sorting
-DocumentsSchema.index({ project: 1 }) // for matching
-DocumentsSchema.index({ createdAt: 1 }) // for sorting
-DocumentsSchema.index({ updatedAt: 1 }) // for sorting
+DocumentsSchema.index({ name: 'text' }); // for matching/sorting (add further $text index in same object)
+DocumentsSchema.index({ name: 1 }); // for secondary sorting
+DocumentsSchema.index({ project: 1 }); // for matching
+DocumentsSchema.index({ createdAt: 1 }); // for sorting
+DocumentsSchema.index({ updatedAt: 1 }); // for sorting
 
-export const DocumentDB = model(
-  'Document',
-  DocumentsSchema,
-)
+export const DocumentDB = model('Document', DocumentsSchema);
