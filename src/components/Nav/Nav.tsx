@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
@@ -17,18 +18,32 @@ import { DiGoogleAnalytics } from 'react-icons/di';
 import { SiMicrostrategy } from 'react-icons/si';
 // imperator 
 import { AiOutlineTable } from 'react-icons/ai';
+//logout
+import { AiOutlineLogout } from 'react-icons/ai';
 
+type Props = {
+  className?: string | undefined,
+}
 
-const Nav = (props) => {
+interface IUser {
+  user: {
+    _id: number;
+    username: String;
+
+  }, 
+}
+
+const Nav: React.FC<Props> = () => {
+  const user = useSelector((redux: IUser) => redux.user);
+
   let loginLinkData = {
     path: '/login',
     text: 'Login',
   };
 
-  if (props.store.user._id != null) {
+  if (user._id != null) {
     loginLinkData.path = '/operational';
     loginLinkData.text = 'Operational';
-
   }
 
   return (
@@ -39,12 +54,12 @@ const Nav = (props) => {
         </div>
       </Link>
       <div className='nav-right'>
-        {props.store.user._id ? null 
+        {user._id ? null 
     :          <Link className='nav-link' to={loginLinkData.path}>  
             {loginLinkData.text}
             </Link> } 
         {/* Show the link to the info page and the logout button if the user is logged in */}
-        {props.store.user._id && (
+        {user._id && (
           <>
             <div>
               <Link className='nav-link' to='/operational'>
@@ -66,7 +81,7 @@ const Nav = (props) => {
                   <DiGoogleAnalytics /><span className="icon-btn">Analytical</span>
               </Link>
             </div>
-            <LogOutButton className='nav-link' />
+              <LogOutButton/>
           </>
         )}
         {/* Always show this link since the about page is not protected */}
