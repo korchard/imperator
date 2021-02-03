@@ -20,31 +20,31 @@ const PasswordReset: React.FC = () => {
     
     return (
         <div className='resetContainer'>
-        <form className='formPanel '>
-        <img src="../img/logo.svg" alt="logo" className="nav-logo2"></img>
-            <h2>Password Reset</h2>
-            <div>
-                <label htmlFor='email'>
-                Email:
-                <input
-                    className="loginForm"
-                    type='text'
-                    name='username'
-                    required
-                    // value={user.email}
-                    // onChange={(e) => setEmail({...user, email: e.target.value})}
-                />
-                </label>
-            </div>
-            <div className="buttonContainer">
-                <button className='btnReset' onClick={returnToLogin}>Return to Login</button>
-                <button 
-                className='btnReset'
-                onClick={reset}
-                >Reset</button>
-            </div>
-        </form>
-    </div>
+            <form className='formPanel reset'>
+            <img src="../img/logo.svg" alt="logo" className="nav-logo2"></img>
+                <h2>Password Reset</h2>
+                <div>
+                    <label htmlFor='email'>
+                    Email:
+                    <input
+                        className="loginForm"
+                        type='text'
+                        name='username'
+                        required
+                        // value={user.email}
+                        // onChange={(e) => setEmail({...user, email: e.target.value})}
+                    />
+                    </label>
+                </div>
+                <div className="buttonContainer">
+                    <button className='btnReset' onClick={returnToLogin}>Return to Login</button>
+                    <button 
+                    className='btnReset'
+                    onClick={reset}
+                    >Reset</button>
+                </div>
+            </form>
+        </div>
     );
 };
 
