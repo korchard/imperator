@@ -1,11 +1,15 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
-/**
- * Will be fired on "REGISTER" action
- * @param {Object} action Action payload that holds the username password for a new user
- * It will then log them in after if no errors, then sets it to redux state to allow the component to show
- * */
+function* fetchTotalCounts() {
+    try {
+        const response = yield axios.get(`/api/planCount`)
+        yield put({ type: 'SET_PLAN_COUNT', payload: response.data });
+        console.log(response.data);
+    } catch (error) {
+        console.log('error with plan count get in planCount.saga', error);
+    }
+}//end fetchTotalCounts
 
 function* getUsersByMonth(action) {
   try {
@@ -19,7 +23,8 @@ function* getUsersByMonth(action) {
 }
 
 function* operationalSaga() {
-  yield takeLatest('GET_USERS_BY_MONTH', operationsSaga);
+  yield takeEvery('GET_USERS_BY_MONTH', operationsSaga);
+  yield takeEvery('FETCH_PLAN_COUNTS', fetchTotalCounts);
 }
 
 export default operationalSaga;
