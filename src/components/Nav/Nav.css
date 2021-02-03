@@ -71,9 +71,19 @@
   text-align: left;
   margin-left: 10px;
   
+
+}
+
+#logoutBtn {
   border:none;
   cursor: pointer;
   outline:0;
+  /* margin-left: 10px; */
+}
+
+.logoutContainer {
+  display: inline-block;
+  /* margin-left: 10px; */
 }
 
 .nav-logo {

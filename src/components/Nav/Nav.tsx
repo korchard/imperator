@@ -18,6 +18,8 @@ import { DiGoogleAnalytics } from 'react-icons/di';
 import { SiMicrostrategy } from 'react-icons/si';
 // imperator 
 import { AiOutlineTable } from 'react-icons/ai';
+//logout
+import { AiOutlineLogout } from 'react-icons/ai';
 
 type Props = {
   className?: string | undefined,
@@ -79,7 +81,7 @@ const Nav: React.FC<Props> = () => {
                   <DiGoogleAnalytics /><span className="icon-btn">Analytical</span>
               </Link>
             </div>
-            <LogOutButton/>
+              <LogOutButton/>
           </>
         )}
         {/* Always show this link since the about page is not protected */}
