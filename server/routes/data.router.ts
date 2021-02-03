@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
 import express from 'express';
 import rejectUnauthenticated from '../modules/authentication-middleware';
-import { CompanyDB } from '../models/Company';
+import { CompanyDB } from '../models/documents/Company';
 
 const router: express.Router = express.Router();
 
 router.get(
   '/totalactions',
-  //   rejectUnauthenticated,
+  rejectUnauthenticated,
   async (req: Request, res: Response): Promise<void> => {
     console.log('this is working');
     try {

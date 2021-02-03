@@ -1,8 +1,7 @@
 import passport from 'passport';
-import mongoose from 'mongoose';
 import { comparePassword } from '../modules/encryption';
 import { Strategy } from 'passport-local';
-import { PersonDB } from '../models/Person';
+import { PersonDB } from '../models/documents/Person';
 
 passport.serializeUser((user: any, done: any): void => {
   done(null, user.id);

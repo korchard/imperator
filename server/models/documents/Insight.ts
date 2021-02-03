@@ -1,12 +1,15 @@
-import { Schema, Model, model } from 'mongoose';
-import { SubscriptionNotifier } from './SubscriptionNotifier';
+import { Schema, Model, model } from 'mongoose'
+import { SubscriptionNotifier } from './SubscriptionNotifier'
+import { Insight } from '../interfaces'
+import mongooseLeanDefaults from 'mongoose-lean-defaults'
+import mongooseLeanGetters from 'mongoose-lean-getters'
 
 class InsightModel extends Model {
-  get id() {
-    return this._id;
+  get id(): string {
+    return this._id
   }
 }
-const InsightsSchema = new Schema(
+const InsightsSchema = new Schema<Insight>(
   {
     name: { type: String, required: true, trim: true },
     description: { type: String, required: false, trim: true },
@@ -70,59 +73,64 @@ const InsightsSchema = new Schema(
   },
   {
     timestamps: true,
-  }
+  },
 )
   .set('toJSON', { virtuals: true })
-  .loadClass(InsightModel);
+  .loadClass(InsightModel)
+  .plugin(mongooseLeanDefaults)
+  .plugin(mongooseLeanGetters)
 
 /**
  * Pre middleware
  */
-InsightsSchema.pre('remove', async function (this: any) {
+InsightsSchema.pre('remove', async function() {
   try {
-    const Companies = (await import('./Company')).CompanyDB;
-    const Projects = (await import('./Project')).ProjectDB;
-    const Hashtags = (await import('./Hashtag')).HashtagDB;
-    const Collections = (await import('./Collection')).CollectionDB;
-    const Recommendations = (await import('./Recommendation')).RecommendationDB;
+    const Companies = (await import('./Company')).CompanyDB
+    const Projects = (await import('./Project')).ProjectDB
+    const Hashtags = (await import('./Hashtag')).HashtagDB
+    const Collections = (await import('./Collection')).CollectionDB
+    const Recommendations = (await import('./Recommendation')).RecommendationDB
 
-    const insight = this.toJSON();
+    const insight = this.toJSON() as Insight
 
     // Remove documents from all references
-    // await Projects.findByIdAndUpdate(insight.project, {
-    //   $pull: { insights: this._id },
-    // }).exec()
+    await Projects.findByIdAndUpdate(insight.project, {
+      $pull: { insights: this._id },
+    }).exec()
     await Companies.update(
       { insights: { $elemMatch: { $eq: this._id } } },
-      { $pull: { insights: this._id } }
-    ).exec();
+      { $pull: { insights: this._id } },
+    ).exec()
     await Hashtags.update(
       { insights: { $elemMatch: { $eq: this._id } } },
       { $pull: { insights: this._id } },
-      { multi: true }
-    ).exec();
+      { multi: true },
+    ).exec()
     await Collections.update(
       { insights: { $elemMatch: { $eq: this._id } } },
       { $pull: { insights: this._id } },
-      { multi: true }
-    ).exec();
+      { multi: true },
+    ).exec()
     await Recommendations.update(
       { insights: { $elemMatch: { $eq: this._id } } },
       { $pull: { insights: this._id } },
-      { multi: true }
-    ).exec();
-    return Promise.resolve();
+      { multi: true },
+    ).exec()
+    return Promise.resolve()
   } catch (err) {
-    return Promise.reject(err);
+    return Promise.reject(err)
   }
-});
+})
 
-SubscriptionNotifier.decorate(InsightsSchema);
+SubscriptionNotifier.decorate(InsightsSchema)
 
-InsightsSchema.index({ name: 'text' }); // for matching/sorting (add further $text index in same object)
-InsightsSchema.index({ name: 1 }); // for secondary sorting
-InsightsSchema.index({ project: 1 }); // for matching
-InsightsSchema.index({ createdAt: 1 }); // for sorting
-InsightsSchema.index({ updatedAt: 1 }); // for sorting
+InsightsSchema.index({ name: 'text' }) // for matching/sorting (add further $text index in same object)
+InsightsSchema.index({ name: 1 }) // for secondary sorting
+InsightsSchema.index({ project: 1 }) // for matching
+InsightsSchema.index({ createdAt: 1 }) // for sorting
+InsightsSchema.index({ updatedAt: 1 }) // for sorting
 
-export const InsightDB = model('Insight', InsightsSchema);
+export const InsightDB = model<Insight & InsightModel>(
+  'Insight',
+  InsightsSchema,
+)

@@ -1,11 +1,14 @@
 import { Schema, Model, model } from 'mongoose'
+import { Report } from '../interfaces'
+import mongooseLeanDefaults from 'mongoose-lean-defaults'
+import mongooseLeanGetters from 'mongoose-lean-getters'
 
 class ReportModel extends Model {
-  get id() {
+  get id(): string {
     return this._id
   }
 }
-const ReportsSchema = new Schema(
+const ReportsSchema = new Schema<Report>(
   {
     project: {
       type: Schema.Types.ObjectId,
@@ -24,5 +27,7 @@ const ReportsSchema = new Schema(
 )
   .set('toJSON', { virtuals: true })
   .loadClass(ReportModel)
+  .plugin(mongooseLeanDefaults)
+  .plugin(mongooseLeanGetters)
 
-export const ReportDB = model('Report', ReportsSchema)
+export const ReportDB = model<Report & ReportModel>('Report', ReportsSchema)

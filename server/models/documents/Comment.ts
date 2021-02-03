@@ -1,7 +1,10 @@
 import { Schema, Model, model } from 'mongoose'
+import { Comment } from '../interfaces'
+import mongooseLeanDefaults from 'mongoose-lean-defaults'
+import mongooseLeanGetters from 'mongoose-lean-getters'
 
 export class CommentModel extends Model {
-  get id() {
+  get id(): string {
     return this._id
   }
 }
@@ -17,5 +20,7 @@ const CommentSchema = new Schema(
 )
   .set('toJSON', { virtuals: true })
   .loadClass(CommentModel)
+  .plugin(mongooseLeanDefaults)
+  .plugin(mongooseLeanGetters)
 
-export const CommentDB = model('Comment', CommentSchema)
+export const CommentDB = model<Comment & CommentModel>('Comment', CommentSchema)
