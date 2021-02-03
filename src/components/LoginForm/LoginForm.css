@@ -2,7 +2,7 @@
 .loginContainer {
   width: 100%;
   height: 100%;
-  padding-top: 12rem;
+  padding-top: 7rem;
 }
 
 /* --------------------- Login Form ------------------------------- */
@@ -16,7 +16,7 @@
 .nav-logo2 {
   height: 70px;
   width: 70px;
-  margin: 32px 9px 16px 9px;
+  margin: 32px 9px 32px 9px;
   display: block;
   margin-left: auto;
   margin-right: auto;

@@ -22,7 +22,7 @@ import { AiOutlineTable } from 'react-icons/ai';
 const Nav = (props) => {
   let loginLinkData = {
     path: '/login',
-    text: 'Login / Register',
+    text: 'Login',
   };
 
   if (props.store.user._id != null) {

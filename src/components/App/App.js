@@ -87,8 +87,7 @@ const App = () => {
             component={Analytical}
           />
 
-        <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
+        <Route
             exact
             path='/passwordReset'
             component={PasswordReset}

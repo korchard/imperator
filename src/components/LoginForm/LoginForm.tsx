@@ -44,6 +44,7 @@ const LoginForm: React.FC<Props> = () => {
       }; // end login
 
       const reset = () => {
+          console.log('reset password');
           history.push('/passwordReset');
       }
 

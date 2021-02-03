@@ -8,17 +8,21 @@ interface IEmail {
 
 const PasswordReset: React.FC = () => {
     const [email, setEmail] = useState<IEmail>({email: ''})
+    const history = useHistory();
 
     const reset = () => {
         console.log('CLicked reset password')
     }
+
+    const returnToLogin = () => {
+        history.push('/login');
+    }
     
     return (
-        <div className='login'>
-        <form className='formPanel'>
+        <div className='resetContainer'>
+        <form className='formPanel '>
         <img src="../img/logo.svg" alt="logo" className="nav-logo2"></img>
-            <h2
-            >Login</h2>
+            <h2>Password Reset</h2>
             <div>
                 <label htmlFor='email'>
                 Email:
@@ -32,11 +36,12 @@ const PasswordReset: React.FC = () => {
                 />
                 </label>
             </div>
-            <div>
-                <button className='linkBtn' onClick={reset}>Forgot Password?</button>
-            </div>
-            <div>
-                <input className='btn' type='submit' name='submit' value='Log In' />
+            <div className="buttonContainer">
+                <button className='btnReset' onClick={returnToLogin}>Return to Login</button>
+                <button 
+                className='btnReset'
+                onClick={reset}
+                >Reset</button>
             </div>
         </form>
     </div>
