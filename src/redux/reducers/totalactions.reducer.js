@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux';
 
 // store user message information
-const planCount = (state = [], action) => {
+const totalActions = (state = [], action) => {
   switch (action.type) {
-    case 'SET_PLAN_COUNT':
+    case 'SET_TOTAL_ACTIONS':
       return action.payload;
     default:
       return state;
   }
 };
 
-export default planCount;
+export default totalActions;

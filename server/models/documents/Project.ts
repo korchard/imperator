@@ -1,13 +1,17 @@
 import { Schema, Model, model } from 'mongoose';
+import { Project, Category } from '../interfaces';
+
 import { CategoryDB } from './Category';
+import mongooseLeanDefaults from 'mongoose-lean-defaults';
+import mongooseLeanGetters from 'mongoose-lean-getters';
 
 class ProjectModel extends Model {
-  get id() {
+  get id(): string {
     return this._id;
   }
 }
 
-const ProjectsSchema = new Schema(
+const ProjectsSchema = new Schema<Project>(
   {
     name: { type: String, required: true, trim: true },
     description: { type: String, required: false, trim: true },
@@ -66,12 +70,14 @@ const ProjectsSchema = new Schema(
   }
 )
   .set('toJSON', { virtuals: true })
-  .loadClass(ProjectModel);
+  .loadClass(ProjectModel)
+  .plugin(mongooseLeanDefaults)
+  .plugin(mongooseLeanGetters);
 
 /**
  * Pre middleware
  */
-ProjectsSchema.pre('remove', async function (this: any) {
+ProjectsSchema.pre('remove', async function () {
   try {
     const Notes = (await import('./Note')).NoteDB;
     const Documents = (await import('./Document')).DocumentDB;
@@ -79,9 +85,9 @@ ProjectsSchema.pre('remove', async function (this: any) {
     const Insights = (await import('./Insight')).InsightDB;
     const Recommendations = (await import('./Recommendation')).RecommendationDB;
 
-    const project: any = this.toJSON();
+    const project = this.toJSON() as Project;
     const categoryNotes = project.categories.flatMap(
-      (category: any) => category.notes
+      (category: Category) => category.notes as string[]
     );
 
     // These have to be document.remove() so we can get pre/post hooks
@@ -117,4 +123,7 @@ ProjectsSchema.pre('remove', async function (this: any) {
   }
 });
 
-export const ProjectDB = model('Project', ProjectsSchema);
+export const ProjectDB = model<Project & ProjectModel>(
+  'Project',
+  ProjectsSchema
+);

@@ -1,22 +1,27 @@
-import { Schema, Model, model } from 'mongoose';
-import { ProjectDB } from './Project';
-import { CollectionDB } from './Collection';
-import { RecommendationDB } from './Recommendation';
-import { HashtagGroupDB } from './HashtagGroup';
-import { HashtagDB } from './Hashtag';
-import { NoteDB } from './Note';
-import { InsightDB } from './Insight';
-import { DocumentDB } from './Document';
-import { UserDB } from './User';
+import { Schema, Model, model } from 'mongoose'
+import { Company } from '../interfaces'
+import { ProjectDB } from './Project'
+import { CollectionDB } from './Collection'
+import { RecommendationDB } from './Recommendation'
+import { HashtagGroupDB } from './HashtagGroup'
+import { HashtagDB } from './Hashtag'
+import { NoteDB } from './Note'
+import { InsightDB } from './Insight'
+import { DocumentDB } from './Document'
+import { UserDB } from './User'
+import mongooseLeanDefaults from 'mongoose-lean-defaults'
+import mongooseLeanGetters from 'mongoose-lean-getters'
+
 class CompanyModel extends Model {
-  get id() {
-    return this._id;
+  get id(): string {
+    return this._id
   }
-  isLocked() {
-    return this.activeUntil.getTime() <= Date.now();
+  isLocked(): boolean {
+    return this.activeUntil.getTime() <= Date.now()
   }
 }
-const CompaniesSchema = new Schema(
+
+const CompaniesSchema = new Schema<Company>(
   {
     name: { type: String, required: true, trim: true },
     projects: {
@@ -120,20 +125,23 @@ const CompaniesSchema = new Schema(
   },
   {
     timestamps: true,
-  }
+  },
 )
   .set('toJSON', { virtuals: true })
-  .loadClass(CompanyModel);
-// .plugin(mongooseLeanDefaults)
-// .plugin(mongooseLeanGetters);
+  .loadClass(CompanyModel)
+  .plugin(mongooseLeanDefaults)
+  .plugin(mongooseLeanGetters)
 
 /**
  * Methods
  */
-// CompaniesSchema.methods.jiraConfigured = function () {
-//   const hasJira =
-//     this.jira && this.jira.domain && this.jira.email && this.jira.api_token;
-//   return !!hasJira;
-// };
+CompaniesSchema.methods.jiraConfigured = function(): boolean {
+  const hasJira =
+    this.jira && this.jira.domain && this.jira.email && this.jira.api_token
+  return !!hasJira
+}
 
-export const CompanyDB = model('Company', CompaniesSchema);
+export const CompanyDB = model<Company & CompanyModel>(
+  'Company',
+  CompaniesSchema,
+)

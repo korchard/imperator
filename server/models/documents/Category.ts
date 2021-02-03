@@ -1,11 +1,14 @@
 import { Schema, Model, model } from 'mongoose'
+import { Category } from '../interfaces'
+import mongooseLeanDefaults from 'mongoose-lean-defaults'
+import mongooseLeanGetters from 'mongoose-lean-getters'
 
 class CategoryModel extends Model {
-  get id() {
+  get id(): string {
     return this._id
   }
 }
-const CategoriesSchema = new Schema(
+const CategoriesSchema = new Schema<Category>(
   {
     name: { type: String, required: false, trim: true },
     notes: {
@@ -37,8 +40,10 @@ const CategoriesSchema = new Schema(
 )
   .set('toJSON', { virtuals: true })
   .loadClass(CategoryModel)
-  
-export const CategoryDB = model(
+  .plugin(mongooseLeanDefaults)
+  .plugin(mongooseLeanGetters)
+
+export const CategoryDB = model<Category & CategoryModel>(
   'Category',
   CategoriesSchema,
 )

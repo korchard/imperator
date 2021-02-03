@@ -1,12 +1,15 @@
 import { Schema, Model, model } from 'mongoose';
+import mongooseLeanDefaults from 'mongoose-lean-defaults';
+import mongooseLeanGetters from 'mongoose-lean-getters';
+import { Document } from '../interfaces';
 
 class DocumentModel extends Model {
-  get id() {
+  get id(): string {
     return this._id;
   }
 }
 
-const DocumentsSchema = new Schema(
+const DocumentsSchema = new Schema<Document>(
   {
     name: { type: String, required: true, trim: true },
     url: { type: String, required: true },
@@ -54,9 +57,11 @@ const DocumentsSchema = new Schema(
   }
 )
   .set('toJSON', { virtuals: true })
-  .loadClass(DocumentModel);
+  .loadClass(DocumentModel)
+  .plugin(mongooseLeanDefaults)
+  .plugin(mongooseLeanGetters);
 
-DocumentsSchema.pre('remove', async function (this: any) {
+DocumentsSchema.pre('remove', async function () {
   try {
     const Projects = (await import('./Project')).ProjectDB;
     const Companies = (await import('./Company')).CompanyDB;
@@ -99,4 +104,7 @@ DocumentsSchema.index({ project: 1 }); // for matching
 DocumentsSchema.index({ createdAt: 1 }); // for sorting
 DocumentsSchema.index({ updatedAt: 1 }); // for sorting
 
-export const DocumentDB = model('Document', DocumentsSchema);
+export const DocumentDB = model<Document & DocumentModel>(
+  'Document',
+  DocumentsSchema
+);
