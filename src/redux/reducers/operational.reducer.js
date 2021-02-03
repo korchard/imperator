@@ -1,3 +1,4 @@
+import { combineReducers } from 'redux';
 
 // store user message information 
 const planCount = (state = [], action) => {
@@ -9,6 +10,7 @@ const planCount = (state = [], action) => {
     }
 }
 
+export default combineReducers({
+    planCount,
 
-
-export default planCount;
+});
