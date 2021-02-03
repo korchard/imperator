@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { jsx, css } from '@emotion/react';
+// import { jsx, css } from '@emotion/react';
 import './LoginForm.css';
 
 type Props = {
@@ -44,6 +44,7 @@ const LoginForm: React.FC<Props> = () => {
     return (
         <div className='login'>
             <form className='formPanel' onSubmit={login}>
+            <img src="../img/logo.svg" alt="logo" className="nav-logo2"></img>
                 <h2
                 >Login</h2>
                 {errors.loginMessage && (
@@ -76,7 +77,7 @@ const LoginForm: React.FC<Props> = () => {
                     </label>
                 </div>
                 <div>
-                    <input className='btn' type='submit' name='submit' value='Log In' />
+                    <input className='btn loginbtn' type='submit' name='submit' value='Log In' />
                 </div>
             </form>
         </div>
