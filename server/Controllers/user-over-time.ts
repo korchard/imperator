@@ -1,17 +1,7 @@
 import { Request, Response } from 'express';
-import express from 'express';
-import rejectUnauthenticated from '../modules/authentication-middleware';
-import { CompanyDB } from '../models/Company';
+import { CompanyDB } from '../models/Company'; 
 
-// controllers 
-import { getUsersOverTime } from '../Controllers/user-over-time'
-
-const router: express.Router = express.Router();
-
-router.get(
-  '/totalactions',
-  //   rejectUnauthenticated,
-  async (req: Request, res: Response): Promise<void> => {
+export const getUsersOverTime = async (req: Request, res: Response): Promise<void> => {
     console.log('this is working');
     try {
       const data = await CompanyDB.aggregate([
@@ -91,8 +81,3 @@ router.get(
       console.error('Error getting total actions: ', error);
     }
   }
-);
-
-router.get('/user-over-time', getUsersOverTime)
-
-export default router;
