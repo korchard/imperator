@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { CompanyDB } from '../models/Company'; 
+import { CompanyDB } from '../models/documents/Company'; 
 
 export const getUsersOverTime = async (req: Request, res: Response): Promise<void> => {
     console.log('this is working');
