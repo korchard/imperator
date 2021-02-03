@@ -13,7 +13,11 @@ function* fetchTotalCounts() {
 
 function* getUsersByMonth(action) {
   try {
+<<<<<<< HEAD
+    const yield get({ type: 'CLEAR_REGISTRATION_ERROR' });
+=======
     yield axios.get({ type: 'CLEAR_REGISTRATION_ERROR' });
+>>>>>>> 4751500bd7a796f1cfaa0a719cda8ac0b3f46110
 
     yield put({ type: 'SET_TO_LOGIN_MODE' });
   } catch (error) {
@@ -23,7 +27,11 @@ function* getUsersByMonth(action) {
 }
 
 function* operationalSaga() {
+<<<<<<< HEAD
+  yield takeEvery('GET_USERS_BY_MONTH', operationsSaga);
+=======
   yield takeEvery('GET_USERS_BY_MONTH', getUsersByMonth);
+>>>>>>> 4751500bd7a796f1cfaa0a719cda8ac0b3f46110
   yield takeEvery('FETCH_PLAN_COUNTS', fetchTotalCounts);
 }
 

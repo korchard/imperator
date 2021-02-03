@@ -1,4 +1,4 @@
-import app from '../server/server';
+import app from '../server';
 import testServer from 'supertest';
 
 describe('Test our user routes', () => {

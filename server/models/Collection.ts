@@ -1,8 +1,8 @@
-import { Schema, Model, model } from 'mongoose'
+import { Schema, Model, model } from 'mongoose';
 
 class CollectionModel extends Model {
   get id() {
-    return this._id
+    return this._id;
   }
 }
 
@@ -80,34 +80,31 @@ const CollectionsSchema = new Schema(
   },
   {
     timestamps: true,
-  },
+  }
 )
   .set('toJSON', { virtuals: true })
-  .loadClass(CollectionModel)
+  .loadClass(CollectionModel);
 
 /**
  * Pre middleware
  */
-CollectionsSchema.pre('remove', async function() {
+CollectionsSchema.pre('remove', async function (this: any) {
   try {
-    const Hashtag = (await import('./Hashtag')).HashtagDB
+    const Hashtag = (await import('./Hashtag')).HashtagDB;
     await Hashtag.update(
       { collections: { $elemMatch: { $eq: this._id } } },
       { $pull: { collections: this._id } },
-      { multi: true },
-    ).exec()
-    return Promise.resolve()
+      { multi: true }
+    ).exec();
+    return Promise.resolve();
   } catch (err) {
-    return Promise.reject(err)
+    return Promise.reject(err);
   }
-})
+});
 
-CollectionsSchema.index({ name: 'text' }) // for matching/sorting (add further $text index in same object)
-CollectionsSchema.index({ name: 1 }) // for secondary sorting
-CollectionsSchema.index({ createdAt: 1 }) // for sorting
-CollectionsSchema.index({ updatedAt: 1 }) // for sorting
+CollectionsSchema.index({ name: 'text' }); // for matching/sorting (add further $text index in same object)
+CollectionsSchema.index({ name: 1 }); // for secondary sorting
+CollectionsSchema.index({ createdAt: 1 }); // for sorting
+CollectionsSchema.index({ updatedAt: 1 }); // for sorting
 
-export const CollectionDB = model(
-  'Collection',
-  CollectionsSchema,
-)
+export const CollectionDB = model('Collection', CollectionsSchema);

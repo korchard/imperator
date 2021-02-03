@@ -86,7 +86,11 @@ const LoginForm: React.FC<Props> = () => {
                     </label>
                 </div>
                 <div>
+<<<<<<< HEAD
+                    <button className='linkBtn'>Forgot Password?</button>
+=======
                     <button className='linkBtn' onClick={reset}>Forgot Password?</button>
+>>>>>>> 4751500bd7a796f1cfaa0a719cda8ac0b3f46110
                 </div>
                 <div>
                     <input className='btn' type='submit' name='submit' value='Log In' />

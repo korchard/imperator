@@ -26,7 +26,8 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.0.2",
-    "remove": "^0.1.5"
+    "remove": "^0.1.5",
+    "request": "^2.88.2"
   },
   "scripts": {
     "start": "npm run tsc && node dist/server.js",
@@ -35,7 +36,7 @@
     "server:ts": "tsc -p tsconfig.node.json && node dist/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "serverTest": "jest server/*.test.ts --forceExit",
+    "serverTest": "jest --forceExit",
     "tsc": "tsc -p tsconfig.node.json",
     "eject": "react-scripts eject"
   },
@@ -52,6 +53,7 @@
     "@types/react": "^17.0.0",
     "@types/react-redux": "^7.1.16",
     "@types/react-router-dom": "^5.1.7",
+    "@types/request": "^2.48.5",
     "@types/supertest": "^2.0.10",
     "nodemon": "^2.0.7",
     "supertest": "^6.1.3",
