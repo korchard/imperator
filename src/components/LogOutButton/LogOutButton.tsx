@@ -5,17 +5,10 @@ import { AiOutlineLogout } from 'react-icons/ai';
 const LogOutButton: React.FC = () => {
   const dispatch = useDispatch();
   return (
-    <div className='logoutContainer'>
-      <AiOutlineLogout className='icon-btn' />
-      <button
-        className='nav-link'
-        id='logoutBtn'
-        onClick={() => dispatch({ type: 'LOGOUT' })}
-      >
-        Log Out
-      </button>
-    </div>
-  );
+      <button className='nav-link' id='logoutBtn' 
+              onClick={() => dispatch({ type: 'LOGOUT' })}>
+              <AiOutlineLogout className="logoutIcon"/>Log Out</button>
+  )
 };
 
 export default LogOutButton;
