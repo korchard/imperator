@@ -70,6 +70,7 @@ const Nav: React.FC<Props> = () => {
         <BiLeftArrow className="arrow" onClick={handleDrawerClose}/>
       }
       </div>
+
       <Link to='/home'>
         <div>
 
