@@ -6,7 +6,8 @@ const LogOutButton: React.FC = () => {
   const dispatch = useDispatch();
   return (
       <button className='nav-link' id='logoutBtn' 
-              onClick={() => dispatch({ type: 'LOGOUT' })}><AiOutlineLogout className="logoutIcon"/>Log Out</button>
+              onClick={() => dispatch({ type: 'LOGOUT' })}>
+              <AiOutlineLogout className="logoutIcon"/>Log Out</button>
   )
 };
 

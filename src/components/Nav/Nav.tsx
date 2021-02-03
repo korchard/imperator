@@ -19,7 +19,7 @@ import { SiMicrostrategy } from 'react-icons/si';
 // imperator 
 import { AiOutlineTable } from 'react-icons/ai';
 //logout
-import { AiOutlineLogout } from 'react-icons/ai';
+// import { AiOutlineLogout } from 'react-icons/ai';
 //drawer open
 import {BiRightArrow} from 'react-icons/bi';
 //drawer close
@@ -54,29 +54,33 @@ const Nav: React.FC<Props> = () => {
   // handles the drawer opening
   const handleDrawerOpen = () => {
     setOpen(true); // sets state
+    console.log('drawer open')
   }; // end handleDrawerOpen
 
   // handles the drawer closing
   const handleDrawerClose = () => {
     setOpen(false); // sets state
+    console.log('drawer closed')
   }; // end handleDrawerClose
 
   return (
     <div className='nav'>
       <div  className="arrowContainer">
       {open ? 
-        <BiRightArrow className="arrow"onClick={handleDrawerOpen}/>
-        : 
         <BiLeftArrow className="arrow" onClick={handleDrawerClose}/>
+        : 
+        <BiRightArrow className="arrow" onClick={handleDrawerOpen}/>
       }
       </div>
-
+      <nav className={open ? 'nav' : 'navOpen'}>
       <Link to='/home'>
         <div>
 
           <img src="../img/logo.svg" alt="logo" className="nav-logo"></img>
         </div>
       </Link>
+
+
       <div className='nav-right'>
         {user._id ? null 
     :          <Link className='nav-link' to={loginLinkData.path}>  
@@ -109,8 +113,9 @@ const Nav: React.FC<Props> = () => {
           </>
         )}
         {/* Always show this link since the about page is not protected */}
-
+       
       </div>
+       </nav>
     </div>
   );
 };
