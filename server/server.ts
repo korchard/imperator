@@ -3,6 +3,7 @@ import sessionMiddleware from './modules/session-middleware';
 import bodyParser from 'body-parser';
 import passport from './strategies/user.strategy';
 import userRouter from './routes/user.router';
+import dataRouter from './routes/data.router';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -20,12 +21,14 @@ mongoose.connect(
   }
 );
 
+const db = mongoose.connection;
+
 const app = express();
 
 // Body parser middleware
 // app.use(express.json());
 // app.use(express.urlencoded());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Passport Session Configuration //
@@ -37,6 +40,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
+app.use('/api/data', dataRouter);
 
 // Serve static files
 app.use(express.static('build'));

@@ -35,7 +35,7 @@
     "server:ts": "tsc -p tsconfig.node.json && node dist/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "serverTest": "jest server/*.test.ts --forceExit",
+    "serverTest": "jest /*.test.ts --forceExit",
     "tsc": "tsc -p tsconfig.node.json",
     "eject": "react-scripts eject"
   },
