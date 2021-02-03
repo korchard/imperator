@@ -38,6 +38,17 @@
   float: right;
 }  */
 
+.arrowContainer {
+  text-align: right;
+}
+
+.arrow {
+  font-size: 40px;
+}
+.arrow :hover{
+  color: orange;
+}
+
 .nav {
     display: flex;
     -webkit-flex-direction: column;
@@ -78,12 +89,12 @@
   border:none;
   cursor: pointer;
   outline:0;
-  /* margin-left: 10px; */
+  /* padding-left: 10px; */
 }
 
-.logoutContainer {
-  display: inline-block;
-  /* margin-left: 10px; */
+.logoutIcon {
+  padding-right: 10px;
+  margin-left: 15px; 
 }
 
 .nav-logo {

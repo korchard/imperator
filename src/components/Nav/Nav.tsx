@@ -20,6 +20,10 @@ import { SiMicrostrategy } from 'react-icons/si';
 import { AiOutlineTable } from 'react-icons/ai';
 //logout
 import { AiOutlineLogout } from 'react-icons/ai';
+//drawer open
+import {BiRightArrow} from 'react-icons/bi';
+//drawer close
+import {BiLeftArrow} from 'react-icons/bi';
 
 type Props = {
   className?: string | undefined,
@@ -35,6 +39,7 @@ interface IUser {
 
 const Nav: React.FC<Props> = () => {
   const user = useSelector((redux: IUser) => redux.user);
+  const [open, setOpen] = React.useState(false); // used for the drawer opening and closing
 
   let loginLinkData = {
     path: '/login',
@@ -46,10 +51,28 @@ const Nav: React.FC<Props> = () => {
     loginLinkData.text = 'Operational';
   }
 
+  // handles the drawer opening
+  const handleDrawerOpen = () => {
+    setOpen(true); // sets state
+  }; // end handleDrawerOpen
+
+  // handles the drawer closing
+  const handleDrawerClose = () => {
+    setOpen(false); // sets state
+  }; // end handleDrawerClose
+
   return (
     <div className='nav'>
+      <div  className="arrowContainer">
+      {open ? 
+        <BiRightArrow className="arrow"onClick={handleDrawerOpen}/>
+        : 
+        <BiLeftArrow className="arrow" onClick={handleDrawerClose}/>
+      }
+      </div>
       <Link to='/home'>
         <div>
+
           <img src="../img/logo.svg" alt="logo" className="nav-logo"></img>
         </div>
       </Link>
