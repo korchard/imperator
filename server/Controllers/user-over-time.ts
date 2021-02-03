@@ -1,83 +1,86 @@
 import { Request, Response } from 'express';
-import { CompanyDB } from '../models/documents/Company'; 
+import { CompanyDB } from '../models/documents/Company';
 
-export const getUsersOverTime = async (req: Request, res: Response): Promise<void> => {
-    console.log('this is working');
-    try {
-      const data = await CompanyDB.aggregate([
-        { $count: 'Total_Companies' },
-        {
-          $lookup: {
-            from: 'hashtags',
-            pipeline: [
-              {
-                $group: {
-                  _id: 0,
-                  count: { $sum: 1 },
-                },
+export const getUsersOverTime = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  console.log('this is working');
+  try {
+    const data = await CompanyDB.aggregate([
+      { $count: 'Total_Companies' },
+      {
+        $lookup: {
+          from: 'hashtags',
+          pipeline: [
+            {
+              $group: {
+                _id: 0,
+                count: { $sum: 1 },
               },
-            ],
-            as: 'hashtags',
-          },
+            },
+          ],
+          as: 'hashtags',
         },
-        {
-          $lookup: {
-            from: 'insights',
-            pipeline: [
-              {
-                $group: {
-                  _id: 0,
-                  count: { $sum: 1 },
-                },
+      },
+      {
+        $lookup: {
+          from: 'insights',
+          pipeline: [
+            {
+              $group: {
+                _id: 0,
+                count: { $sum: 1 },
               },
-            ],
-            as: 'insights',
-          },
+            },
+          ],
+          as: 'insights',
         },
-        {
-          $lookup: {
-            from: 'notes',
-            pipeline: [
-              {
-                $group: {
-                  _id: 0,
-                  count: { $sum: 1 },
-                },
+      },
+      {
+        $lookup: {
+          from: 'notes',
+          pipeline: [
+            {
+              $group: {
+                _id: 0,
+                count: { $sum: 1 },
               },
-            ],
-            as: 'notes',
-          },
+            },
+          ],
+          as: 'notes',
         },
-        {
-          $lookup: {
-            from: 'projects',
-            pipeline: [
-              {
-                $group: {
-                  _id: 0,
-                  count: { $sum: 1 },
-                },
+      },
+      {
+        $lookup: {
+          from: 'projects',
+          pipeline: [
+            {
+              $group: {
+                _id: 0,
+                count: { $sum: 1 },
               },
-            ],
-            as: 'projects',
-          },
+            },
+          ],
+          as: 'projects',
         },
-        { $unwind: { path: '$hashtags' } },
-        { $unwind: { path: '$insights' } },
-        { $unwind: { path: '$notes' } },
-        { $unwind: { path: '$projects' } },
-        {
-          $project: {
-            _id: 0,
-            'hashtags.count': 1,
-            'insights.count': 1,
-            'notes.count': 1,
-            'projects.count': 1,
-          },
+      },
+      { $unwind: { path: '$hashtags' } },
+      { $unwind: { path: '$insights' } },
+      { $unwind: { path: '$notes' } },
+      { $unwind: { path: '$projects' } },
+      {
+        $project: {
+          _id: 0,
+          'hashtags.count': 1,
+          'insights.count': 1,
+          'notes.count': 1,
+          'projects.count': 1,
         },
-      ]);
-      res.send(data);
-    } catch (error) {
-      console.error('Error getting total actions: ', error);
-    }
+      },
+    ]);
+    res.send(data);
+  } catch (error) {
+    console.error('Error getting total actions: ', error);
   }
+};

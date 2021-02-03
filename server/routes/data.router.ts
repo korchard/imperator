@@ -3,8 +3,8 @@ import express from 'express';
 import rejectUnauthenticated from '../modules/authentication-middleware';
 import { CompanyDB } from '../models/documents/Company';
 
-// controllers 
-import { getUsersOverTime } from '../Controllers/user-over-time'
+// controllers
+import { getUsersOverTime } from '../controllers/user-over-time';
 
 const router: express.Router = express.Router();
 
@@ -93,6 +93,6 @@ router.get(
   }
 );
 
-router.get('/user-over-time', getUsersOverTime)
+router.get('/user-over-time', getUsersOverTime);
 
 export default router;
