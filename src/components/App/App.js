@@ -20,6 +20,7 @@ import Operational from '../Operational/Operational.tsx';
 import Analytical from '../Analytical/Analytical.tsx';
 import Imperator from '../Imperator/Imperator.tsx';
 import Strategic from '../Strategic/Strategic.tsx';
+import PasswordReset from '../PasswordReset/PasswordReset.tsx'
 
 import './App.css';
 
@@ -84,6 +85,12 @@ const App = () => {
             exact
             path='/analytical'
             component={Analytical}
+          />
+
+        <Route
+            exact
+            path='/passwordReset'
+            component={PasswordReset}
           />
 
           {/* When a value is supplied for the authRedirect prop the user will

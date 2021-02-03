@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 // import { jsx, css } from '@emotion/react';
 import './LoginForm.css';
 
@@ -23,6 +24,7 @@ const LoginForm: React.FC<Props> = () => {
     const dispatch = useDispatch();
     const [user, setUser] = useState<IUser>({username: '', password: ''})
     const errors = useSelector((redux: IError) => redux.errors);
+    const history = useHistory();
 
     const login = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
@@ -40,6 +42,11 @@ const LoginForm: React.FC<Props> = () => {
           dispatch({ type: 'LOGIN_INPUT_ERROR' });
         }
       }; // end login
+
+      const reset = () => {
+          console.log('reset password');
+          history.push('/passwordReset');
+      }
 
     return (
         <div className='login'>
@@ -79,7 +86,11 @@ const LoginForm: React.FC<Props> = () => {
                     </label>
                 </div>
                 <div>
+<<<<<<< HEAD
                     <button className='linkBtn'>Forgot Password?</button>
+=======
+                    <button className='linkBtn' onClick={reset}>Forgot Password?</button>
+>>>>>>> 4751500bd7a796f1cfaa0a719cda8ac0b3f46110
                 </div>
                 <div>
                     <input className='btn' type='submit' name='submit' value='Log In' />
