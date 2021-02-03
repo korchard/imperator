@@ -13,7 +13,7 @@ function* fetchTotalCounts() {
 
 function* getUsersByMonth(action) {
   try {
-    const yield get({ type: 'CLEAR_REGISTRATION_ERROR' });
+    yield axios.get({ type: 'CLEAR_REGISTRATION_ERROR' });
 
     yield put({ type: 'SET_TO_LOGIN_MODE' });
   } catch (error) {
@@ -23,7 +23,7 @@ function* getUsersByMonth(action) {
 }
 
 function* operationalSaga() {
-  yield takeEvery('GET_USERS_BY_MONTH', operationsSaga);
+  yield takeEvery('GET_USERS_BY_MONTH', getUsersByMonth);
   yield takeEvery('FETCH_PLAN_COUNTS', fetchTotalCounts);
 }
 
