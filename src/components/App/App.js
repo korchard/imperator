@@ -10,8 +10,6 @@ import { connect, useDispatch } from 'react-redux';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 // import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -20,7 +18,7 @@ import Operational from '../Operational/Operational.tsx';
 import Analytical from '../Analytical/Analytical.tsx';
 import Imperator from '../Imperator/Imperator.tsx';
 import Strategic from '../Strategic/Strategic.tsx';
-import PasswordReset from '../PasswordReset/PasswordReset.tsx'
+import PasswordReset from '../PasswordReset/PasswordReset.tsx';
 
 import './App.css';
 
@@ -40,17 +38,6 @@ const App = () => {
           <Redirect exact from='/' to='/imperator' />
 
           {/* Visiting localhost:3000/about will show the about page. */}
-
-          {/* For protected routes, the view could show one of several things on the same route.
-            Visiting localhost:3000/user will show the UserPage if the user is logged in.
-            If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
-            Even though it seems like they are different pages, the user is always on localhost:3000/user */}
-          <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
-            exact
-            path='/user'
-            component={UserPage}
-          />
 
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
@@ -87,11 +74,7 @@ const App = () => {
             component={Analytical}
           />
 
-        <Route
-            exact
-            path='/passwordReset'
-            component={PasswordReset}
-          />
+          <Route exact path='/passwordReset' component={PasswordReset} />
 
           {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
@@ -103,7 +86,7 @@ const App = () => {
             exact
             path='/login'
             component={LoginPage}
-            authRedirect='/user'
+            authRedirect='/operational'
           />
           <ProtectedRoute
             // with authRedirect:
@@ -112,7 +95,7 @@ const App = () => {
             exact
             path='/registration'
             component={RegisterPage}
-            authRedirect='/user'
+            authRedirect='/operational'
           />
 
           {/* If none of the other routes matched, we will show a 404. */}
