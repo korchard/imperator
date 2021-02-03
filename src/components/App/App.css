@@ -65,6 +65,10 @@ Button
   -webkit-transition: 0.2s filter linear;
   transition: 0.2s filter linear;
   white-space: nowrap;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  display: block;
 }
 
 .btn_sizeMin {
@@ -83,7 +87,7 @@ Button
 }
 
 .btn:hover {
-  background-color: #008183;
+  background-color: rgb(46, 162, 178);
   text-decoration: none;
 }
 
@@ -100,8 +104,8 @@ Button
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #008183;
-  color: rgb(23, 89, 527);
+  border-color: rgb(46, 162, 178);
+  color: white;
 }
 
 /* --------------------------------------------------------------------------------
@@ -135,8 +139,11 @@ Form Treatment
 }
 
 input {
-  margin: 5px;
-  margin-bottom: 10px;
+  margin: auto;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  padding: 5px;
+  display: block;
 }
 
 

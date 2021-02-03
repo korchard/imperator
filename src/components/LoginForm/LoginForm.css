@@ -1,5 +1,5 @@
 .login {
-  margin-top: 20%;
+  margin-top: 15%;
   color: rgb(11, 53, 77);
 }
 
@@ -7,10 +7,14 @@
   height: 70px;
   width: 70px;
   margin: 32px 9px 16px 9px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 .loginForm {
-  width: 80%;
+  width: 95%;
 }
 
 .linkBtn {
