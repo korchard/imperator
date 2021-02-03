@@ -1,26 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 import Chart from 'react-apexcharts';
 
+interface IPlanCount {
+  planCount: number
+}
+
+
 const PlanTypeGraph: React.FC = () => {
-  const [opt, setOptions] = useState({
-    options: {
-      chart: {
-        id: 'basic-bar',
-      },
-      xaxis: {
-        categories: [100, 200, 300],
-      },
-    },
-    series: [
-      {
-        name: 'series-1',
-        data: [1, 2, 5, 7],
-      },
-    ],
-  });
+  const dispatch = useDispatch();
+  const planCount = useSelector((redux: IPlanCount) => redux.planCount)
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_PLAN_COUNTS' })
+  }, [])
+
   return (
     <div>
-      <Chart options={opt.options} series={opt.series} type='bar' width='500' />
+
     </div>
   );
 };
