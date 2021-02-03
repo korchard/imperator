@@ -11,6 +11,16 @@ function* fetchTotalCounts() {
   }
 } //end fetchTotalCounts
 
+//Generator used to call /data and get a json object of counts for varies documents then saved in a reducer
+function* fetchTotalActions() {
+  try {
+    const response = yield axios.get(`/api/data/totalactions`);
+    yield put({ type: 'SET_TOTAL_ACTIONS', payload: response.data });
+  } catch (error) {
+    console.log('Error with getting total actions in saga: ', error);
+  }
+} //end fetchTotalCounts
+
 function* getUsersByMonth(action) {
   try {
     yield axios.get({ type: 'CLEAR_REGISTRATION_ERROR' });
@@ -25,6 +35,7 @@ function* getUsersByMonth(action) {
 function* operationalSaga() {
   yield takeEvery('GET_USERS_BY_MONTH', getUsersByMonth);
   yield takeEvery('FETCH_PLAN_COUNTS', fetchTotalCounts);
+  yield takeEvery('FETCH_TOTAL_ACTIONS', fetchTotalActions);
 }
 
 export default operationalSaga;

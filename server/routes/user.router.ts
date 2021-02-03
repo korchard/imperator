@@ -3,7 +3,7 @@ import express from 'express';
 import rejectUnauthenticated from '../modules/authentication-middleware';
 import userStrategy from '../strategies/user.strategy';
 import { encryptPassword } from '../modules/encryption';
-import { PersonDB } from '../models/Person';
+import { PersonDB } from '../models/documents/Person';
 
 const router: express.Router = express.Router();
 

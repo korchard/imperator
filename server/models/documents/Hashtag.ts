@@ -1,12 +1,15 @@
-import { Schema, Model, model } from 'mongoose';
+import { Schema, Model, model } from 'mongoose'
+import { Hashtag } from '../interfaces'
+import mongooseLeanDefaults from 'mongoose-lean-defaults'
+import mongooseLeanGetters from 'mongoose-lean-getters'
 
 class HashtagModel extends Model {
-  get id() {
-    return this._id;
+  get id(): string {
+    return this._id
   }
 }
 
-const HashtagSchema = new Schema(
+const HashtagSchema = new Schema<Hashtag>(
   {
     name: { type: String, required: true, trim: true, default: '' },
     notes: {
@@ -70,36 +73,38 @@ const HashtagSchema = new Schema(
   },
   {
     timestamps: true,
-  }
+  },
 )
   .set('toJSON', { virtuals: true })
-  .loadClass(HashtagModel);
+  .loadClass(HashtagModel)
+  .plugin(mongooseLeanDefaults)
+  .plugin(mongooseLeanGetters)
 
 /**
  * Pre middleware
  */
-HashtagSchema.pre('remove', async function (this: any) {
+HashtagSchema.pre('remove', async function() {
   try {
-    const Companies = (await import('./Company')).CompanyDB;
-    const Collections = (await import('./Collection')).CollectionDB;
-    const Documents = (await import('./Document')).DocumentDB;
-    const Insights = (await import('./Insight')).InsightDB;
-    const Notes = (await import('./Note')).NoteDB;
+    const Companies = (await import('./Company')).CompanyDB
+    const Collections = (await import('./Collection')).CollectionDB
+    const Documents = (await import('./Document')).DocumentDB
+    const Insights = (await import('./Insight')).InsightDB
+    const Notes = (await import('./Note')).NoteDB
 
     // Remove documents from all referenced parents
-    const match = { hashtags: { $elemMatch: { $eq: this._id } } };
-    const operation = { $pull: { hashtags: this._id } };
-    const options = { multi: true };
+    const match = { hashtags: { $elemMatch: { $eq: this._id } } }
+    const operation = { $pull: { hashtags: this._id } }
+    const options = { multi: true }
     await Promise.all([
       Companies.update(match, operation).exec(),
       Collections.update(match, operation, options).exec(),
       Documents.update(match, operation, options).exec(),
       Insights.update(match, operation, options).exec(),
       Notes.update(match, operation, options).exec(),
-    ]);
-    return Promise.resolve();
+    ])
+    return Promise.resolve()
   } catch (err) {
-    return Promise.reject(err);
+    return Promise.reject(err)
   }
-});
-export const HashtagDB = model('Hashtag', HashtagSchema);
+})
+export const HashtagDB = model<Hashtag & HashtagModel>('Hashtag', HashtagSchema)

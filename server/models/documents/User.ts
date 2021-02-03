@@ -1,31 +1,34 @@
-import { Schema, Model, model } from 'mongoose';
+import { Document, Schema, Model, model } from 'mongoose';
 import bcrypt from 'bcryptjs';
 const SALT_WORK_FACTOR = 14;
 const MAX_LOGIN_ATTEMPTS = 5;
+import { User } from '../interfaces';
+import mongooseLeanDefaults from 'mongoose-lean-defaults';
+import mongooseLeanGetters from 'mongoose-lean-getters';
 
 export class UserModel extends Model {
-  get id() {
+  get id(): string {
     return this._id;
   }
-  get name() {
+  get name(): string {
     if (!this.firstname && !this.lastname) {
       return this.email;
     }
     return `${this.firstname} ${this.lastname}`;
   }
 
-  isLocked() {
+  isLocked(): boolean {
     // check for a future lockUntil timestamp
     return this.lockUntil && this.lockUntil.getTime() > Date.now();
   }
-  async comparePassword(candidatePassword: string) {
+  async comparePassword(candidatePassword: string): Promise<boolean> {
     if (candidatePassword == null || this.password == null) {
       return false;
     }
     return await bcrypt.compare(candidatePassword, this.password);
   }
 
-  async incLoginAttempts() {
+  async incLoginAttempts(): Promise<void> {
     // if we have a previous lock that has expired, restart at 1
     if (this.lockUntil && this.lockUntil.getTime() < Date.now()) {
       return this.update({
@@ -34,7 +37,10 @@ export class UserModel extends Model {
       });
     }
     // otherwise we're incrementing
-    const updates: any = {
+    const updates: {
+      $inc: { loginAttempts: number };
+      $set?: { lockUntil: number; lastAttemptedSignIn: number };
+    } = {
       $inc: { loginAttempts: 1 },
     };
     // lock the account if we've reached max attempts and it's not locked already
@@ -49,7 +55,7 @@ export class UserModel extends Model {
   }
 }
 
-const UserSchema = new Schema(
+const UserSchema = new Schema<User & Document>(
   {
     email: {
       type: String,
@@ -141,12 +147,14 @@ const UserSchema = new Schema(
   }
 )
   .set('toJSON', { virtuals: true })
-  .loadClass(UserModel);
+  .loadClass(UserModel)
+  .plugin(mongooseLeanDefaults)
+  .plugin(mongooseLeanGetters);
 
 /**
  * Pre update hooks
  */
-UserSchema.pre('update', function (this: any, next: any) {
+UserSchema.pre('update', function (next: any) {
   const modifiedField = this.getUpdate().$set.password;
   if (!modifiedField) {
     return next();
@@ -171,4 +179,6 @@ UserSchema.pre('update', function (this: any, next: any) {
   }
 });
 
-export const UserDB = model('User', UserSchema);
+UserSchema.index({ email: 'text' }); // for searching by email
+
+export const UserDB = model<UserModel & Document>('User', UserSchema);
