@@ -85,6 +85,10 @@ db.companies.countDocuments({
 //ability to get total insights from a project linked to a company
 
 // db.companies.aggregate([
+<<<<<<< HEAD
+=======
+
+>>>>>>> d840c39fb6f843f36c307be7e94c5a8fb5407eef
 //     {$count: 'Total_Companies'}, 
 //     {
 //         $lookup: {
@@ -136,6 +140,7 @@ db.companies.countDocuments({
 //     {$unwind: {path: "$notes"}},
 //     {$unwind: {path: "$projects"}},
 //     {$project: {
+<<<<<<< HEAD
 //         'total': {$sum: [
 //             "$notes.count", "$hashtags.count", "$insights.count", "$projects.count"
 //         ]},
@@ -143,3 +148,25 @@ db.companies.countDocuments({
 //     }
 // ]);
 //gets total actions 
+=======
+//         'totalNotes': {$sum: ["$notes.count"]},
+//         'totalHashtags': {$sum: ["$hashtags.count"]},
+//         'totalInsights': {$sum: ["$insights.count"]},
+//         'totalProjects': {$sum: ["$projects.count"]},
+
+//         }
+//     }
+// ]);
+// //gets total actions and separates by type
+
+db.companies.find({}, 
+    {
+        "company": 1, 
+        "billing.plan": 1,
+        "activeUntil": 1,
+        "jira": { $or: true },
+        "zapier": { $or: true },
+    }
+
+)
+>>>>>>> d840c39fb6f843f36c307be7e94c5a8fb5407eef
