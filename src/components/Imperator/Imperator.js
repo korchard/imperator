@@ -49,6 +49,7 @@ const Imperator = () => {
        <table>
          <thead>
            <th>Name</th>
+           <th>Billing Plan</th>
            <th>Billing Status</th>
            <th>Active Until</th>
            <th>Configurations</th>
