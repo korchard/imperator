@@ -6,6 +6,7 @@ import userRouter from './routes/user.router';
 import dataRouter from './routes/data.router';
 import planCountRouter from './routes/planCount.router';
 import imperatorRouter from './routes/imperator.router';
+import analyticRouter from './routes/company.analytics.router';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -45,6 +46,7 @@ app.use('/api/user', userRouter);
 app.use('/api/data', dataRouter);
 app.use('/api/planCount', planCountRouter);
 app.use('/api/imperator', imperatorRouter);
+app.use('/api/analytics', analyticRouter);
 
 // Serve static files
 app.use(express.static('build'));
