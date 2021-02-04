@@ -77,8 +77,8 @@ const imperator = async (
                      }
                  }
              ]);
-             res.send(data)
-             console.log('imperator controller', data)
+        res.send(data)
+        console.log('imperator controller', data)
     } catch (error) {
       console.error('Error getting imperator data:', error);
     }
