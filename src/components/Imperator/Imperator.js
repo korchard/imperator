@@ -17,11 +17,11 @@ const Imperator = () => {
   }, [])
 
   const configurations = (imperator) => {
-    if (imperator.jira && imperator.zapier === true) {
+    if (imperator.jira && imperator.zapier) {
       return <td>jira, zapier</td>
-    } else if (imperator.jira === true && imperator.zapier === false) {
+    } else if (imperator.jira && !imperator.zapier) {
       return <td>jira</td>
-    } else if (imperator.zapier === true && imperator.jira === false) {
+    } else if (imperator.zapier && !imperator.jira) {
       return <td>zapier</td>
     }
   }
@@ -63,7 +63,8 @@ const Imperator = () => {
             return (
               <tr key={data.id}>
                 <td>{data.company}</td>
-                <td>{data.billing.plan}</td>
+                <td>{data.plan}</td>
+                <td>{data.status}</td>
                 <td>
                   <Moment format="MM/DD/YYYY">
                     {data.activeUntil}
