@@ -23,7 +23,7 @@ function* fetchTotalActions() {
 function* getUsersByMonth() {
   try {
     const response = yield axios.get('/api/data/user-over-time');
-    console.log('reducer fired off', response.data)
+    yield put({ type: 'SET_MONTHLY_USERS', payload: response.data });
   } catch (error) {
     console.log('Error with user registration:', error);
     yield put({ type: 'REGISTRATION_FAILED' });
