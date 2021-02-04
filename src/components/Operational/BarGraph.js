@@ -8,7 +8,7 @@ const BarGraph = () => {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_TOTAL_ACTIONS' });
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const [opt, setOptions] = useState({
     options: {
