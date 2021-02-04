@@ -135,8 +135,8 @@ db.companies.find({},
         "company": 1, 
         "billing.plan": 1,
         "activeUntil": 1,
-        "jira": { $or: true },
-        "zapier": { $or: true },
+        "jira": { $exists: true },
+        "zapier": { $exists: true },
     }
 );
 

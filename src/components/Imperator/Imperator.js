@@ -13,13 +13,13 @@ const Imperator = () => {
     dispatch({ type: 'FETCH_IMPERATOR' })
   }, [])
 
-  const configurations = () => {
+  const configurations = (imperator) => {
     if (imperator.jira && imperator.zapier === true) {
-      return 'jira, zapier'
+      return <td>jira, zapier</td>
     } else if (imperator.jira === true && imperator.zapier === false) {
-      return 'jira'
+      return <td>jira</td>
     } else if (imperator.zapier === true && imperator.jira === false) {
-      return 'zapier'
+      return <td>zapier</td>
     }
   }
 
@@ -52,16 +52,7 @@ const Imperator = () => {
                 <td>{data.company}</td>
                 <td>{data.billing.plan}</td>
                 <td>{data.activeUntil}</td>
-                <>
-                  <td>{configurations()}</td>
-                </>
-                  {/* {data.jira && data.zapier ? 
-                    <td>jira, zapier</td> :
-                  data.jira ?
-                    <tc>jira</tc> :
-                  data.zapier && 
-                  <tc>zapier</tc>
-                  } */}
+                <>{configurations(data)}</>
                 <td>working on it</td>
                 <td>don't have it yet</td>
                 <td>working still</td>
