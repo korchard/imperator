@@ -2,18 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useHistory, Link } from 'react-router-dom';
 import Moment from 'react-moment';
-import Pagination from './Pagination';
+// import Pagination from './Pagination';
 
 import './Imperator.css';
 
 const Imperator = () => {
 
   const dispatch = useDispatch();
-  const imperator = useSelector((redux) => redux.imperator)
+  const imperator = useSelector((redux) => redux.imperator.imperator);
 
   useEffect(() => {
     dispatch({ type: 'FETCH_IMPERATOR' })
   }, [])
+
+
 
   const configurations = (imperator) => {
     if (imperator.jira && imperator.zapier === true) {
@@ -53,7 +55,11 @@ const Imperator = () => {
               <tr key={data.id}>
                 <td>{data.company}</td>
                 <td>{data.billing.plan}</td>
-                <Moment format="MM/DD/YYYY">{data.activeUntil}</Moment>
+                <td>
+                  <Moment format="MM/DD/YYYY">
+                    {data.activeUntil}
+                  </Moment>
+                </td>
                 <>{configurations(data)}</>
                 <td>working on it</td>
                 <td>don't have it yet</td>
@@ -64,7 +70,7 @@ const Imperator = () => {
           })}
          </tbody>
        </table>
-          <Pagination/>
+
      </div>
     </div>
   );

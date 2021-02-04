@@ -7,6 +7,8 @@ const router: express.Router = express.Router();
 
 router.get('/', rejectUnauthenticated, imperator);
 
+router.get('/', rejectUnauthenticated, imperator);
+
 router.post(
   '/',
   (req: Request, res: Response, next: express.NextFunction): void => {}
