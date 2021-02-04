@@ -16,7 +16,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Operational from '../Operational/Operational.js';
 import Analytical from '../Analytical/Analytical.tsx';
-import Imperator from '../Imperator/Imperator.tsx';
+import Imperator from '../Imperator/Imperator.js';
 import Strategic from '../Strategic/Strategic.tsx';
 import PasswordReset from '../PasswordReset/PasswordReset.tsx';
 
