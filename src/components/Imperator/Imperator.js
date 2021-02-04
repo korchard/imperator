@@ -2,20 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useHistory, Link } from 'react-router-dom';
 
+import './Imperator.css';
+
 const Imperator = () => {
 
   const dispatch = useDispatch();
-  const imperatorData = useSelector((redux) => redux.imperator)
+  const imperator = useSelector((redux) => redux.imperator)
 
   useEffect(() => {
     dispatch({ type: 'FETCH_IMPERATOR' })
   }, [])
 
   return (
-    <div >
+    <div className="imperator">
      <h1>Imperator</h1>
-     <input className="search-bar"/>
-     <button>Find</button>
+     <div className="search-imperator">
+        <input className="search-input" placeholder="Search"/>
+          <button className='btnI' type='submit' name='submit' value='Find'>
+            Find
+          </button>
+        </div>
      <div>
        <h3>Company Information</h3>
        <table>
@@ -30,7 +36,15 @@ const Imperator = () => {
            <th>Creation Date of Last Project</th>
          </thead>
          <tbody>
-
+           {JSON.stringify(imperator)}
+          {/* {imperator.map((data) => {
+            <tr key={data.id}>
+              <td>{data.company}</td>
+              <td>{data.billing.plan}</td>
+              <td>{data.activeUntil}</td>
+              <td>{data.company}</td>
+            </tr>
+          })} */}
          </tbody>
        </table>
      </div>

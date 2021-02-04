@@ -5,6 +5,7 @@ import passport from './strategies/user.strategy';
 import userRouter from './routes/user.router';
 import dataRouter from './routes/data.router';
 import planCountRouter from './routes/planCount.router';
+import imperatorRouter from './routes/imperator.router';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -43,6 +44,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/data', dataRouter);
 app.use('/api/planCount', planCountRouter);
+app.use('/api/imperator', imperatorRouter);
 
 // Serve static files
 app.use(express.static('build'));
