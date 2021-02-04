@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Chart from 'react-apexcharts';
 
-export const MonthlyUsers: React.FC = () => {
+export const MonthlyUsers = () => {
     
   const dispatch = useDispatch(); 
 
