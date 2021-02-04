@@ -4,6 +4,7 @@ import { Request, Response } from 'express';
 export const getTotalActions = async (req: Request, res: Response) => {
   try {
     const data = await CompanyDB.aggregate([
+      { $count: 'Total_Companies' },
       {
         $lookup: {
           from: 'hashtags',
@@ -16,6 +17,20 @@ export const getTotalActions = async (req: Request, res: Response) => {
             },
           ],
           as: 'hashtags',
+        },
+      },
+      {
+        $lookup: {
+          from: 'documents',
+          pipeline: [
+            {
+              $group: {
+                _id: 0,
+                count: { $sum: 1 },
+              },
+            },
+          ],
+          as: 'documents',
         },
       },
       {
@@ -61,16 +76,17 @@ export const getTotalActions = async (req: Request, res: Response) => {
         },
       },
       { $unwind: { path: '$hashtags' } },
+      { $unwind: { path: '$documents' } },
       { $unwind: { path: '$insights' } },
       { $unwind: { path: '$notes' } },
       { $unwind: { path: '$projects' } },
       {
         $project: {
-          _id: 0,
-          hashtags: 1,
-          insights: 1,
-          notes: 1,
-          projects: 1,
+          'hashtags._id': 0,
+          'documents._id': 0,
+          'insights._id': 0,
+          'notes._id': 0,
+          'projects._id': 0,
         },
       },
     ]);
