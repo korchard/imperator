@@ -128,7 +128,7 @@ use('aurelius');
 //         }
 //     }
 // ]);
-// //gets total actions and separates by type
+//gets total actions and separates by type
 
 db.companies.find({}, 
     {
@@ -138,5 +138,72 @@ db.companies.find({},
         "jira": { $or: true },
         "zapier": { $or: true },
     }
+);
 
-)
+// table aggregation
+
+
+// db.companies.aggregate([
+
+//     $match: {
+//         "company": 1
+//     },
+//     {$count: 'Total_Companies'}, 
+//     {
+//         $lookup: {
+//             from: "hashtags",
+//             pipeline: [{
+//                 $group: {
+//                     '_id': 0,
+//                 'count': {$sum: 1}
+//                 }
+//                 }],
+//             as: "hashtags"
+//         },
+//     }, {
+//         $lookup: {
+//             from: "insights",
+//             pipeline: [{
+//                 $group: {
+//                     '_id': 0,
+//                 'count': {$sum: 1}
+//                 }
+//                 }],
+//             as: "insights"
+//         },
+//     }, {
+//         $lookup: {
+//             from: "notes",
+//             pipeline: [{
+//                 $group: {
+//                     '_id': 0,
+//                 'count': {$sum: 1}
+//                 }
+//                 }],
+//             as: "notes"
+//         },
+//     }, {
+//         $lookup: {
+//             from: "projects",
+//             pipeline: [{
+//                 $group: {
+//                     '_id': 0,
+//                 'count': {$sum: 1}
+//                 }
+//                 }],
+//             as: "projects"
+//         }
+//     },
+//     {$unwind: {path: "$hashtags"}},
+//     {$unwind: {path: "$insights"}},
+//     {$unwind: {path: "$notes"}},
+//     {$unwind: {path: "$projects"}},
+//     {$project: {
+//         'totalNotes': {$sum: ["$notes.count"]},
+//         'totalHashtags': {$sum: ["$hashtags.count"]},
+//         'totalInsights': {$sum: ["$insights.count"]},
+//         'totalProjects': {$sum: ["$projects.count"]},
+
+//         }
+//     }
+// ]);
