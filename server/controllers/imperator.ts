@@ -16,7 +16,6 @@ const imperator = async (
                     "zapier": { $or: true },
                 }
              );
-
              // currently not functioning  
              await CompanyDB.aggregate([
              {$count: 'Total_Companies'}, 
