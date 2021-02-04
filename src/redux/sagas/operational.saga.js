@@ -5,7 +5,6 @@ function* fetchTotalCounts() {
   try {
     const response = yield axios.get(`/api/planCount`);
     yield put({ type: 'SET_PLAN_COUNT', payload: response.data });
-    console.log(response.data);
   } catch (error) {
     console.log('error with plan count get in planCount.saga', error);
   }
