@@ -30,7 +30,7 @@ const Nav = (props) => {
 
   let loginLinkData = {
     path: '/login',
-    text: 'Login',
+    text: '',
   };
 
   if (user._id != null) {
