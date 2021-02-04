@@ -84,89 +84,102 @@ db.companies.countDocuments({
 
 //ability to get total insights from a project linked to a company
 
-// db.companies.aggregate([
-<<<<<<< HEAD
-=======
-
->>>>>>> d840c39fb6f843f36c307be7e94c5a8fb5407eef
-//     {$count: 'Total_Companies'}, 
-//     {
-//         $lookup: {
-//             from: "hashtags",
-//             pipeline: [{
-//                 $group: {
-//                     '_id': 0,
-//                 'count': {$sum: 1}
-//                 }
-//                 }],
-//             as: "hashtags"
-//         },
-//     }, {
-//         $lookup: {
-//             from: "insights",
-//             pipeline: [{
-//                 $group: {
-//                     '_id': 0,
-//                 'count': {$sum: 1}
-//                 }
-//                 }],
-//             as: "insights"
-//         },
-//     }, {
-//         $lookup: {
-//             from: "notes",
-//             pipeline: [{
-//                 $group: {
-//                     '_id': 0,
-//                 'count': {$sum: 1}
-//                 }
-//                 }],
-//             as: "notes"
-//         },
-//     }, {
-//         $lookup: {
-//             from: "projects",
-//             pipeline: [{
-//                 $group: {
-//                     '_id': 0,
-//                 'count': {$sum: 1}
-//                 }
-//                 }],
-//             as: "projects"
-//         }
-//     },
-//     {$unwind: {path: "$hashtags"}},
-//     {$unwind: {path: "$insights"}},
-//     {$unwind: {path: "$notes"}},
-//     {$unwind: {path: "$projects"}},
-//     {$project: {
-<<<<<<< HEAD
-//         'total': {$sum: [
-//             "$notes.count", "$hashtags.count", "$insights.count", "$projects.count"
-//         ]},
-//     }
-//     }
-// ]);
-//gets total actions 
-=======
-//         'totalNotes': {$sum: ["$notes.count"]},
-//         'totalHashtags': {$sum: ["$hashtags.count"]},
-//         'totalInsights': {$sum: ["$insights.count"]},
-//         'totalProjects': {$sum: ["$projects.count"]},
-
-//         }
-//     }
-// ]);
+db.companies.aggregate([
+    {$count: 'Total_Companies'}, 
+   {
+        $lookup: {
+          from: 'hashtags',
+          pipeline: [
+            {
+              $group: {
+                _id: 0,
+                count: { $sum: 1 },
+              },
+            },
+          ],
+          as: 'hashtags',
+        },
+      },
+             {
+        $lookup: {
+          from: 'documents',
+          pipeline: [
+            {
+              $group: {
+                _id: 0,
+                count: { $sum: 1 },
+              },
+            },
+          ],
+          as: 'documents',
+        },
+      },
+      {
+        $lookup: {
+          from: 'insights',
+          pipeline: [
+            {
+              $group: {
+                _id: 0,
+                count: { $sum: 1 },
+              },
+            },
+          ],
+          as: 'insights',
+        },
+      },
+      {
+        $lookup: {
+          from: 'notes',
+          pipeline: [
+            {
+              $group: {
+                _id: 0,
+                count: { $sum: 1 },
+              },
+            },
+          ],
+          as: 'notes',
+        },
+      },
+      {
+        $lookup: {
+          from: 'projects',
+          pipeline: [
+            {
+              $group: {
+                _id: 0,
+                count: { $sum: 1 },
+              },
+            },
+          ],
+          as: 'projects',
+        },
+      },
+      { $unwind: { path: '$hashtags' }},
+      { $unwind: { path: '$documents'}},
+      { $unwind: { path: '$insights' }},
+      { $unwind: { path: '$notes' }},
+      { $unwind: { path: '$projects' }},
+      {
+        $project: {
+          "hashtags._id": 0,
+          "documents._id": 0,
+          "insights._id": 0,
+          "notes._id": 0,
+          "projects._id": 0 
+        },
+      },
+]);
 // //gets total actions and separates by type
 
-db.companies.find({}, 
-    {
-        "company": 1, 
-        "billing.plan": 1,
-        "activeUntil": 1,
-        "jira": { $or: true },
-        "zapier": { $or: true },
-    }
+// db.companies.find({}, 
+//     {
+//         "company": 1, 
+//         "billing.plan": 1,
+//         "activeUntil": 1,
+//         "jira": { $or: true },
+//         "zapier": { $or: true },
+//     }
 
-)
->>>>>>> d840c39fb6f843f36c307be7e94c5a8fb5407eef
+// )
