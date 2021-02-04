@@ -38,7 +38,7 @@
   float: right;
 }  */
 
-.arrowContainer {
+/* .arrowContainer {
   text-align: right;
 }
 
@@ -47,26 +47,69 @@
 }
 .arrow :hover{
   color: orange;
-}
+} */
 
 .nav {
-    display: flex;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    color: #003b55;
-    height: 100%;
-    top: 0;
-    left: 0;
-    padding-bottom: 0.75em;
-    background-color: #eee;
-    box-shadow: inset -12px 1px 4px -10px rgba(29,86,110,0.27);
-    overflow: hidden;
-    -webkit-transition: width 0.1s;
-    transition: width 0.1s;
-    width: 190px;
-    z-index: 1;
-    position: fixed;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  color: #003b55;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding-bottom: 0.75em;
+  background-color: #eee;
+  box-shadow: inset -12px 1px 4px -10px rgba(29,86,110,0.27);
+  overflow: hidden;
+  -webkit-transition: width 0.1s;
+  transition: width 0.1s;
+  width: 190px;
+  position: fixed;
+
+}
+
+.arrow {
+  float: right;
+  font-size: 20px;
+}
+
+.navOpen {
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  color: #003b55;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding-bottom: 0.75em;
+  background-color: #eee;
+  box-shadow: inset -12px 1px 4px -10px rgba(29,86,110,0.27);
+  overflow: hidden;
+  -webkit-transition: width 0.1s;
+  transition: width 0.1s;
+  width: 40px;
+  position: fixed;
+  
+}
+
+.navOpen .icon-btn {
+  position: absolute;
+
+  left: -1000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  
+}
+.navOpen .nav-logo {
+  margin-left: 0px;
+}
+
+.navOpen #logoutBtn {
+  font-size: 21px;
+  overflow: hidden;
 }
 
 .nav-link {
@@ -105,24 +148,7 @@
 
 .icon-btn { 
   margin-left: 15px; 
-  display: inline
+  display: inline;
+
 }
 
-/* .navOpen {
-  left: 0;
-  transition: 350ms;
-} */
-
-/* .nav-menu {
-  background-color:  #081520;
-  width: 250px; 
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: -100%;
-  transition: 850ms;
-  z-index: 9999;
-
-} */ 
