@@ -5,7 +5,7 @@ import { MonthlyUsers } from './MonthlyUsers';
 import PlanTypeGraph from './PlanTypeGraph';
 import './Operational.css'
 
-const Operational: React.FC = () => {
+const Operational = () => {
   return (
     <div>
       <h1>Operational</h1>

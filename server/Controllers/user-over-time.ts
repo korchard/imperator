@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { CompanyDB } from '../models/documents/Company';
+import { UserDB } from '../models/documents/User';
 // comment 
 export const getUsersOverTime = async (
   req: Request,
@@ -7,80 +7,80 @@ export const getUsersOverTime = async (
 ): Promise<void> => {
   console.log('this is working');
   try {
-    const data = await CompanyDB.aggregate([
-      { $count: 'Total_Companies' },
-      {
-        $lookup: {
-          from: 'hashtags',
-          pipeline: [
-            {
-              $group: {
-                _id: 0,
-                count: { $sum: 1 },
-              },
-            },
-          ],
-          as: 'hashtags',
-        },
-      },
-      {
-        $lookup: {
-          from: 'insights',
-          pipeline: [
-            {
-              $group: {
-                _id: 0,
-                count: { $sum: 1 },
-              },
-            },
-          ],
-          as: 'insights',
-        },
-      },
-      {
-        $lookup: {
-          from: 'notes',
-          pipeline: [
-            {
-              $group: {
-                _id: 0,
-                count: { $sum: 1 },
-              },
-            },
-          ],
-          as: 'notes',
-        },
-      },
-      {
-        $lookup: {
-          from: 'projects',
-          pipeline: [
-            {
-              $group: {
-                _id: 0,
-                count: { $sum: 1 },
-              },
-            },
-          ],
-          as: 'projects',
-        },
-      },
-      { $unwind: { path: '$hashtags' } },
-      { $unwind: { path: '$insights' } },
-      { $unwind: { path: '$notes' } },
-      { $unwind: { path: '$projects' } },
-      {
-        $project: {
-          _id: 0,
-          'hashtags.count': 1,
-          'insights.count': 1,
-          'notes.count': 1,
-          'projects.count': 1,
-        },
-      },
-    ]);
-    res.send(data);
+    const jan = await UserDB.countDocuments({
+        timestamp: {
+            "$gte": new Date("2021, 01"),
+            "$lt": new Date("2021, 02"),
+        }
+    });
+    const feb = await UserDB.countDocuments({
+        timestamp: {
+            "$gte": new Date("2021, 02"),
+            "$lt": new Date("2021, 03"),
+        }
+    });
+    const mar = await UserDB.countDocuments({
+        timestamp: {
+            "$gte": new Date("2021, 03"),
+            "$lt": new Date("2021, 04"),
+        }
+    });
+    const apr = await UserDB.countDocuments({
+        timestamp: {
+            "$gte": new Date("2021, 04"),
+            "$lt": new Date("2021, 05"),
+        }
+    });
+    const may = await UserDB.countDocuments({
+        timestamp: {
+            "$gte": new Date("2021, 05"),
+            "$lt": new Date("2021, 06"),
+        }
+    });
+    const jun = await UserDB.countDocuments({
+        timestamp: {
+            "$gte": new Date("2021, 06"),
+            "$lt": new Date("2021, 07"),
+        }
+    });
+    const jul = await UserDB.countDocuments({
+        timestamp: {
+            "$gte": new Date("2021, 07"),
+            "$lt": new Date("2021, 08"),
+        }
+    });
+    const aug = await UserDB.countDocuments({
+        timestamp: {
+            "$gte": new Date("2021, 08"),
+            "$lt": new Date("2021, 09"),
+        }
+    });
+    const sep = await UserDB.countDocuments({
+        timestamp: {
+            "$gte": new Date("2021, 09"),
+            "$lt": new Date("2021, 10"),
+        }
+    });
+    const oct = await UserDB.countDocuments({
+        timestamp: {
+            "$gte": new Date("2021, 10"),
+            "$lt": new Date("2021, 11"),
+        }
+    });
+    const nov = await UserDB.countDocuments({
+        timestamp: {
+            "$gte": new Date("2021, 11"),
+            "$lt": new Date("2021, 12"),
+        }
+    });
+    const dec = await UserDB.countDocuments({
+        timestamp: {
+            "$gte": new Date("2021, 12"),
+        }
+    });
+    res.send([jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]);
   } catch (error) {
     console.error('Error getting total actions: ', error);
   }
 };
+

@@ -6,6 +6,26 @@
 // Select the database to use.
 use('aurelius');
 
+// db.users.find({})
+
+
+// db.users.find({
+//         timestamp: { 
+//             // "$gte": new Date("2021-01"), 
+//             "$lte": new Date("2021, 05")
+//         }
+// }); 
+
+// db.users.countDocuments({
+//     timestamp: {
+//         "$gte": new Date("2021, 01"),
+//         "$lt": new Date("2021, 02"),
+//     }
+// });
+db.companies.countDocuments({
+});
+
+
 
 // db.companies.aggregate(
 // [
@@ -35,9 +55,6 @@ use('aurelius');
 
 // db.users.countDocuments({})
 //total user count
-
-// db.companies.find({hashtags: {$exists: true}}).count()
-
 // db.companies.find({}, {"billing.plan": true})
 
 // db.companies.aggregate([
@@ -68,7 +85,10 @@ use('aurelius');
 //ability to get total insights from a project linked to a company
 
 // db.companies.aggregate([
+<<<<<<< HEAD
+=======
 
+>>>>>>> d840c39fb6f843f36c307be7e94c5a8fb5407eef
 //     {$count: 'Total_Companies'}, 
 //     {
 //         $lookup: {
@@ -120,6 +140,15 @@ use('aurelius');
 //     {$unwind: {path: "$notes"}},
 //     {$unwind: {path: "$projects"}},
 //     {$project: {
+<<<<<<< HEAD
+//         'total': {$sum: [
+//             "$notes.count", "$hashtags.count", "$insights.count", "$projects.count"
+//         ]},
+//     }
+//     }
+// ]);
+//gets total actions 
+=======
 //         'totalNotes': {$sum: ["$notes.count"]},
 //         'totalHashtags': {$sum: ["$hashtags.count"]},
 //         'totalInsights': {$sum: ["$insights.count"]},
@@ -140,3 +169,4 @@ db.companies.find({},
     }
 
 )
+>>>>>>> d840c39fb6f843f36c307be7e94c5a8fb5407eef

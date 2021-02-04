@@ -1,10 +1,19 @@
 import React, { useState, useEffect} from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Chart from 'react-apexcharts';
 
-export const MonthlyUsers: React.FC = () => {
+export const MonthlyUsers = () => {
     
+  const dispatch = useDispatch(); 
 
+  useEffect(() => {
+    getUsersByMonth(); 
+  }, []);
+
+  const getUsersByMonth = () => { 
+    console.log('getting users by month');
+    dispatch({type: 'GET_USERS_BY_MONTH'});
+  }
 
   const [opt, setOptions] = useState({
     options: {
