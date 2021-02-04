@@ -56,7 +56,6 @@ const monthsData = monthlyUsersOverTime;
   
   return (
     <div>
-      {JSON.stringify(monthlyUsersOverTime)}
       <Chart options={opt.options} series={[{ 
         ...opt.options.series, 
         data: monthsData
