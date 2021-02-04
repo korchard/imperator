@@ -7,7 +7,7 @@ const router: express.Router = express.Router();
 
 router.get('/', rejectUnauthenticated, imperator);
 
-router.get('/', rejectUnauthenticated, imperator);
+router.get('/search', rejectUnauthenticated, imperator);
 
 router.post(
   '/',
