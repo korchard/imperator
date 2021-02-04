@@ -4,22 +4,24 @@ import Chart from 'react-apexcharts';
 
 export const MonthlyUsers = () => {
     
+  const monthlyUsersOverTime = useSelector((redux) => redux.monthlyUsersOverTime)
   const dispatch = useDispatch(); 
 
   useEffect(() => {
     getUsersByMonth(); 
   }, []);
 
-  const getUsersByMonth = () => { 
-    console.log('getting users by month');
-    dispatch({type: 'GET_USERS_BY_MONTH'});
-  }
+  const [user, setUser] = useState({})
 
+  const getUsersByMonth = () => { 
+    dispatch({type: 'GET_USERS_BY_MONTH'});
+    console.log('-------------------monthlyUsersOverTime----------------', monthlyUsersOverTime); 
+  }
   const [opt, setOptions] = useState({
     options: {
         series: [{
             name: "Added Users By Month",
-            data: [1, 2, 3, 4, 5, 6, 7, 7, 8, 9, 1, 2]
+            data: monthlyUsersOverTime
       }],
         chart: {
             type: 'area',
@@ -51,6 +53,7 @@ export const MonthlyUsers = () => {
   
   return (
     <div>
+      {JSON.stringify(monthlyUsersOverTime)}
       <Chart options={opt.options} series={opt.options.series} type='area' width='600'/>
     </div>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 // import ChartsEmbedSDK from '@mongodb-js/charts-embed-dom';
 import BarGraph from './BarGraph';
 import { MonthlyUsers } from './MonthlyUsers';
-import PlanTypeGraph from './PlanTypeGraph';
+import PlanTypeGraph from './PlanTypeGraph.js'; 
 import './Operational.css'
 
 const Operational = () => {
