@@ -6,6 +6,23 @@
 // Select the database to use.
 use('aurelius');
 
+// db.users.find({})
+
+
+// db.users.find({
+//         timestamp: { 
+//             // "$gte": new Date("2021-01"), 
+//             "$lte": new Date("2021, 05")
+//         }
+// }); 
+
+db.users.countDocuments({
+    timestamp: {
+        "$gte": new Date("2021, 01"),
+        "$lt": new Date("2021, 02"),
+    }
+});
+
 
 // db.companies.aggregate(
 // [
@@ -35,9 +52,6 @@ use('aurelius');
 
 // db.users.countDocuments({})
 //total user count
-
-// db.companies.find({hashtags: {$exists: true}}).count()
-
 // db.companies.find({}, {"billing.plan": true})
 
 // db.companies.aggregate([
@@ -67,62 +81,62 @@ use('aurelius');
 
 //ability to get total insights from a project linked to a company
 
-db.companies.aggregate([
-    {$count: 'Total_Companies'}, 
-    {
-        $lookup: {
-            from: "hashtags",
-            pipeline: [{
-                $group: {
-                    '_id': 0,
-                'count': {$sum: 1}
-                }
-                }],
-            as: "hashtags"
-        },
-    }, {
-        $lookup: {
-            from: "insights",
-            pipeline: [{
-                $group: {
-                    '_id': 0,
-                'count': {$sum: 1}
-                }
-                }],
-            as: "insights"
-        },
-    }, {
-        $lookup: {
-            from: "notes",
-            pipeline: [{
-                $group: {
-                    '_id': 0,
-                'count': {$sum: 1}
-                }
-                }],
-            as: "notes"
-        },
-    }, {
-        $lookup: {
-            from: "projects",
-            pipeline: [{
-                $group: {
-                    '_id': 0,
-                'count': {$sum: 1}
-                }
-                }],
-            as: "projects"
-        }
-    },
-    {$unwind: {path: "$hashtags"}},
-    {$unwind: {path: "$insights"}},
-    {$unwind: {path: "$notes"}},
-    {$unwind: {path: "$projects"}},
-    {$project: {
-        'total': {$sum: [
-            "$notes.count", "$hashtags.count", "$insights.count", "$projects.count"
-        ]},
-    }
-    }
-]);
+// db.companies.aggregate([
+//     {$count: 'Total_Companies'}, 
+//     {
+//         $lookup: {
+//             from: "hashtags",
+//             pipeline: [{
+//                 $group: {
+//                     '_id': 0,
+//                 'count': {$sum: 1}
+//                 }
+//                 }],
+//             as: "hashtags"
+//         },
+//     }, {
+//         $lookup: {
+//             from: "insights",
+//             pipeline: [{
+//                 $group: {
+//                     '_id': 0,
+//                 'count': {$sum: 1}
+//                 }
+//                 }],
+//             as: "insights"
+//         },
+//     }, {
+//         $lookup: {
+//             from: "notes",
+//             pipeline: [{
+//                 $group: {
+//                     '_id': 0,
+//                 'count': {$sum: 1}
+//                 }
+//                 }],
+//             as: "notes"
+//         },
+//     }, {
+//         $lookup: {
+//             from: "projects",
+//             pipeline: [{
+//                 $group: {
+//                     '_id': 0,
+//                 'count': {$sum: 1}
+//                 }
+//                 }],
+//             as: "projects"
+//         }
+//     },
+//     {$unwind: {path: "$hashtags"}},
+//     {$unwind: {path: "$insights"}},
+//     {$unwind: {path: "$notes"}},
+//     {$unwind: {path: "$projects"}},
+//     {$project: {
+//         'total': {$sum: [
+//             "$notes.count", "$hashtags.count", "$insights.count", "$projects.count"
+//         ]},
+//     }
+//     }
+// ]);
 //gets total actions 
