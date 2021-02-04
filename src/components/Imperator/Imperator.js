@@ -13,6 +13,16 @@ const Imperator = () => {
     dispatch({ type: 'FETCH_IMPERATOR' })
   }, [])
 
+  const configurations = (imperator) => {
+    if (imperator.jira && imperator.zapier === true) {
+      return <td>jira, zapier</td>
+    } else if (imperator.jira === true && imperator.zapier === false) {
+      return <td>jira</td>
+    } else if (imperator.zapier === true && imperator.jira === false) {
+      return <td>zapier</td>
+    }
+  }
+
   return (
     <div className="imperator">
      <h1>Imperator</h1>
@@ -36,15 +46,20 @@ const Imperator = () => {
            <th>Creation Date of Last Project</th>
          </thead>
          <tbody>
-           {JSON.stringify(imperator)}
-          {/* {imperator.map((data) => {
-            <tr key={data.id}>
-              <td>{data.company}</td>
-              <td>{data.billing.plan}</td>
-              <td>{data.activeUntil}</td>
-              <td>{data.company}</td>
-            </tr>
-          })} */}
+          {imperator.map(data => {
+            return (
+              <tr key={data.id}>
+                <td>{data.company}</td>
+                <td>{data.billing.plan}</td>
+                <td>{data.activeUntil}</td>
+                <>{configurations(data)}</>
+                <td>working on it</td>
+                <td>don't have it yet</td>
+                <td>working still</td>
+                <td>not yet</td>
+              </tr>
+            )
+          })}
          </tbody>
        </table>
      </div>
