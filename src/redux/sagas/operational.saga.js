@@ -5,7 +5,6 @@ function* fetchTotalCounts() {
   try {
     const response = yield axios.get(`/api/planCount`);
     yield put({ type: 'SET_PLAN_COUNT', payload: response.data });
-    console.log(response.data);
   } catch (error) {
     console.log('error with plan count get in planCount.saga', error);
   }
@@ -21,11 +20,10 @@ function* fetchTotalActions() {
   }
 } //end fetchTotalCounts
 
-function* getUsersByMonth(action) {
+function* getUsersByMonth() {
   try {
-    yield axios.get({ type: 'CLEAR_REGISTRATION_ERROR' });
-
-    yield put({ type: 'SET_TO_LOGIN_MODE' });
+    const response = yield axios.get('/api/data/user-over-time');
+    yield put({ type: 'SET_MONTHLY_USERS', payload: response.data });
   } catch (error) {
     console.log('Error with user registration:', error);
     yield put({ type: 'REGISTRATION_FAILED' });

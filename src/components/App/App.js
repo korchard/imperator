@@ -14,7 +14,7 @@ import InfoPage from '../InfoPage/InfoPage';
 // import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import Operational from '../Operational/Operational.tsx';
+import Operational from '../Operational/Operational.js';
 import Analytical from '../Analytical/Analytical.tsx';
 import Imperator from '../Imperator/Imperator.js';
 import Strategic from '../Strategic/Strategic.tsx';
