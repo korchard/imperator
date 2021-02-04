@@ -1,7 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Chart from 'react-apexcharts';
 
-const BarGraph: React.FC = () => {
+const BarGraph = () => {
+  const dispatch = useDispatch();
+  const totalActionData = useSelector((store) => store.totalAction);
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_TOTAL_ACTIONS' });
+  }, []);
+
   const [opt, setOptions] = useState({
     options: {
       chart: {
@@ -20,6 +28,7 @@ const BarGraph: React.FC = () => {
   });
   return (
     <div>
+      {JSON.stringify(totalActionData.hashtags)}
       <Chart options={opt.options} series={opt.series} type='bar' width='500' />
     </div>
   );

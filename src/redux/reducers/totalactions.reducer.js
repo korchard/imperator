@@ -1,5 +1,3 @@
-import { combineReducers } from 'redux';
-
 // store user message information
 const totalActions = (state = [], action) => {
   switch (action.type) {
