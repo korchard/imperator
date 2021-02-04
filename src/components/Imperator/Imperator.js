@@ -36,6 +36,7 @@ const Imperator = () => {
            <th>Creation Date of Last Project</th>
          </thead>
          <tbody>
+           {JSON.stringify(imperator)}
           {/* {imperator.map((data) => {
             <tr key={data.id}>
               <td>{data.company}</td>
