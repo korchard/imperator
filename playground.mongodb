@@ -67,62 +67,76 @@ use('aurelius');
 
 //ability to get total insights from a project linked to a company
 
-db.companies.aggregate([
-    {$count: 'Total_Companies'}, 
+// db.companies.aggregate([
+
+//     {$count: 'Total_Companies'}, 
+//     {
+//         $lookup: {
+//             from: "hashtags",
+//             pipeline: [{
+//                 $group: {
+//                     '_id': 0,
+//                 'count': {$sum: 1}
+//                 }
+//                 }],
+//             as: "hashtags"
+//         },
+//     }, {
+//         $lookup: {
+//             from: "insights",
+//             pipeline: [{
+//                 $group: {
+//                     '_id': 0,
+//                 'count': {$sum: 1}
+//                 }
+//                 }],
+//             as: "insights"
+//         },
+//     }, {
+//         $lookup: {
+//             from: "notes",
+//             pipeline: [{
+//                 $group: {
+//                     '_id': 0,
+//                 'count': {$sum: 1}
+//                 }
+//                 }],
+//             as: "notes"
+//         },
+//     }, {
+//         $lookup: {
+//             from: "projects",
+//             pipeline: [{
+//                 $group: {
+//                     '_id': 0,
+//                 'count': {$sum: 1}
+//                 }
+//                 }],
+//             as: "projects"
+//         }
+//     },
+//     {$unwind: {path: "$hashtags"}},
+//     {$unwind: {path: "$insights"}},
+//     {$unwind: {path: "$notes"}},
+//     {$unwind: {path: "$projects"}},
+//     {$project: {
+//         'totalNotes': {$sum: ["$notes.count"]},
+//         'totalHashtags': {$sum: ["$hashtags.count"]},
+//         'totalInsights': {$sum: ["$insights.count"]},
+//         'totalProjects': {$sum: ["$projects.count"]},
+
+//         }
+//     }
+// ]);
+// //gets total actions and separates by type
+
+db.companies.find({}, 
     {
-        $lookup: {
-            from: "hashtags",
-            pipeline: [{
-                $group: {
-                    '_id': 0,
-                'count': {$sum: 1}
-                }
-                }],
-            as: "hashtags"
-        },
-    }, {
-        $lookup: {
-            from: "insights",
-            pipeline: [{
-                $group: {
-                    '_id': 0,
-                'count': {$sum: 1}
-                }
-                }],
-            as: "insights"
-        },
-    }, {
-        $lookup: {
-            from: "notes",
-            pipeline: [{
-                $group: {
-                    '_id': 0,
-                'count': {$sum: 1}
-                }
-                }],
-            as: "notes"
-        },
-    }, {
-        $lookup: {
-            from: "projects",
-            pipeline: [{
-                $group: {
-                    '_id': 0,
-                'count': {$sum: 1}
-                }
-                }],
-            as: "projects"
-        }
-    },
-    {$unwind: {path: "$hashtags"}},
-    {$unwind: {path: "$insights"}},
-    {$unwind: {path: "$notes"}},
-    {$unwind: {path: "$projects"}},
-    {$project: {
-        'total': {$sum: [
-            "$notes.count", "$hashtags.count", "$insights.count", "$projects.count"
-        ]},
+        "company": 1, 
+        "billing.plan": 1,
+        "activeUntil": 1,
+        "jira": { $or: true },
+        "zapier": { $or: true },
     }
-    }
-]);
-//gets total actions 
+
+)
