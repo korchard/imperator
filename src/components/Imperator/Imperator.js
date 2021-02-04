@@ -27,20 +27,21 @@ const Imperator = () => {
   }
 
   const searchCo = () => {
-    dispatch({ type: 'FETCH_COMPANY_SEARCH', payload: search});
+    dispatch({ type: 'FETCH_COMPANY_SEARCH', payload: search });
     console.log('search', search);
+    setSearch('');
   }
 
   return (
     <div className="imperator">
      <h1>Imperator</h1>
      <div className="search-imperator">
-        <input className="search-input" placeholder="Search" 
-          onChange={(e) => setSearch({ search: e.target.value })}/>
+        <input className="search-input" placeholder="Search" value={search}
+          onChange={(e) => setSearch(e.target.value)}/>
           <button className='btnI' type='submit' 
                   name='submit' value='Find'
                   onClick={searchCo}>
-            Find
+                  Find
           </button>
         </div>
      <div>
