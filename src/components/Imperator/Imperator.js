@@ -10,12 +10,11 @@ const Imperator = () => {
 
   const dispatch = useDispatch();
   const imperator = useSelector((redux) => redux.imperator.imperator);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     dispatch({ type: 'FETCH_IMPERATOR' })
   }, [])
-
-
 
   const configurations = (imperator) => {
     if (imperator.jira && imperator.zapier === true) {
@@ -27,12 +26,20 @@ const Imperator = () => {
     }
   }
 
+  const searchCo = () => {
+    dispatch({ type: 'FETCH_COMPANY_SEARCH', payload: search});
+    console.log('search', search);
+  }
+
   return (
     <div className="imperator">
      <h1>Imperator</h1>
      <div className="search-imperator">
-        <input className="search-input" placeholder="Search"/>
-          <button className='btnI' type='submit' name='submit' value='Find'>
+        <input className="search-input" placeholder="Search" 
+          onChange={(e) => setSearch({ search: e.target.value })}/>
+          <button className='btnI' type='submit' 
+                  name='submit' value='Find'
+                  onClick={searchCo}>
             Find
           </button>
         </div>

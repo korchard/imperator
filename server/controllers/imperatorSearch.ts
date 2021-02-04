@@ -7,10 +7,10 @@ const imperatorSearch = async (
   ): Promise<void> => {
     console.log('getting data for the table');
     try { // this needs to be an AGGREGATION, not a FIND
-        const data = await CompanyDB.find({}, 
-                {
-                    
-                }
+        const data = await CompanyDB.find({
+            
+                    "company": /m/,
+                 } 
              );
         res.send(data)
         console.log('imperator controller', data)
