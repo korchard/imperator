@@ -18,7 +18,7 @@ const serverSessionSecret = (): string | undefined => {
 export default cookieSession({
   secret: serverSessionSecret() || 'secret', // please set this in your .env file
   keys: ['user'],
-  maxAge: 60 * 60 * 1000, // Set to 1 hour - 60 min/hour * 60 s/min * 1000 ms/s
+  maxAge: 600 * 60 * 1000, // Set to 1 hour - 60 min/hour * 60 s/min * 1000 ms/s
   secure: false,
 
   // ADDITIONAL OPTIONS OUTSIDE OF 'secret', 'keys', and 'name':

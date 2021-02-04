@@ -25,20 +25,20 @@ import {BiRightArrow} from 'react-icons/bi';
 //drawer close
 import {BiLeftArrow} from 'react-icons/bi';
 
-type Props = {
-  className?: string | undefined,
-}
+// type Props = {
+//   className?: string | undefined,
+// }
 
-interface IUser {
-  user: {
-    _id: number;
-    username: String;
+// interface IUser {
+//   user: {
+//     _id: number;
+//     username: String;
 
-  }, 
-}
+//   }, 
+// }
 
-const Nav: React.FC<Props> = () => {
-  const user = useSelector((redux: IUser) => redux.user);
+const Nav = (props) => {
+  const user = useSelector((redux) => redux.user);
   const [open, setOpen] = React.useState(false); // used for the drawer opening and closing
 
   let loginLinkData = {
@@ -52,33 +52,37 @@ const Nav: React.FC<Props> = () => {
   }
 
   // handles the drawer opening
-  const handleDrawerOpen = () => {
-    setOpen(true); // sets state
-    console.log('drawer open')
-  }; // end handleDrawerOpen
+  // const handleDrawerOpen = () => {
+  //   setOpen(true); // sets state
+  //   console.log('drawer open')
+  // }; // end handleDrawerOpen
 
-  // handles the drawer closing
-  const handleDrawerClose = () => {
-    setOpen(false); // sets state
-    console.log('drawer closed')
-  }; // end handleDrawerClose
+  // // handles the drawer closing
+  // const handleDrawerClose = () => {
+  //   setOpen(false); // sets state
+  //   console.log('drawer closed')
+  // }; // end handleDrawerClose
 
   return (
-    <div className='nav'>
+    <div className={open ? 'nav' : 'navOpen'}>
       <div  className="arrowContainer">
-      {open ? 
-        <BiLeftArrow className="arrow" onClick={handleDrawerClose}/>
-        : 
-        <BiRightArrow className="arrow" onClick={handleDrawerOpen}/>
-      }
+        
+
+{open ?
+        <BiLeftArrow className="arrow" onClick={() => setOpen(!open)}/>
+        :
+        <BiRightArrow className="arrow" onClick={() => setOpen(!open)}/>
+        
+}
       </div>
-      <nav className={open ? 'nav' : 'navOpen'}>
-      <Link to='/home'>
+
+
+    
         <div>
 
           <img src="../img/logo.svg" alt="logo" className="nav-logo"></img>
         </div>
-      </Link>
+   
 
 
       <div className='nav-right'>
@@ -115,7 +119,7 @@ const Nav: React.FC<Props> = () => {
         {/* Always show this link since the about page is not protected */}
        
       </div>
-       </nav>
+
     </div>
   );
 };

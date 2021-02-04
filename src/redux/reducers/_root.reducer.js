@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
 import planCount from './planCount.reducer';
-import totalaction from './totalactions.reducer';
+import totalAction from './totalactions.reducer';
 import imperator from './imperator.reducer';
 import monthlyUsersOverTime from './monthlyusers.reducer'
 // rootReducer is the primary reducer for our entire project
@@ -15,9 +15,14 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
   planCount,
+<<<<<<< HEAD
   totalaction,
   imperator, 
   monthlyUsersOverTime
+=======
+  totalAction,
+  imperator,
+>>>>>>> 9aac1c7c6c318e2d97e496d7fa1b119886af1386
 });
 
 export default rootReducer;
