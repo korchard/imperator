@@ -21,7 +21,7 @@ export const MonthlyUsers = () => {
     options: {
         series: [{
             name: "Added Users By Month",
-            data: monthlyUsersOverTime
+            data: []
       }],
         chart: {
             type: 'area',
@@ -50,11 +50,17 @@ export const MonthlyUsers = () => {
         }
       }
   })
+
+
+const monthsData = monthlyUsersOverTime; 
   
   return (
     <div>
       {JSON.stringify(monthlyUsersOverTime)}
-      <Chart options={opt.options} series={opt.options.series} type='area' width='600'/>
+      <Chart options={opt.options} series={[{ 
+        ...opt.options.series, 
+        data: monthsData
+      }]} type='area' width='600'/>
     </div>
   );
 };
