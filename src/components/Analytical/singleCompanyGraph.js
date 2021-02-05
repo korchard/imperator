@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 
 const SingleCompanyGraph = () => {
 
   useEffect(() => {
-    getUsersByMonth();
+    checkSingleOrAll()
   }, []);
+
+const checkSingleOrAll = () => { 
+  const { name } = useParams();
+  console.log('checking source', name); 
+}
 
   const [opt, setOpt] = useState({
     series: [{
       name: 'Net Profit',
-      data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+      data: [56, 61, 58, 63, 60, 66]
     }, {
       name: 'Revenue',
-      data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
-    }, {
-      name: 'Free Cash Flow',
-      data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+      data: [98, 87, 15, 91, 14, 94]
     }],
     options: {
       chart: {
@@ -39,11 +42,11 @@ const SingleCompanyGraph = () => {
         colors: ['transparent']
       },
       xaxis: {
-        categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+        categories: ['Hashtags', 'Documents', 'Insights', 'Notes', 'Projects', "Total"]
       },
       yaxis: {
         title: {
-          text: '$ (thousands)'
+          text: 'Actions'
         }
       },
       fill: {
@@ -61,6 +64,7 @@ const SingleCompanyGraph = () => {
 
   return (
     <div>
+      {JSON.stringify(name)}
       <Chart options={opt.options} series={opt.series} type="bar" height={350} />
     </div>
   );
