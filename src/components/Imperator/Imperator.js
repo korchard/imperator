@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { useHistory, Link } from 'react-router-dom';
 import Moment from 'react-moment';
 // import Pagination from './Pagination';
-import ReactPaginate from 'react-paginate';
+import Table from './Table';
+
 
 import './Imperator.css';
 
@@ -66,59 +67,10 @@ const Imperator = () => {
           Find
           </button>
       </div>
-      <div>
-        <h3>Company Information</h3>
-        <table>
-          <thead>
-            <th>Name</th>
-            <th>Billing Plan</th>
-            <th>Billing Status</th>
-            <th>Active Until</th>
-            <th>Configurations</th>
-            <th>Total Projects</th>
-            <th>Total Notes</th>
-            <th>Total Users</th>
-            <th>Creation Date of Last Project</th>
-          </thead>
-          <tbody>
-            {imperator.map(data => {
-              return (
-                <tr key={data.id}>
-                  <td>{data.company}</td>
-                  <td>{data.plan}</td>
-                  <td>{data.status}</td>
-                  <td>
-                    <Moment format="MM/DD/YYYY">
-                      {data.activeUntil}
-                    </Moment>
-                  </td>
-                  <>{configurations(data)}</>
-                  <td>working on it</td>
-                  <td>don't have it yet</td>
-                  <td>working still</td>
-                  <td>not yet</td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
-        <div className="App">
-          {data}
-          <ReactPaginate
-            previousLabel={"← Previous"}
-            nextLabel={"Next →"}
-            pageCount={pageCount}
-            onPageChange={handlePageClick}
-            containerClassName={"pagination"}
-            previousLinkClassName={"pagination__link"}
-            nextLinkClassName={"pagination__link"}
-            disabledClassName={"pagination__link--disabled"}
-            activeClassName={"pagination__link--active"}
-          />
-          {currentPageData}
-        </div>
+     <div>
+       <Table data={imperator}/> 
+     </div>
       </div>
-    </div>
   );
 }
 
