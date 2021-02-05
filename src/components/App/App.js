@@ -15,7 +15,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Operational from '../Operational/Operational.js';
-import Analytical from '../Analytical/Analytical.tsx';
+import Analytical from '../Analytical/Analytical.js';
 import Imperator from '../Imperator/Imperator.js';
 import Strategic from '../Strategic/Strategic.tsx';
 import PasswordReset from '../PasswordReset/PasswordReset.tsx';
@@ -70,7 +70,7 @@ const App = () => {
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
-            path='/analytical'
+            path='/analytical/:type/:id'
             component={Analytical}
           />
 
