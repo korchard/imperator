@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
 import express from 'express';
 import rejectUnauthenticated from '../modules/authentication-middleware';
-import { getUsersOverTime } from '../controllers/user-over-time'
+
+// controllers
+import { getUsersOverTime } from '../controllers/userOverTime';
 
 const router: express.Router = express.Router();
 
