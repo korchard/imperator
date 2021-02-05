@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { useHistory, Link } from 'react-router-dom';
 import Moment from 'react-moment';
 // import Pagination from './Pagination';
+import Table from './Table';
 
 import './Imperator.css';
 
-const Imperator = () => {
+const Imperator = ({ columns, data}) => {
 
   const dispatch = useDispatch();
   const imperator = useSelector((redux) => redux.imperator.imperator);
@@ -32,6 +33,8 @@ const Imperator = () => {
     setSearch('');
   }
 
+
+
   return (
     <div className="imperator">
      <h1>Imperator</h1>
@@ -45,9 +48,10 @@ const Imperator = () => {
           </button>
         </div>
      <div>
-       <h3>Company Information</h3>
-       <table>
-         <thead>
+       {/* <h3>Company Information</h3> */}
+       <Table data={imperator}/> 
+       {/* <table > */}
+         {/* <thead>
            <th>Name</th>
            <th>Billing Plan</th>
            <th>Billing Status</th>
@@ -57,8 +61,8 @@ const Imperator = () => {
            <th>Total Notes</th>
            <th>Total Users</th>
            <th>Creation Date of Last Project</th>
-         </thead>
-         <tbody>
+         </thead> */}
+         {/* <tbody>
           {imperator.map(data => {
             return (
               <tr key={data.id}>
@@ -79,7 +83,7 @@ const Imperator = () => {
             )
           })}
          </tbody>
-       </table>
+       </table> */}
 
      </div>
     </div>
