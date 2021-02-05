@@ -45,7 +45,7 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/data', dataRouter);
-app.use('/api/user-over-time', monthlyUsersRouter);
+app.use('/api/userOverTime', monthlyUsersRouter);
 app.use('/api/planCount', planCountRouter);
 app.use('/api/imperator', imperatorRouter);
 app.use('/api/analytics', analyticRouter);
