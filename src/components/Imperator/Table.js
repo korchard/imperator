@@ -1,12 +1,12 @@
 import React from 'react';
-import { useTable } from 'react-table'
+import { useTable, usePagination } from 'react-table'
 import Moment from 'react-moment';
 
 const Table = ({data}) => {
 
     const formatData = (date) => {
             date = date.split('T');
-            return new Date(Date.parse(date)).toString();
+            return (new Date(Date.parse(date)).toString()).replace(/ \w+-\d+ \(.*\)$/,"")
     }
 
     const columns = React.useMemo(
@@ -83,9 +83,17 @@ const Table = ({data}) => {
         // Get the state from the instance
         state: { pageIndex, pageSize },
       } = useTable({
+        initialState: { pageIndex: 0 }, // Pass our hoisted table state
+        manualPagination: true, // Tell the usePagination
+        // hook that we'll handle our own data fetching
+        // This means we'll also have to provide our own
+        // pageCount.
+        // pageCount: controlledPageCount,
         columns,
         data
-      });
+      },
+      usePagination
+      );
     
       // Render the UI for your table
       return (
