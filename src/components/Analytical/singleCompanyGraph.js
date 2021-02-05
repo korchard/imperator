@@ -12,6 +12,10 @@ const SingleCompanyGraph = () => {
     series: [{
       name: 'Average company',
       data: [98, 87, 15, 91, 14, 94]
+    }, 
+    {
+      name: 'Average company',
+      data: [98, 87, 15, 91, 14, 94]
     }],
     options: {
       chart: {

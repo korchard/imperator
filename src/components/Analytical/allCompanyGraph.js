@@ -5,8 +5,8 @@ import Chart from 'react-apexcharts';
 
 const SingleCompanyGraph = () => {
   
-  const monthlyUsersOverTime = useSelector(
-    (redux) => redux.monthlyUsersOverTime
+  const totalActions = useSelector(
+    (redux) => redux.totalActions
   );
   const dispatch = useDispatch();
   const [opt, setOpt] = useState({
