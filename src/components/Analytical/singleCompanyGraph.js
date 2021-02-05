@@ -8,7 +8,8 @@ const SingleCompanyGraph = () => {
   const dispatch = useDispatch();
   
   useEffect(() => {
-    dispatch({ type: 'FETCH_TOTAL_ACTIONS' });
+    dispatch({ type: 'FETCH_SINGLE_COMPANY_DATA', param: 1 });
+    dispatch({ type: 'FETCH_TOTAL_ACTIONS'});
   }, []); 
 
   const [opt, setOpt] = useState({
