@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTable, usePagination } from 'react-table'
+import { useTable, usePagination, useSortBy} from 'react-table'
 import Moment from 'react-moment';
 
 const Table = ({data}) => {
@@ -92,8 +92,13 @@ const Table = ({data}) => {
         columns,
         data
       },
-      usePagination
+      useSortBy,
+      usePagination,
       );
+
+    //   React.useEffect(() => {
+    //     fetchData({ pageIndex, pageSize })
+    //   }, [fetchData, pageIndex, pageSize])
     
       // Render the UI for your table
       return (
@@ -103,7 +108,17 @@ const Table = ({data}) => {
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+                                  <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                                  {column.render('Header')}
+                                  {/* Add a sort direction indicator */}
+                                  <span>
+                                    {column.isSorted
+                                      ? column.isSortedDesc
+                                        ? ' 🔽'
+                                        : ' 🔼'
+                                      : ''}
+                                  </span>
+                                </th>
                 ))}
               </tr>
             ))}
