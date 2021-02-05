@@ -40,7 +40,7 @@ const Imperator = () => {
 
         // Your server could send back total page count.
         // For now we'll just fake it, too
-        setPageCount({Math.ceil(imperator.length / pageSize))
+        setPageCount(Math.ceil(imperator.length / pageSize) > 0 ? Math.ceil(imperator.length / pageSize) : 1)
 
         setLoading(false)
       }
@@ -81,7 +81,6 @@ const Imperator = () => {
 
   return (
     <div className="imperator">
-      {JSON.stringify(imperator.length)}
       <h1>Imperator</h1>
       <div className="search-imperator">
         <input className="search-input" placeholder="Search" value={search}
