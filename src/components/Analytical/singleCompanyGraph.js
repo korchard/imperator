@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 
 const SingleCompanyGraph = () => {
 
+  const location = useRouteMatch();
+
   useEffect(() => {
     checkSingleOrAll()
   }, []);
-
-const checkSingleOrAll = () => { 
-  const { name } = useParams();
-  console.log('checking source', name); 
-}
+  
+  const checkSingleOrAll = () => { 
+    // let match = useRouterMatch("/analytical/:type/:id");
+    // console.log("match", match)
+  }
+  console.log(location.params.type)
 
   const [opt, setOpt] = useState({
     series: [{
@@ -55,7 +58,7 @@ const checkSingleOrAll = () => {
       tooltip: {
         y: {
           formatter: function () {
-            return "$ " + 1 + " thousands"
+            return "$thousands"
           }
         }
       }
@@ -64,7 +67,6 @@ const checkSingleOrAll = () => {
 
   return (
     <div>
-      {JSON.stringify(name)}
       <Chart options={opt.options} series={opt.series} type="bar" height={350} />
     </div>
   );
