@@ -5,8 +5,8 @@ const Analytical = () => {
   return (
     <div>
       <h1>Analytical</h1> 
-      <SingleCompanyGraph/>
       <input className="search-input" placeholder="Search users"/>
+      <SingleCompanyGraph/>
     </div>
   );
 }
