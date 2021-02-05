@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useRouteMatch } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Chart from 'react-apexcharts';
 
 const SingleCompanyGraph = () => {
   
-  const totalActions = useSelector(
-    (redux) => redux.totalActions
-  );
+  const totalActionData = useSelector((store) => store.totalAction);
   const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch({ type: 'FETCH_TOTAL_ACTIONS' });
+  }, []); 
+  
   const [opt, setOpt] = useState({
     series: [{
       name: 'Average company',
-      data: [98, 87, 15, 91, 14, 94]
     }],
     options: {
       chart: {
@@ -35,7 +36,7 @@ const SingleCompanyGraph = () => {
         colors: ['transparent']
       },
       xaxis: {
-        categories: ['Hashtags', 'Documents', 'Insights', 'Notes', 'Projects', "Total"]
+        categories: ['Projects', 'Insights', 'Documents', 'Hashtags', 'Notes', 'Total']
       },
       yaxis: {
         title: {
@@ -48,21 +49,28 @@ const SingleCompanyGraph = () => {
       tooltip: {
         y: {
           formatter: function () {
-            return "$thousands"
+            return "Actions"
           }
         }
       }
-    },
-  }
-  )
-  const location = useRouteMatch();
-  useEffect(() => {
-    dispatch({ type: 'FETCH_TOTAL_ACTIONS' });
-  }, []);
+    }})
 
+    const actions = [
+      totalActionData.projects.count,
+      totalActionData.insights.count,
+      totalActionData.documents.count,
+      totalActionData.hashtags.count,
+      totalActionData.notes.count,
+      (totalActionData.hashtags.count + totalActionData.documents.count + totalActionData.insights.count + totalActionData.notes.count + totalActionData.projects.count)
+    ]
   return (
     <div>
-      <Chart options={opt.options} series={opt.series} type="bar" height={350} />
+      <Chart options={opt.options} series={[
+        { 
+          ...opt.series,
+          data: actions
+        }
+        ]} type="bar" height={350} />
     </div>
   );
 }
