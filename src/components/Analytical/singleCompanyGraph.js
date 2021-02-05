@@ -1,27 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import Chart from 'react-apexcharts';
 
 const SingleCompanyGraph = () => {
-
-  const location = useRouteMatch();
-
-  useEffect(() => {
-    checkSingleOrAll()
-  }, []);
   
-  const checkSingleOrAll = () => { 
-    // let match = useRouterMatch("/analytical/:type/:id");
-    // console.log("match", match)
-  }
-  console.log(location.params.type)
-
+  // const monthlyUsersOverTime = useSelector(
+  //   (redux) => redux.monthlyUsersOverTime
+  // );
+  const dispatch = useDispatch();
   const [opt, setOpt] = useState({
     series: [{
-      name: 'Net Profit',
-      data: [56, 61, 58, 63, 60, 66]
-    }, {
-      name: 'Revenue',
+      name: 'Average company',
       data: [98, 87, 15, 91, 14, 94]
     }],
     options: {
@@ -63,7 +52,9 @@ const SingleCompanyGraph = () => {
         }
       }
     },
-  })
+  }
+  )
+
 
   return (
     <div>
