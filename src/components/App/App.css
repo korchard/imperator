@@ -19,9 +19,52 @@ Container
 }
 
 /* --------------------------------------------------------------------------------
-Button
--------------------------------------------------------------------------------- */
+.flexbox {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  padding: calc(6% + 1.9vmin);
+}
 
+/* .gridbox {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 0.2fr 1fr 1fr;
+  gap: 1rem;
+  grid-template-areas:
+    'header header'
+    'main-left main-right'
+    'footer footer';
+}
+
+.headerArea {
+  grid-area: header;
+}
+
+.barGraph {
+  grid-area: main-left;
+}
+
+.planGraph {
+  grid-area: main-right;
+}
+
+.monthlyGraph {
+  grid-area: footer;
+}
+
+@supports (display: grid) {
+  @media screen and (max-width: 1050px) {
+    .gridbox {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        'header'
+        'main-left'
+        'main-right'
+        'footer';
+    }
+  }
+} */
 .btn {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -118,14 +161,14 @@ Form Treatment
   border-radius: 3px;
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
 }
-
+/* 
 input {
   margin: auto;
   margin-bottom: 20px;
   margin-top: 10px;
   padding: 5px;
   display: block;
-}
+} */
 
 .search-input {
   -webkit-writing-mode: horizontal-tb !important;
