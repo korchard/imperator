@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import Chart from 'react-apexcharts';
 
 const SingleCompanyGraph = () => {
-  
+
+  useEffect(() => {
+    getUsersByMonth();
+  }, []);
+
   const [opt, setOpt] = useState({
     series: [{
       name: 'Net Profit',

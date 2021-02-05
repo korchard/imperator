@@ -70,7 +70,7 @@ const App = () => {
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
-            path='/analytical/:type'
+            path='/analytical/:type/:id'
             component={Analytical}
           />
 

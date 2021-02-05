@@ -182,17 +182,17 @@ db.companies.aggregate([
 //         "zapier": { $or: true },
 //     }
 // ]);
-//gets total actions and separates by type
+// //gets total actions and separates by type
 
-db.companies.find({}, 
-    {
-        "company": 1, 
-        "billing.plan": 1,
-        "activeUntil": 1,
-        "jira": { $exists: true },
-        "zapier": { $exists: true },
-    }
-);
+// db.companies.find({}, 
+//     {
+//         "company": 1, 
+//         "billing.plan": 1,
+//         "activeUntil": 1,
+//         "jira": { $exists: true },
+//         "zapier": { $exists: true },
+//     }
+// );
 
 // table aggregation
 

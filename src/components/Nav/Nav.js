@@ -76,7 +76,7 @@ const Nav = (props) => {
               </Link>
             </div>
             <div>
-              <Link className='nav-link' to='/analytical/all'>
+              <Link className='nav-link' to='/analytical/all/1'>
                 <DiGoogleAnalytics />
                 <span className='icon-btn'>Analytical</span>
               </Link>
