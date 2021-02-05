@@ -9,7 +9,7 @@ const planCount = async (req: Request, res: Response): Promise<void> => {
     ]);
     res.send(data);
   } catch (error) {
-    console.error('Error getting total actions: ', error);
+    console.error('Error getting billing plans: ', error);
   }
 };
 

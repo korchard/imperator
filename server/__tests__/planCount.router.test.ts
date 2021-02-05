@@ -1,9 +1,9 @@
 import app from '../server';
 import testServer from 'supertest';
 
-describe('Test our monthlyUser route', () => {
+describe('Test our planCount route', () => {
 
-  test('/api/userOverTime should return users added monthly', async () => {
+  test('/api/planCount should return billing plan count', async () => {
     // agent helps tie multiple requests to the same server/session
     const agent = testServer.agent(app);
     // Must login first
@@ -15,7 +15,7 @@ describe('Test our monthlyUser route', () => {
     const userResponse = await agent.get('/api/user/');
     expect(userResponse.status).toBe(200);
 
-    const dataResponse = await testServer(app).get('/api/userOverTime');
-    expect(dataResponse.body[0].countDocuments).toEqual(12);
+    const dataResponse = await testServer(app).get('/api/planCount');
+    expect(dataResponse.body).toEqual(4);
   });
 });
