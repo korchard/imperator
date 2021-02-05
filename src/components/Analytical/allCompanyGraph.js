@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Chart from 'react-apexcharts';
 
-const SingleCompanyGraph = () => {
+const AllCompanyGraph = () => {
   
   const totalActionData = useSelector((store) => store.totalAction);
   const dispatch = useDispatch();
@@ -75,7 +75,7 @@ const SingleCompanyGraph = () => {
   );
 }
 
-export default SingleCompanyGraph;
+export default AllCompanyGraph;
 
 
 
