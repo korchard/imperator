@@ -1,7 +1,13 @@
 import React from 'react';
 import { useTable } from 'react-table'
+import Moment from 'react-moment';
 
 const Table = ({data}) => {
+
+    const formatData = (date) => {
+            date = date.split('T');
+            return new Date(Date.parse(date)).toString();
+    }
 
     const columns = React.useMemo(
       () => [
@@ -23,7 +29,17 @@ const Table = ({data}) => {
               {
                 Header: 'Active Until',
                 accessor: 'activeUntil',
+                Cell : (props) => {
+                    const custom_date = formatData(props.value)
+                    return <span>{custom_date}</span>
+                }
               },
+
+            //   <Moment format="MM/DD/YYYY">
+            //   {data.activeUntil}
+            // </Moment>
+
+
             //   {
             //     Header: 'Configurations',
             //     accessor: 'jira',
@@ -54,7 +70,18 @@ const Table = ({data}) => {
         getTableBodyProps,
         headerGroups,
         rows,
-        prepareRow
+        prepareRow,
+        page,
+        canPreviousPage,
+        canNextPage,
+        pageOptions,
+        pageCount,
+        gotoPage,
+        nextPage,
+        previousPage,
+        setPageSize,
+        // Get the state from the instance
+        state: { pageIndex, pageSize },
       } = useTable({
         columns,
         data
