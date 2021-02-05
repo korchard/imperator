@@ -7,7 +7,7 @@ import Table from './Table';
 
 import './Imperator.css';
 
-const Imperator = ({ columns, data}) => {
+const Imperator = () => {
 
   const dispatch = useDispatch();
   const imperator = useSelector((redux) => redux.imperator.imperator);
@@ -33,8 +33,6 @@ const Imperator = ({ columns, data}) => {
     setSearch('');
   }
 
-
-
   return (
     <div className="imperator">
      <h1>Imperator</h1>
@@ -48,43 +46,7 @@ const Imperator = ({ columns, data}) => {
           </button>
         </div>
      <div>
-       {/* <h3>Company Information</h3> */}
        <Table data={imperator}/> 
-       {/* <table > */}
-         {/* <thead>
-           <th>Name</th>
-           <th>Billing Plan</th>
-           <th>Billing Status</th>
-           <th>Active Until</th>
-           <th>Configurations</th>
-           <th>Total Projects</th>
-           <th>Total Notes</th>
-           <th>Total Users</th>
-           <th>Creation Date of Last Project</th>
-         </thead> */}
-         {/* <tbody>
-          {imperator.map(data => {
-            return (
-              <tr key={data.id}>
-                <td>{data.company}</td>
-                <td>{data.plan}</td>
-                <td>{data.status}</td>
-                <td>
-                  <Moment format="MM/DD/YYYY">
-                    {data.activeUntil}
-                  </Moment>
-                </td>
-                <>{configurations(data)}</>
-                <td>working on it</td>
-                <td>don't have it yet</td>
-                <td>working still</td>
-                <td>not yet</td>
-              </tr>
-            )
-          })}
-         </tbody>
-       </table> */}
-
      </div>
     </div>
   );
