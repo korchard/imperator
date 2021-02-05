@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouteMatch } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import Chart from 'react-apexcharts';
 
 const SingleCompanyGraph = () => {
   
+  const totalActions = useSelector(
+    (redux) => redux.totalActions
+  );
+  const dispatch = useDispatch();
   const [opt, setOpt] = useState({
     series: [{
-      name: 'Net Profit',
-      data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-    }, {
-      name: 'Revenue',
-      data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
-    }, {
-      name: 'Free Cash Flow',
-      data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+      name: 'Average company',
+      data: [98, 87, 15, 91, 14, 94]
     }],
     options: {
       chart: {
@@ -35,11 +35,11 @@ const SingleCompanyGraph = () => {
         colors: ['transparent']
       },
       xaxis: {
-        categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+        categories: ['Hashtags', 'Documents', 'Insights', 'Notes', 'Projects', "Total"]
       },
       yaxis: {
         title: {
-          text: '$ (thousands)'
+          text: 'Actions'
         }
       },
       fill: {
@@ -48,12 +48,17 @@ const SingleCompanyGraph = () => {
       tooltip: {
         y: {
           formatter: function () {
-            return "$ " + 1 + " thousands"
+            return "$thousands"
           }
         }
       }
     },
-  })
+  }
+  )
+  const location = useRouteMatch();
+  useEffect(() => {
+    dispatch({ type: 'FETCH_TOTAL_ACTIONS' });
+  }, []);
 
   return (
     <div>
