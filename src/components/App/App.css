@@ -1,5 +1,5 @@
 body {
-  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
   padding: 0px;
   /* margin-left: 250px; */
@@ -76,7 +76,8 @@ Container
   transition: background 0.8s;
 }
 .ripple:hover {
-  background: #076388 radial-gradient(circle, transparent 1%, #076388 1%) center/15000%;
+  background: #076388 radial-gradient(circle, transparent 1%, #076388 1%)
+    center/15000%;
 }
 .ripple:active {
   background-color: #0f5fa1;
@@ -97,7 +98,7 @@ Container
   box-shadow: 0 0 4px #999;
   outline: none;
 } */
-  
+
 .btn {
   background-color: #024058;
   border-radius: 2px;

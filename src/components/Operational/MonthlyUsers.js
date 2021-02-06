@@ -79,7 +79,8 @@ export const MonthlyUsers = () => {
           },
         ]}
         type='area'
-        width='600'
+        width='1000'
+        height='350'
       />
     </div>
   );

@@ -58,7 +58,11 @@ console.log(proPercentage);
           enterprisePercentage,
           trialPercentage
         ]
-        } type='radialBar' width='600'/>
+        } 
+        type='radialBar' 
+        width='600'
+        height='400'
+         />
     </div>
   );
 };
