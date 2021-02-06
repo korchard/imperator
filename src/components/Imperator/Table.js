@@ -27,6 +27,26 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
                             return <span>{custom_date}</span>
                         }
                     },
+                    {
+                        Header: 'Configurations',
+                        accessor: 'configurations',
+                    },
+                    {
+                        Header: 'Total Projects',
+                        accessor: 'projects',
+                    },
+                    {
+                        Header: 'Total Notes',
+                        accessor: 'notes',
+                    },
+                    {
+                        Header: 'Total Users',
+                        accessor: 'userCount',
+                    },
+                    {
+                        Header: 'Last Project Created On',
+                        accessor: 'lastProject',
+                    },
                 ],
             },
         ],
