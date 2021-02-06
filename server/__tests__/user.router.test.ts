@@ -19,11 +19,11 @@ describe('Test our user routes', () => {
     // Must login first
     const loginResponse = await agent
       .post('/api/user/login')
-      .send({ username: 'james', password: process.env.TEST_PASSWORD });
+      .send({ username: process.env.USERNAME, password: process.env.TEST_PASSWORD });
     expect(loginResponse.status).toBe(200);
 
     const userResponse = await agent.get('/api/user/');
     expect(userResponse.status).toBe(200);
-    expect(userResponse.body.username).toBe('james');
+    expect(userResponse.body.username).toBe('korchard');
   });
 });

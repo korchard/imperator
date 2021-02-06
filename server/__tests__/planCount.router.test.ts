@@ -9,13 +9,16 @@ describe('Test our planCount route', () => {
     // Must login first
     const loginResponse = await agent
       .post('/api/user/login')
-      .send({ username: 'korchard', password: process.env.TEST_PASSWORD });
+      .send({ username: process.env.USERNAME, password: process.env.TEST_PASSWORD });
     expect(loginResponse.status).toBe(200);
 
     const userResponse = await agent.get('/api/user/');
     expect(userResponse.status).toBe(200);
 
     const dataResponse = await testServer(app).get('/api/planCount');
-    expect(dataResponse.body).toEqual(4);
+    expect(dataResponse.body[0].count).toBeGreaterThanOrEqual(1);
+    expect(dataResponse.body[1].count).toBeGreaterThanOrEqual(1);
+    expect(dataResponse.body[2].count).toBeGreaterThanOrEqual(1);
+    expect(dataResponse.body[3].count).toBeGreaterThanOrEqual(1);
   });
 });

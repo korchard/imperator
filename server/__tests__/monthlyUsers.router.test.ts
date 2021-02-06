@@ -9,13 +9,13 @@ describe('Test our monthlyUser route', () => {
     // Must login first
     const loginResponse = await agent
       .post('/api/user/login')
-      .send({ username: 'korchard', password: process.env.TEST_PASSWORD });
+      .send({ username: process.env.USERNAME, password: process.env.TEST_PASSWORD });
     expect(loginResponse.status).toBe(200);
 
     const userResponse = await agent.get('/api/user/');
     expect(userResponse.status).toBe(200);
 
     const dataResponse = await testServer(app).get('/api/userOverTime');
-    expect(dataResponse.body[0].countDocuments).toEqual(12);
+		expect(dataResponse.body.length).toEqual(12);
   });
 });
