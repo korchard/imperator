@@ -90,6 +90,7 @@ export const getTotalActions = async (req: Request, res: Response) => {
         },
       },
     ]);
+    console.log(data);
     res.send(data[0]);
   } catch (error) {
     console.error('Error getting total actions: ', error);

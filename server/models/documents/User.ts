@@ -151,34 +151,6 @@ const UserSchema = new Schema<User & Document>(
   .plugin(mongooseLeanDefaults)
   .plugin(mongooseLeanGetters);
 
-/**
- * Pre update hooks
- */
-UserSchema.pre('update', function (next: any) {
-  const modifiedField = this.getUpdate().$set.password;
-  if (!modifiedField) {
-    return next();
-  }
-  try {
-    bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
-      if (err) {
-        return next(err);
-      }
-      // hash the password using the generated salt
-      bcrypt.hash(this.getUpdate().$set.password, salt, (err, hash) => {
-        if (err) {
-          return next(err);
-        }
-        // override the clear-text password with the hashed one
-        this.getUpdate().$set.password = hash;
-        return next();
-      });
-    });
-  } catch (error) {
-    return next(error);
-  }
-});
-
 UserSchema.index({ email: 'text' }); // for searching by email
 
 export const UserDB = model<UserModel & Document>('User', UserSchema);
