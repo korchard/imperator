@@ -18,6 +18,6 @@ describe('Test our monthlyUser route', () => {
     expect(userResponse.status).toBe(200);
 
     const dataResponse = await testServer(app).get('/api/userOverTime');
-    expect(dataResponse.body[0].countDocuments).toEqual(12);
+		expect(dataResponse.body.length).toEqual(12);
   });
 });

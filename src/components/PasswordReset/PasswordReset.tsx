@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import './PasswordReset.css';
 
 interface IEmail {
@@ -9,9 +10,12 @@ interface IEmail {
 const PasswordReset: React.FC = () => {
     const [email, setEmail] = useState<IEmail>({email: ''})
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const reset = () => {
-        console.log('CLicked reset password')
+        console.log('Clicked reset password', email);
+        dispatch({ type: 'RESET_PASSWORD', payload: email });
+        setEmail({email: ''});
     }
 
     const returnToLogin = () => {
@@ -31,8 +35,8 @@ const PasswordReset: React.FC = () => {
                         type='text'
                         name='username'
                         required
-                        // value={user.email}
-                        // onChange={(e) => setEmail({...user, email: e.target.value})}
+                        value={email.email}
+                        onChange={(e) => setEmail({email: e.target.value})}
                     />
                     </label>
                 </div>
