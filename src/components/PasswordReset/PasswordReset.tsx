@@ -15,6 +15,7 @@ const PasswordReset: React.FC = () => {
     const reset = () => {
         console.log('Clicked reset password', email);
         dispatch({ type: 'RESET_PASSWORD', payload: email });
+        setEmail({email: ''});
     }
 
     const returnToLogin = () => {
