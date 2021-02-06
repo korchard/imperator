@@ -10,6 +10,7 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
                     {
                         Header: 'Company Name',
                         accessor: 'company',
+                        className: 'tableHeader'
                     },
                     {
                         Header: 'Billing Plan',
@@ -95,12 +96,13 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
     // Render the UI for your table
     return (
         <>
+    
             <table {...getTableProps()}>
                 <thead>
                     {headerGroups.map((headerGroup) => (
-                        <tr {...headerGroup.getHeaderGroupProps()}>
+                        <tr{...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column) => (
-                                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                                <th {...column.getHeaderProps(column.getSortByToggleProps())} className="tableHeader">
                                     {column.render('Header')}
                                     {/* Add a sort direction indicator */}
                                     <span>
@@ -173,7 +175,7 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
                     ))}
                 </select>
             </div>
-
+            
         </>
     );
 }
