@@ -50,6 +50,7 @@ const Imperator = () => {
   useEffect(() => {
     dispatch({ type: 'FETCH_IMPERATOR' })
     // fetchData();
+
   }, [])
 
   // const configurations = (imperator) => {
@@ -64,8 +65,11 @@ const Imperator = () => {
 
   const searchCo = () => {
     dispatch({ type: 'FETCH_COMPANY_SEARCH', payload: search });
+    console.log('search is', search)
     setSearch('');
   }
+
+  //write a comment
 
 
 
