@@ -6,13 +6,16 @@ import imperatorSearch from '../controllers/imperatorSearch';
 
 const router: express.Router = express.Router();
 
-router.get('/', rejectUnauthenticated, imperator);
+// router.get('/', rejectUnauthenticated, imperator);
 
-router.get('/search/:param', rejectUnauthenticated, imperatorSearch);
+router.get('/search/:query', (req: Request, res: Response) : void => {
+  console.log('hey from imp')
+  res.sendStatus(201);
+});
 
-router.post(
-  '/',
-  (req: Request, res: Response, next: express.NextFunction): void => {}
-);
+// router.post(
+//   '/',
+//   (req: Request, res: Response, next: express.NextFunction): void => {}
+// );
 
 export default router;
