@@ -5,17 +5,18 @@ import './PasswordReset.css';
 
 interface IEmail {
     email: string, 
+    confirmEmail: string
 }
 
 const PasswordReset: React.FC = () => {
-    const [email, setEmail] = useState<IEmail>({email: ''})
+    const [email, setEmail] = useState<IEmail>({email: '', confirmEmail: ''})
     const history = useHistory();
     const dispatch = useDispatch();
 
     const reset = () => {
         console.log('Clicked reset password', email);
         dispatch({ type: 'RESET_PASSWORD', payload: email });
-        setEmail({email: ''});
+        setEmail({email: '', confirmEmail: ''});
     }
 
     const returnToLogin = () => {
@@ -36,7 +37,20 @@ const PasswordReset: React.FC = () => {
                         name='username'
                         required
                         value={email.email}
-                        onChange={(e) => setEmail({email: e.target.value})}
+                        onChange={(e) => setEmail({...email, email: e.target.value})}
+                    />
+                    </label>
+                </div>
+                <div>
+                    <label htmlFor='email'>
+                    Confirm Email:
+                    <input
+                        className="loginForm"
+                        type='text'
+                        name='username'
+                        required
+                        value={email.confirmEmail}
+                        onChange={(e) => setEmail({...email, confirmEmail: e.target.value})}
                     />
                     </label>
                 </div>

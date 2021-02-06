@@ -10,6 +10,7 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
                     {
                         Header: 'Company Name',
                         accessor: 'company',
+                        className: 'tableHeader'
                     },
                     {
                         Header: 'Billing Plan',
@@ -26,6 +27,26 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
                             const custom_date = formatData(props.value)
                             return <span>{custom_date}</span>
                         }
+                    },
+                    {
+                        Header: 'Configurations',
+                        accessor: 'configurations',
+                    },
+                    {
+                        Header: 'Total Projects',
+                        accessor: 'projects',
+                    },
+                    {
+                        Header: 'Total Notes',
+                        accessor: 'notes',
+                    },
+                    {
+                        Header: 'Total Users',
+                        accessor: 'userCount',
+                    },
+                    {
+                        Header: 'Last Project Created On',
+                        accessor: 'lastProject',
                     },
                 ],
             },
@@ -75,12 +96,13 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
     // Render the UI for your table
     return (
         <>
+    
             <table {...getTableProps()}>
                 <thead>
                     {headerGroups.map((headerGroup) => (
-                        <tr {...headerGroup.getHeaderGroupProps()}>
+                        <tr{...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column) => (
-                                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                                <th {...column.getHeaderProps(column.getSortByToggleProps())} className="tableHeader">
                                     {column.render('Header')}
                                     {/* Add a sort direction indicator */}
                                     <span>
@@ -153,7 +175,7 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
                     ))}
                 </select>
             </div>
-
+            
         </>
     );
 }
