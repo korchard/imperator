@@ -170,10 +170,10 @@ Alert
   box-sizing: border-box;
   padding: 15px 10px;
   margin: 15px 0;
-  border: 2px solid #e01616;
+  border: 2px solid rgb(238, 95, 27);
   background-color: #efefef;
   border-radius: 3px;
-  color: #e01616;
+  color: rgb(238, 95, 27);
   font-size: 0.8rem;
 }
 
