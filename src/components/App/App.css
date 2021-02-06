@@ -2,7 +2,7 @@ body {
   font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
   padding: 0px;
-  margin-left: 250px;
+  /* margin-left: 250px; */
 }
 
 img {
@@ -65,39 +65,41 @@ Container
     }
   }
 } */
-.btn {
+.btnRip {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+/* Ripple effect */
+.ripple {
+  background-position: center;
+  transition: background 0.8s;
+}
+.ripple:hover {
+  background: #076388 radial-gradient(circle, transparent 1%, #076388 1%)
+    center/15000%;
+}
+.ripple:active {
+  background-color: #0f5fa1;
+  background-size: 100%;
+  transition: background 0s;
+}
 
-  /* Ripple effect */
-  .ripple {
-    background-position: center;
-    transition: background 0.8s;
-  }
-  .ripple:hover {
-    background: #076388 radial-gradient(circle, transparent 1%, #076388 1%)
-      center/15000%;
-  }
-  .ripple:active {
-    background-color: #0f5fa1;
-    background-size: 100%;
-    transition: background 0s;
-  }
+/* Button style */
+/* button {
+  border: none;
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: white;
+  background-color: #024058;
+  box-shadow: 0 0 4px #999;
+  outline: none;
+} */
 
-  /* Button style */
-  button {
-    border: none;
-    border-radius: 8px;
-    padding: 12px 18px;
-    font-size: 16px;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: white;
-    background-color: #024058;
-    box-shadow: 0 0 4px #999;
-    outline: none;
-  }
+.btn {
   background-color: #024058;
   border-radius: 2px;
   border: 1px solid #003145;
@@ -169,10 +171,10 @@ Alert
   box-sizing: border-box;
   padding: 15px 10px;
   margin: 15px 0;
-  border: 2px solid #e01616;
+  border: 2px solid rgb(238, 95, 27);
   background-color: #efefef;
   border-radius: 3px;
-  color: #e01616;
+  color: rgb(238, 95, 27);
   font-size: 0.8rem;
 }
 
@@ -190,14 +192,14 @@ Form Treatment
   border-radius: 3px;
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
 }
-/* 
-input {
+
+.loginForm {
   margin: auto;
   margin-bottom: 20px;
   margin-top: 10px;
   padding: 5px;
   display: block;
-} */
+}
 
 .search-input {
   -webkit-writing-mode: horizontal-tb !important;

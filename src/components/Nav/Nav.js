@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import './Nav.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-//  login/out
-import { FaRegUserCircle } from 'react-icons/fa';
+//  login
+import { AiOutlineLogin } from 'react-icons/ai';
 // operational
 import { BsFillGearFill } from 'react-icons/bs';
 // anyitcal
@@ -51,7 +51,8 @@ const Nav = (props) => {
       <div className='nav-right'>
         {user._id ? null : (
           <Link className='nav-link' to={loginLinkData.path}>
-            {loginLinkData.text}
+            <AiOutlineLogin />
+            <span className='icon-btn'>{loginLinkData.text}</span>
           </Link>
         )}
         {/* Show the link to the info page and the logout button if the user is logged in */}

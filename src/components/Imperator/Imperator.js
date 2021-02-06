@@ -98,7 +98,7 @@ const Imperator = () => {
     
      <div>
 
-       <Table data={imperator} fetchData={fetchData} loading={loading} pageCount={pageCount}/> 
+       <Table data={imperator} fetchData={fetchData} loading={loading} pageCount={pageCount}   className="table" /> 
       </div>
 
     
