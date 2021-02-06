@@ -5,7 +5,6 @@ const imperator = async (
     req: Request,
     res: Response
   ): Promise<void> => {
-    console.log('getting data for the table');
     try { // this needs to be an AGGREGATION, not a FIND
         const data = await CompanyDB.aggregate([
             {
@@ -25,7 +24,6 @@ const imperator = async (
                }
         ]);
         res.send(data)
-        console.log('imperator controller', data)
     } catch (error) {
       console.error('Error getting imperator data:', error);
     }
