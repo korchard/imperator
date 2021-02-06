@@ -4,6 +4,7 @@ import { AiOutlineLogout } from 'react-icons/ai';
 
 type Props = {
   className?: string | undefined;
+  id?: string | undefined;
 };
 
 const LogOutButton: React.FC<Props> = () => {
