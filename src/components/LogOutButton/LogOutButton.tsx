@@ -2,7 +2,12 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { AiOutlineLogout } from 'react-icons/ai';
 
-const LogOutButton: React.FC = () => {
+type Props = {
+  className?: string | undefined;
+  id?: string | undefined;
+};
+
+const LogOutButton: React.FC<Props> = () => {
   const dispatch = useDispatch();
   return (
       <button className='nav-link' id='logoutBtn' 
