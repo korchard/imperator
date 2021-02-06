@@ -15,9 +15,9 @@ describe('Test our data routes', () => {
     expect(userResponse.status).toBe(200);
 
     const dataResponse = await testServer(app).get('/api/data/totalactions');
-    expect(dataResponse.body[0].hashtags.count).toBeGreaterThanOrEqual(1);
-    expect(dataResponse.body[0].insights.count).toBeGreaterThanOrEqual(1);
-    expect(dataResponse.body[0].notes.count).toBeGreaterThanOrEqual(1);
-    expect(dataResponse.body[0].projects.count).toBeGreaterThanOrEqual(1);
+    expect(dataResponse.body.hashtags.count).toBeGreaterThanOrEqual(1);
+    expect(dataResponse.body.insights.count).toBeGreaterThanOrEqual(1);
+    expect(dataResponse.body.notes.count).toBeGreaterThanOrEqual(1);
+    expect(dataResponse.body.projects.count).toBeGreaterThanOrEqual(1);
   });
 });

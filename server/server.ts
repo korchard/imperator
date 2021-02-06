@@ -25,13 +25,9 @@ mongoose.connect(
   }
 );
 
-const db = mongoose.connection;
-
 const app = express();
 
 // Body parser middleware
-// app.use(express.json());
-// app.use(express.urlencoded());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
