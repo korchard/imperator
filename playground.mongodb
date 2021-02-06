@@ -8,6 +8,121 @@ use('aurelius');
 
 // db.users.find({})
 
+db.companies.aggregate([
+  {
+    $search: {
+      "text": {
+        "query": "AQUOAVO",
+        "path": "company"
+      }
+    }
+  }
+    ,{
+          $lookup: {
+        from: 'users',
+        localField: 'company',
+        foreignField: 'company',
+        as: 'users_data'
+        },
+    },
+   {
+        $lookup: {
+          from: 'hashtags',
+          pipeline: [
+            {
+              $group: {
+                _id: 0,
+                count: { $sum: 1 },
+              },
+            },
+          ],
+          as: 'hashtags',
+        },
+      },
+             {
+        $lookup: {
+          from: 'documents',
+          pipeline: [
+            {
+              $group: {
+                _id: 0,
+                count: { $sum: 1 },
+              },
+            },
+          ],
+          as: 'documents',
+        },
+      },
+      {
+        $lookup: {
+          from: 'insights',
+          pipeline: [
+            {
+              $group: {
+                _id: 0,
+                count: { $sum: 1 },
+              },
+            },
+          ],
+          as: 'insights',
+        },
+      },
+      {
+        $lookup: {
+          from: 'notes',
+          pipeline: [
+            {
+              $group: {
+                _id: 0,
+                count: { $sum: 1 },
+              },
+            },
+          ],
+          as: 'notes',
+        },
+      },
+      {
+        $lookup: {
+          from: 'projects',
+          pipeline: [
+            {
+              $group: {
+                _id: 0,
+                count: { $sum: 1 },
+              },
+            },
+          ],
+          as: 'projects',
+        },
+      },
+      { $unwind: { path: '$hashtags' }},
+      { $unwind: { path: '$documents'}},
+      { $unwind: { path: '$insights' }},
+      { $unwind: { path: '$notes' }},
+      { $unwind: { path: '$projects' }},     
+
+    {$unwind: {path: "$users_data"}},
+    {
+    $project: {
+      _id: 0, 
+      email: 1, 
+      company: 1, 
+      "users_data.firstname": 1, 
+      "users_data.lastname": 1, 
+      "users_data.email": 1, 
+      "billing.status": 1,
+      "billing.plan": 1,
+      "activeUntil": 1,
+      "jira": 1,
+      "zapier": 1,
+      "hashtags.count": 1,
+      "documents.count": 1,
+      "insights.count": 1, 
+      "notes.count": 1, 
+      "prjects.count": 1,
+    }},
+]);
+
 
 // db.users.find({
 //         timestamp: { 
@@ -265,30 +380,30 @@ use('aurelius');
 
 // billing status, active until, config
 
-db.users.aggregate([
-    {$match: {
-      company: "AQUOAVO"
-      }},
-    {
-      $lookup: {
-        from: 'companies',
-        localField: 'company',
-        foreignField: 'company',
-        as: 'company_data'
-        },
-    },
-    {$unwind: {path: "$company_data"}},
-    {
-    $project: {
-      _id: 0, 
-      email: 1, 
-      firstname: 1, 
-      lastname: 1, 
-      "company_data.billing.status": 1,
-      "company_data.billing.plan": 1,
-      "company_data.activeUntil": 1,
-      "company_data.jira": 1,
-      "company_data.zapier": 1,
+// db.users.aggregate([
+//     {$match: {
+//       company: "AQUOAVO"
+//       }},
+//     {
+//       $lookup: {
+//         from: 'companies',
+//         localField: 'company',
+//         foreignField: 'company',
+//         as: 'company_data'
+//         },
+//     },
+//     {$unwind: {path: "$company_data"}},
+//     {
+//     $project: {
+//       _id: 0, 
+//       email: 1, 
+//       firstname: 1, 
+//       lastname: 1, 
+//       "company_data.billing.status": 1,
+//       "company_data.billing.plan": 1,
+//       "company_data.activeUntil": 1,
+//       "company_data.jira": 1,
+//       "company_data.zapier": 1,
 
-    }},
-]);
+//     }},
+// ]);

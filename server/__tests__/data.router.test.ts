@@ -8,7 +8,7 @@ describe('Test our data routes', () => {
     // Must login first
     const loginResponse = await agent
       .post('/api/user/login')
-      .send({ username: 'james', password: process.env.TEST_PASSWORD });
+      .send({ username: process.env.TEST_USER, password: process.env.TEST_PASSWORD });
     expect(loginResponse.status).toBe(200);
 
     const userResponse = await agent.get('/api/user/');
