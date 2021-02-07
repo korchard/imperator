@@ -18,9 +18,9 @@ describe('Test our planCount route', () => {
     expect(userResponse.status).toBe(200);
 
     const dataResponse = await testServer(app).get('/api/planCount');
-    expect(dataResponse.body[0].count).toBeGreaterThanOrEqual(1);
-    expect(dataResponse.body[1].count).toBeGreaterThanOrEqual(1);
-    expect(dataResponse.body[2].count).toBeGreaterThanOrEqual(1);
-    expect(dataResponse.body[3].count).toBeGreaterThanOrEqual(1);
+    dataResponse.body._id === 'Enterprise' && (expect(dataResponse.body._id.count).toBeGreaterThanOrEqual(1));
+    dataResponse.body._id === 'Premium' && (expect(dataResponse.body._id.count).toBeGreaterThanOrEqual(1));
+    dataResponse.body._id === 'Trial' && (expect(dataResponse.body._id.count).toBeGreaterThanOrEqual(1));
+    dataResponse.body._id === 'Pro' && (expect(dataResponse.body._id.count).toBeGreaterThanOrEqual(1));
   });
 });
