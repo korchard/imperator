@@ -4,15 +4,13 @@
   height: 100%;
   background-color: rgb(11, 53, 77);
   position: absolute;
-  background: 
-    /*a triangle shape offested by 50px from the top taking 25% of the height*/ linear-gradient(
+  background: linear-gradient(
         to bottom right,
         transparent 49.8%,
         rgb(87, 190, 202) 50%
       )
       0 250px/100% 25%,
-    /*fill the remaining (75% - 50px) with solid color*/
-      linear-gradient(rgb(87, 190, 202), rgb(11, 53, 77)) bottom/100%
+    linear-gradient(rgb(87, 190, 202), rgb(11, 53, 77)) bottom/100%
       calc(75% - 250px);
   background-repeat: no-repeat;
   z-index: -1;
