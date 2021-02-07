@@ -102,7 +102,7 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
                     {headerGroups.map((headerGroup) => (
                         <tr{...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column) => (
-                                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                                <th {...column.getHeaderProps(column.getSortByToggleProps())} className="tableHead">
                                     {column.render('Header') }
                                     {/* Add a sort direction indicator */}
                                     <span className="sortArrow">
