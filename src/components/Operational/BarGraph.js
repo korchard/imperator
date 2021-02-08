@@ -32,7 +32,7 @@ const BarGraph = () => {
         offsetY: -15,
         style: {
           fontSize: '12px',
-          colors: ['#000'],
+          colors: ['rgb(33, 44, 46)'],
         },
       },
       series: [],
@@ -72,7 +72,7 @@ const BarGraph = () => {
         offsetY: 330,
         align: 'center',
         style: {
-          color: '#000',
+          color: 'rgb(33, 44, 46)',
         },
       },
     },
