@@ -6,7 +6,6 @@ describe('Test our passwordReset route', () => {
         // agent helps tie multiple requests to the same server/session
         const agent = testServer.agent(app);
     
-        // Must login first
         const resetResponse = await agent
           .post('/api/reset')
           .send({
