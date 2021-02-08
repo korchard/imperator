@@ -6,7 +6,7 @@ import './PasswordReset.css';
 
 interface IEmail {
     email: string, 
-    confirmEmail: string
+    confirm: string
 }
 
 interface SwalOptions {
@@ -16,15 +16,15 @@ interface SwalOptions {
 }
 
 const PasswordReset: React.FC<SwalOptions> = () => {
-    const [email, setEmail] = useState<IEmail>({email: '', confirmEmail: ''})
+    const [email, setEmail] = useState<IEmail>({email: '', confirm: ''})
     const history = useHistory();
     const dispatch = useDispatch();
 
     const reset = () => {
         console.log('Clicked reset password', email);
-        if(email.email === email.confirmEmail) {
+        if(email.email === email.confirm) {
             dispatch({ type: 'RESET_PASSWORD', payload: email });
-            setEmail({email: '', confirmEmail: ''});
+            setEmail({email: '', confirm: ''});
             swal({
                 title: "Thank you!",
                 text: "You will receive an email to reset your password.",
@@ -67,10 +67,10 @@ const PasswordReset: React.FC<SwalOptions> = () => {
                     <input
                         className="loginForm"
                         type='text'
-                        name='username'
+                        name='confirm'
                         required
-                        value={email.confirmEmail}
-                        onChange={(e) => setEmail({...email, confirmEmail: e.target.value})}
+                        value={email.confirm}
+                        onChange={(e) => setEmail({...email, confirm: e.target.value})}
                     />
                     </label>
                 </div>

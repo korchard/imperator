@@ -11,6 +11,7 @@ router.post(
     
     axios.post(`https://api.qa.aureliuslab.com/v1/resetpassword/`, req.body)
     .then(response => {
+        console.log('Successful password reset', response);
         res.sendStatus(200);
       }).catch(error => {
         console.log('Error requesting password reset server-side', error);
