@@ -6,13 +6,21 @@ const CompanyInfo = () => {
   const location = useRouteMatch();
   const companyInfo = useSelector((store) => store.singleCompanyData);
   const dispatch = useDispatch();
+
+  // let subStart = new Date(34535645 * 1000);
+  // console.log('Sub start', subStart)
   
 
 console.log('CompanyInfo', companyInfo)
   return (
     <div>
-        <h1>AYE COMPANY INFO</h1>
-        <div>{companyInfo.name}</div>
+        <div className='companyInfoHeader'>
+          <div>Company: {companyInfo.company}</div>
+        </div>
+        <div className='planInfo'>
+          <div>Plan: {companyInfo.billing?.plan}</div>
+          <div>Status: {companyInfo.billing?.status}</div>
+        </div>
     </div>
   );
 }

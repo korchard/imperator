@@ -32,6 +32,7 @@ export const singleCompany = async (
           "billing.customerId": 1,
           "billing.plan": 1,
           "billing.trialStart": 1,
+          "billing.trialEnd": 1,
           "activeUntil": 1,
           "jira": 1,
           "zapier": 1,
@@ -41,7 +42,7 @@ export const singleCompany = async (
           "notes total": {$size: "$notes"},
           "insights total": {$size: "$insights"},
           "collections total": {$size: "$collections"},
-          "recommandations total": {$size: "$recommendations"}
+          "recommendations total": {$size: "$recommendations"}
         }},
     ]);
     res.send(data[0]);
