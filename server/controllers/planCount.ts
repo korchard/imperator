@@ -7,7 +7,6 @@ const planCount = async (req: Request, res: Response): Promise<void> => {
       { $unwind: '$billing.plan' },
       { $sortByCount: '$billing.plan' },
     ]);
-    console.log('plan', data);
     res.send(data);
   } catch (error) {
     console.error('Error getting billing plans: ', error);
