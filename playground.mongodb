@@ -486,35 +486,35 @@ db.companies.countDocuments({
 //     },
 //     {$unwind: {path: "$users_data"}},
 
-SINGLE ANALYTICAL COMPANY SEARCH 
-db.companies.aggregate([
-  // AQUOAVO _id: 6018596184af92843a7bb1c0
-  {
-    $search: {
-      "text": {
-        "query": "LEXICONDO",
-        "path": "company" //local field to look for the query input
-      }
-    }
-  },
-    {
-    $project: {
-      "_id": 0, 
-      "company": 1, 
-      "billing.status": 1,
-      "billing.customerId": 1,
-      "billing.plan": 1,
-      "billing.trialStart": 1,
-      "activeUntil": 1,
-      "jira": 1,
-      "zapier": 1,
-      "hashtags total": {$size: "$hashtags"},
-      "documents total": {$size: "$documents"},
-      "projects total": {$size: "$projects"},
-      "notes total": {$size: "$notes"},
-      "insights total": {$size: "$insights"},
-      "collections total": {$size: "$collections"},
-      "recommandations total": {$size: "$recommendations"}
-    }},
-]);
+// SINGLE ANALYTICAL COMPANY SEARCH 
+// db.companies.aggregate([
+//   // AQUOAVO _id: 6018596184af92843a7bb1c0
+//   {
+//     $search: {
+//       "text": {
+//         "query": "LEXICONDO",
+//         "path": "company" //local field to look for the query input
+//       }
+//     }
+//   },
+//     {
+//     $project: {
+//       "_id": 0, 
+//       "company": 1, 
+//       "billing.status": 1,
+//       "billing.customerId": 1,
+//       "billing.plan": 1,
+//       "billing.trialStart": 1,
+//       "activeUntil": 1,
+//       "jira": 1,
+//       "zapier": 1,
+//       "hashtags total": {$size: "$hashtags"},
+//       "documents total": {$size: "$documents"},
+//       "projects total": {$size: "$projects"},
+//       "notes total": {$size: "$notes"},
+//       "insights total": {$size: "$insights"},
+//       "collections total": {$size: "$collections"},
+//       "recommandations total": {$size: "$recommendations"}
+//     }},
+// ]);
 

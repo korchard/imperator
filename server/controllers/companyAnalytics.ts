@@ -11,7 +11,7 @@ export const singleCompany = async (
       {
         $search: {
           "text": {
-            "query": "6018596184af92843a7bb1c0",
+            "query": "60217059f06094f3a79b33e6",
             "path": "_id" //local field to look for the query input
           }
         }
@@ -45,6 +45,7 @@ export const singleCompany = async (
         }},
     ]);
     res.send(data[0]);
+    console.log(data)
   } catch (error) {
     console.error('Error getting total actions: ', error);
   }
@@ -139,13 +140,7 @@ export const allCompany = async ( req: Request, res: Response ): Promise<void> =
         },
       },
     ]);
-    res.send([
-      (data[0].hashtags.count)/(data[0].Total_Companies),
-      (data[0].documents.count)/(data[0].Total_Companies),
-      (data[0].insights.count)/(data[0].Total_Companies),
-      (data[0].notes.count)/(data[0].Total_Companies),
-    ]);
-    console.log(data[0]);
+    res.send(data[0]);
   } catch (error) {
     console.error('Error getting total actions: ', error);
   }

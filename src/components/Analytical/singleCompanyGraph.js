@@ -70,6 +70,7 @@ const SingleCompanyGraph = () => {
       (totalActionData.hashtags.count + totalActionData.documents.count + totalActionData.insights.count + totalActionData.notes.count + totalActionData.projects.count)
     ] 
     const singleCompanyActions = [
+      singleCompanyData.Total_Companies,
       singleCompanyData.projectsTotal,
       singleCompanyData.insightsTotal,
       singleCompanyData.documentsTotal,
@@ -80,7 +81,7 @@ const SingleCompanyGraph = () => {
 
   return (
     <div>
-      {JSON.stringify(singleCompanyData)}
+      {/* {JSON.stringify(singleCompanyData)} */}
       {JSON.stringify(singleCompanyActions)}
       <Chart options={opt.options} series={[
         {
