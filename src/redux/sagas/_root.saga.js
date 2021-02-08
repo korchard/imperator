@@ -23,7 +23,7 @@ export default function* rootSaga() {
     operationalSaga(), 
     imperatorSaga(),
     singleCompanySaga(),
-    passwordResetSaga()
-    // strategicSaga(),
+    passwordResetSaga(),
+    strategicSaga(),
   ]);
 }
