@@ -18,6 +18,7 @@
 
 .headerArea {
   grid-area: header;
+  color: rgb(33, 44, 46);
 }
 
 .barGraph {
