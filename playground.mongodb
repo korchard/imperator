@@ -4,36 +4,30 @@
 // Use Ctrl+Space inside a snippet or a string literal to trigger completions.
 
 // Select the database to use.
-use('aurelius');
+// use('aurelius');
 
-// db.users.find({})
+
+
 
 // db.companies.aggregate([
-//   {
-//     $search: {
-//       "text": {
-//         "query": "AQUOAVO",
-//         "path": "company" //local field to look for the query input
-//       }
-//     }
-//   },{
-//         $lookup: { //join table users
-//         from: 'users',
-//         localField: 'company', //is the field from companies
-//         foreignField: 'company', //field from users
-//         as: 'users_data' //name that hold results 
-//         }
-//     },
-//     {$unwind: {path: "$users_data"}},
-//     {$unwind: {path: "$company"}},
+//   //  {
+//   //       $lookup: { //join table users
+//   //       from: 'users',
+//   //       localField: 'company', //is the field from companies
+//   //       foreignField: 'company', //field from users
+//   //       as: 'users_data' //name that hold results 
+//   //       }
+//   //   },
+//     // {$unwind: {path: "$users_data"}},
+//     // {$unwind: {path: "$company"}},
 //     {
 //     $project: {
 //       "_id": 0, 
 //       "email": 1, 
 //       "company": 1, 
-//       "users_data.firstname": 1, 
-//       "users_data.lastname": 1, 
-//       "users_data.email": 1, 
+//       // "users_data.firstname": 1, 
+//       // "users_data.lastname": 1, 
+//       // "users_data.email": 1, 
 //       "billing.status": 1,
 //       "billing.customerId": 1,
 //       "billing.plan": 1,
@@ -84,6 +78,11 @@ use('aurelius');
 // // });
 // db.companies.countDocuments({
 // });
+<<<<<<< HEAD
+=======
+// db.companies.countDocuments({
+// });
+>>>>>>> main
 
 
 // db.companies.find({
@@ -492,7 +491,11 @@ use('aurelius');
 //   {
 //     $search: {
 //       "text": {
+<<<<<<< HEAD
 //         "query": "AQUOAVO",
+=======
+//         "query": "LEXICONDO",
+>>>>>>> main
 //         "path": "company" //local field to look for the query input
 //       }
 //     }
@@ -518,6 +521,7 @@ use('aurelius');
 //     }},
 // ]);
 
+<<<<<<< HEAD
 db.companies.aggregate([
   // AQUOAVO _id: 6018596184af92843a7bb1c0
   {
@@ -545,3 +549,5 @@ db.companies.aggregate([
       "recommandations total": {$size: "$recommendations"}
     }},
 ]);
+=======
+>>>>>>> main
