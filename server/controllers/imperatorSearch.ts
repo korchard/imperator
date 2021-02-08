@@ -8,10 +8,14 @@ const imperatorSearch = async (req: Request, res: Response): Promise<void> => {
     const data = await CompanyDB.aggregate([
       // AQUOAVO _id: 6018596184af92843a7bb1c0
       {
-        $search: {
+        $search: { 
           "text": {
             "query": `${req.params.query}`,
-            "path": "company" //local field to look for the query input
+            "path": "company", //local field to look for the query input
+            "fuzzy": {
+              "maxEdits": 2, 
+              "prefixLength": 3,
+            },
           }
         }
       },

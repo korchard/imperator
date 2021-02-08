@@ -77,7 +77,9 @@ const Imperator = () => {
     <div className="imperator">
       <h1>Imperator</h1>
       <div className="search-imperator">
-        <input className="search-input" placeholder="Search" value={search}
+        <input className="search-input"
+          placeholder="Search Company Name"
+          value={search}
           onChange={(e) => setSearch(e.target.value)} />
         <button className='btnI' type='submit'
           name='submit' value='Find'
@@ -90,9 +92,9 @@ const Imperator = () => {
           Clear
         </button>
       </div>
+      <h3>Company Info</h3>
+      <Table data={imperator} fetchData={fetchData} loading={loading} pageCount={pageCount} />
 
-       <Table data={imperator} fetchData={fetchData} loading={loading} pageCount={pageCount}/> 
-  
     </div>
   );
 }

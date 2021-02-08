@@ -145,7 +145,10 @@ only screen and (max-width: 760px),
   td:nth-of-type(9):before { content: "Total Insights"; }
   td:nth-of-type(10):before { content: "Total Hashtags"; }
   td:nth-of-type(11):before { content: "Total Collections"; }
-	/* td:nth-of-type(12):before { content: "Total Users"; }
-	td:nth-of-type(13):before { content: "Last Project Created On"; } */
+  td:nth-of-type(12):before { content: "Total Users"; }
+  
+}
 
+.tableTitle {
+  background-color: orange;
 }
