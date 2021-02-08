@@ -85,8 +85,13 @@ db.companies.aggregate([
 // });
 
 
+// db.companies.find({
+// "_id": "6018596184af92843a7bb1c0"
+// });
 
-// db.companies.aggregate(
+
+
+// db.companies.aggregate({}
 // [
 //     {
 //         $match: {
@@ -113,13 +118,13 @@ db.companies.aggregate([
 // }]);
 
 // db.users.countDocuments({})
-//total user count
+// total user count
 // db.companies.find({}, {"billing.plan": true})
 
 // db.companies.aggregate([
 //     {$unwind: "$billing.plan"}, {$sortByCount: "$billing.plan"}
 // ])
-//total billing plan by types 
+// total billing plan by types 
 
 
 // db.companies.aggregate([
@@ -141,7 +146,7 @@ db.companies.aggregate([
         
 // ]).pretty()
 
-//ability to get total insights from a project linked to a company
+// ability to get total insights from a project linked to a company
 
 // db.companies.aggregate([
 //     {$count: 'Total_Companies'}, 
