@@ -8,8 +8,8 @@ router.post(
   '/',
   (req: Request, res: Response, next: express.NextFunction): void => {
     console.log('email', req.body);
-    const email = req.body.email;
-    axios.post(`https://api.qa.aureliuslab.com/v1/resetpassword`)
+    
+    axios.post(`https://api.qa.aureliuslab.com/v1/resetpassword`, req.body)
     .then(response => {
         res.sendStatus(200);
       }).catch(error => {
