@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { takeEvery } from 'redux-saga/effects';
 
-// POST ROUTE - to reset password via nodemailer
-function* resetPassword (action) {
+// POST ROUTE - to reset password 
+function* resetPassword(action) {
     try {
       yield axios.post('api/reset', action.payload);
     } catch (error) {
