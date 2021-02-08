@@ -69,26 +69,27 @@ const SingleCompanyGraph = () => {
       totalActionData.notes.count,
       (totalActionData.hashtags.count + totalActionData.documents.count + totalActionData.insights.count + totalActionData.notes.count + totalActionData.projects.count)
     ] 
-    // const singleCompanyActions = [
-    //   singleCompanyData.projects.count,
-    //   singleCompanyData.insights.count,
-    //   singleCompanyData.documents.count,
-    //   singleCompanyData.hashtags.count,
-    //   singleCompanyData.notes.count,
-    //   (singleCompanyData.hashtags.count + singleCompanyData.documents.count + singleCompanyData.insights.count + singleCompanyData.notes.count + singleCompanyData.projects.count)
-    // ] 
+    const singleCompanyActions = [
+      singleCompanyData.projectsTotal,
+      singleCompanyData.insightsTotal,
+      singleCompanyData.documentsTotal,
+      singleCompanyData.hashtagsTotal,
+      singleCompanyData.notesTotal,
+      (singleCompanyData.hashtagsTotal + singleCompanyData.documentsTotal + singleCompanyData.insightsTotal + singleCompanyData.notesTotal + singleCompanyData.projectsTotal)
+    ] 
 
   return (
     <div>
       {JSON.stringify(singleCompanyData)}
+      {JSON.stringify(singleCompanyActions)}
       <Chart options={opt.options} series={[
         {
           name: 'Average company',
           data: allCompanyActions
         },
         { 
-          // name: singleCompanyActions.company
-          // data: singleCompanyActions
+          name: singleCompanyActions.company,
+          data: singleCompanyActions
         }
       ]} type="bar" height={350} />
     </div>
