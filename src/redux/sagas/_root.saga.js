@@ -5,6 +5,7 @@ import userSaga from './user.saga';
 import operationalSaga from './operational.saga';
 import imperatorSaga from './imperator.saga';
 import passwordResetSaga from './passwordReset.saga';
+import strategicSaga from './strategic.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,5 +22,6 @@ export default function* rootSaga() {
     operationalSaga(), 
     imperatorSaga(),
     passwordResetSaga(),
+    strategicSaga(),
   ]);
 }
