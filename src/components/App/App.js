@@ -17,7 +17,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import Operational from '../Operational/Operational.js';
 import Analytical from '../Analytical/Analytical.js';
 import Imperator from '../Imperator/Imperator.js';
-import Strategic from '../Strategic/Strategic.tsx';
+import Strategic from '../Strategic/Strategic.js';
 import PasswordReset from '../PasswordReset/PasswordReset.tsx';
 
 import './App.css';
@@ -101,7 +101,7 @@ const App = () => {
           {/* If none of the other routes matched, we will show a 404. */}
           <Route render={() => <h1>404</h1>} />
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </Router>
   );
