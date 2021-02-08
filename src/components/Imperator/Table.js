@@ -66,6 +66,10 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
                         accessor: 'collections total',
                     },
                     {
+                        Header: 'Total Documents',
+                        accessor: 'documents total',
+                    },
+                    {
                         Header: 'Total Users',
                         accessor: 'total users',
                     },
@@ -78,7 +82,6 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
         ],
         []
     )
-
 
 
     const {

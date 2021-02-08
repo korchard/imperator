@@ -12,6 +12,7 @@ function Strategic() {
   return (
     <div>
       <h1>Strategic</h1>
+      
     </div>
   );
 }
