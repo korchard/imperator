@@ -11,8 +11,8 @@ export const singleCompany = async (
       {
         $search: {
           "text": {
-            "query": "AQUOAVO",
-            "path": "company" //local field to look for the query input
+            "query": "6018596184af92843a7bb1c0",
+            "path": "_id" //local field to look for the query input
           }
         }
       },{
@@ -23,8 +23,6 @@ export const singleCompany = async (
             as: 'users_data' //name that hold results 
             }
         },
-        {$unwind: {path: "$users_data"}},
-        {$unwind: {path: "$company"}},
         {
         $project: {
           "_id": 0, 
@@ -46,6 +44,7 @@ export const singleCompany = async (
           "recommandations total": {$size: "$recommendations"}
         }},
     ]);
+    console.log(data);
     res.send(data);
   } catch (error) {
     console.error('Error getting total actions: ', error);

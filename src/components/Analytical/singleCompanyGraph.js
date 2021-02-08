@@ -6,6 +6,7 @@ import Chart from 'react-apexcharts';
 const SingleCompanyGraph = () => {
   const location = useRouteMatch();
   const totalActionData = useSelector((store) => store.totalAction);
+  const singleCompanyData = useSelector((store) => store.singleCompanyData);
   const dispatch = useDispatch();
   
   useEffect(() => {
@@ -68,8 +69,14 @@ const SingleCompanyGraph = () => {
       totalActionData.notes.count,
       (totalActionData.hashtags.count + totalActionData.documents.count + totalActionData.insights.count + totalActionData.notes.count + totalActionData.projects.count)
     ] 
-
-    // const singleCompanyActions; 
+    // const singleCompanyActions = [
+    //   singleCompanyData.projects.count,
+    //   singleCompanyData.insights.count,
+    //   singleCompanyData.documents.count,
+    //   singleCompanyData.hashtags.count,
+    //   singleCompanyData.notes.count,
+    //   (singleCompanyData.hashtags.count + singleCompanyData.documents.count + singleCompanyData.insights.count + singleCompanyData.notes.count + singleCompanyData.projects.count)
+    // ] 
 
   return (
     <div>
@@ -78,8 +85,9 @@ const SingleCompanyGraph = () => {
           name: 'Average company',
           data: allCompanyActions
         },
-        {
-          //  data: actions
+        { 
+          // name: singleCompanyActions.company
+          // data: singleCompanyActions
         }
       ]} type="bar" height={350} />
     </div>
