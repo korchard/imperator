@@ -4,6 +4,7 @@ import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import operationalSaga from './operational.saga';
 import imperatorSaga from './imperator.saga';
+import singleCompanySaga from './singleCompany.saga'
 import passwordResetSaga from './passwordReset.saga';
 
 // rootSaga is the primary saga.
