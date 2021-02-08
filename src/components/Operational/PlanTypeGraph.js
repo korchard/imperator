@@ -15,11 +15,11 @@ const PlanTypeGraph = () => {
     options: {
       chart: {
         height: 280,
-        type: "radialBar",
+        type: "donut",
       },
       series: [],
       plotOptions: {
-        radialBar: {
+        donut: {
           dataLabels: {
             total: {
               show: true,
@@ -41,12 +41,8 @@ const PlanTypeGraph = () => {
   const premiumPercentage = (planCount[2]?.count / planTotal) * 100;
   const proPercentage = (planCount[3]?.count / planTotal) * 100;
    
-console.log(proPercentage);
-  
+  console.log(proPercentage);
   console.log('Plan Count redux', planCount)
-  
-
-  
   console.log('Plan total', planTotal)
 
   return (
@@ -59,7 +55,7 @@ console.log(proPercentage);
           trialPercentage
         ]
         } 
-        type='radialBar' 
+        type='donut' 
         width='600'
         height='400'
          />
