@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useRouteMatch } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 
 const SingleCompanyGraph = () => {
-  
+  const location = useRouteMatch();
   const totalActionData = useSelector((store) => store.totalAction);
   const dispatch = useDispatch();
   
   useEffect(() => {
-    dispatch({ type: 'FETCH_SINGLE_COMPANY_DATA', param: 1 });
+    dispatch({ type: 'FETCH_SINGLE_COMPANY_DATA', param: location.id });
     dispatch({ type: 'FETCH_TOTAL_ACTIONS'});
   }, []); 
 
   const [opt, setOpt] = useState({
     series: [{
       name: 'Average company',
-      data: [98, 87, 15, 91, 14, 94]
     }, 
     {
       name: 'This Company',
-      data: [98, 87, 15, 91, 14, 94]
     }],
     options: {
       chart: {
@@ -61,24 +60,26 @@ const SingleCompanyGraph = () => {
       }
     }})
 
-    const actions = [
+    const allCompanyActions = [
       totalActionData.projects.count,
       totalActionData.insights.count,
       totalActionData.documents.count,
       totalActionData.hashtags.count,
       totalActionData.notes.count,
       (totalActionData.hashtags.count + totalActionData.documents.count + totalActionData.insights.count + totalActionData.notes.count + totalActionData.projects.count)
-    ]
+    ] 
+
+    // const singleCompanyActions; 
 
   return (
     <div>
       <Chart options={opt.options} series={[
         {
           name: 'Average company',
-          data: [98, 87, 15, 91, 14, 94]
+          data: allCompanyActions
         },
         {
-           data: actions
+          //  data: actions
         }
       ]} type="bar" height={350} />
     </div>
