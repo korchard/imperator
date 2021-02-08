@@ -3,6 +3,15 @@ import { BiBluetooth } from 'react-icons/bi';
 import { useTable, usePagination, useSortBy } from 'react-table'
 
 const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => {
+    const getConfig = (imperator) => {
+        if (imperator.jira && imperator.zapier) {
+            return 'jira, zapier'
+        } else if (imperator.jira && !imperator.zapier) {
+            return 'jira'
+        } else if (imperator.zapier && !imperator.jira) {
+            return 'zapier'
+        }
+    }
     const columns = React.useMemo(
         () => [
             {
@@ -30,7 +39,7 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
                     },
                     {
                         Header: 'Configurations',
-                        accessor: 'configurations'
+                        accessor: getConfig
                     },
                     {
                         Header: 'Total Projects',
@@ -56,29 +65,21 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
                         Header: 'Total Collections',
                         accessor: 'collections total',
                     },
-                    {
-                        Header: 'Total Users',
-                        accessor: 'userCount',
-                    },
-                    {
-                        Header: 'Last Project Created On',
-                        accessor: 'lastProject',
-                    },
+                    // {
+                    //     Header: 'Total Users',
+                    //     accessor: 'userCount',
+                    // },
+                    // {
+                    //     Header: 'Last Project Created On',
+                    //     accessor: 'lastProject',
+                    // },
                 ],
             },
         ],
         []
     )
 
-      const configurations = (imperator) => {
-    if (imperator.jira && imperator.zapier) {
-      return configurations =  'jira, zapier'
-    } else if (imperator.jira && !imperator.zapier) {
-        return configurations =  'jira'
-    } else if (imperator.zapier && !imperator.jira) {
-        return configurations =  'zapier'
-    }
-  }
+
 
     const {
         getTableProps,
@@ -122,14 +123,14 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
     // Render the UI for your table
     return (
         <>
-    
+
             <table {...getTableProps()} className="table">
                 <thead>
                     {headerGroups.map((headerGroup) => (
                         <tr{...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column) => (
                                 <th {...column.getHeaderProps(column.getSortByToggleProps())} className="tableHead">
-                                    {column.render('Header') }
+                                    {column.render('Header')}
                                     {/* Add a sort direction indicator */}
                                     <span className="sortArrow">
                                         {column.isSorted
@@ -201,7 +202,7 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
                     ))}
                 </select>
             </div>
-            
+
         </>
     );
 }
