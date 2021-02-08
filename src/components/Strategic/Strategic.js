@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import StrategicGraph from './StrategicGraph';
+
+import './Strategic.css';
 
 function Strategic() {
   const dispatch = useDispatch();
@@ -10,11 +13,12 @@ function Strategic() {
   }, [])
 
   return (
-    <div>
+    <div className="strategic">
       <h1>Strategic</h1>
-      
+      <StrategicGraph/>
     </div>
   );
 }
 
 export default Strategic;
+
