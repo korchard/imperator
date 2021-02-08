@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import './PasswordReset.css';
 
 interface IEmail {
     email: string, 
+    confirmEmail: string
 }
 
 const PasswordReset: React.FC = () => {
-    const [email, setEmail] = useState<IEmail>({email: ''})
+    const [email, setEmail] = useState<IEmail>({email: '', confirmEmail: ''})
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const reset = () => {
-        console.log('CLicked reset password')
+        console.log('Clicked reset password', email);
+        dispatch({ type: 'RESET_PASSWORD', payload: email });
+        setEmail({email: '', confirmEmail: ''});
     }
 
     const returnToLogin = () => {
@@ -31,8 +36,21 @@ const PasswordReset: React.FC = () => {
                         type='text'
                         name='username'
                         required
-                        // value={user.email}
-                        // onChange={(e) => setEmail({...user, email: e.target.value})}
+                        value={email.email}
+                        onChange={(e) => setEmail({...email, email: e.target.value})}
+                    />
+                    </label>
+                </div>
+                <div>
+                    <label htmlFor='email'>
+                    Confirm Email:
+                    <input
+                        className="loginForm"
+                        type='text'
+                        name='username'
+                        required
+                        value={email.confirmEmail}
+                        onChange={(e) => setEmail({...email, confirmEmail: e.target.value})}
                     />
                     </label>
                 </div>

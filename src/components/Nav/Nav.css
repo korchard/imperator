@@ -129,7 +129,7 @@
   border: none;
   cursor: pointer;
   outline: 0;
-  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 0.96em;
   font-weight: 500;
   /* padding-left: 10px; */
@@ -140,8 +140,8 @@
 }
 
 .nav-logo {
-  height: 50px;
-  width: 50px;
+  height: 100px;
+  width: 100px;
   margin: 32px 9px 16px 9px;
 }
 

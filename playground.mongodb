@@ -8,6 +8,65 @@ use('aurelius');
 
 // db.users.find({})
 
+db.companies.aggregate([
+  {
+    $search: {
+      "text": {
+        "query": "AQUOAVO",
+        "path": "company" //local field to look for the query input
+      }
+    }
+  },{
+        $lookup: { //join table users
+        from: 'users',
+        localField: 'company', //is the field from companies
+        foreignField: 'company', //field from users
+        as: 'users_data' //name that hold results 
+        }
+    },
+    {$unwind: {path: "$users_data"}},
+    {$unwind: {path: "$company"}},
+    {
+    $project: {
+      "_id": 0, 
+      "email": 1, 
+      "company": 1, 
+      "users_data.firstname": 1, 
+      "users_data.lastname": 1, 
+      "users_data.email": 1, 
+      "billing.status": 1,
+      "billing.plan": 1,
+      "activeUntil": 1,
+      "jira": 1,
+      "zapier": 1,
+      "hashtags total": {$size: "$hashtags"},
+      "documents total": {$size: "$documents"},
+      "projects total": {$size: "$projects"},
+      "notes total": {$size: "$notes"},
+      "insights total": {$size: "$insights"},
+      "collections total": {$size: "$collections"},
+      "recommandations total": {$size: "$recommendations"}
+    }},
+]);
+
+// ****LIMIT RESULTS AFTER A LOOK UP SUPER USEFUL*****
+    // { $lookup: {
+    //   from: 'hashtags',
+    //   'let': {objID: '$hashtags'}, //local field(i.e companies) $hashtags
+    //   pipeline: [
+    //     {
+    //       $match: { 
+    //         $expr: { 
+    //           $eq:['$_id', '$$objID']//compares _id field in hashtags to the $hashtag field in companies 
+    //         }
+    //       },
+    //     }, 
+    //     {$project: {_id: 0, name: 1, total: {$sum: 1}}} //finally limiting what results show removes _id, shows name and adds total field with a sum
+    //   ],
+    //   as: 'hashtags'
+    // },
+    // },
+
 
 // db.users.find({
 //         timestamp: { 
@@ -21,6 +80,8 @@ use('aurelius');
 //         "$gte": new Date("2021, 01"),
 //         "$lt": new Date("2021, 02"),
 //     }
+// });
+// db.companies.countDocuments({
 // });
 
 
@@ -87,12 +148,259 @@ use('aurelius');
 
 // ability to get total insights from a project linked to a company
 
+<<<<<<< HEAD
 db.companies.aggregate( [
     {$match: {"_id": "6018596184af92843a7bb1c0"}}, 
    {
         $lookup: {
           from: 'hashtags',
           let: { $_id: "_id" },
+=======
+// db.companies.aggregate([
+//     {$count: 'Total_Companies'}, 
+//    {
+//         $lookup: {
+//           from: 'hashtags',
+//           pipeline: [
+//             {
+//               $group: {
+//                 _id: 0,
+//                 count: { $sum: 1 },
+//               },
+//             },
+//           ],
+//           as: 'hashtags',
+//         },
+//       },
+//              {
+//         $lookup: {
+//           from: 'documents',
+//           pipeline: [
+//             {
+//               $group: {
+//                 _id: 0,
+//                 count: { $sum: 1 },
+//               },
+//             },
+//           ],
+//           as: 'documents',
+//         },
+//       },
+//       {
+//         $lookup: {
+//           from: 'insights',
+//           pipeline: [
+//             {
+//               $group: {
+//                 _id: 0,
+//                 count: { $sum: 1 },
+//               },
+//             },
+//           ],
+//           as: 'insights',
+//         },
+//       },
+//       {
+//         $lookup: {
+//           from: 'notes',
+//           pipeline: [
+//             {
+//               $group: {
+//                 _id: 0,
+//                 count: { $sum: 1 },
+//               },
+//             },
+//           ],
+//           as: 'notes',
+//         },
+//       },
+//       {
+//         $lookup: {
+//           from: 'projects',
+//           pipeline: [
+//             {
+//               $group: {
+//                 _id: 0,
+//                 count: { $sum: 1 },
+//               },
+//             },
+//           ],
+//           as: 'projects',
+//         },
+//       },
+//       { $unwind: { path: '$hashtags' }},
+//       { $unwind: { path: '$documents'}},
+//       { $unwind: { path: '$insights' }},
+//       { $unwind: { path: '$notes' }},
+//       { $unwind: { path: '$projects' }},
+//       {
+//         $project: {
+//           "hashtags._id": 0,
+//           "documents._id": 0,
+//           "insights._id": 0,
+//           "notes._id": 0,
+//           "projects._id": 0 
+//         },
+//       },
+// ]);
+// //gets total actions and separates by type
+
+// db.companies.find({}, 
+//     {
+//         "company": 1, 
+//         "billing.plan": 1,
+//         "activeUntil": 1,
+//         "jira": { $or: true },
+//         "zapier": { $or: true },
+//     }
+// ]);
+// //gets total actions and separates by type
+
+// db.companies.find({}, 
+//     {
+//         "company": 1, 
+//         "billing.plan": 1,
+//         "activeUntil": 1,
+//         "jira": { $exists: true },
+//         "zapier": { $exists: true },
+//     }
+// );
+
+// table aggregation
+
+
+// db.companies.aggregate([
+
+//     $match: {
+//         "company": 1
+//     },
+//     {$count: 'Total_Companies'}, 
+//     {
+//         $lookup: {
+//             from: "hashtags",
+//             pipeline: [{
+//                 $group: {
+//                     '_id': 0,
+//                 'count': {$sum: 1}
+//                 }
+//                 }],
+//             as: "hashtags"
+//         },
+//     }, {
+//         $lookup: {
+//             from: "insights",
+//             pipeline: [{
+//                 $group: {
+//                     '_id': 0,
+//                 'count': {$sum: 1}
+//                 }
+//                 }],
+//             as: "insights"
+//         },
+//     }, {
+//         $lookup: {
+//             from: "notes",
+//             pipeline: [{
+//                 $group: {
+//                     '_id': 0,
+//                 'count': {$sum: 1}
+//                 }
+//                 }],
+//             as: "notes"
+//         },
+//     }, {
+//         $lookup: {
+//             from: "projects",
+//             pipeline: [{
+//                 $group: {
+//                     '_id': 0,
+//                 'count': {$sum: 1}
+//                 }
+//                 }],
+//             as: "projects"
+//         }
+//     },
+//     {$unwind: {path: "$hashtags"}},
+//     {$unwind: {path: "$insights"}},
+//     {$unwind: {path: "$notes"}},
+//     {$unwind: {path: "$projects"}},
+//     {$project: {
+//         'totalNotes': {$sum: ["$notes.count"]},
+//         'totalHashtags': {$sum: ["$hashtags.count"]},
+//         'totalInsights': {$sum: ["$insights.count"]},
+//         'totalProjects': {$sum: ["$projects.count"]},
+
+//         }
+//     }
+// ]);
+
+
+// billing status, active until, config
+
+// db.users.aggregate([
+//     {$match: {
+//       company: "AQUOAVO"
+//       }},
+//     {
+//       $lookup: {
+//         from: 'companies',
+//         localField: 'company',
+//         foreignField: 'company',
+//         as: 'company_data'
+//         },
+//     },
+//     {$unwind: {path: "$company_data"}},
+//     {
+//     $project: {
+//       _id: 0, 
+//       email: 1, 
+//       firstname: 1, 
+//       lastname: 1, 
+//       "company_data.billing.status": 1,
+//       "company_data.billing.plan": 1,
+//       "company_data.activeUntil": 1,
+//       "company_data.jira": 1,
+//       "company_data.zapier": 1,
+
+//     }},
+// ]);
+
+// FOR USER SEARCH
+// db.users.aggregate([
+//     {$match: {
+//       company: "MACRONAUT"
+//       }},
+//     {
+//       $lookup: {
+//         from: 'companies',
+//         localField: 'company',
+//         foreignField: 'company',
+//         as: 'company_data'
+//         },
+//     },
+//     {$unwind: {path: "$company_data"}},
+//     {
+//     $project: {
+//       _id: 0, 
+//       email: 1, 
+//       firstname: 1, 
+//       lastname: 1, 
+//       "company_data.billing.status": 1,
+//       "company_data.billing.plan": 1,
+//       "company_data.activeUntil": 1,
+//       "company_data.jira": 1,
+//       "company_data.zapier": 1,
+//     }},
+// ]);
+
+// FOR INDIVIDUAL COMPANY'S INFO
+db.companies.aggregate( [
+    {$match: {_id: "6018596184af92843a7bb1c0"}}, 
+   {
+        $lookup: {
+          from: 'hashtags',
+          {$match: { _id: "_id" },
+>>>>>>> 9dd73658bf487622f3eede470153e2e6166a505c
           pipeline: [
             {
               $group: {

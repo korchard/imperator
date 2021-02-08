@@ -5,6 +5,7 @@ function* fetchTotalCounts() {
   try {
     const response = yield axios.get(`/api/planCount`);
     yield put({ type: 'SET_PLAN_COUNT', payload: response.data });
+    console.log('plan index', response.data);
   } catch (error) {
     console.log('error with plan count get in planCount.saga', error);
   }
@@ -24,6 +25,7 @@ function* getUsersByMonth() {
   try {
     const response = yield axios.get('/api/userOverTime');
     yield put({ type: 'SET_MONTHLY_USERS', payload: response.data });
+    console.log('users monthly index', response.data);
   } catch (error) {
     console.log('Error with getting monthlyUsers:', error);
   }

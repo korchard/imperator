@@ -7,6 +7,7 @@ import dataRouter from './routes/data.router';
 import planCountRouter from './routes/planCount.router';
 import imperatorRouter from './routes/imperator.router';
 import analyticRouter from './routes/company.analytics.router';
+import passwordResetRouter from './routes/passwordReset.router';
 import monthlyUsersRouter from './routes/monthlyUsers.router';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
@@ -25,13 +26,9 @@ mongoose.connect(
   }
 );
 
-const db = mongoose.connection;
-
 const app = express();
 
 // Body parser middleware
-// app.use(express.json());
-// app.use(express.urlencoded());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -51,6 +48,7 @@ app.use('/api/imperator', imperatorRouter);
 app.use('/api/analytics', analyticRouter);
 
 // Serve static files
+app.use('/api/reset', passwordResetRouter);
 app.use(express.static('build'));
 
 // App Set //
