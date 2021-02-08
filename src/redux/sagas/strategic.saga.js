@@ -11,10 +11,8 @@ function* getPlanAverage() {
   }
 } //end getPlanAverage
 
-
 function* operationalSaga() {
   yield takeEvery('GET_PLAN_LENGTH_AVERAGE', getPlanAverage);
-
 }
 
 export default operationalSaga;

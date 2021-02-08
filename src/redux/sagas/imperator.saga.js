@@ -14,9 +14,9 @@ function* fetchImperatorData() {
 
 function* fetchCompanySearch(action){
   try {
-    console.log('payload', action.payload)
+    // console.log('payload', action.payload)
     const response = yield axios.get(`/api/imperator/search/${action.payload}`);
-    yield put({ type: 'SET_SEARCH', payload: response.data });
+    yield put({ type: 'SET_IMPERATOR', payload: response.data });
     console.log(response.data);
   } catch (error) {
     console.log(`Error in saga getting imperator data:`, error);
