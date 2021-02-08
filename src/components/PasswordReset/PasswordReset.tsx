@@ -25,6 +25,11 @@ const PasswordReset: React.FC<SwalOptions> = () => {
         if(email.email === email.confirmEmail) {
             dispatch({ type: 'RESET_PASSWORD', payload: email });
             setEmail({email: '', confirmEmail: ''});
+            swal({
+                title: "Thank you!",
+                text: "You will receive an email to reset your password.",
+                icon: "success",
+              });
         } else {
             swal({
                 title: "Whoops!",
