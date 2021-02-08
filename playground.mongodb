@@ -148,14 +148,6 @@ db.companies.aggregate([
 
 // ability to get total insights from a project linked to a company
 
-<<<<<<< HEAD
-db.companies.aggregate( [
-    {$match: {"_id": "6018596184af92843a7bb1c0"}}, 
-   {
-        $lookup: {
-          from: 'hashtags',
-          let: { $_id: "_id" },
-=======
 // db.companies.aggregate([
 //     {$count: 'Total_Companies'}, 
 //    {
@@ -400,7 +392,6 @@ db.companies.aggregate( [
         $lookup: {
           from: 'hashtags',
           {$match: { _id: "_id" },
->>>>>>> 9dd73658bf487622f3eede470153e2e6166a505c
           pipeline: [
             {
               $group: {
