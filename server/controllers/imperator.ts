@@ -6,23 +6,26 @@ const imperator = async (
     res: Response
   ): Promise<void> => {
     try { // this needs to be an AGGREGATION, not a FIND
-        const data = await CompanyDB.aggregate([
-            {
-                $project: {
-                    company: {$toUpper: "$company"},
-                    plan: "$billing.plan",
-                    status: "$billing.status",
-                    customerId: "$billing.customerId",
-                    activeUntil: "$activeUntil",
-                    jira: "$jira",
-                    zapier: "$zapier",
-                    _id: 0
-                },
-            },
-               {
-                    $sort: { company: 1 }
-               }
-        ]);
+        const data = await CompanyDB.find(
+          { },{
+              "_id": 0, 
+              "email": 1, 
+              "company": 1, 
+              "billing.status": 1,
+              "billing.plan": 1,
+              "activeUntil": 1,
+              "jira": 1,
+              "zapier": 1,
+              "hashtags total": {$size: "$hashtags"},
+              "documents total": {$size: "$documents"},
+              "projects total": {$size: "$projects"},
+              "notes total": {$size: "$notes"},
+              "insights total": {$size: "$insights"},
+              "collections total": {$size: "$collections"},
+              "recommandations total": {$size: "$recommendations"},
+              "total users": {$size: "$teamMembers"}
+          }
+        );
         res.send(data)
     } catch (error) {
       console.error('Error getting imperator data:', error);
