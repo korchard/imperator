@@ -69,19 +69,6 @@ const Imperator = () => {
     setSearch('');
   }
 
-  //write a comment
-
-
-
-  // function fetchData(imperator) {
-  //   setData(imperator);
-  // };
-
-
-  // function handlePageClick({ selected: selectedPage }) {
-  //   console.log('CLICKED')
-  //   setCurrentPage(selectedPage);
-  // }
 
   return (
     <div className="imperator">
