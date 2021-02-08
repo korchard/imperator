@@ -5,7 +5,7 @@ import axios from 'axios';
 function* getPlanAverage() {
   try {
     const response = yield axios.get(`/api/strategic`);
-    yield put({ type: 'SET_PLAN_COUNT', payload: response.data });
+    yield put({ type: 'SET_PLAN_LENGTH_AVERAGE', payload: response.data });
   } catch (error) {
     console.log('error with getPlanAverage in strategic.saga', error);
   }
