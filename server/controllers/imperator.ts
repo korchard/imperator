@@ -22,7 +22,8 @@ const imperator = async (
               "notes total": {$size: "$notes"},
               "insights total": {$size: "$insights"},
               "collections total": {$size: "$collections"},
-              "recommandations total": {$size: "$recommendations"}
+              "recommandations total": {$size: "$recommendations"},
+              "total users": {$size: "$teamMembers"}
           }
         );
         res.send(data)

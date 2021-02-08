@@ -50,7 +50,7 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
                         accessor: 'notes total',
                     },
                     {
-                        Header: 'Total Recommendations',
+                        Header: 'Total Recs',
                         accessor: 'recommandations total',
                     },
                     {
@@ -65,10 +65,10 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
                         Header: 'Total Collections',
                         accessor: 'collections total',
                     },
-                    // {
-                    //     Header: 'Total Users',
-                    //     accessor: 'userCount',
-                    // },
+                    {
+                        Header: 'Total Users',
+                        accessor: 'total users',
+                    },
                     // {
                     //     Header: 'Last Project Created On',
                     //     accessor: 'lastProject',
