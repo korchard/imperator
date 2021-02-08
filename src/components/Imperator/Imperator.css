@@ -36,7 +36,7 @@
 }
 
 .imperator {
-    color: #003145;
+    color: rgb(33, 44, 46);
 }
 
 /* table, th, td {
@@ -65,7 +65,7 @@ padding: 0.5rem;
     background: #8a97a5dc;
   }
   th { 
-    background: #333; 
+    background: rgb(33, 44, 46); 
     color: white; 
     /* font-weight: bold;  */
     /* padding: 10px; */
