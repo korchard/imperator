@@ -92,7 +92,7 @@ db.companies.aggregate( [
    {
         $lookup: {
           from: 'hashtags',
-          let: { "activityId": "$_id" },
+          let: { $_id: "_id" },
           pipeline: [
             {
               $group: {
