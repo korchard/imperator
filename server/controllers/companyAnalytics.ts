@@ -9,20 +9,10 @@ export const singleCompany = async (
   try { 
    const data = await CompanyDB.aggregate([
       {
-        $search: {
-          "text": {
-            "query": "6018596184af92843a7bb1c0",
-            "path": "_id" //local field to look for the query input
-          }
+        $match: {
+          "company": "AQUOAVO"
         }
-      },{
-            $lookup: { //join table users
-            from: 'users',
-            localField: 'company', //is the field from companies
-            foreignField: 'company', //field from users
-            as: 'users_data' //name that hold results 
-            }
-        },
+      },
         {
         $project: {
           "_id": 0, 
