@@ -69,6 +69,9 @@ const Imperator = () => {
     setSearch('');
   }
 
+  const clearSearch = () => {
+    dispatch({ type: 'FETCH_IMPERATOR' });
+  }
 
   return (
     <div className="imperator">
@@ -80,7 +83,12 @@ const Imperator = () => {
           name='submit' value='Find'
           onClick={searchCo}>
           Find
-          </button>
+        </button>
+        <button className='btnI' type='submit'
+          name='submit' value='Clear'
+          onClick={clearSearch}>
+          Clear
+        </button>
       </div>
 
        <Table data={imperator} fetchData={fetchData} loading={loading} pageCount={pageCount}/> 
