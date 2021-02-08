@@ -14,11 +14,11 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
                     },
                     {
                         Header: 'Billing Plan',
-                        accessor: 'plan',
+                        accessor: 'billing.plan',
                     },
                     {
                         Header: 'Billing Status',
-                        accessor: 'status',
+                        accessor: 'billing.status',
                     },
                     {
                         Header: 'Active Until',
@@ -30,15 +30,31 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
                     },
                     {
                         Header: 'Configurations',
-                        accessor: 'configurations',
+                        accessor: 'configurations'
                     },
                     {
                         Header: 'Total Projects',
-                        accessor: 'projects',
+                        accessor: 'projects total',
                     },
                     {
                         Header: 'Total Notes',
-                        accessor: 'notes',
+                        accessor: 'notes total',
+                    },
+                    {
+                        Header: 'Total Recommendations',
+                        accessor: 'recommandations total',
+                    },
+                    {
+                        Header: 'Total Insights',
+                        accessor: 'insights total',
+                    },
+                    {
+                        Header: 'Total Hashtags',
+                        accessor: 'hashtags total',
+                    },
+                    {
+                        Header: 'Total Collections',
+                        accessor: 'collections total',
                     },
                     {
                         Header: 'Total Users',
@@ -53,6 +69,16 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
         ],
         []
     )
+
+      const configurations = (imperator) => {
+    if (imperator.jira && imperator.zapier) {
+      return configurations =  'jira, zapier'
+    } else if (imperator.jira && !imperator.zapier) {
+        return configurations =  'jira'
+    } else if (imperator.zapier && !imperator.jira) {
+        return configurations =  'zapier'
+    }
+  }
 
     const {
         getTableProps,
