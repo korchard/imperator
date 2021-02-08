@@ -80,6 +80,7 @@ const SingleCompanyGraph = () => {
 
   return (
     <div>
+      {JSON.stringify(singleCompanyData)}
       <Chart options={opt.options} series={[
         {
           name: 'Average company',

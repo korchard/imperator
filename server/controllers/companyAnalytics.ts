@@ -44,8 +44,7 @@ export const singleCompany = async (
           "recommandations total": {$size: "$recommendations"}
         }},
     ]);
-    console.log(data);
-    res.send(data);
+    res.send(data[0]);
   } catch (error) {
     console.error('Error getting total actions: ', error);
   }

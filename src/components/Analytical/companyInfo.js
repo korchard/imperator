@@ -12,6 +12,7 @@ console.log('CompanyInfo', companyInfo)
   return (
     <div>
         <h1>AYE COMPANY INFO</h1>
+        <div>{companyInfo.name}</div>
     </div>
   );
 }
