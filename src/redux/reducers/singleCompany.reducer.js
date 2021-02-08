@@ -1,5 +1,5 @@
 // store imperator data for the table
-const monthlyUsersOverTime = (state = [], action) => {
+const singleCompanyData = (state = {}, action) => {
     switch (action.type) {
       case 'SET_SINGLE_COMPANY_DATA':
         return action.payload;
@@ -8,4 +8,4 @@ const monthlyUsersOverTime = (state = [], action) => {
     }
 };
   
-export default monthlyUsersOverTime;
+export default singleCompanyData;
