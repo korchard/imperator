@@ -1,4 +1,5 @@
 import React from 'react';
+import { BiBluetooth } from 'react-icons/bi';
 import { useTable, usePagination, useSortBy } from 'react-table'
 
 const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => {
@@ -10,7 +11,6 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
                     {
                         Header: 'Company Name',
                         accessor: 'company',
-                        className: 'tableHeader'
                     },
                     {
                         Header: 'Billing Plan',
@@ -97,15 +97,15 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
     return (
         <>
     
-            <table {...getTableProps()}>
+            <table {...getTableProps()} className="table">
                 <thead>
                     {headerGroups.map((headerGroup) => (
                         <tr{...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column) => (
-                                <th {...column.getHeaderProps(column.getSortByToggleProps())} className="tableHeader">
-                                    {column.render('Header')}
+                                <th {...column.getHeaderProps(column.getSortByToggleProps())} className="tableHead">
+                                    {column.render('Header') }
                                     {/* Add a sort direction indicator */}
-                                    <span>
+                                    <span className="sortArrow">
                                         {column.isSorted
                                             ? column.isSortedDesc
                                                 ? ' ▼'
