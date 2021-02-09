@@ -5,7 +5,7 @@ import Chart from 'react-apexcharts';
 
 const SingleCompanyGraph = () => {
   const location = useRouteMatch();
-  const totalActionData = useSelector((store) => store.totalAction);
+  const allCompanyData = useSelector((store) => store.totalAction);
   const singleCompanyData = useSelector((store) => store.singleCompanyData);
   const dispatch = useDispatch();
   
@@ -62,15 +62,20 @@ const SingleCompanyGraph = () => {
     }})
 
     const allCompanyActions = [
-      totalActionData.projects.count,
-      totalActionData.insights.count,
-      totalActionData.documents.count,
-      totalActionData.hashtags.count,
-      totalActionData.notes.count,
-      (totalActionData.hashtags.count + totalActionData.documents.count + totalActionData.insights.count + totalActionData.notes.count + totalActionData.projects.count)
+      allCompanyData.projects.count/allCompanyData.Total_Companies,
+      allCompanyData.insights.count/allCompanyData.Total_Companies,
+      allCompanyData.documents.count/allCompanyData.Total_Companies,
+      allCompanyData.hashtags.count/allCompanyData.Total_Companies,
+      allCompanyData.notes.count/allCompanyData.Total_Companies,
+      (
+        (allCompanyData.hashtags.count/allCompanyData.Total_Companies) +
+        (allCompanyData.documents.count/allCompanyData.Total_Companies) + 
+        (allCompanyData.insights.count/allCompanyData.Total_Companies) + 
+        (allCompanyData.notes.count/allCompanyData.Total_Companies) + 
+        (allCompanyData.projects.count/allCompanyData.Total_Companies)
+      )
     ] 
     const singleCompanyActions = [
-      singleCompanyData.Total_Companies,
       singleCompanyData.projectsTotal,
       singleCompanyData.insightsTotal,
       singleCompanyData.documentsTotal,
@@ -81,15 +86,13 @@ const SingleCompanyGraph = () => {
 
   return (
     <div>
-      {/* {JSON.stringify(singleCompanyData)} */}
-      {JSON.stringify(singleCompanyActions)}
       <Chart options={opt.options} series={[
         {
           name: 'Average company',
           data: allCompanyActions
         },
         { 
-          name: singleCompanyActions.company,
+          name: singleCompanyData.company,
           data: singleCompanyActions
         }
       ]} type="bar" height={350} />
