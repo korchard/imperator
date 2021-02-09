@@ -5,8 +5,8 @@ import planCount from './planCount.reducer';
 import totalAction from './totalactions.reducer';
 import imperator from './imperator.reducer';
 import monthlyUsersOverTime from './monthlyusers.reducer';
-import strategicGraph from './strategicGraph.reducer';
 import singleCompanyData from './singleCompany.reducer';
+import strategic from './strategic.reducer'
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -20,7 +20,7 @@ const rootReducer = combineReducers({
   totalAction,
   imperator,
   monthlyUsersOverTime,
-  strategicGraph,
+  strategic, 
   singleCompanyData,
 });
 
