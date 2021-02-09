@@ -10,8 +10,18 @@ function* getSingleCompanyData(action){
   }
 }
 
-function* imperatorSaga() {
-  yield takeEvery('FETCH_SINGLE_COMPANY_DATA', getSingleCompanyData);
+function* fetchCompanyUsers(action){
+  try {
+    const response = yield axios.get(`/api/analytics/${action.param.id}`);
+    yield put({ type: 'SET_SINGLE_COMPANY_DATA', payload: response.data });
+  } catch (error) {
+    console.log(`Error in saga getting imperator data:`, error);
+  }
 }
 
-export default imperatorSaga;
+function* singleCompanySaga() {
+  yield takeEvery('FETCH_SINGLE_COMPANY_DATA', getSingleCompanyData);
+  yield takeEvery('FETCH_COMPANY_USERS', fetchCompanyUsers);
+}
+
+export default singleCompanySaga;
