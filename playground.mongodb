@@ -75,7 +75,8 @@ use('aurelius');
 //         "$gte": new Date("2021, 01"),
 //         "$lt": new Date("2021, 02"),
 //     }
-// });
+// // });
+
 // db.companies.countDocuments({
 // });
 
@@ -486,7 +487,7 @@ use('aurelius');
 //   {
 //     $search: {
 //       "text": {
-//         "query": "LEXICONDO",
+//         "query": "AQUOAVO",
 //         "path": "company" //local field to look for the query input
 //       }
 //     }
@@ -512,8 +513,11 @@ use('aurelius');
 //     }},
 // ]);
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> 221c58cf4638fadf2d6fba38d94eeec513e72f0a
 // db.companies.aggregate([
 //   // AQUOAVO _id: 6018596184af92843a7bb1c0
 //   {
@@ -555,6 +559,12 @@ db.companies.aggregate(
                   } },
               }
           },
+<<<<<<< HEAD
         ]
      )
 >>>>>>> Stashed changes
+=======
+        { $group: {_id: 1} },
+        ]
+     )
+>>>>>>> 221c58cf4638fadf2d6fba38d94eeec513e72f0a
