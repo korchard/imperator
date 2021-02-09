@@ -42,6 +42,9 @@ export const MonthlyUsers = () => {
       title: {
         text: 'Added Users By Month',
         align: 'center',
+        style: {
+          color: 'rgb(33, 44, 46)',
+        },
       },
       labels: [
         'Jan',

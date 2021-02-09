@@ -6,18 +6,16 @@ describe('Test our monthlyUser route', () => {
     // agent helps tie multiple requests to the same server/session
     const agent = testServer.agent(app);
     // Must login first
-    const loginResponse = await agent
-      .post('/api/user/login')
-      .send({
-        username: process.env.TEST_USER,
-        password: process.env.TEST_PASSWORD,
-      });
+    const loginResponse = await agent.post('/api/user/login').send({
+      username: process.env.TEST_USER,
+      password: process.env.TEST_PASSWORD,
+    });
     expect(loginResponse.status).toBe(200);
 
     const userResponse = await agent.get('/api/user/');
     expect(userResponse.status).toBe(200);
 
     const dataResponse = await testServer(app).get('/api/userOverTime');
-		expect({ dataResponse }).toBe(12);
+    expect(dataResponse).toBe(12);
   });
 });

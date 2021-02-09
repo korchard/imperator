@@ -48,9 +48,9 @@ app.use('/api/planCount', planCountRouter);
 app.use('/api/imperator', imperatorRouter);
 app.use('/api/analytics', analyticRouter);
 app.use('/api/strategic', strategicRouter);
+app.use('/api/reset', passwordResetRouter);
 
 // Serve static files
-app.use('/api/reset', passwordResetRouter);
 app.use(express.static('build'));
 
 // App Set //

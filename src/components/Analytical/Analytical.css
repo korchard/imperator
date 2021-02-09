@@ -1,3 +1,11 @@
+/* ---------------- Analytical,js ---------------- */
+
 .container {
-    margin-left: 30px;
+  margin-left: 30px;
+}
+
+/* ---------------- companyInfo,js ---------------- */
+
+.companyInfoHeader {
+  font-size: 30px;
 }
