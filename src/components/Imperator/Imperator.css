@@ -118,6 +118,32 @@ td:before {
   white-space: nowrap;
 }
 
+.coBtn {
+  background-color: #024058;
+  border-radius: 2px;
+  border: 1px solid #024058;
+  box-shadow: none;
+  color: #fff;
+  font-size: 8px;
+  font-weight: 300;
+  line-height: 1;
+  min-height: 18px;
+  text-align: center;
+  -webkit-transition: color 0.2s, border 0.2s;
+  transition: color 0.2s, border 0.2s;
+  -webkit-letter-spacing: 0.19px;
+  -moz-letter-spacing: 0.19px;
+  -ms-letter-spacing: 0.19px;
+  letter-spacing: 0.19px;
+  -webkit-transition: 0.2s filter linear;
+  transition: 0.2s filter linear;
+  white-space: nowrap;
+  margin-left: auto;
+  margin-right: auto;
+  float: right;
+  justify-content: center;
+}
+
 /*
 Label the data
 */
@@ -145,7 +171,7 @@ Label the data
   font-size: 10px;
   font-weight: 300;
   line-height: 1;
-  min-height: 50px;
+  min-height: 30px;
   text-align: center;
   -webkit-transition: color 0.2s, border 0.2s;
   transition: color 0.2s, border 0.2s;
@@ -159,37 +185,6 @@ Label the data
   margin-left: auto;
   margin-right: auto;
   float: right;
-}
-
-@media 
-only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1024px)  {
-
-  .coBtn {
-    background-color: #024058;
-    border-radius: 2px;
-    border: 1px solid #024058;
-    box-shadow: none;
-    color: #fff;
-    font-size: 8px;
-    font-weight: 300;
-    line-height: 1;
-    min-height: 18px;
-    text-align: center;
-    -webkit-transition: color 0.2s, border 0.2s;
-    transition: color 0.2s, border 0.2s;
-    -webkit-letter-spacing: 0.19px;
-    -moz-letter-spacing: 0.19px;
-    -ms-letter-spacing: 0.19px;
-    letter-spacing: 0.19px;
-    -webkit-transition: 0.2s filter linear;
-    transition: 0.2s filter linear;
-    white-space: nowrap;
-    margin-left: auto;
-    margin-right: auto;
-    float: right;
-    justify-content: center;
-  }
 }
 
 .company {
