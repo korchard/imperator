@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import Chart from 'react-apexcharts';
 
 function StrategicGraph() {
+    const dispatch = useDispatch();
     const strategicGraph = useSelector((redux) => redux.strategicGraph);
 
     useEffect(() => {
@@ -41,8 +42,7 @@ function StrategicGraph() {
 
 return (
     <div className="strategic">
-      <h1>Strategic</h1>
-      <StrategicGraph/>
+      
     </div>
   );
 

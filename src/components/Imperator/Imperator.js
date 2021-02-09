@@ -82,15 +82,16 @@ const Imperator = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)} />
         <button className='btnI' type='submit'
-          name='submit' value='Find'
-          onClick={searchCo}>
-          Find
-        </button>
-        <button className='btnI' type='submit'
           name='submit' value='Clear'
           onClick={clearSearch}>
           Clear
         </button>
+        <button className='btnI' type='submit'
+          name='submit' value='Find'
+          onClick={searchCo}>
+          Find
+        </button>
+
       </div>
       <h3>Company Info</h3>
       <Table data={imperator} fetchData={fetchData} loading={loading} pageCount={pageCount} />
