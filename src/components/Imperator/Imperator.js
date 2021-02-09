@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useHistory, Link } from 'react-router-dom';
-import Moment from 'react-moment';
-// import Pagination from './Pagination';
 import Table from './Table';
-
 import './Imperator.css';
 
 const Imperator = () => {
