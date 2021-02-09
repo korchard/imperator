@@ -62,8 +62,6 @@ th {
   font-weight: bold; 
   padding: 10px;
   width: 100%;
-  padding-left: 10px;
-  padding-right: 10px;
   font-size: 12px;
 }
 
@@ -79,9 +77,8 @@ td {
   padding-right: 20px;
 }
 
-.sortArrow{
-  float: right;
-  justify-content: center; 
+th.sortArrow {
+  display: block;
 }
 
 @media 
@@ -124,19 +121,19 @@ td:before {
 /*
 Label the data
 */
-td:nth-of-type(1):before { content: "Company Name"; }
-td:nth-of-type(2):before { content: "Billing Plan"; }
-td:nth-of-type(3):before { content: "Billing Status"; }
-td:nth-of-type(4):before { content: "Active Until"; }
-td:nth-of-type(5):before { content: "Configurations"; }
-td:nth-of-type(6):before { content: "Total Projects"; }
-td:nth-of-type(7):before { content: "Total Notes"; }
-td:nth-of-type(8):before { content: "Total Recommendations"; }
-td:nth-of-type(9):before { content: "Total Insights"; }
-td:nth-of-type(10):before { content: "Total Hashtags"; }
-td:nth-of-type(11):before { content: "Total Collections"; }
-td:nth-of-type(12):before { content: "Total Documents"; }
-td:nth-of-type(13):before { content: "Total Users"; }
+  td:nth-of-type(1):before { content: "Company Name"; }
+  td:nth-of-type(2):before { content: "Billing Plan"; }
+  td:nth-of-type(3):before { content: "Billing Status"; }
+  td:nth-of-type(4):before { content: "Active Until"; }
+  td:nth-of-type(5):before { content: "Configurations"; }
+  td:nth-of-type(6):before { content: "Total Projects"; }
+  td:nth-of-type(7):before { content: "Total Notes"; }
+  td:nth-of-type(8):before { content: "Total Recommendations"; }
+  td:nth-of-type(9):before { content: "Total Insights"; }
+  td:nth-of-type(10):before { content: "Total Hashtags"; }
+  td:nth-of-type(11):before { content: "Total Collections"; }
+  td:nth-of-type(12):before { content: "Total Documents"; }
+  td:nth-of-type(13):before { content: "Total Users"; }
 }
 
 .coBtn {
@@ -164,14 +161,37 @@ td:nth-of-type(13):before { content: "Total Users"; }
   float: right;
 }
 
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+  .coBtn {
+    background-color: #024058;
+    border-radius: 2px;
+    border: 1px solid #024058;
+    box-shadow: none;
+    color: #fff;
+    font-size: 8px;
+    font-weight: 300;
+    line-height: 1;
+    min-height: 18px;
+    text-align: center;
+    -webkit-transition: color 0.2s, border 0.2s;
+    transition: color 0.2s, border 0.2s;
+    -webkit-letter-spacing: 0.19px;
+    -moz-letter-spacing: 0.19px;
+    -ms-letter-spacing: 0.19px;
+    letter-spacing: 0.19px;
+    -webkit-transition: 0.2s filter linear;
+    transition: 0.2s filter linear;
+    white-space: nowrap;
+    margin-left: auto;
+    margin-right: auto;
+    float: right;
+    justify-content: center;
+  }
+}
+
 .company {
   display: block;
-}
-
-.tableHead .sortArrow {
-  display: inline-block;
-}
-
-tr.title {
-  font-size: 30px;
 }
