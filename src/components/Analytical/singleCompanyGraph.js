@@ -86,7 +86,6 @@ const SingleCompanyGraph = () => {
 
   return (
     <div>
-      {JSON.stringify(location.params.id)}
       <Chart options={opt.options} series={[
         {
           name: 'Average company',
@@ -102,8 +101,3 @@ const SingleCompanyGraph = () => {
 }
 
 export default SingleCompanyGraph;
-
-
-
-
-
