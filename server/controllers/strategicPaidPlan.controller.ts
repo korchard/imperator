@@ -18,6 +18,7 @@ const strategicPaidPlan = async (req: Request, res: Response): Promise<void> => 
             }
         ]
      )
+     console.log('in controller', data)
      res.send(data)
     } catch (error) {
       console.error('Error in strategicPaidPlan controller getting plan average: ', error);
