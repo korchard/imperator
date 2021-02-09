@@ -11,8 +11,18 @@ function* getSingleCompanyData(action){
   }
 }
 
+function* editCustomerId(action){
+  try{
+    yield axios.put(`/api/analytical/:${action.param}`, action.payload)  
+    yield put({ type: 'FETCH_SINGLE_COMPANY_DATA', payload: action.param})
+  }catch (error) {
+    console.log('Error in edit CID (singleCompanySaga)', error)
+  }
+}
+
 function* imperatorSaga() {
   yield takeEvery('FETCH_SINGLE_COMPANY_DATA', getSingleCompanyData);
+  yield takeEvery('EDIT_CUSTOMER_ID', editCustomerId)
 }
 
 export default imperatorSaga;

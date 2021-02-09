@@ -4,9 +4,20 @@
 // Use Ctrl+Space inside a snippet or a string literal to trigger completions.
 
 // Select the database to use.
-// use('aurelius');
+use('aurelius');
 
-
+db.companies.findByIdAndUpdate(
+  _id: "6018596184af92843a7bb1c0",
+  {
+    $set: {
+      billing.customerId: "testtest"
+      
+  }
+  },
+  {
+    new: true
+  }
+)
 
 
 // db.companies.aggregate([
@@ -541,19 +552,19 @@
 //     }},
 // ]);
 
-db.companies.aggregate(
-        [
-          {
-            $group:
-              {
-                _id: "$billing.plan",
-                avgLength: { $avg: 
-                  { $subtract: 
-                    [ "$billing.trialStart", 
-                    "$billing.trialEnd" ] 
-                  } },
-              }
-          },
-        { $group: {_id: 1} },
-        ]
-     )
+// db.companies.aggregate(
+//         [
+//           {
+//             $group:
+//               {
+//                 _id: "$billing.plan",
+//                 avgLength: { $avg: 
+//                   { $subtract: 
+//                     [ "$billing.trialStart", 
+//                     "$billing.trialEnd" ] 
+//                   } },
+//               }
+//           },
+//         { $group: {_id: 1} },
+//         ]
+//      )
