@@ -16,6 +16,16 @@ function Strategic() {
     <div className="strategic">
       <h1>Strategic</h1>
       <StrategicGraph/>
+      <div className="listContainer">
+        <div className="paidContainer">
+          <h4>Paid Plans Ending This Month</h4>
+        </div>
+
+        <div className="trialContainer">
+          <h4>Trials Ending This Month</h4>
+        </div>
+
+      </div>
     </div>
   );
 }
