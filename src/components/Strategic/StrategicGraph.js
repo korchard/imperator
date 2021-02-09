@@ -1,91 +1,91 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Chart from 'react-apexcharts';
+import ReactApexChart from 'react-apexcharts';
 
 function StrategicGraph() {
     const dispatch = useDispatch();
-    const strategicGraph = useSelector((redux) => redux.strategicGraph);
+    const strategicGraph = useSelector((redux) => redux.strategic.strategicGraph);
 
     useEffect(() => {
         dispatch({ type: 'GET_PLAN_LENGTH_AVERAGE' });
       }, []) 
 
-    // const chartOptions = {
-    //   options: {
-    //     chart: {
-    //       id: "basic-bar",
-    //       stacked: true
-    //     },
-    //     series: [],
-    //     plotOptions: {
-    //       bar: {
-    //         horizontal: true
-    //       }
-    //     },
-    //     title: {
-    //       text: "Average Length of Plans by Type"
-    //     },
-    //     xaxis: {
-    //       categories: ['Enterprise', 'Pro', 'Trial', 'Premium']
-    //     }
-    //   }
-      
-    // };
-
-    const [opt, setOpt] = useState({
-      options: {
-        chart: {
-           id: "basic-bar",
-           stacked: true
-        },
-        series: [],
-        plotOptions: {
-          bar: {
+    const [opt, setOptions] = useState({
+        series: [{
+            data: []
+          }],
+          options: {
+            chart: {
+              type: 'bar',
+              
+              height: 350
+            },
+            plotOptions: {
+              bar: {
+                horizontal: true,
+                borderRadius: 25,
+               
+              },
+            },
+            colors: ['#ee5f1b'],
             dataLabels: {
-              total: {
-                show: true,
-                label: 'Average Length of Plans by Type'
-              }
-            }
-          }
-        },
-        // labels: ['Pro', 'Premium', 'Enterprise', 'Trial']
-      }
-    })
+              enabled: false
+            },
+            xaxis: {
+              categories: ['Trial', 'Pro', 'Premium', 'Enterprise'],
+              labels: {
+                style: {
+                  colors: ['#212C2E'],
+                  
+                },
+              },
+            },
+            yaxis: {
+                labels: {
+                    style: {
+                      colors: ['#212C2E'],
+                      fontSize: '.75rem'
+                    },
+                  },
+            },
+            title: {
+                text: 'Average Plan Length By Types ',
+                floating: true,
+                // offsetX: 10,
+                align: 'center',
+                style: {
+                  color: '#212C2E',
+                //   fontSize: '.75rem'
+                },
+              },
+          },
+      });
 
-    let strategy = [];
-    if (strategicGraph.avgLength === 'Enterprise') {
-      strategy.push(strategicGraph.avgLength);
-    } else if (strategicGraph.avgLength === 'Premium') {
-      strategy.push(strategicGraph.avgLength);
-    } else if (strategicGraph.avgLength === 'Pro') {
-      strategy.push(strategicGraph.avgLength);
-    } else if (strategicGraph.avgLength === 'Trial') {
-      strategy.push(strategicGraph.avgLength);
-    }
-
-    console.log('array', strategy);
-
-    let enterprise = strategicGraph[3]?.avgLength
-    let pro = strategicGraph[4]?.avgLength
-    let trial = strategicGraph[0]?.avgLength
+    let enterprise = strategicGraph[0]?.avgLength
     let premium = strategicGraph[1]?.avgLength
+    let pro = strategicGraph[2]?.avgLength
+    let trial = strategicGraph[3]?.avgLength
+
   
 return (
     <div className="strategic">
       <div className="app">
         <div className="row">
           <div className="mixed-chart">
-            <Chart
-              options={opt}
-              series={[
-                {
-                  data: [trial, premium, enterprise, pro],
-                },
-              ]}
-              type="bar"
-              width="500"
-            />
+          <ReactApexChart
+        options={opt.options}
+        series={[
+          {
+            name: 'total actions',
+            data: [
+            trial, pro, premium, enterprise
+            ],
+          },
+        ]}
+        type='bar'
+        width='500'
+        height='350'
+      />
           </div>
         </div>
       </div>

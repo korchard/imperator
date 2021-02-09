@@ -1,8 +1,13 @@
 import React from 'react';
 import { BiBluetooth } from 'react-icons/bi';
-import { useTable, usePagination, useSortBy } from 'react-table'
+import { DiGoogleAnalytics } from 'react-icons/di';
+import { useTable, usePagination, useSortBy } from 'react-table';
+import { useHistory } from 'react-router-dom';
 
 const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => {
+
+    const history = useHistory();
+
     const getConfig = (imperator) => {
         if (imperator.jira && imperator.zapier) {
             return 'jira, zapier'
@@ -12,6 +17,7 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
             return 'zapier'
         }
     }
+
     const columns = React.useMemo(
         () => [
             {
@@ -20,6 +26,15 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
                     {
                         Header: 'Company Name',
                         accessor: 'company',
+                        Cell: ({ cell }) => (
+                            <span className="company">{cell.row.values.company}
+                                <button className="btn2" onClick={goToAnalytical}>
+                                    <DiGoogleAnalytics />
+                                    &nbsp;
+                                    Analytics
+                                </button>
+                            </span>
+                          )
                     },
                     {
                         Header: 'Billing Plan',
@@ -123,6 +138,11 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
         date = date.split('T');
         return (new Date(Date.parse(date)).toString()).replace(/ \w+-\d+ \(.*\)$/, "")
     }
+
+    const goToAnalytical = (id) => {
+        history.push(`/analytical/:single/:${id}`);
+    }
+
     // Render the UI for your table
     return (
         <>
