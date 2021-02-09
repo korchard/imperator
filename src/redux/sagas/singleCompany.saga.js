@@ -6,16 +6,16 @@ function* getSingleCompanyData(action){
     const response = yield axios.get(`/api/analytics/${action.param.id}`);
     yield put({ type: 'SET_SINGLE_COMPANY_DATA', payload: response.data });
   } catch (error) {
-    console.log(`Error in saga getting imperator data:`, error);
+    console.log(`Error in saga getting analytical data:`, error);
   }
 }
 
 function* fetchCompanyUsers(action){
   try {
-    const response = yield axios.get(`/api/analytics/${action.param.id}`);
-    yield put({ type: 'SET_SINGLE_COMPANY_DATA', payload: response.data });
+    const response = yield axios.get(`/api/analytics/users/${action.param.id}`);
+    yield put({ type: 'SET_SINGLE_COMPANY_USERS', payload: response.data });
   } catch (error) {
-    console.log(`Error in saga getting imperator data:`, error);
+    console.log(`Error in saga getting analytical data:`, error);
   }
 }
 
