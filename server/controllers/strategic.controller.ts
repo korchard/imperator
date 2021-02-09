@@ -9,15 +9,19 @@ const strategic = async (req: Request, res: Response): Promise<void> => {
             $group:
               {
                 _id: "$billing.plan",
-                avgLength: { $avg: { $subtract: [ "$billing.trailStart", "$billing.trailEnd" ] } },
+                avgLength: { $avg: 
+                  { $subtract: 
+                    [ "$billing.trialStart", 
+                    "$billing.trialEnd" ] 
+                  } },
               }
-          }
+          },
         ]
      )
      res.send(data)
     } catch (error) {
       console.error('Error in strategic controller getting plan average: ', error);
     }
-  };
+};
   
-  export default strategic;
+export default strategic;

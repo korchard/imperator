@@ -11,7 +11,6 @@ function* fetchImperatorData() {
   }
 } //end fetchImperatorData
 
-
 function* fetchCompanySearch(action){
   try {
     // console.log('payload', action.payload)
