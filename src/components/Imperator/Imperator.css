@@ -153,3 +153,32 @@ only screen and (max-width: 760px),
 .tableTitle {
   background-color: orange;
 }
+
+.btn2 {
+  background-color: #024058;
+  border-radius: 2px;
+  border: 1px solid #024058;
+  box-shadow: none;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 1;
+  min-height: 50px;
+  text-align: center;
+  -webkit-transition: color 0.2s, border 0.2s;
+  transition: color 0.2s, border 0.2s;
+  -webkit-letter-spacing: 0.19px;
+  -moz-letter-spacing: 0.19px;
+  -ms-letter-spacing: 0.19px;
+  letter-spacing: 0.19px;
+  -webkit-transition: 0.2s filter linear;
+  transition: 0.2s filter linear;
+  white-space: nowrap;
+  margin-left: auto;
+  margin-right: auto;
+  float: right;
+}
+
+.company {
+  display: block;
+}
