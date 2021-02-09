@@ -57,8 +57,7 @@ padding: 0.5rem;
 .table { 
     border-collapse: collapse; 
     margin: auto;
-
-  }
+}
 
   /* Zebra striping */
   tr:nth-of-type(even) { 
@@ -78,12 +77,11 @@ padding: 0.5rem;
   td, th { 
     border: 1px solid #ccc; 
     text-align: left; 
-
   }
 
   td {
-      padding: 3px;
-      font-size: 12px;
+    padding: 3px;
+    font-size: 12px;
 	  padding-left: 20px;
 	  padding-right: 20px;
   }
