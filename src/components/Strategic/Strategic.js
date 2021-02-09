@@ -6,10 +6,11 @@ import './Strategic.css';
 
 function Strategic() {
   const dispatch = useDispatch();
-  const strategic = useSelector((redux) => redux.strategicGraph.strategicGraph);
+  const strategic = useSelector((redux) => redux.strategic.strategicGraph.strategicGraph);
 
   useEffect(() => {
     dispatch({ type: 'GET_PLAN_LENGTH_AVERAGE' })
+    dispatch({ type: 'GET_PAID_PLANS' })
   }, [])
 
   return (

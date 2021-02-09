@@ -4,7 +4,7 @@ import ReactApexChart from 'react-apexcharts';
 
 function StrategicGraph() {
     const dispatch = useDispatch();
-    const strategicGraph = useSelector((redux) => redux.strategicGraph);
+    const strategicGraph = useSelector((redux) => redux.strategic.strategicGraph);
 
     useEffect(() => {
         dispatch({ type: 'GET_PLAN_LENGTH_AVERAGE' });
