@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import Chart from 'react-apexcharts';
+import Chart from 'react-apexcharts';
 
 function StrategicGraph() {
     const dispatch = useDispatch();
@@ -37,14 +37,29 @@ function StrategicGraph() {
                 'Trial'
             ]
           }
-        };
-      
+        }
+        // labels: ['Pro', 'Premium', 'Enterprise', 'Trial']
 
-return (
-    <div className="strategic">
-      
-    </div>
-  );
+    return (
+        <div className="strategic">
+          <div className="app">
+            <div className="row">
+              <div className="mixed-chart">
+                <Chart
+                  options={opt}
+                  series={[
+                    {
+                      data: [trial, premium, enterprise, pro],
+                    },
+                  ]}
+                  type="bar"
+                  width="500"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      );
 
 }
 

@@ -4,7 +4,7 @@
 // Use Ctrl+Space inside a snippet or a string literal to trigger completions.
 
 // Select the database to use.
-// use('aurelius');
+use('aurelius');
 
 
 
@@ -512,3 +512,49 @@
 //     }},
 // ]);
 
+<<<<<<< Updated upstream
+=======
+// db.companies.aggregate([
+//   // AQUOAVO _id: 6018596184af92843a7bb1c0
+//   {
+//     $match: {
+//         "company": "AQUOAVO",
+//       }
+//     },
+//     {
+//     $project: {
+//       "_id": 0, 
+//       "company": 1, 
+//       "billing.status": 1,
+//       "billing.customerId": 1,
+//       "billing.plan": 1,
+//       "billing.trialStart": 1,
+//       "activeUntil": 1,
+//       "jira": 1,
+//       "zapier": 1,
+//       "hashtags total": {$size: "$hashtags"},
+//       "documents total": {$size: "$documents"},
+//       "projects total": {$size: "$projects"},
+//       "notes total": {$size: "$notes"},
+//       "insights total": {$size: "$insights"},
+//       "collections total": {$size: "$collections"},
+//       "recommandations total": {$size: "$recommendations"}
+//     }},
+// ]);
+
+db.companies.aggregate(
+        [
+          {
+            $group:
+              {
+                _id: "$billing.plan",
+                avgLength: { $avg: 
+                  { $subtract: 
+                    [ "$billing.trialStart", 
+                    "$billing.trialEnd" ] 
+                  } },
+              }
+          },
+        ]
+     )
+>>>>>>> Stashed changes

@@ -14,10 +14,12 @@ const strategic = async (req: Request, res: Response): Promise<void> => {
                     [ "$billing.trialStart", 
                     "$billing.trialEnd" ] 
                   } },
-              }
-          }
+              }, 
+          },
+          {$sort: {_id : 1}},
         ]
      )
+     console.log('data is', data)
      res.send(data)
     } catch (error) {
       console.error('Error in strategic controller getting plan average: ', error);
