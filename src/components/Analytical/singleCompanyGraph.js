@@ -10,7 +10,7 @@ const SingleCompanyGraph = () => {
   const dispatch = useDispatch();
   
   useEffect(() => {
-    dispatch({ type: 'FETCH_SINGLE_COMPANY_DATA', param: location.id });
+    dispatch({ type: 'FETCH_SINGLE_COMPANY_DATA', param: {id: location.params.id }});
     dispatch({ type: 'FETCH_TOTAL_ACTIONS'});
   }, []); 
 
@@ -86,6 +86,7 @@ const SingleCompanyGraph = () => {
 
   return (
     <div>
+      {JSON.stringify(location.params.id)}
       <Chart options={opt.options} series={[
         {
           name: 'Average company',
