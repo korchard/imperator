@@ -8,7 +8,7 @@ function StrategicGraph() {
 
     useEffect(() => {
         dispatch({ type: 'GET_PLAN_LENGTH_AVERAGE' });
-      }, [])
+      }, []) 
 
     // const chartOptions = {
     //   options: {
