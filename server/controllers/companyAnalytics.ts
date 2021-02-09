@@ -16,7 +16,7 @@ export const singleCompany = async (
       },
         {
         $project: {
-          "_id": 0, 
+          "_id": 1, 
           "email": 1, 
           "company": 1, 
           "billing.status": 1,

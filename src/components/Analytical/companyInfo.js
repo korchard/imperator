@@ -1,12 +1,26 @@
 import React, {useState} from 'react';
-import { useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import Moment from 'react-moment'
 
 const CompanyInfo = () => {
+  const dispatch = useDispatch();
   const companyInfo = useSelector((store) => store.singleCompanyData);
   const [editMode, setEditMode] = useState(false)
-console.log('CompanyInfo', companyInfo
-)
+  const [customerId, setCustomerId] = useState('')
+  
+  
+  console.log('CompanyInfo', companyInfo)
+
+  const editCustomerId = (customerId) => {
+    dispatch({ 
+      type: 'EDIT_CUSTOMER_ID', 
+      payload: {
+        customerId: customerId, 
+        companyId: companyInfo._id
+      }})
+    setEditMode(!editMode)
+  }
+
   return (
     <div>
         <div className='companyInfoHeader'>
@@ -19,8 +33,12 @@ console.log('CompanyInfo', companyInfo
         <div className='customerInfo'>
         {editMode ? 
           <>
-          <input value={companyInfo.billing?.customerId} type='text' />
-          <button>Edit ID</button></>:
+          <input 
+            // value={companyInfo.billing?.customerId} 
+            onChange={(e) => setCustomerId(e.target.value)} 
+            type='text' 
+            />
+          <button onClick={() => editCustomerId(customerId)}>Edit ID</button></>:
           <div>Customer ID: {companyInfo.billing?.customerId}</div>  
         }
         {editMode ? null : 

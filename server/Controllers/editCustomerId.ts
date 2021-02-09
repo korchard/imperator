@@ -7,13 +7,12 @@ export const editCustomerId = async (
   res: Response
 ): Promise<void> => {
   try { 
+      console.log('req body edit', req.body)
     await CompanyDB.findByIdAndUpdate(
-        {
-            "_id": "6018596184af92843a7bb1c0"
-        },
+        {"_id": "6018596184af92843a7bb1c0"},
         {
           $set: {
-            "billing.customerId": "testtest"  
+            "billing.customerId": `testtest`  
             }
         },
         {
