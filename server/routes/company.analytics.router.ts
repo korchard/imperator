@@ -9,6 +9,6 @@ const router: express.Router = express.Router();
 
 router.get('/:id', rejectUnauthenticated, singleCompany);
 
-router.get('/:id', rejectUnauthenticated, singleCompanyUsers);
+router.get('/users/:id', rejectUnauthenticated, singleCompanyUsers);
 
 export default router;

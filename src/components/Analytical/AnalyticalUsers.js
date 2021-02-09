@@ -5,7 +5,8 @@ const AnalyticalUsers = () => {
  
   const [users, setUsers] = useState('');
   const dispatch = useDispatch();
-  const companyUsers = useSelector((redux) => redux.);
+  const companyUsers = useSelector((redux) => redux.singleCompanyUsers);
+
   useEffect(() => {
     dispatch({ type: 'FETCH_COMPANY_USERS' });
   }, [])
@@ -13,6 +14,11 @@ const AnalyticalUsers = () => {
   return (
     <div>
       <h2>User List</h2>
+      <ul>
+      {companyUsers.map(user => {
+          <li key={user._id}>{user.email}</li>
+      })}
+      </ul>
     </div>
   );
 };

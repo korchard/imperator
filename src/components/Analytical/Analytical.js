@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import SingleCompanyGraph from './singleCompanyGraph';
 import AllCompanyGraph from './allCompanyGraph';
+import AnalyticalUsers from './AnalyticalUsers';
 import CompanyInfo from './companyInfo'
 import './Analytical.css'
 
@@ -21,14 +22,13 @@ const Analytical = () => {
     }
   }
 
-
-
   return (
     <div className='container'>
       <h1>Analytical</h1> 
       <input className="search-input" placeholder="Search users"/>
       <CompanyInfo />
       {graph}
+      <AnalyticalUsers />
     </div>
   );
 }
