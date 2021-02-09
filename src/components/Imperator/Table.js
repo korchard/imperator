@@ -28,7 +28,7 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
                         accessor: 'company',
                         Cell: ({ cell }) => (
                             <span className="company">{cell.row.values.company}
-                                <button className="btn2" onClick={goToAnalytical}>
+                                <button className="coBtn" onClick={goToAnalytical}>
                                     <DiGoogleAnalytics />
                                     &nbsp;
                                     Analytics

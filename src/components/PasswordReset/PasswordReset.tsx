@@ -45,7 +45,8 @@ const PasswordReset: React.FC<SwalOptions> = () => {
     
     return (
         <div className='resetContainer'>
-            <form className='formPanel reset'>
+            <div className="reset">
+            <form className='formPanel'>
             <img src="../img/logo.svg" alt="logo" className="nav-logo2"></img>
                 <h2>Password Reset</h2>
                 <div>
@@ -54,7 +55,7 @@ const PasswordReset: React.FC<SwalOptions> = () => {
                     <input
                         className="loginForm"
                         type='text'
-                        name='username'
+                        name='email'
                         required
                         value={email.email}
                         onChange={(e) => setEmail({...email, email: e.target.value})}
@@ -82,9 +83,9 @@ const PasswordReset: React.FC<SwalOptions> = () => {
                     >Reset</button>
                 </div>
             </form>
+            </div>
         </div>
     );
 };
 
 export default PasswordReset;
-  
