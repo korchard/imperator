@@ -6,6 +6,7 @@ import totalAction from './totalactions.reducer';
 import imperator from './imperator.reducer';
 import monthlyUsersOverTime from './monthlyusers.reducer';
 import singleCompanyData from './singleCompany.reducer';
+import singleCompanyUsers from './singleCompanyUsers.reducer';
 import strategic from './strategic.reducer'
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   monthlyUsersOverTime,
   strategic, 
   singleCompanyData,
+  singleCompanyUsers,
 });
 
 export default rootReducer;
