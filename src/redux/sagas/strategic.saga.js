@@ -11,8 +11,19 @@ function* getPlanAverage() {
   }
 } //end getPlanAverage
 
+//Strategic Graph for average plan length by types
+function* getPaidPlans() {
+  try {
+    const response = yield axios.get(`/api/paid/strategic`);
+    yield put({ type: 'SET_PLAN_LENGTH_AVERAGE', payload: response.data });
+  } catch (error) {
+    console.log('error with getPaidPlans in strategic.saga', error);
+  }
+} //end getPaidPlans
+
 function* strategicSaga() {
   yield takeEvery('GET_PLAN_LENGTH_AVERAGE', getPlanAverage);
+  yield takeEvery('GET_PAID_PLANS', getPaidPlans);
 }
 
 export default strategicSaga;
