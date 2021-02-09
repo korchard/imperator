@@ -4,8 +4,15 @@
 // Use Ctrl+Space inside a snippet or a string literal to trigger completions.
 
 // Select the database to use.
-// use('aurelius');
+use('aurelius');
 
+
+db.users.countDocuments({
+      timestamp: {
+        $gte: new Date('2021, 01'),
+        $lt: new Date('2021, 12'),
+      },
+});
 
 
 
@@ -487,11 +494,7 @@
 //   {
 //     $search: {
 //       "text": {
-<<<<<<< HEAD
-//         "query": "LEXICONDO",
-=======
 //         "query": "AQUOAVO",
->>>>>>> f29e977507b8dde36a239fcfd9aa3e37dbb1d4c7
 //         "path": "company" //local field to look for the query input
 //       }
 //     }
@@ -545,19 +548,19 @@
 //     }},
 // ]);
 
-db.companies.aggregate(
-        [
-          {
-            $group:
-              {
-                _id: "$billing.plan",
-                avgLength: { $avg: 
-                  { $subtract: 
-                    [ "$billing.trialStart", 
-                    "$billing.trialEnd" ] 
-                  } },
-              }
-          },
-        { $group: {_id: 1} },
-        ]
-     )
+// db.companies.aggregate(
+//         [
+//           {
+//             $group:
+//               {
+//                 _id: "$billing.plan",
+//                 avgLength: { $avg: 
+//                   { $subtract: 
+//                     [ "$billing.trialStart", 
+//                     "$billing.trialEnd" ] 
+//                   } },
+//               }
+//           },
+//         { $group: {_id: 1} },
+//         ]
+//      )
