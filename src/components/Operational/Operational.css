@@ -10,6 +10,7 @@
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: minmax(100px, auto);
   gap: 0.75rem;
+  margin-right: 30px;
   grid-template-areas:
     "header header"
     "main-left main-right"
@@ -23,16 +24,21 @@
 
 .barGraph {
   grid-area: main-left;
-  margin-bottom: 30px;
+  background-color: white; 
+  box-shadow: 1px 3px 5px #888888; 
 }
 
 .planGraph {
   grid-area: main-right;
+  background-color: white; 
+  box-shadow: 1px 3px 5px #888888; 
 }
 
 .monthlyGraph {
   grid-area: footer;
   margin-bottom: 30px;
+  background-color: white; 
+  box-shadow: 1px 3px 5px #888888; 
 }
 
 @supports (display: grid) {

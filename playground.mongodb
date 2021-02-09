@@ -6,6 +6,26 @@
 // Select the database to use.
 use('aurelius');
 
+db.companies.update(
+  {_id: "6018596184af92843a7bb1c0"},
+  {
+    $set: {
+      'billing.customerId': "testtest"   
+  }
+  },
+  {
+    new: true
+  }
+)
+
+// db.users.countDocuments({
+//       timestamp: {
+//         $gte: new Date('2021, 01'),
+//         $lt: new Date('2021, 12'),
+//       },
+// });
+
+
 //used to get plans ending this month
 // db.companies.aggregate([
 //   {$project: {
@@ -524,6 +544,7 @@ db.companies.aggregate([
 //     }},
 // ]);
 
+
 // db.companies.aggregate([
 //   // AQUOAVO _id: 6018596184af92843a7bb1c0
 //   {
@@ -552,6 +573,7 @@ db.companies.aggregate([
 //     }},
 // ]);
 
+
 // db.companies.aggregate(
 //         [
 //           {
@@ -568,3 +590,4 @@ db.companies.aggregate([
 //         { $group: {_id: 1} },
 //         ]
 //      )
+
