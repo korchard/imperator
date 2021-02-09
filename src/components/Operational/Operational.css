@@ -25,18 +25,20 @@
 .barGraph {
   grid-area: main-left;
   background-color: #eee; 
+  box-shadow: 1px 3px 5px #888888; 
 }
 
 .planGraph {
   grid-area: main-right;
   background-color: #eee; 
-  box-shadow: 5px 10px #888888; 
+  box-shadow: 1px 3px 5px #888888; 
 }
 
 .monthlyGraph {
   grid-area: footer;
   margin-bottom: 30px;
   background-color: #eee; 
+  box-shadow: 1px 3px 5px #888888; 
 }
 
 @supports (display: grid) {
