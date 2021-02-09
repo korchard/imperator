@@ -5,7 +5,8 @@ import Chart from 'react-apexcharts';
 const PlanTypeGraph = () => {
   const dispatch = useDispatch();
   const planCount = useSelector((redux) => redux.planCount)
-  
+  const [year, setYear] = useState(2021)
+
   useEffect(() => {
     dispatch({ type: 'FETCH_PLAN_COUNTS' })
 
