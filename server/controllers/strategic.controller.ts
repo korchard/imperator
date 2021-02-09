@@ -24,7 +24,5 @@ const strategic = async (req: Request, res: Response): Promise<void> => {
       console.error('Error in strategic controller getting plan average: ', error);
     }
 };
-
-
   
 export default strategic;

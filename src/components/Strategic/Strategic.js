@@ -9,8 +9,10 @@ function Strategic() {
   const strategic = useSelector((redux) => redux.strategic.strategicGraph.strategicGraph);
 
   useEffect(() => {
-    dispatch({ type: 'GET_PLAN_LENGTH_AVERAGE' })
-    dispatch({ type: 'GET_PAID_PLANS' })
+    dispatch({ type: 'GET_PLAN_LENGTH_AVERAGE' });
+    dispatch({ type: 'GET_PAID_PLANS' });
+    dispatch({ type:'GET_TRIAL_PLANS' });
+
   }, [])
 
   return (
