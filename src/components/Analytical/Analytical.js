@@ -16,6 +16,7 @@ const Analytical = () => {
   const checkSingleOrAll = () => { 
     if (location.params.type === 'single')   { 
       setGraph(<SingleCompanyGraph/>)
+      setCompanyInfo(<CompanyInfo />)
     } else if (location.params.type === 'all') { 
       setGraph(<AllCompanyGraph/>)
     }
@@ -27,7 +28,7 @@ const Analytical = () => {
     <div className='container'>
       <h1>Analytical</h1> 
       <input className="search-input" placeholder="Search users"/>
-      <CompanyInfo />
+      {companyInfo}
       {graph}
     </div>
   );
