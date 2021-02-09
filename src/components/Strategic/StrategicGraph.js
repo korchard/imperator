@@ -25,7 +25,7 @@ function StrategicGraph() {
                 horizontal: true,
                 borderRadius: 25,
                
-              }
+              },
             },
             colors: ['#ee5f1b'],
             dataLabels: {
@@ -33,7 +33,31 @@ function StrategicGraph() {
             },
             xaxis: {
               categories: ['Trial', 'Pro', 'Premium', 'Enterprise'],
-            }
+              labels: {
+                style: {
+                  colors: ['#212C2E'],
+                  
+                },
+              },
+            },
+            yaxis: {
+                labels: {
+                    style: {
+                      colors: ['#212C2E'],
+                      fontSize: '.75rem'
+                    },
+                  },
+            },
+            title: {
+                text: 'Average Plan Length By Types ',
+                floating: true,
+                // offsetX: 10,
+                align: 'center',
+                style: {
+                  color: '#212C2E',
+                //   fontSize: '.75rem'
+                },
+              },
           },
       });
 
