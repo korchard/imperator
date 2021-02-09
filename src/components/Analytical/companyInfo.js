@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
-import Moment from 'moment'
+import Moment from 'react-moment'
 
 const CompanyInfo = () => {
   const location = useRouteMatch();
@@ -13,7 +13,7 @@ const CompanyInfo = () => {
   
   
 
-console.log('CompanyInfo', companyInfo)
+console.log('CompanyInfo', companyInfo.activeUntil)
   return (
     <div>
         <div className='companyInfoHeader'>
@@ -25,7 +25,10 @@ console.log('CompanyInfo', companyInfo)
         </div>
         <div className='customerInfo'>
           <div>Customer ID: {companyInfo.billing?.customerId}</div>
-          <Moment>{companyInfo.activeUntil}</Moment>
+            <button>Update</button>
+          <div>
+            Active Until: <Moment format='MM/DD/YYYY'>{companyInfo.activeUntil}</Moment>
+          </div>
         </div>
     </div>
   );
