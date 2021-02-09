@@ -1,8 +1,12 @@
 import React from 'react';
 import { BiBluetooth } from 'react-icons/bi';
-import { useTable, usePagination, useSortBy } from 'react-table'
+import { useTable, usePagination, useSortBy } from 'react-table';
+import { useHistory } from 'react-router-dom';
 
 const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => {
+
+    const history = useHistory();
+
     const getConfig = (imperator) => {
         if (imperator.jira && imperator.zapier) {
             return 'jira, zapier'
@@ -12,6 +16,7 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
             return 'zapier'
         }
     }
+
     const columns = React.useMemo(
         () => [
             {
@@ -123,6 +128,11 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
         date = date.split('T');
         return (new Date(Date.parse(date)).toString()).replace(/ \w+-\d+ \(.*\)$/, "")
     }
+
+    const goToAnalytical = (id) => {
+        history.push(`/analytical/:type/:${id}`);
+    }
+
     // Render the UI for your table
     return (
         <>
