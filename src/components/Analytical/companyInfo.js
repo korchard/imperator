@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useSelector} from 'react-redux';
 import Moment from 'react-moment'
 
 const CompanyInfo = () => {
   const companyInfo = useSelector((store) => store.singleCompanyData);
-
+  const [editMode, setEditMode] = useState(false)
 console.log('CompanyInfo', companyInfo
 )
   return (
@@ -17,8 +17,15 @@ console.log('CompanyInfo', companyInfo
           <div>Status: {companyInfo.billing?.status}</div>
         </div>
         <div className='customerInfo'>
-          <div>Customer ID: {companyInfo.billing?.customerId}</div>
-            <button>Update</button>
+        {editMode ? 
+          <>
+          <input value={companyInfo.billing?.customerId} type='text' />
+          <button>Edit ID</button></>:
+          <div>Customer ID: {companyInfo.billing?.customerId}</div>  
+        }
+        {editMode ? null : 
+            <button onClick={() => setEditMode(!editMode)}>Update</button>
+        }
           <div>
             Active Until: <Moment format='MM/DD/YYYY'>{companyInfo.activeUntil}</Moment>
           </div>
