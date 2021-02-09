@@ -8,7 +8,7 @@ const BarGraph = () => {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_TOTAL_ACTIONS' });
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
   const [opt, setOptions] = useState({
     options: {
@@ -32,7 +32,7 @@ const BarGraph = () => {
         offsetY: -15,
         style: {
           fontSize: '12px',
-          colors: ['#000'],
+          colors: ['rgb(33, 44, 46)'],
         },
       },
       series: [],
@@ -72,7 +72,7 @@ const BarGraph = () => {
         offsetY: 330,
         align: 'center',
         style: {
-          color: '#000',
+          color: 'rgb(33, 44, 46)',
         },
       },
     },

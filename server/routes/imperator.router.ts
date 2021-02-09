@@ -8,11 +8,8 @@ const router: express.Router = express.Router();
 
 router.get('/', rejectUnauthenticated, imperator);
 
-router.get('/search/:param', rejectUnauthenticated, imperatorSearch);
-
-router.post(
-  '/',
-  (req: Request, res: Response, next: express.NextFunction): void => {}
-);
+router.get('/search/:query', imperatorSearch, (req: Request, res: Response): void => {
+  res.sendStatus(201);
+});
 
 export default router;

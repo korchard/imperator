@@ -1,17 +1,42 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import swal from 'sweetalert';
 import './PasswordReset.css';
 
 interface IEmail {
     email: string, 
+    confirm: string
 }
 
-const PasswordReset: React.FC = () => {
-    const [email, setEmail] = useState<IEmail>({email: ''})
+interface SwalOptions {
+    title?: string,
+    text?: string,
+    icon?: string,
+}
+
+const PasswordReset: React.FC<SwalOptions> = () => {
+    const [email, setEmail] = useState<IEmail>({email: '', confirm: ''})
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const reset = () => {
-        console.log('CLicked reset password')
+        console.log('Clicked reset password', email);
+        if(email.email === email.confirm) {
+            dispatch({ type: 'RESET_PASSWORD', payload: email });
+            setEmail({email: '', confirm: ''});
+            swal({
+                title: "Thank you!",
+                text: "You will receive an email to reset your password.",
+                icon: "success",
+              });
+        } else {
+            swal({
+                title: "Whoops!",
+                text: "Please ensure email is accurate",
+                icon: "warning",
+              });
+        }
     }
 
     const returnToLogin = () => {
@@ -31,8 +56,21 @@ const PasswordReset: React.FC = () => {
                         type='text'
                         name='username'
                         required
-                        // value={user.email}
-                        // onChange={(e) => setEmail({...user, email: e.target.value})}
+                        value={email.email}
+                        onChange={(e) => setEmail({...email, email: e.target.value})}
+                    />
+                    </label>
+                </div>
+                <div>
+                    <label htmlFor='email'>
+                    Confirm Email:
+                    <input
+                        className="loginForm"
+                        type='text'
+                        name='confirm'
+                        required
+                        value={email.confirm}
+                        onChange={(e) => setEmail({...email, confirm: e.target.value})}
                     />
                     </label>
                 </div>

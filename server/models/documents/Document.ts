@@ -2,7 +2,6 @@ import { Schema, Model, model } from 'mongoose';
 import mongooseLeanDefaults from 'mongoose-lean-defaults';
 import mongooseLeanGetters from 'mongoose-lean-getters';
 import { Document } from '../interfaces';
-
 class DocumentModel extends Model {
   get id(): string {
     return this._id;

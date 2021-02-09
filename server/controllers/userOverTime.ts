@@ -77,8 +77,9 @@ export const getUsersOverTime = async (
         $gte: new Date('2021, 12'),
       },
     });
+    console.log([jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]);
     res.send([jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]);
   } catch (error) {
-    console.error('Error getting total actions: ', error);
+    console.error('Error getting users over time: ', error);
   }
 };

@@ -2,26 +2,28 @@
   display: flex;
   flex-direction: column;
   max-width: 100%;
-  padding: calc(6% + 1.9vmin);
+  margin-left: 75px;
 }
 
 .gridbox {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 0.2fr 1fr 1fr;
-  gap: 1rem;
+  grid-template-rows: minmax(100px, auto);
+  gap: 0.75rem;
   grid-template-areas:
-    'header header'
-    'main-left main-right'
-    'footer footer';
+    "header header"
+    "main-left main-right"
+    "footer footer";
 }
 
 .headerArea {
   grid-area: header;
+  color: rgb(33, 44, 46);
 }
 
 .barGraph {
   grid-area: main-left;
+  margin-bottom: 30px;
 }
 
 .planGraph {
@@ -30,6 +32,7 @@
 
 .monthlyGraph {
   grid-area: footer;
+  margin-bottom: 30px;
 }
 
 @supports (display: grid) {
@@ -37,10 +40,10 @@
     .gridbox {
       grid-template-columns: 1fr;
       grid-template-areas:
-        'header'
-        'main-left'
-        'main-right'
-        'footer';
+        "header"
+        "main-left"
+        "main-right"
+        "footer";
     }
   }
 }

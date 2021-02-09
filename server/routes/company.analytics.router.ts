@@ -2,10 +2,10 @@
 import { Request, Response } from 'express';
 import express from 'express';
 import rejectUnauthenticated from '../modules/authentication-middleware';
-import { getUsersOverTime } from '../controllers/user-over-time'
+import { singleCompany } from '../controllers/companyAnalytics'; 
 
 const router: express.Router = express.Router();
 
-router.get('/', rejectUnauthenticated, getUsersOverTime);
+router.get('/:id', singleCompany);
 
 export default router;

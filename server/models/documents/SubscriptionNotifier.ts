@@ -14,7 +14,7 @@ export const SubscriptionNotifier = {
       type: eventType,
       company: company,
     }).exec()
-    subscriptions.forEach(function(s: any) {
+    subscriptions.forEach(function(s) {
       request.post(
         {
           url: s.target,
