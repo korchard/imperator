@@ -8,10 +8,7 @@ import {
 
 import { connect, useDispatch } from 'react-redux';
 import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import InfoPage from '../InfoPage/InfoPage';
-// import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Operational from '../Operational/Operational.js';
@@ -38,13 +35,6 @@ const App = () => {
           <Redirect exact from='/' to='/operational' />
 
           {/* Visiting localhost:3000/about will show the about page. */}
-
-          <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
-            exact
-            path='/info'
-            component={InfoPage}
-          />
 
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
