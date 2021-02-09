@@ -6,6 +6,6 @@ import { singleCompany } from '../controllers/companyAnalytics';
 
 const router: express.Router = express.Router();
 
-router.get('/:id', singleCompany);
+router.get('/:id', rejectUnauthenticated, singleCompany);
 
 export default router;
