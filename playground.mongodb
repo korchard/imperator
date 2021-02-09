@@ -10,7 +10,7 @@ db.companies.update(
   {_id: "6018596184af92843a7bb1c0"},
   {
     $set: {
-      '$billing.customerId': "testtest"   
+      'billing.customerId': "testtest"   
   }
   },
   {

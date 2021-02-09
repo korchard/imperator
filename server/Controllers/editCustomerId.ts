@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { CompanyDB } from '../models/documents/Company';
+import mongoose from 'mongoose'
 
 
 export const editCustomerId = async (
@@ -12,13 +13,13 @@ export const editCustomerId = async (
         {"_id": "6018596184af92843a7bb1c0"},
         {
           $set: {
-            "billing.customerId": `testtest`  
-            }
+            "billing.customerId": "test"   
+        }
         },
         {
           new: true
         }
-        )
+      )
     res.sendStatus(201);
 
   } catch (error) {
