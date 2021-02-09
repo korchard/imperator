@@ -21,14 +21,15 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
     const columns = React.useMemo(
         () => [
             {
-                Header: 'Company Info',
+                Header: 'Aurelius',
+                className: 'title',
                 columns: [
                     {
                         Header: 'Company Name',
                         accessor: 'company',
                         Cell: ({ cell }) => (
                             <span className="company">{cell.row.values.company}
-                                <button className="btn2" onClick={goToAnalytical}>
+                                <button className="coBtn" onClick={goToAnalytical}>
                                     <DiGoogleAnalytics />
                                     &nbsp;
                                     Analytics
@@ -88,10 +89,6 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
                         Header: 'Total Users',
                         accessor: 'total users',
                     },
-                    // {
-                    //     Header: 'Last Project Created On',
-                    //     accessor: 'lastProject',
-                    // },
                 ],
             },
         ],
@@ -152,7 +149,7 @@ const Table = ({ data, fetchData, loading, pageCount: controlledPageCount }) => 
                     {headerGroups.map((headerGroup) => (
                         <tr{...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column) => (
-                                <th {...column.getHeaderProps(column.getSortByToggleProps())} className="tableHead">
+                                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                                     {column.render('Header')}
                                     {/* Add a sort direction indicator */}
                                     <span className="sortArrow">

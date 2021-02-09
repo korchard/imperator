@@ -1,4 +1,4 @@
-import monthlyUsersOverTime from './monthlyusers.reducer';
+import monthlyUsersOverTime from '../monthlyusers.reducer';
 
 describe('Testing the monthlyusersReducer', () => {
   test('test returns default state if it is not an action we assigned', () => {
