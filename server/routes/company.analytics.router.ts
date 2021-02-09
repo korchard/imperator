@@ -7,7 +7,7 @@ import { editCustomerId } from '../controllers/editCustomerId';
 
 const router: express.Router = express.Router();
 
-router.get('/:id', singleCompany);
+router.get('/:id', rejectUnauthenticated, singleCompany);
 
 router.put('/:id', editCustomerId);    
 

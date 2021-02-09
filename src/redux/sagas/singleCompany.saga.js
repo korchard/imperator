@@ -3,9 +3,8 @@ import axios from 'axios';
 
 function* getSingleCompanyData(action){
   try {
-    const response = yield axios.get(`/api/analytics/:${action.param}`);
+    const response = yield axios.get(`/api/analytics/${action.param.id}`);
     yield put({ type: 'SET_SINGLE_COMPANY_DATA', payload: response.data });
-    console.log('getSingleCompanyData', response.data);
   } catch (error) {
     console.log(`Error in saga getting imperator data:`, error);
   }
@@ -13,7 +12,7 @@ function* getSingleCompanyData(action){
 
 function* editCustomerId(action){
   try{
-    yield axios.put(`/api/analytical/:${action.param}`, action.payload)  
+    yield axios.put(`/api/analytical/${action.param}`, action.payload)  
     yield put({ type: 'FETCH_SINGLE_COMPANY_DATA', payload: action.param})
   }catch (error) {
     console.log('Error in edit CID (singleCompanySaga)', error)

@@ -19,6 +19,14 @@ db.companies.findByIdAndUpdate(
   }
 )
 
+// db.users.countDocuments({
+//       timestamp: {
+//         $gte: new Date('2021, 01'),
+//         $lt: new Date('2021, 12'),
+//       },
+// });
+
+
 
 // db.companies.aggregate([
 //   //  {
@@ -524,6 +532,7 @@ db.companies.findByIdAndUpdate(
 //     }},
 // ]);
 
+
 // db.companies.aggregate([
 //   // AQUOAVO _id: 6018596184af92843a7bb1c0
 //   {
@@ -552,6 +561,7 @@ db.companies.findByIdAndUpdate(
 //     }},
 // ]);
 
+
 // db.companies.aggregate(
 //         [
 //           {
@@ -568,3 +578,4 @@ db.companies.findByIdAndUpdate(
 //         { $group: {_id: 1} },
 //         ]
 //      )
+

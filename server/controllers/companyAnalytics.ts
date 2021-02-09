@@ -7,10 +7,11 @@ export const singleCompany = async (
   res: Response
 ): Promise<void> => {
   try { 
-   const data = await CompanyDB.aggregate([
+    const companyId = req.params.id;
+    const data = await CompanyDB.aggregate([
       {
         $match: {
-          "company": "AQUOAVO"
+          "_id": `${companyId}`
         }
       },
         {
@@ -26,16 +27,17 @@ export const singleCompany = async (
           "activeUntil": 1,
           "jira": 1,
           "zapier": 1,
-          "hashtags total": {$size: "$hashtags"},
-          "documents total": {$size: "$documents"},
-          "projects total": {$size: "$projects"},
-          "notes total": {$size: "$notes"},
-          "insights total": {$size: "$insights"},
-          "collections total": {$size: "$collections"},
-          "recommendations total": {$size: "$recommendations"}
+          hashtagsTotal: {$size: "$hashtags"},
+          documentsTotal: {$size: "$documents"},
+          projectsTotal: {$size: "$projects"},
+          notesTotal: {$size: "$notes"},
+          insightsTotal: {$size: "$insights"},
+          collectionsTotal: {$size: "$collections"},
+          recommendationsTotal: {$size: "$recommendations"}
         }},
     ]);
     res.send(data[0]);
+    console.log(companyId)
   } catch (error) {
     console.error('Error getting total actions: ', error);
   }
