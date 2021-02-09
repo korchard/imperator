@@ -7,7 +7,7 @@
 use('aurelius');
 
 db.companies.findByIdAndUpdate(
-  _id: "6018596184af92843a7bb1c0",
+  _id: "6018596184af92843a7bb1c0"
   {
     $set: {
       billing.customerId: "testtest"
