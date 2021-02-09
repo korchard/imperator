@@ -5,12 +5,12 @@ import Chart from 'react-apexcharts';
 
 const SingleCompanyGraph = () => {
   const location = useRouteMatch();
-  const totalActionData = useSelector((store) => store.totalAction);
+  const allCompanyData = useSelector((store) => store.totalAction);
   const singleCompanyData = useSelector((store) => store.singleCompanyData);
   const dispatch = useDispatch();
   
   useEffect(() => {
-    dispatch({ type: 'FETCH_SINGLE_COMPANY_DATA', param: location.id });
+    dispatch({ type: 'FETCH_SINGLE_COMPANY_DATA', param: {id: location.params.id }});
     dispatch({ type: 'FETCH_TOTAL_ACTIONS'});
   }, []); 
 
@@ -62,33 +62,38 @@ const SingleCompanyGraph = () => {
     }})
 
     const allCompanyActions = [
-      totalActionData.projects.count,
-      totalActionData.insights.count,
-      totalActionData.documents.count,
-      totalActionData.hashtags.count,
-      totalActionData.notes.count,
-      (totalActionData.hashtags.count + totalActionData.documents.count + totalActionData.insights.count + totalActionData.notes.count + totalActionData.projects.count)
+      allCompanyData.projects.count/allCompanyData.Total_Companies,
+      allCompanyData.insights.count/allCompanyData.Total_Companies,
+      allCompanyData.documents.count/allCompanyData.Total_Companies,
+      allCompanyData.hashtags.count/allCompanyData.Total_Companies,
+      allCompanyData.notes.count/allCompanyData.Total_Companies,
+      (
+        (allCompanyData.hashtags.count/allCompanyData.Total_Companies) +
+        (allCompanyData.documents.count/allCompanyData.Total_Companies) + 
+        (allCompanyData.insights.count/allCompanyData.Total_Companies) + 
+        (allCompanyData.notes.count/allCompanyData.Total_Companies) + 
+        (allCompanyData.projects.count/allCompanyData.Total_Companies)
+      )
     ] 
-    // const singleCompanyActions = [
-    //   singleCompanyData.projects.count,
-    //   singleCompanyData.insights.count,
-    //   singleCompanyData.documents.count,
-    //   singleCompanyData.hashtags.count,
-    //   singleCompanyData.notes.count,
-    //   (singleCompanyData.hashtags.count + singleCompanyData.documents.count + singleCompanyData.insights.count + singleCompanyData.notes.count + singleCompanyData.projects.count)
-    // ] 
+    const singleCompanyActions = [
+      singleCompanyData.projectsTotal,
+      singleCompanyData.insightsTotal,
+      singleCompanyData.documentsTotal,
+      singleCompanyData.hashtagsTotal,
+      singleCompanyData.notesTotal,
+      (singleCompanyData.hashtagsTotal + singleCompanyData.documentsTotal + singleCompanyData.insightsTotal + singleCompanyData.notesTotal + singleCompanyData.projectsTotal)
+    ] 
 
   return (
     <div>
-      {JSON.stringify(singleCompanyData)}
       <Chart options={opt.options} series={[
         {
           name: 'Average company',
           data: allCompanyActions
         },
         { 
-          // name: singleCompanyActions.company
-          // data: singleCompanyActions
+          name: singleCompanyData.company,
+          data: singleCompanyActions
         }
       ]} type="bar" height={350} />
     </div>
@@ -96,8 +101,3 @@ const SingleCompanyGraph = () => {
 }
 
 export default SingleCompanyGraph;
-
-
-
-
-

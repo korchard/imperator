@@ -7,6 +7,13 @@
 use('aurelius');
 
 
+db.users.countDocuments({
+      timestamp: {
+        $gte: new Date('2021, 01'),
+        $lt: new Date('2021, 12'),
+      },
+});
+
 
 
 // db.companies.aggregate([
@@ -546,25 +553,3 @@ use('aurelius');
 //     }},
 // ]);
 
-db.companies.aggregate(
-        [
-          {
-            $group:
-              {
-                _id: "$billing.plan",
-                avgLength: { $avg: 
-                  { $subtract: 
-                    [ "$billing.trialStart", 
-                    "$billing.trialEnd" ] 
-                  } },
-              }
-          },
-<<<<<<< HEAD
-        ]
-     )
->>>>>>> Stashed changes
-=======
-        { $group: {_id: 1} },
-        ]
-     )
->>>>>>> 221c58cf4638fadf2d6fba38d94eeec513e72f0a
