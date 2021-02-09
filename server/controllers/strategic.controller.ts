@@ -15,7 +15,7 @@ const strategic = async (req: Request, res: Response): Promise<void> => {
                     "$billing.trialEnd" ] 
                   } },
               }
-          }
+          },
         ]
      )
      res.send(data)
