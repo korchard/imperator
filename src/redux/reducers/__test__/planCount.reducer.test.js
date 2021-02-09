@@ -1,4 +1,4 @@
-import planCount from './planCount.reducer';
+import planCount from '../planCount.reducer';
 
 describe('Testing the planCount Reducer', () => {
   test('test returns default state if it is not an action we assigned', () => {
