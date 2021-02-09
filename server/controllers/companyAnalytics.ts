@@ -1,20 +1,19 @@
 import { Request, Response } from 'express';
 import { CompanyDB } from '../models/documents/Company';
 
-// comment
 export const singleCompany = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  try { 
+  try {
     const companyId = req.params.id;
     const data = await CompanyDB.aggregate([
       {
         $match: {
-          "_id": `${companyId}`
-        }
+          _id: `${companyId}`,
+        },
       },
-        {
+      {
         $project: {
           "_id": 1, 
           "email": 1, 
@@ -37,7 +36,6 @@ export const singleCompany = async (
         }},
     ]);
     res.send(data[0]);
-    console.log(companyId)
   } catch (error) {
     console.error('Error getting total actions: ', error);
   }

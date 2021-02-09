@@ -20,9 +20,19 @@ function* editCustomerId(action){
   }
 }
 
-function* imperatorSaga() {
-  yield takeEvery('FETCH_SINGLE_COMPANY_DATA', getSingleCompanyData);
-  yield takeEvery('EDIT_CUSTOMER_ID', editCustomerId)
+function* fetchCompanyUsers(action){
+  try {
+    const response = yield axios.get(`/api/analytics/users/${action.param.id}`);
+    yield put({ type: 'SET_SINGLE_COMPANY_USERS', payload: response.data });
+  } catch (error) {
+    console.log(`Error in saga getting analytical data:`, error);
+  }
 }
 
-export default imperatorSaga;
+function* singleCompanySaga() {
+  yield takeEvery('FETCH_SINGLE_COMPANY_DATA', getSingleCompanyData);
+  yield takeEvery('EDIT_CUSTOMER_ID', editCustomerId)
+  yield takeEvery('FETCH_COMPANY_USERS', fetchCompanyUsers);
+}
+
+export default singleCompanySaga;

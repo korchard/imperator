@@ -1,4 +1,23 @@
+
+.listContainer {
+    display: inline-block;
+    width: 85%;
+    margin: auto;
+    text-align: center;
+}
+
+.paidContainer {
+    float: left;
+    /* padding-right: 2rem; */
+    /* margin-left: 75px; */
+}
+
+
 .strategic {
     color: rgb(33, 44, 46);
     margin-left: 75px;
+}
+
+.trialContainer {
+    float: right;
 }

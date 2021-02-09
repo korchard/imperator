@@ -1,4 +1,4 @@
-import userReducer from './user.reducer.js';
+import userReducer from '../user.reducer.js';
 
 describe('Testing the userReducer', () => {
   test('test returns default state if it is not an action we assigned', () => {

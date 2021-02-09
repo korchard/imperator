@@ -6,6 +6,6 @@ import { getTotalActions } from '../controllers/totalactions.controller';
 
 const router: express.Router = express.Router();
 
-router.get('/totalactions', getTotalActions);
+router.get('/totalactions', rejectUnauthenticated, getTotalActions);
 
 export default router;

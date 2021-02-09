@@ -4,78 +4,61 @@ import ReactApexChart from 'react-apexcharts';
 
 function StrategicGraph() {
     const dispatch = useDispatch();
-    const strategicGraph = useSelector((redux) => redux.strategicGraph);
+    const strategicGraph = useSelector((redux) => redux.strategic.strategicGraph);
 
     useEffect(() => {
         dispatch({ type: 'GET_PLAN_LENGTH_AVERAGE' });
       }, []) 
 
     const [opt, setOptions] = useState({
-        options: {
-          chart: {
-            id: 'basic-bar',
-            type: 'bar',
-            height: 350,
-          },
-          plotOptions: {
-            bar: {
-              distributed: true,
-              borderRadius: 6,
-              dataLabels: {
-                position: 'top',
+        series: [{
+            data: []
+          }],
+          options: {
+            chart: {
+              type: 'bar',
+              
+              height: 350
+            },
+            plotOptions: {
+              bar: {
+                horizontal: true,
+                borderRadius: 25,
+               
               },
             },
-          },
-          colors: ['#0535f7', '#66DA26', '#bf05f7', '#f70557', '#f7c305'],
-          dataLabels: {
-            enabled: true,
-            offsetY: -15,
-            style: {
-              fontSize: '12px',
-              colors: ['rgb(33, 44, 46)'],
+            colors: ['#ee5f1b'],
+            dataLabels: {
+              enabled: false
             },
-          },
-          series: [],
-          xaxis: {
-            categories: [ 'Trial', 'Pro', 'Premium', 'Enterprise'],
-            position: 'top',
-            axisBorder: {
-              show: false,
-            },
-            axisTicks: {
-              show: false,
-            },
-            labels: {
-              style: {
-                colors: ['rgb (11, 53, 77)', 'rgb (238, 95, 27)', 'rgb(46, 162, 178)', 'rgb(33, 44, 46)'],
+            xaxis: {
+              categories: ['Trial', 'Pro', 'Premium', 'Enterprise'],
+              labels: {
+                style: {
+                  colors: ['#212C2E'],
+                  
+                },
               },
             },
-          },
-          crosshairs: {
-            fill: {
-              type: 'gradient',
-              gradient: {
-                colorFrom: '#D8E3F0',
-                colorTo: '#BED1E6',
-                stops: [0, 100],
-                opacityFrom: 0.4,
-                opacityTo: 0.5,
+            yaxis: {
+                labels: {
+                    style: {
+                      colors: ['#212C2E'],
+                      fontSize: '.75rem'
+                    },
+                  },
+            },
+            title: {
+                text: 'Average Plan Length By Types ',
+                floating: true,
+                // offsetX: 10,
+                align: 'center',
+                style: {
+                  color: '#212C2E',
+                //   fontSize: '.75rem'
+                },
               },
-            },
           },
-          legend: {
-            show: false,
-          },
-          title: {
-            text: 'Total Actions All Companies',
-            floating: true,
-            offsetY: 330,
-            align: 'center',
-            style: {
-              color: 'rgb(33, 44, 46)',
-            },
-          },
-        },
       });
 
     let enterprise = strategicGraph[0]?.avgLength

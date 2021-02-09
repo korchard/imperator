@@ -1,4 +1,4 @@
-import totalActions from './totalactions.reducer';
+import totalActions from '../totalactions.reducer';
 
 const initState = {
   Total_Companies: 0,
