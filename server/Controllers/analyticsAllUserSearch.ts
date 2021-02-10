@@ -3,7 +3,6 @@ import { UserDB } from '../models/documents/User';
 
 export const analyticsAllUserSearch = async (req: Request, res: Response): Promise<void> => {
   try {
-      console.log('Req param for search', req.params)
     const data = await UserDB.aggregate([
       {
         $search: {
@@ -26,7 +25,6 @@ export const analyticsAllUserSearch = async (req: Request, res: Response): Promi
       }
     }
     ]);
-    console.log('This is data', data)
     res.send(data);
   } catch (error) {
     console.error('Error getting imperator data:', error);
