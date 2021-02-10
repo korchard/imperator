@@ -6,6 +6,6 @@ import { getUsersOverTime } from '../controllers/userOverTime';
 
 const router: express.Router = express.Router();
 
-router.get('/', rejectUnauthenticated, getUsersOverTime);
+router.get('/:year', rejectUnauthenticated, getUsersOverTime);
 
 export default router;
