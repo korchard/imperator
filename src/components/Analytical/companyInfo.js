@@ -23,7 +23,7 @@ const CompanyInfo = () => {
   }
 
   return (
-    <div>
+    <div className='companyInfoContainer'>
         <div className='companyInfoHeader'>
           <div>Company: {companyInfo.company}</div>
         </div>
@@ -39,7 +39,8 @@ const CompanyInfo = () => {
             onChange={(e) => setCustomerId(e.target.value)} 
             type='text' 
             />
-          <button onClick={() => editCustomerId(customerId)}>Edit ID</button></>:
+          <button onClick={() => editCustomerId(customerId)}>Edit ID</button>
+          </> :
           <div>Customer ID: {companyInfo.billing?.customerId}</div>  
         }
         {editMode ? null : 
