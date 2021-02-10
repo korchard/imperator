@@ -10,6 +10,6 @@ describe('Testing the monthlyusersReducer', () => {
   test('test returns the action.payload if we SET_MONTHLY_USERS', () => {
     let previousState = { something: 'foo' };
     let action = { type: 'SET_MONTHLY_USERS', payload: [12] };
-    expect(monthlyUsersOverTime(previousState, action)).toEqual([12] );
+    expect(monthlyUsersOverTime(previousState, action)).toEqual([12]);
   });
 });
