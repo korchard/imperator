@@ -8,16 +8,18 @@ const AnalyticalUsers = () => {
   const companyUsers = useSelector((redux) => redux.singleCompanyUsers);
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_COMPANY_USERS' });
+    // dispatch({ type: 'FETCH_COMPANY_USERS' });
   }, [])
 
   return (
     <div>
-      <h2>User List</h2>
+      <h2>User List for {companyUsers[0]?.company}</h2>
+      {/* {JSON.stringify(companyUsers)} */}
       <ul>
       {companyUsers.map(user => {
-          <li key={user._id}>{user.email}</li>
-      })}
+        return(
+          <li key={user.users_data._id}>Email: {user.users_data.email}</li>
+      )})}
       </ul>
     </div>
   );
