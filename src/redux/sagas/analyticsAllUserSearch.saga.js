@@ -4,7 +4,8 @@ import { takeEvery } from 'redux-saga/effects';
 // POST ROUTE - to reset password 
 function* fetchUserByEmail(action) {
     try {
-      yield axios.get(`/api/analytics/all/1`, action.payload);
+        console.log('User email payload', action.payload)
+      yield axios.get(`/api/analytics/all/${action.payload}`);
     } catch (error) {
       console.log('Error in analytical user search', error);
     }

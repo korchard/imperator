@@ -1,13 +1,14 @@
 import { Request, Response } from 'express';
 import { UserDB } from '../models/documents/User';
 
-const analyticsAllUserSearch = async (req: Request, res: Response): Promise<void> => {
+export const analyticsAllUserSearch = async (req: Request, res: Response): Promise<void> => {
   try {
+      console.log('Req param for search', req.params)
     const data = await UserDB.aggregate([
       {
         $search: {
           autocomplete: {
-            query: `melinda`,
+            query: `${req.params.search}`,
             path: 'email', //local field to look for the query input
             fuzzy: {
               maxEdits: 2,
@@ -32,4 +33,3 @@ const analyticsAllUserSearch = async (req: Request, res: Response): Promise<void
   }
 };
 
-export default analyticsAllUserSearch;
