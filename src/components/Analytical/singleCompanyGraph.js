@@ -8,7 +8,8 @@ const SingleCompanyGraph = () => {
   const allCompanyData = useSelector((store) => store.totalAction);
   const singleCompanyData = useSelector((store) => store.singleCompanyData);
   const dispatch = useDispatch();
-  
+  const companyUsers = useSelector((redux) => redux.singleCompanyUsers);
+
   useEffect(() => {
     dispatch({ type: 'FETCH_SINGLE_COMPANY_DATA', param: {id: location.params.id }});
     dispatch({ type: 'FETCH_TOTAL_ACTIONS'});
@@ -84,8 +85,12 @@ const SingleCompanyGraph = () => {
       (singleCompanyData.hashtagsTotal + singleCompanyData.documentsTotal + singleCompanyData.insightsTotal + singleCompanyData.notesTotal + singleCompanyData.projectsTotal)
     ] 
 
+    const companyName = companyUsers.company
+
   return (
-    <div>
+    <>
+    {/* this is where we pass the company name  */}
+      <h4 className="titles">{companyUsers[0].company} Actions</h4>
       <Chart options={opt.options} series={[
         {
           name: 'Average company',
@@ -96,7 +101,7 @@ const SingleCompanyGraph = () => {
           data: singleCompanyActions
         }
       ]} type="bar" height={350} />
-    </div>
+    </>
   );
 }
 
