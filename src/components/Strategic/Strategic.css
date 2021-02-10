@@ -21,6 +21,7 @@
 .headerArea {
     grid-area: header;
     color: rgb(33, 44, 46);
+    font-variant-caps: all-petite-caps;
   }
 
 .paidContainer {
@@ -28,6 +29,7 @@
     background-color: white; 
     box-shadow: 1px 3px 5px #888888; 
     text-align: center;
+    font-variant-caps: all-petite-caps;
 }
 
 .strategicGraph {
@@ -36,6 +38,8 @@
     background-color: white; 
     box-shadow: 1px 3px 5px #888888;
     text-align: center;
+    font-variant-caps: all-petite-caps;
+    justify-content: center;
 }
 
 .titles {
@@ -44,6 +48,7 @@
     margin: 0px;
     color: white;
     font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
 }
 
 .trialContainer {
@@ -51,6 +56,7 @@
     background-color: white; 
     box-shadow: 1px 3px 5px #888888; 
     text-align: center;
+    font-variant-caps: all-petite-caps;
 }
 
 @supports (display: grid) {
