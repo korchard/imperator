@@ -56,10 +56,12 @@ export const MonthlyUsers = () => {
       ],
       yaxis: {
         opposite: true,
+        
       },
       legend: {
         horizontalAlign: 'left',
       },
+      colors: ['#2EA2B2'],
     },
   });
 
@@ -68,6 +70,7 @@ export const MonthlyUsers = () => {
   return (
     <>
       <h4 className="titles">Monthly Users</h4>
+
         <select className="yearSelectUsersByMonth"
           onChange={e =>{
             setYear(e.target.value) 
