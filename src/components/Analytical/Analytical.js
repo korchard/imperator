@@ -41,7 +41,9 @@ const Analytical = () => {
         onChange={(e) => setSearch(e.target.value)} />
       <button onClick={searchAllUsers}>Search Aurelius</button>
       {companyInfo}
-      {graph}
+      <div className="barGraph">
+        {graph}
+      </div>
       {location.params.type === 'single' &&
       <AnalyticalUsers />}
     </div>

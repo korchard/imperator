@@ -26,7 +26,7 @@ const BarGraph = () => {
           },
         },
       },
-      colors: ['#0535f7', '#66DA26', '#bf05f7', '#f70557', '#f7c305'],
+      colors: ['#2EA2B2', '#0B354D', '#EE5F1B', '#8a97a5dc', '#09588E'],
       dataLabels: {
         enabled: true,
         offsetY: -15,
@@ -38,7 +38,7 @@ const BarGraph = () => {
       series: [],
       xaxis: {
         categories: ['Documents', 'Hashtags', 'Insights', 'Notes', 'Projects'],
-        position: 'top',
+        position: 'bottom',
         axisBorder: {
           show: false,
         },
@@ -47,7 +47,8 @@ const BarGraph = () => {
         },
         labels: {
           style: {
-            colors: ['#0535f7', '#66DA26', '#bf05f7', '#f70557', '#f7c305'],
+            
+            colors: '#212C2E',
           },
         },
       },
@@ -66,15 +67,15 @@ const BarGraph = () => {
       legend: {
         show: false,
       },
-      title: {
-        text: 'Total Actions All Companies',
-        floating: true,
-        offsetY: 330,
-        align: 'center',
-        style: {
-          color: 'rgb(33, 44, 46)',
-        },
-      },
+      // title: {
+      //   text: 'Total Actions All Companies',
+      //   floating: true,
+      //   offsetY: 330,
+      //   align: 'center',
+      //   style: {
+      //     color: 'rgb(33, 44, 46)',
+      //   },
+      // },
     },
   });
   return (
@@ -94,7 +95,7 @@ const BarGraph = () => {
           },
         ]}
         type='bar'
-        width='500'
+        width='100%'
         height='350'
       />
     </div>

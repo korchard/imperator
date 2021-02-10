@@ -10,6 +10,6 @@ describe('Testing the planCount Reducer', () => {
   test('test returns the action.payload if we SET_PLAN_COUNT', () => {
     let previousState = { something: 'foo' };
     let action = { type: 'SET_PLAN_COUNT', payload: [4] };
-    expect(planCount(previousState, action)).toEqual([4] );
+    expect(planCount(previousState, action)).toEqual([4]);
   });
 });

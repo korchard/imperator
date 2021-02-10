@@ -40,13 +40,6 @@ export const MonthlyUsers = () => {
       stroke: {
         curve: 'straight',
       },
-      title: {
-        text: `Added Users By Month (${year})`,
-        align: 'center',
-        style: {
-          color: 'rgb(33, 44, 46)',
-        },
-      },
       labels: [
         'Jan',
         'Feb',
@@ -63,17 +56,32 @@ export const MonthlyUsers = () => {
       ],
       yaxis: {
         opposite: true,
+        
       },
       legend: {
         horizontalAlign: 'left',
       },
+      colors: ['#2EA2B2'],
     },
   });
 
   const monthsData = monthlyUsersOverTime;
 
   return (
-    <div>
+    <> 
+      <div style={{textAlign: "left", padding: '10px'}}>
+          <select className="pagSelect"
+            onChange={e =>{
+              setYear(e.target.value) 
+            }}
+          >
+            {
+              [2021, 2020, 2019, 2018, 2017, 2016, 2015].map((year) => 
+              <option value={year}>{year}</option>
+              )
+            }
+          </select>
+      </div>
       <Chart
         options={opt.options}
         series={[
@@ -83,20 +91,10 @@ export const MonthlyUsers = () => {
           },
         ]}
         type='area'
-        width='90%'
+        width='99%'
         height='350'
       />
-      <select className="yearSelectUsersByMonth"
-        onChange={e =>{
-          setYear(e.target.value) 
-        }}
-      >
-        {
-          [2021, 2020, 2019, 2018, 2017, 2016, 2015].map((year) => 
-            <option value={year}>{year}</option>
-          )
-        }
-      </select>
-    </div>
+  
+    </>
   );
 };

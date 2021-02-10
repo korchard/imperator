@@ -64,14 +64,15 @@ const AllCompanyGraph = () => {
       (totalActionData.hashtags.count + totalActionData.documents.count + totalActionData.insights.count + totalActionData.notes.count + totalActionData.projects.count)
     ]
   return (
-    <div>
+    <>
+      <h4 className="titles">Average Company Actions</h4>
       <Chart options={opt.options} series={[
         { 
           ...opt.series,
           data: actions
         }
         ]} type="bar" height={350} />
-    </div>
+    </>
   );
 }
 
