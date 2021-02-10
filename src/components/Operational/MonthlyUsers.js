@@ -23,7 +23,7 @@ export const MonthlyUsers = () => {
     options: {
       series: [
         {
-          name: `Added Users By Month`,
+          name: `Added Usrs By Month (${year})`,
           data: [],
         },
       ],
