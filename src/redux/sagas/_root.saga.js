@@ -7,6 +7,7 @@ import imperatorSaga from './imperator.saga';
 import singleCompanySaga from './singleCompany.saga'
 import passwordResetSaga from './passwordReset.saga';
 import strategicSaga from './strategic.saga';
+import analyticalUserSearchSaga from './analyticsAllUserSearch.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -25,5 +26,6 @@ export default function* rootSaga() {
     singleCompanySaga(),
     passwordResetSaga(),
     strategicSaga(),
+    analyticalUserSearchSaga(),
   ]);
 }
