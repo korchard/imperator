@@ -69,6 +69,7 @@ export const MonthlyUsers = () => {
     <>
       <h4 className="titles">
         Monthly Users
+      </h4>
         <select className="yearSelectUsersByMonth"
           onChange={e =>{
             setYear(e.target.value) 
@@ -80,7 +81,6 @@ export const MonthlyUsers = () => {
             )
           }
         </select>
-      </h4>
       <Chart
         options={opt.options}
         series={[
