@@ -83,7 +83,7 @@ export const MonthlyUsers = () => {
           },
         ]}
         type='area'
-        width='90%'
+        width='99%'
         height='350'
       />
       <select className="yearSelectUsersByMonth"

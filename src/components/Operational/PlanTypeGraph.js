@@ -27,6 +27,9 @@ const PlanTypeGraph = () => {
               label: 'Total Plan Breakdown'
             }
           }
+        },
+        style: {
+          color: []
         }
       },
       labels: ['Pro', 'Premium', 'Enterprise', 'Trial']
@@ -57,7 +60,7 @@ const PlanTypeGraph = () => {
         ]
         } 
         type='donut' 
-        width='600'
+        width='100%'
         height='400'
          />
     </div>

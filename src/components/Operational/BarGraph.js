@@ -66,15 +66,15 @@ const BarGraph = () => {
       legend: {
         show: false,
       },
-      title: {
-        text: 'Total Actions All Companies',
-        floating: true,
-        offsetY: 330,
-        align: 'center',
-        style: {
-          color: 'rgb(33, 44, 46)',
-        },
-      },
+      // title: {
+      //   text: 'Total Actions All Companies',
+      //   floating: true,
+      //   offsetY: 330,
+      //   align: 'center',
+      //   style: {
+      //     color: 'rgb(33, 44, 46)',
+      //   },
+      // },
     },
   });
   return (
@@ -94,7 +94,7 @@ const BarGraph = () => {
           },
         ]}
         type='bar'
-        width='500'
+        width='100%'
         height='350'
       />
     </div>

@@ -12,12 +12,15 @@ const Operational = () => {
           <h1>Operational</h1>
         </div>
         <div className='barGraph'>
+          <h4 className="title">Total Actions All Companies</h4>
           <BarGraph />
         </div>
         <div className='planGraph'>
+          <h4 className="title">Plan Type Percentages</h4>
           <PlanTypeGraph />
         </div>
         <div className='monthlyGraph'>
+          <h4 className="title">Added Users By Month</h4>
           <MonthlyUsers />
         </div>
       </div>
