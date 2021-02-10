@@ -15,7 +15,7 @@ export const MonthlyUsers = () => {
   const [user, setUser] = useState({});
 
   const getUsersByMonth = () => {
-    dispatch({ type: 'GET_USERS_BY_MONTH' });
+    dispatch({ type: 'GET_USERS_BY_MONTH', payload: {year: 2020}});
   };
 
   const [opt, setOptions] = useState({
@@ -82,9 +82,14 @@ export const MonthlyUsers = () => {
           },
         ]}
         type='area'
-        width='1000'
+        width='90%'
         height='350'
       />
+      <select className="yearSelectUsersByMonth">
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+      </select>
     </div>
   );
 };
