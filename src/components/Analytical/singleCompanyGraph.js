@@ -85,12 +85,12 @@ const SingleCompanyGraph = () => {
       (singleCompanyData.hashtagsTotal + singleCompanyData.documentsTotal + singleCompanyData.insightsTotal + singleCompanyData.notesTotal + singleCompanyData.projectsTotal)
     ] 
 
-    const companyName = companyUsers.company
+    const companyName = companyUsers[0].company
 
   return (
     <>
     {/* this is where we pass the company name  */}
-      <h4 className="titles">{companyUsers[0].company} Actions</h4>
+      <h4 className="titles">Actions {companyName}</h4>
       <Chart options={opt.options} series={[
         {
           name: 'Average company',
