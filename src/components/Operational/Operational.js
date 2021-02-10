@@ -20,7 +20,7 @@ const Operational = () => {
           <PlanTypeGraph />
         </div>
         <div className='monthlyGraph'>
-          <h4 className="title">Added Users By Month</h4>
+          <h4 className="title">Monthly Users</h4>
           <MonthlyUsers />
         </div>
       </div>

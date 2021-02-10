@@ -17,6 +17,7 @@ const PlanTypeGraph = () => {
       chart: {
         height: 280,
         type: "donut",
+        
       },
       series: [],
       plotOptions: {
@@ -26,15 +27,16 @@ const PlanTypeGraph = () => {
               show: true,
               label: 'Total Plan Breakdown'
             }
-          }
+          },
         },
-        style: {
-          color: []
-        }
+        
       },
+      colors: ['#2EA2B2', '#0B354D', '#EE5F1B', '#8a97a5dc'],
       labels: ['Pro', 'Premium', 'Enterprise', 'Trial']
+      
     }
   })
+
   
   const planTotal = planCount.reduce((total, item) => {
     return total + item.count

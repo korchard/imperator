@@ -26,7 +26,7 @@ const BarGraph = () => {
           },
         },
       },
-      colors: ['#0535f7', '#66DA26', '#bf05f7', '#f70557', '#f7c305'],
+      colors: ['#2EA2B2', '#0B354D', '#EE5F1B', '#8a97a5dc', '#f7c305'],
       dataLabels: {
         enabled: true,
         offsetY: -15,
@@ -38,7 +38,7 @@ const BarGraph = () => {
       series: [],
       xaxis: {
         categories: ['Documents', 'Hashtags', 'Insights', 'Notes', 'Projects'],
-        position: 'top',
+        position: 'bottom',
         axisBorder: {
           show: false,
         },
@@ -47,7 +47,8 @@ const BarGraph = () => {
         },
         labels: {
           style: {
-            colors: ['#0535f7', '#66DA26', '#bf05f7', '#f70557', '#f7c305'],
+            
+            colors: '#212C2E',
           },
         },
       },
