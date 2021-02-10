@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTable, usePagination, useSortBy } from 'react-table';
 import { useHistory } from 'react-router-dom';
+import { DiGoogleAnalytics } from 'react-icons/di';
 
 const Table = ({
   data,
@@ -33,7 +34,8 @@ const Table = ({
               <span className='company'>
                 {cell.row.values.company}
                 <button className='coBtn' onClick={goToAnalytical}>
-                  More Details
+                  <DiGoogleAnalytics/>
+                  Analytics
                 </button>
               </span>
             ),

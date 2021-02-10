@@ -35,17 +35,12 @@
   padding: 0.5rem;
 }
 
-.imperator {
-  width: 80%;
-  margin: auto;
-  color: rgb(33, 44, 46);
-}
-
 .table {
   border-collapse: collapse;
   width: 100%;
   font-variant-caps: all-petite-caps;
   margin: auto;
+  margin-top: 2%;
   font-size: 1.3em;
 }
 
@@ -80,7 +75,7 @@ th.sortArrow {
 }
 
 table > thead > tr:nth-child(1) > th {
-  font-size: 2.3em;
+  font-size: 1.4em;
 }
 
 @media only screen and (max-width: 760px),
@@ -211,4 +206,29 @@ Label the data
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.flexbox {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  margin-left: 75px;
+}
+
+.gridbox2 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: minmax(100px, auto);
+  gap: 0.75rem;
+  margin-right: 30px;
+  grid-template-areas:
+    "header header"
+    "search-imperator search-imperator"
+    "tableGrid tableGrid";
+}
+
+.headerArea {
+  grid-area: header;
+  color: rgb(33, 44, 46);
+  font-variant-caps: all-petite-caps;
 }
