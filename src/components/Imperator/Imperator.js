@@ -87,7 +87,6 @@ const Imperator = () => {
           Find
         </button>
       </div>
-      <h3>Company Info</h3>
       <Table
         data={imperator}
         fetchData={fetchData}
