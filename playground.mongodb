@@ -85,6 +85,21 @@ db.companies.aggregate([
       "users_data.firstname": 1, 
       "users_data.lastname": 1, 
       "users_data.email": 1, 
+      "billing.status": 1,
+      "billing.customerId": 1,
+      "billing.plan": 1,
+      "billing.trialStart": 1,
+      "billing.trialEnd": 1,
+      "activeUntil": 1,
+      "jira": 1,
+      "zapier": 1,
+          hashtagsTotal: {$size: "$hashtags"},
+          documentsTotal: {$size: "$documents"},
+          projectsTotal: {$size: "$projects"},
+          notesTotal: {$size: "$notes"},
+          insightsTotal: {$size: "$insights"},
+          collectionsTotal: {$size: "$collections"},
+          recommendationsTotal: {$size: "$recommendations"}
     }},
 ]);
 
@@ -603,4 +618,14 @@ db.companies.aggregate([
 //         { $group: {_id: 1} },
 //         ]
 //      )
+
+db.companies.aggregate([
+  {$project: {
+    _id: 0,
+    company: 1, 
+    start: { $toDate:{$multiply: ["$billing.trialEnd", 1000]}},
+    end: { $toDate:{$multiply: ["$billing.trialStart", 1000]}},
+    }
+  },
+]);
 
