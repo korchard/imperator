@@ -4,6 +4,7 @@ import axios from 'axios';
 function* getSingleCompanyData(action){
   try {
     const response = yield axios.get(`/api/analytics/${action.param.id}`);
+    yield put({ type: 'FETCH_SINGLE_COMPANY_USERS', param: {id: action.param.id }});
     yield put({ type: 'SET_SINGLE_COMPANY_DATA', payload: response.data });
   } catch (error) {
     console.log(`Error in saga getting single company data:`, error);
@@ -21,6 +22,7 @@ function* editCustomerId(action){
 }
 
 function* fetchCompanyUsers(action){
+  console.log('action users', action);
   try {
     const response = yield axios.get(`/api/analytics/users/${action.param.id}`);
     yield put({ type: 'SET_SINGLE_COMPANY_USERS', payload: response.data });
@@ -32,7 +34,7 @@ function* fetchCompanyUsers(action){
 function* singleCompanySaga() {
   yield takeEvery('FETCH_SINGLE_COMPANY_DATA', getSingleCompanyData);
   yield takeEvery('EDIT_CUSTOMER_ID', editCustomerId)
-  yield takeEvery('FETCH_COMPANY_USERS', fetchCompanyUsers);
+  yield takeEvery('FETCH_SINGLE_COMPANY_USERS', fetchCompanyUsers);
 }
 
 export default singleCompanySaga;

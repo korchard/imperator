@@ -8,7 +8,7 @@ const AnalyticalUsers = () => {
   const companyUsers = useSelector((redux) => redux.singleCompanyUsers);
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_COMPANY_USERS' });
+    // dispatch({ type: 'FETCH_COMPANY_USERS' });
   }, [])
 
   return (
