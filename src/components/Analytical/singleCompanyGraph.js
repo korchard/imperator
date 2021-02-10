@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 
+// single company graph
 const SingleCompanyGraph = () => {
   const location = useRouteMatch();
   const allCompanyData = useSelector((store) => store.totalAction);
