@@ -55,6 +55,7 @@
   margin: auto;
   margin-top: 2%;
   font-size: 1.2em;
+  margin-right: 30px;
 }
 
 /* Zebra striping */
@@ -212,6 +213,7 @@ Label the data
   transition: color 0.2s, border 0.2s;
   letter-spacing: 0.19px;
   white-space: nowrap;
+  padding-left: 2px;
 }
 
 .company {
