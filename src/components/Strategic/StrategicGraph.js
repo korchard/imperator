@@ -17,17 +17,15 @@ function StrategicGraph() {
           options: {
             chart: {
               type: 'bar',
-              
               height: 350
             },
             plotOptions: {
               bar: {
                 horizontal: true,
                 borderRadius: 25,
-               
               },
             },
-            colors: ['#ee5f1b'],
+            colors: ['#2EA2B2'],
             dataLabels: {
               enabled: false
             },
@@ -36,7 +34,6 @@ function StrategicGraph() {
               labels: {
                 style: {
                   colors: ['#212C2E'],
-                  
                 },
               },
             },
@@ -48,16 +45,6 @@ function StrategicGraph() {
                     },
                   },
             },
-            title: {
-                text: 'Average Plan Length By Types ',
-                floating: true,
-                // offsetX: 10,
-                align: 'center',
-                style: {
-                  color: '#212C2E',
-                //   fontSize: '.75rem'
-                },
-              },
           },
       });
 
@@ -83,7 +70,7 @@ return (
           },
         ]}
         type='bar'
-        width='500'
+        width='900'
         height='350'
       />
           </div>

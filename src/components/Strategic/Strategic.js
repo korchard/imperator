@@ -13,35 +13,44 @@ function Strategic() {
   useEffect(() => {
     dispatch({ type: 'GET_PLAN_LENGTH_AVERAGE' });
     dispatch({ type: 'GET_PAID_PLANS' });
-    dispatch({ type:'GET_TRIAL_PLANS' });
+    dispatch({ type: 'GET_TRIAL_PLANS' });
 
   }, [])
 
   return (
-    <div className="strategic">
-      <h1>Strategic</h1>
-      <StrategicGraph/>
-      <div className="listContainer">
-        <div className="paidContainer">
-          <h4>Paid Plans Ending This Month</h4>
-          {paidPlan.map(plan => {
-            return (
-              <p>{plan.company}</p>
-            )
-          }
-          )}
+    <div className="flexbox">
+
+      <div className="gridbox">
+        <div className="headerArea">
+          <h1>Strategic</h1>
         </div>
 
-        <div className="trialContainer">
-          <h4>Trials Ending This Month</h4>
-          {trialPlan.map(plan => {
-            return (
-              <p>{plan.company}</p>
-            )
-          }
-          )}
+        <div className="strategicGraph">
+          <h4 className="titles">Average Plan Length By Types</h4>
+        <StrategicGraph />
         </div>
+       
+          <div className="paidContainer">
+            <h4 className="titles">Paid Plans Ending This Month</h4>
+            {paidPlan.map(plan => {
+              return (
+                <p>{plan.company}</p>
+              )
+            }
+            )}
+          </div>
 
+          <div className="trialContainer">
+            <h4  className="titles">Trials Ending This Month</h4>
+            {trialPlan.map(plan => {
+              return (
+                <p>{plan.company}</p>
+              )
+            }
+            )}
+          </div>
+
+     
       </div>
     </div>
   );
