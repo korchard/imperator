@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux'
 import { useRouteMatch } from 'react-router-dom';
 import SingleCompanyGraph from './singleCompanyGraph';
 import AllCompanyGraph from './allCompanyGraph';
@@ -8,8 +9,11 @@ import './Analytical.css'
 
 const Analytical = () => {
   const location = useRouteMatch();
+  const dispatch = useDispatch();
   const [graph, setGraph] = useState()
   const [companyInfo, setCompanyInfo] = useState()
+  const [search, setSearch] = useState();
+  
   useEffect(() => {
     checkSingleOrAll()
   }, []);
@@ -23,10 +27,19 @@ const Analytical = () => {
     }
   }
 
+  const searchAllUsers = () => {
+      dispatch({ type: 'FETCH_AURELIUS_USER', payload: search })
+  }
+
   return (
     <div className='container'>
       <h1>Analytical</h1> 
-      <input className="search-input" placeholder="Search users"/>
+      <input 
+        className="search-input" 
+        placeholder="Search users" 
+        value={search}
+        onChange={(e) => setSearch(e.target.value)} />
+      <button onClick={searchAllUsers}>Search Aurelius</button>
       {companyInfo}
       <div className="barGraph">
         {graph}
