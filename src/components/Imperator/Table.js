@@ -220,13 +220,13 @@ const Table = ({
           {'>>'}
         </button>
         <span>
-          Page
+          Page &nbsp;
           <strong>
             {pageIndex + 1} of {pageOptions.length}
           </strong>
         </span>
         <span>
-          | Go to page:
+          | Go to page: &nbsp;
           <input
             className="pagInput"
             type='number'
