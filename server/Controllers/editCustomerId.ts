@@ -9,16 +9,17 @@ export const editCustomerId = async (
 ): Promise<void> => {
   try { 
       console.log('req body edit', req.body)
-    await CompanyDB.findByIdAndUpdate(
-        {"_id": "6018596184af92843a7bb1c0"},
-        {
-          $set: {
-            "billing.customerId": "test"   
-        }
-        },
-        {
-          new: true
-        }
+      const {customerId, companyId, initCustomerId} = req.body
+    //   const filter = {_id: "6018596184af92843a7bb1c0"};
+    //   const updatedDocument = {
+    //       $set: {
+    //           "billing.customerId": `test`
+    //       }
+    //   }
+    await CompanyDB.findOneAndUpdate(
+        {"billing.customerId": `${initCustomerId}`},
+        {"billing.customerId": `${customerId}`},
+        {new: true}
       )
     res.sendStatus(201);
 
