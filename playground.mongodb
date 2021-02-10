@@ -580,3 +580,14 @@ use('aurelius');
 //         { $group: {_id: 1} },
 //         ]
 //      )
+
+
+db.companies.aggregate([
+  {$project: {
+    _id: 0,
+    company: 1, 
+    start: { $toDate:{$multiply: ["$billing.trialEnd", 1000]}},
+    end: { $toDate:{$multiply: ["$billing.trialStart", 1000]}},
+    }
+  },
+]);
