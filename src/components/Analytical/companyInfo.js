@@ -15,6 +15,7 @@ const CompanyInfo = () => {
     dispatch({ 
       type: 'EDIT_CUSTOMER_ID', 
       payload: {
+        initCustomerId: companyInfo.billing.customerId,
         customerId: customerId, 
         companyId: companyInfo._id
       }})
