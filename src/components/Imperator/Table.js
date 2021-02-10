@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTable, usePagination, useSortBy } from 'react-table';
 import { useHistory } from 'react-router-dom';
+import Moment from 'react-moment'
 
 const Table = ({
   data,
@@ -62,7 +63,7 @@ const Table = ({
             accessor: 'activeUntil',
             Cell: (props) => {
               const custom_date = formatData(props.value);
-              return <span>{custom_date}</span>;
+              return <span><Moment format='MM/DD/YY'>{custom_date}</Moment></span>;
             },
           },
           {
