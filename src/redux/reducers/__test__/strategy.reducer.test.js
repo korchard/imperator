@@ -1,6 +1,6 @@
 import strategic from '../strategic.reducer';
 
-const initState = {paidPlans: [], strategicGraph: [], trialPlans: []};
+const initState = { paidPlans: [], strategicGraph: [], trialPlans: [] };
 
 describe('Testing the strategic Reducer', () => {
   test('test returns default state which is initState if it is not an action we assigned', () => {
