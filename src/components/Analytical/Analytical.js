@@ -29,7 +29,8 @@ const Analytical = () => {
       <input className="search-input" placeholder="Search users"/>
       {companyInfo}
       {graph}
-      <AnalyticalUsers />
+      {location.params.type === 'single' &&
+      <AnalyticalUsers />}
     </div>
   );
 }

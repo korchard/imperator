@@ -29,6 +29,7 @@ export const singleCompanyUsers = async (
           "_id": 0, 
           "email": 1, 
           "company": 1, 
+          "users_data._id": 1,
           "users_data.firstname": 1, 
           "users_data.lastname": 1, 
           "users_data.email": 1, 
