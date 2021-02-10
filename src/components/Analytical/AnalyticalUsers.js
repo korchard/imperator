@@ -14,11 +14,12 @@ const AnalyticalUsers = () => {
   return (
     <div>
       <h2>User List</h2>
-      <ul>
+      {JSON.stringify(companyUsers)}
+      {/* <ul>
       {companyUsers.map(user => {
-          <li key={user._id}>{user.email}</li>
+          <li >{user.user_data.email}</li>
       })}
-      </ul>
+      </ul> */}
     </div>
   );
 };

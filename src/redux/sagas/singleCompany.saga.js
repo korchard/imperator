@@ -22,7 +22,6 @@ function* editCustomerId(action){
 }
 
 function* fetchCompanyUsers(action){
-  console.log('action users', action);
   try {
     const response = yield axios.get(`/api/analytics/users/${action.param.id}`);
     yield put({ type: 'SET_SINGLE_COMPANY_USERS', payload: response.data });
