@@ -220,7 +220,7 @@ const Table = ({
           {'>>'}
         </button>
         <span>
-          Page &nbsp;
+          &nbsp; Page &nbsp;
           <strong>
             {pageIndex + 1} of {pageOptions.length}
           </strong>
