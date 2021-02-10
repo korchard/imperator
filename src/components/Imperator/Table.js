@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTable, usePagination, useSortBy } from 'react-table';
 import { useHistory } from 'react-router-dom';
+import { DiGoogleAnalytics } from 'react-icons/di';
 
 const Table = ({
   data,
@@ -33,7 +34,9 @@ const Table = ({
               <span className='company'>
                 {cell.row.values.company}
                 <button className='coBtn' onClick={goToAnalytical}>
-                  More Details
+                  <DiGoogleAnalytics/>
+                  &nbsp;
+                  Details
                 </button>
               </span>
             ),
@@ -70,35 +73,35 @@ const Table = ({
             accessor: getConfig,
           },
           {
-            Header: 'Total Projects',
+            Header: 'Projects',
             accessor: 'projects total',
           },
           {
-            Header: 'Total Notes',
+            Header: 'Notes',
             accessor: 'notes total',
           },
           {
-            Header: 'Total Recs',
+            Header: 'Recs',
             accessor: 'recommandations total',
           },
           {
-            Header: 'Total Insights',
+            Header: 'Insights',
             accessor: 'insights total',
           },
           {
-            Header: 'Total Hashtags',
+            Header: 'Hashtags',
             accessor: 'hashtags total',
           },
           {
-            Header: 'Total Collections',
+            Header: 'Collections',
             accessor: 'collections total',
           },
           {
-            Header: 'Total Documents',
+            Header: 'Documents',
             accessor: 'documents total',
           },
           {
-            Header: 'Total Users',
+            Header: 'Users',
             accessor: 'total users',
           },
         ],
@@ -225,6 +228,7 @@ const Table = ({
         <span>
           | Go to page:
           <input
+            className="pagInput"
             type='number'
             defaultValue={pageIndex + 1}
             onChange={(e) => {
@@ -235,6 +239,7 @@ const Table = ({
           />
         </span>
         <select
+          className="pagSelect"
           value={pageSize}
           onChange={(e) => {
             setPageSize(Number(e.target.value));
