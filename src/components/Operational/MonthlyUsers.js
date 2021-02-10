@@ -67,9 +67,7 @@ export const MonthlyUsers = () => {
 
   return (
     <>
-      <h4 className="titles">
-        Monthly Users
-      </h4>
+      <h4 className="titles">Monthly Users</h4>
         <select className="yearSelectUsersByMonth"
           onChange={e =>{
             setYear(e.target.value) 
