@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Chart from 'react-apexcharts';
 
 export const MonthlyUsers = () => {
+  const [year, setYear] = useState(2021)
   const monthlyUsersOverTime = useSelector(
     (redux) => redux.monthlyUsersOverTime
   );
@@ -10,19 +11,19 @@ export const MonthlyUsers = () => {
 
   useEffect(() => {
     getUsersByMonth();
-  }, []);
+  }, [year]);
 
   const [user, setUser] = useState({});
 
   const getUsersByMonth = () => {
-    dispatch({ type: 'GET_USERS_BY_MONTH', payload: {year: 2020}});
+    dispatch({ type: 'GET_USERS_BY_MONTH', payload: {year: year}});
   };
 
   const [opt, setOptions] = useState({
     options: {
       series: [
         {
-          name: 'Added Users By Month',
+          name: `Added Users By Month`,
           data: [],
         },
       ],
@@ -40,7 +41,7 @@ export const MonthlyUsers = () => {
         curve: 'straight',
       },
       title: {
-        text: 'Added Users By Month',
+        text: `Added Users By Month (${year})`,
         align: 'center',
         style: {
           color: 'rgb(33, 44, 46)',
@@ -85,10 +86,17 @@ export const MonthlyUsers = () => {
         width='90%'
         height='350'
       />
-      <select className="yearSelectUsersByMonth">
-        <option value="2021">2021</option>
-        <option value="2020">2020</option>
-        <option value="2019">2019</option>
+      <select className="yearSelectUsersByMonth"
+        onChange={e =>{
+          setYear(e.target.value) 
+          // getUsersByMonth()
+        }}
+      >
+        {
+          [2021, 2020, 2019, 2018].map((year) => 
+            <option value={year}>{year}</option>
+          )
+        }
       </select>
     </div>
   );
