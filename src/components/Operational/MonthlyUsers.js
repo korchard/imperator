@@ -23,7 +23,7 @@ export const MonthlyUsers = () => {
     options: {
       series: [
         {
-          name: `Added Usrs By Month (${year})`,
+          name: `Added Users By Month (${year})`,
           data: [],
         },
       ],
@@ -89,11 +89,10 @@ export const MonthlyUsers = () => {
       <select className="yearSelectUsersByMonth"
         onChange={e =>{
           setYear(e.target.value) 
-          // getUsersByMonth()
         }}
       >
         {
-          [2021, 2020, 2019, 2018].map((year) => 
+          [2021, 2020, 2019, 2018, 2017, 2016, 2015].map((year) => 
             <option value={year}>{year}</option>
           )
         }

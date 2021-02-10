@@ -25,6 +25,7 @@ function* getUsersByMonth(action) {
   try {
     const response = yield axios.get(`/api/userOverTime/${action.payload.year}`);
     yield put({ type: 'SET_MONTHLY_USERS', payload: response.data });
+    console.log(response.data)
   } catch (error) {
     console.log('Error with getting monthlyUsers:', error);
   }
