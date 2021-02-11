@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useRouteMatch } from 'react-router-dom';
 import SingleCompanyGraph from './singleCompanyGraph';
 import AllCompanyGraph from './allCompanyGraph';
@@ -10,6 +10,7 @@ import './Analytical.css'
 const Analytical = () => {
   const location = useRouteMatch();
   const dispatch = useDispatch();
+  const userSearch = useSelector((store) => store.aureliusUserSearch)
   const [graph, setGraph] = useState()
   const [companyInfo, setCompanyInfo] = useState()
   const [search, setSearch] = useState();
@@ -29,7 +30,10 @@ const Analytical = () => {
 
   const searchAllUsers = () => {
       dispatch({ type: 'FETCH_AURELIUS_USER', payload: search })
+      setSearch('')
   }
+
+  console.log('Search Results', userSearch);
 
   return (
     <div className='container'>

@@ -46,10 +46,6 @@ const PlanTypeGraph = () => {
   const trialPercentage = (planCount[1]?.count / planTotal) * 100;
   const premiumPercentage = (planCount[2]?.count / planTotal) * 100;
   const proPercentage = (planCount[3]?.count / planTotal) * 100;
-   
-  console.log(proPercentage);
-  console.log('Plan Count redux', planCount)
-  console.log('Plan total', planTotal)
 
   return (
     <div>
