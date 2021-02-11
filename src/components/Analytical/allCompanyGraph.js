@@ -27,6 +27,7 @@ const AllCompanyGraph = () => {
           endingShape: 'rounded'
         },
       },
+      colors: ['#09588E'],
       dataLabels: {
         enabled: false
       },

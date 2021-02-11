@@ -35,6 +35,7 @@ const SingleCompanyGraph = () => {
           endingShape: 'rounded'
         },
       },
+      colors: ['#09588E', '#EE5F1B'],
       dataLabels: {
         enabled: false
       },
