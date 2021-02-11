@@ -12,6 +12,7 @@ const Analytical = () => {
   const location = useRouteMatch();
   const [graph, setGraph] = useState()
   const [companyInfo, setCompanyInfo] = useState()
+  const [allUserSearch, setAllUserSearch] = useState()
  
   
   useEffect(() => {
@@ -24,25 +25,16 @@ const Analytical = () => {
       setCompanyInfo(<CompanyInfo />)
     } else if (location.params.type === 'all') { 
       setGraph(<AllCompanyGraph/>)
+      setAllUserSearch(<AllUserSearch />)
     }
   }
 
   return (
     <div className='container'>
       <h1>Analytical</h1> 
-      <AllUserSearch />
-      {companyInfo}
-      <div className="barGraph">
-        {graph}
-      </div>
-      <div className="userSearch">
-          <input 
-            className="search-input" 
-            placeholder="Search users" 
-            value={search}
-            onChange={(e) => setSearch(e.target.value)} />
-          <button className="btnI" onClick={searchAllUsers}>Find</button>
-          </div>
+        <div>
+          {allUserSearch}
+        </div>
         <div className="companyArea">
           {companyInfo}
         </div>
