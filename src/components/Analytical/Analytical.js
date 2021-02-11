@@ -6,14 +6,13 @@ import AllCompanyGraph from './allCompanyGraph';
 import AnalyticalUsers from './AnalyticalUsers';
 import CompanyInfo from './companyInfo'
 import './Analytical.css'
+import AllUserSearch from './allUserSearch'
 
 const Analytical = () => {
   const location = useRouteMatch();
-  const dispatch = useDispatch();
-  const userSearch = useSelector((store) => store.aureliusUserSearch)
   const [graph, setGraph] = useState()
   const [companyInfo, setCompanyInfo] = useState()
-  const [search, setSearch] = useState();
+ 
   
   useEffect(() => {
     checkSingleOrAll()
@@ -28,22 +27,12 @@ const Analytical = () => {
     }
   }
 
-  const searchAllUsers = () => {
-      dispatch({ type: 'FETCH_AURELIUS_USER', payload: search })
-      setSearch('')
-  }
 
-  console.log('Search Results', userSearch);
 
   return (
     <div className='container'>
       <h1>Analytical</h1> 
-      <input 
-        className="search-input" 
-        placeholder="Search users" 
-        value={search}
-        onChange={(e) => setSearch(e.target.value)} />
-      <button onClick={searchAllUsers}>Search Aurelius</button>
+      <AllUserSearch />
       {companyInfo}
       <div className="barGraph">
         {graph}
