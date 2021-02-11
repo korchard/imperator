@@ -29,6 +29,7 @@ const Imperator = () => {
         <div className='headerArea'>
           <h1>Imperator</h1>
         </div>
+        <div className='imperator-card'>
         <div className='search-imperator'>
           <input
             className='search-input'
@@ -58,6 +59,7 @@ const Imperator = () => {
         <div className='tableGrid'>
           <Table data={imperator} pageCount={pageCount} />
         </div>
+      </div>
       </div>
     </div>
   );
