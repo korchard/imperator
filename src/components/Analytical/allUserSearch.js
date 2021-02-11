@@ -21,7 +21,7 @@ console.log('Search Results', userSearch);
                 onChange={(e) => setSearch(e.target.value)} 
 
             />
-            <button onClick={searchAllUsers}>Search Aurelius</button>
+            <button className="btnI" onClick={searchAllUsers}>Find</button>
             <div className='allCardContainer'>
                 {
                     userSearch.map(item => {
