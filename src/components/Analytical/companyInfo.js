@@ -41,12 +41,12 @@ const CompanyInfo = () => {
                   onChange={(e) => setCustomerId(e.target.value)} 
                   type='text' 
                   />
-                <button onClick={() => editCustomerId(customerId)}>Edit ID</button>
+                <button className="coBtn" onClick={() => editCustomerId(customerId)}>Edit ID</button>
               </> :
                 <>Customer ID: {companyInfo.billing?.customerId}</>
             }
             {editMode ? null : 
-                <button onClick={() => setEditMode(!editMode)}>Update</button>
+                <button className="coBtn" onClick={() => setEditMode(!editMode)}>Update</button>
             }
               <br></br>
             Active Until: <Moment format='MM/DD/YYYY'>{companyInfo.activeUntil}</Moment>

@@ -16,7 +16,7 @@ export const MonthlyUsers = () => {
   const [user, setUser] = useState({});
 
   const getUsersByMonth = () => {
-    dispatch({ type: 'GET_USERS_BY_MONTH', payload: {year: year}});
+    dispatch({ type: 'GET_USERS_BY_MONTH', payload: { year: year } });
   };
 
   const [opt, setOptions] = useState({
@@ -56,7 +56,7 @@ export const MonthlyUsers = () => {
       ],
       yaxis: {
         opposite: true,
-        
+
       },
       legend: {
         horizontalAlign: 'left',
@@ -68,19 +68,19 @@ export const MonthlyUsers = () => {
   const monthsData = monthlyUsersOverTime;
 
   return (
-    <> 
-      <div style={{textAlign: "left", padding: '10px'}}>
-          <select className="pagSelect"
-            onChange={e =>{
-              setYear(e.target.value) 
-            }}
-          >
-            {
-              [2021, 2020, 2019, 2018, 2017, 2016, 2015].map((year) => 
+    <>
+      <div style={{ textAlign: "left", padding: '10px' }}>
+        <select className="pagSelect"
+          onChange={e => {
+            setYear(e.target.value)
+          }}
+        >
+          {
+            [2021, 2020, 2019, 2018, 2017, 2016, 2015].map((year) =>
               <option value={year}>{year}</option>
-              )
-            }
-          </select>
+            )
+          }
+        </select>
       </div>
       <Chart
         options={opt.options}
@@ -94,7 +94,7 @@ export const MonthlyUsers = () => {
         width='99%'
         height='350'
       />
-  
+
     </>
   );
 };
