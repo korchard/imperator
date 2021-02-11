@@ -32,20 +32,31 @@ const Analytical = () => {
   }
 
   return (
-    <div className='container'>
-      <h1>Analytical</h1> 
-      <input 
-        className="search-input" 
-        placeholder="Search users" 
-        value={search}
-        onChange={(e) => setSearch(e.target.value)} />
-      <button onClick={searchAllUsers}>Search Aurelius</button>
-      {companyInfo}
-      <div className="barGraph">
-        {graph}
+    <div className='flexbox4'>
+      <div className='gridbox4'> 
+        <div className="headerArea">
+          <h1>Analytical</h1>
+        </div>
+        <div className="companyArea">
+          {companyInfo}
+        </div>
+        <div className="userArea">
+        {location.params.type === 'single' &&
+          <>
+          <input 
+            className="search-input" 
+            placeholder="Search users" 
+            value={search}
+            onChange={(e) => setSearch(e.target.value)} />
+          <button onClick={searchAllUsers}>Search Aurelius</button>
+          <AnalyticalUsers />
+          </>
+        }
+        </div>
+        <div className="barGraph2">
+          {graph}
+        </div>
       </div>
-      {location.params.type === 'single' &&
-      <AnalyticalUsers />}
     </div>
   );
 }
