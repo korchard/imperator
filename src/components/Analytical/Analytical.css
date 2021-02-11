@@ -64,9 +64,10 @@
 }
 
 .userSearch {
-  grid-area: search;
-  float: right;
+  grid-area: company;
+  /* float: right; */
   /* margin-left: 30%; */
+  margin-bottom: 30px;
 }
 
 .userInfoContainer {
@@ -120,7 +121,7 @@
   font-variant-caps: all-petite-caps;
 }
 
-/* ---------------- allUserSearch,js ---------------- */
+/* ---------------- allUserSearch.js ---------------- */
 
 .allCardContainer {
   display: flex;

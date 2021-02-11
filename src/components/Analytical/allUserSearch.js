@@ -13,22 +13,20 @@ const AllUserSearch = () => {
     dispatch({ type: 'FETCH_AURELIUS_USER', payload: search })
 }
 
-console.log('Search Results', userSearch);
     return (
         <div>
             <input 
                 className="search-input" 
                 placeholder="Search Aurelius By User Email" 
-                value={search}
                 onChange={(e) => setSearch(e.target.value)} 
 
             />
             <button className="btnI" onClick={searchAllUsers}>Find</button>
             <div className='allCardContainer'>
                 {
-                    userSearch.map(item => {
+                    userSearch.map((item, i) => {
                         return (
-                            <div className='singleCardContainer'>
+                            <div className='singleCardContainer' key={i}>
                                 <UserCard item={item} search={search} />
                             </div>
                         )
