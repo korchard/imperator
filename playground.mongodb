@@ -655,8 +655,59 @@ use('aurelius');
 //   },
 // ]);
 
-db.companies.aggregate([
-      {$count: "hashtags"},
-      {$count: "projects"},
-      {$count: "collections"}
-    ]);
+// db.companies.aggregate([
+//   {$project: {
+//     _id: 0,
+//     'billing.plan': "Trial", 
+//     company: 1,
+//     start: { $toDate:{$multiply: ["$billing.trialEnd", 1000]}},
+//     end: { $toDate:{$multiply: ["$billing.trialStart", 1000]}},
+//     }
+//   },
+
+// ]);
+
+// db.companies.aggregate([
+//       {$count: "hashtags"},
+//       {$count: "projects"},
+//       {$count: "collections"}
+//     ]);
+
+// db.companies.aggregate(
+//         [
+//             {$project: {
+//                 _id: 0,
+//                 company: 1,
+//                 month: {$month: "$activeUntil"},
+//                 year: {$year: "$activeUntil"}
+//               }},
+//               {$match: {
+//               "month":new Date().getMonth() +1,
+//               "year": new Date().getFullYear()
+//               }
+//             }
+//         ]
+//      )
+
+db.companies.aggregate(
+        [
+          {$match: {
+            'billing.plan': { $or: [ { <expression1> }, { <expression2> }, ... , { <expressionN> } ] }
+          }},
+          {$project: {
+            _id: 0,
+            
+            company: 1,
+            month: {$month: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}},
+            year: {$year: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}}
+          }},
+          {$match: {
+          
+          "month":new Date().getMonth() +1,
+          "year": new Date().getFullYear()
+          }
+        }
+        ]
+     )
+
+    
