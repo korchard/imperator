@@ -31,32 +31,28 @@ const Analytical = () => {
   }
 
   const deleteCompany = () => { 
-    swal.mixin({
-      input: 'text',
-      confirmButtonText: 'Next &rarr;',
-      showCancelButton: true,
-      progressSteps: ['1', '2', '3']
-    }).queue([
-      {
-        title: 'Question 1',
-        text: 'Chaining swal2 modals is easy'
-      },
-      'Question 2',
-      'Question 3'
-    ]).then((result) => {
-      if (result.value) {
-        const answers = JSON.stringify(result.value)
-        swal.fire({
-          title: 'All done!',
-          html: `
-            Your answers:
-            <pre><code>${answers}</code></pre>
-          `,
-          confirmButtonText: 'Lovely!'
-        })
-      }
-    })
-  }
+    swal({
+      title: 'Warning',
+      text: 'GDPR Delete is irreversible, all company data including users, projects, and billing will be completely deleted. This action is final.',
+      dangerMode: true,
+      buttons: true,
+    }).then(()=>
+      swal({
+        title: 'Final Warning',
+        text: `Enter the company name to delete`,
+        content: {
+          element: "input",
+          attributes: {
+            placeholder: "Company name",
+            type: "password",
+          },
+        },
+        // text: 'GDPR Delete is irreversible, all company data including users, projects, and billing will be completely deleted',
+        dangerMode: true,
+        buttons: true,
+      })
+    )
+}
 
   return (
     <div className='flexbox4'>
