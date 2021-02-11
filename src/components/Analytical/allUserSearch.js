@@ -16,16 +16,27 @@ console.log('Search Results', userSearch);
         <div>
             <input 
                 className="search-input" 
-                placeholder="Search users" 
+                placeholder="Search Aurelius By User Email" 
                 value={search}
                 onChange={(e) => setSearch(e.target.value)} 
 
             />
             <button onClick={searchAllUsers}>Search Aurelius</button>
+            <div className='allCardContainer'>
+                {
+                    userSearch.map(item => {
+                        return (
+                            <div>
+                                <div className='singleCardContainer'>
+                                {item.firstname} {item.lastname}
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
         </div>
     )
-
-
 }
 
 export default AllUserSearch
