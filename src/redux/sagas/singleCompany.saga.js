@@ -13,7 +13,6 @@ function* getSingleCompanyData(action){
 
 function* editCustomerId(action){
   try{
-    console.log('CUSTOMER ID PAYLOAD', action.payload)
     yield axios.put(`/api/analytics/${action.payload.companyId}`, action.payload) 
     yield put({ type: 'FETCH_SINGLE_COMPANY_DATA', param: {id: action.payload.companyId}})
   }catch (error) {

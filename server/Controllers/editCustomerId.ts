@@ -9,7 +9,7 @@ export const editCustomerId = async (
 ): Promise<void> => {
   try { 
       console.log('req body edit', req.body)
-      const {customerId, companyId, initCustomerId} = req.body
+      const {customerId, initCustomerId} = req.body
     //   const filter = {_id: "6018596184af92843a7bb1c0"};
     //   const updatedDocument = {
     //       $set: {
