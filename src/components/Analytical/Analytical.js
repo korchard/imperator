@@ -27,8 +27,6 @@ const Analytical = () => {
     }
   }
 
-
-
   return (
     <div className='container'>
       <h1>Analytical</h1> 
