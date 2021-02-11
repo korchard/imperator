@@ -11,26 +11,28 @@
   flex-wrap: wrap;
   width: 40%;
   height: auto;
-  background-color: burlywood;
   box-shadow: 1px 3px 5px #888888;
   justify-content: center;
   align-items: center;
-}
-
-.companyInfoHeader {
-  font-size: 25px;
-  padding: 10px;
-  margin: 20px;
+  grid-area: company;
+  margin-bottom: 30px;
+  background-color: #FFF; 
+  box-shadow: 1px 3px 5px #888888; 
 }
 
 .planInfo {
-  padding: 10px;
   margin: 20px;
+  width: 100%;
+  /* display: flex; */
 }
 
-.customerInfo {
-  padding: 10px;
-  margin: 20px;
+.billingInfo {
+  width: 40%;
+  float: left;
+}
+
+.configInfo {
+  float: right;
 }
 
 .flexbox3 {
@@ -58,14 +60,6 @@
   font-variant-caps: all-petite-caps;
 }
 
-.companyInfoContainer {
-  grid-area: company;
-  margin-bottom: 30px;
-  background-color: #FFF; 
-  box-shadow: 1px 3px 5px #888888; 
-  text-align: center;
-}
-
 .coTitle {
   background-color: #212C2E;
   padding: 1rem;
@@ -74,4 +68,5 @@
   font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   width: 100%;
+  text-align: center;
 }
