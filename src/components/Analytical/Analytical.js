@@ -37,16 +37,18 @@ const Analytical = () => {
         <div className="headerArea">
           <h1>Analytical</h1>
         </div>
-        <div className="companyArea">
-          {companyInfo}
-        </div>
-        <div className="userArea">
+        <div className="userSearch">
           <input 
             className="search-input" 
             placeholder="Search users" 
             value={search}
             onChange={(e) => setSearch(e.target.value)} />
           <button className="btnI" onClick={searchAllUsers}>Find</button>
+          </div>
+        <div className="companyArea">
+          {companyInfo}
+        </div>
+        <div className="userArea">
           {location.params.type === 'single' &&
             <AnalyticalUsers />}
         </div>

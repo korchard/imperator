@@ -65,7 +65,7 @@ const AllCompanyGraph = () => {
     ]
   return (
     <>
-      <h4 className="titles">Average Company Actions</h4>
+      <h4 className="title">Average Company Actions</h4>
       <Chart options={opt.options} series={[
         { 
           ...opt.series,

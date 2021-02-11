@@ -28,6 +28,7 @@
   color: white;
   font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
+  font-weight: 700;
   width: 100%;
   text-align: center;
   font-variant-caps: all-petite-caps;
@@ -36,20 +37,38 @@
 .planInfo {
   margin: 20px;
   width: 100%;
+  font-variant-caps: all-petite-caps;
   /* display: flex; */
 }
 
 .billingInfo {
-  width: 40%;
-  float: left;
+  font-size: 18px;
+  /* float: left; */
+}
+
+.billingHeader {
+  font-size: 18px;
+  font-variant-caps: all-petite-caps;
 }
 
 .configInfo {
-  float: right;
+  font-size: 18px;
+  /* float: right; */
+}
+
+.configHeader {
+  font-size: 18px;
+  font-variant-caps: all-petite-caps;
 }
 
 .userArea {
   grid-area: users;
+}
+
+.userSearch {
+  grid-area: search;
+  float: right;
+  /* margin-left: 30%; */
 }
 
 .userInfoContainer {
@@ -72,6 +91,7 @@
   color: white;
   font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
+  font-weight: 700;
   width: 100%;
   text-align: center;
   font-variant-caps: all-petite-caps;
@@ -95,7 +115,7 @@
   gap: 0.75rem;
   margin-right: 30px;
   grid-template-areas:
-    "header header header"
+    "header header search"
     "company users users"
     "graph graph graph";
 }

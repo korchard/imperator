@@ -14,7 +14,7 @@ const AnalyticalUsers = () => {
   return (
     <div className="userInfoContainer">
       <div className="userTitle">
-        <h2>User List for {companyUsers[0]?.company}</h2>
+        User List for {companyUsers[0]?.company}
       </div>
       <ul>
       {companyUsers.map(user => {
