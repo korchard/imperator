@@ -25,17 +25,18 @@ const UserCard = (props) => {
             {editMode ? 
             <>
                 <input 
-                    type='text' 
+                    type='text'
                     onChange={(e) => setNewEmail(e.target.value)} 
+                    className='editInput'
                     />
-                <button onClick={() => editUserEmail(email, newEmail)}>Edit Email</button>
+                <button className='updateEditBtn' onClick={() => editUserEmail(email, newEmail)}>Edit Email</button>
                 <button onClick={() => setEditMode(!editMode)}>Cancel</button>
             </>
             :
-            <div>
+            <>
                 {email}
-                <button onClick={() => setEditMode(!editMode)}>Update</button>
-            </div>
+                <button className='updateEditBtn' onClick={() => setEditMode(!editMode)}>Update</button>
+            </>
             }
         </>
     )

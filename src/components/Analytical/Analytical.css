@@ -67,7 +67,6 @@
   grid-area: company;
   /* float: right; */
   /* margin-left: 30%; */
-  margin-bottom: 30px;
 }
 
 .userInfoContainer {
@@ -132,12 +131,11 @@
   width: 220px;
   height: auto;
   margin: 20px;
-  padding: 15px;
+  padding: 10px;
   border-radius: 10px;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   box-shadow: 1px 3px 5px #888888;
   border: 2px solid rgb(33, 44, 46);
   font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
@@ -150,4 +148,110 @@
   background-color: #fff;
   box-shadow: 1px 3px 5px #888888;
   text-align: center;
+}
+
+.updateEditBtn {
+  background-color: #024058;
+  border-radius: 6px;
+  border: 4px solid #024058;
+  box-shadow: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1;
+  min-height: 18px;
+  text-align: center;
+  -webkit-transition: color 0.2s, border 0.2s;
+  transition: color 0.2s, border 0.2s;
+  letter-spacing: 0.19px;
+  white-space: nowrap;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+
+.input {
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: textfield;
+  background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  padding: 1px 2px;
+  border-width: 2px;
+  border-style: inset;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-image: initial;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #024058;
+  height: 40px;
+  border-radius: 2px;
+  border: solid 2px #acbcc4;
+  background-color: rgba(221, 233, 233, 0.5);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0 16px;
+  -webkit-letter-spacing: 0.19px;
+  -moz-letter-spacing: 0.19px;
+  -ms-letter-spacing: 0.19px;
+  letter-spacing: 0.19px;
+  -webkit-transition: border 0.3s;
+  transition: border 0.3s;
+  padding-left: 30px;
+  width: 300px;
+}
+
+.editInput {
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: textfield;
+  background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  padding: 1px 2px;
+  border-width: 2px;
+  border-style: inset;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-image: initial;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #024058;
+  height: 30px;
+  border-radius: 2px;
+  border: solid 2px #acbcc4;
+  background-color: rgba(221, 233, 233, 0.5);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0 16px;
+  -webkit-letter-spacing: 0.19px;
+  -moz-letter-spacing: 0.19px;
+  -ms-letter-spacing: 0.19px;
+  letter-spacing: 0.19px;
+  -webkit-transition: border 0.3s;
+  transition: border 0.3s;
+  padding-left: 30px;
+  width: 125px;
 }

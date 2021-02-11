@@ -16,7 +16,7 @@ const AllUserSearch = () => {
     return (
         <div>
             <input 
-                className="search-input" 
+                className="input" 
                 placeholder="Search Aurelius By User Email" 
                 onChange={(e) => setSearch(e.target.value)} 
 
