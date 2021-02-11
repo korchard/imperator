@@ -51,6 +51,7 @@
     color: white;
     font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
+    font-variant-caps: all-petite-caps;
 }
 
 .trialContainer {
