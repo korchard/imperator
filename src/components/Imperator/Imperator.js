@@ -59,41 +59,47 @@ const Imperator = () => {
   };
 
   return (
-    <div className='imperator'>
-      <h1>Imperator</h1>
-      <div className='search-imperator'>
-        <input
-          className='search-input'
-          placeholder='Search Company Name'
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+    <div className='flexbox2'>
+      <div className='gridbox2'>
+        <div className='headerArea'>
+          <h1>Imperator</h1>
+        </div>
+        <div className='search-imperator'>
+          <input
+            className='search-input'
+            placeholder='Search Company Name'
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <button
+            className='btnI'
+            type='submit'
+            name='submit'
+            value='Clear'
+            onClick={clearSearch}
+          >
+            Clear
+          </button>
+          <button
+            className='btnI'
+            type='submit'
+            name='submit'
+            value='Find'
+            onClick={searchCo}
+          >
+            Find
+          </button>
+        </div>
+        <div className="tableGrid">
+        <Table
+          data={imperator}
+          fetchData={fetchData}
+          loading={loading}
+          pageCount={pageCount}
         />
-        <button
-          className='btnI'
-          type='submit'
-          name='submit'
-          value='Clear'
-          onClick={clearSearch}
-        >
-          Clear
-        </button>
-        <button
-          className='btnI'
-          type='submit'
-          name='submit'
-          value='Find'
-          onClick={searchCo}
-        >
-          Find
-        </button>
-      </div>
-      <Table
-        data={imperator}
-        fetchData={fetchData}
-        loading={loading}
-        pageCount={pageCount}
-      />
-    </div>
+        </div>
+       </div>
+     </div>
   );
 };
 

@@ -6,6 +6,32 @@
 // Select the database to use.
 use('aurelius');
 
+db.users.aggregate([
+  {
+    $match: {
+      'email': 'earlinedotson@macronaut.com'
+    }
+  }, {
+    $lookup: {
+      from: 'companies', 
+      localField: 'company', 
+      foreignField: 'company', 
+      as: 'UserCompany'
+    }
+  }, {
+    $unwind: {
+      'path': '$UserCompany'
+    }
+  }, {
+    $project: {
+      'email': 1, 
+      'company': 1, 
+      'firstname': 1, 
+      'lastname': 1
+    }
+  }
+]);
+
 
 // const query = {_id: '6018596184af92843a7bb1c0'}
 // const update = 
@@ -19,17 +45,17 @@ use('aurelius');
 // db.companies.updateOne(query, update)
 
 
-db.companies.update(
-  {_id: "6018596184af92843a7bb1c0"},
-  {
-    $set: {
-      'billing.customerId': "test"   
-  }
-  },
-  {
-    new: true
-  }
-)
+// db.companies.update(
+//   {_id: "6018596184af92843a7bb1c0"},
+//   {
+//     $set: {
+//       'billing.customerId': "test"   
+//   }
+//   },
+//   {
+//     new: true
+//   }
+// )
 
 // db.users.countDocuments({
 //       timestamp: {
@@ -65,43 +91,43 @@ db.companies.update(
 // }
 // ]);
 
-db.companies.aggregate([
-{$match: {company: 'MACRONAUT'}},
-   {
-        $lookup: { //join table users
-            from: 'users',
-            localField: 'company', //is the field from companies
-            foreignField: 'company', //field from users
-            as: 'users_data' //name that hold results 
-        }
-    },
-    {$unwind: {path: "$users_data"}},
-    {$unwind: {path: "$company"}},
-    {
-    $project: {
-      "_id": 0, 
-      "email": 1, 
-      "company": 1, 
-      "users_data.firstname": 1, 
-      "users_data.lastname": 1, 
-      "users_data.email": 1, 
-      "billing.status": 1,
-      "billing.customerId": 1,
-      "billing.plan": 1,
-      "billing.trialStart": 1,
-      "billing.trialEnd": 1,
-      "activeUntil": 1,
-      "jira": 1,
-      "zapier": 1,
-          hashtagsTotal: {$size: "$hashtags"},
-          documentsTotal: {$size: "$documents"},
-          projectsTotal: {$size: "$projects"},
-          notesTotal: {$size: "$notes"},
-          insightsTotal: {$size: "$insights"},
-          collectionsTotal: {$size: "$collections"},
-          recommendationsTotal: {$size: "$recommendations"}
-    }},
-]);
+// db.companies.aggregate([
+// {$match: {company: 'MACRONAUT'}},
+//    {
+//         $lookup: { //join table users
+//             from: 'users',
+//             localField: 'company', //is the field from companies
+//             foreignField: 'company', //field from users
+//             as: 'users_data' //name that hold results 
+//         }
+//     },
+//     {$unwind: {path: "$users_data"}},
+//     {$unwind: {path: "$company"}},
+//     {
+//     $project: {
+//       "_id": 0, 
+//       "email": 1, 
+//       "company": 1, 
+//       "users_data.firstname": 1, 
+//       "users_data.lastname": 1, 
+//       "users_data.email": 1, 
+//       "billing.status": 1,
+//       "billing.customerId": 1,
+//       "billing.plan": 1,
+//       "billing.trialStart": 1,
+//       "billing.trialEnd": 1,
+//       "activeUntil": 1,
+//       "jira": 1,
+//       "zapier": 1,
+//           hashtagsTotal: {$size: "$hashtags"},
+//           documentsTotal: {$size: "$documents"},
+//           projectsTotal: {$size: "$projects"},
+//           notesTotal: {$size: "$notes"},
+//           insightsTotal: {$size: "$insights"},
+//           collectionsTotal: {$size: "$collections"},
+//           recommendationsTotal: {$size: "$recommendations"}
+//     }},
+// ]);
 
 // ****LIMIT RESULTS AFTER A LOOK UP SUPER USEFUL*****
     // { $lookup: {
@@ -619,13 +645,13 @@ db.companies.aggregate([
 //         ]
 //      )
 
-db.companies.aggregate([
-  {$project: {
-    _id: 0,
-    company: 1, 
-    start: { $toDate:{$multiply: ["$billing.trialEnd", 1000]}},
-    end: { $toDate:{$multiply: ["$billing.trialStart", 1000]}},
-    }
-  },
-]);
+// db.companies.aggregate([
+//   {$project: {
+//     _id: 0,
+//     company: 1, 
+//     start: { $toDate:{$multiply: ["$billing.trialEnd", 1000]}},
+//     end: { $toDate:{$multiply: ["$billing.trialStart", 1000]}},
+//     }
+//   },
+// ]);
 
