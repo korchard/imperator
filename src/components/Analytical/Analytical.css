@@ -51,6 +51,30 @@
   grid-area: users;
 }
 
+.userInfoContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 40%;
+  height: auto;
+  box-shadow: 1px 3px 5px #888888;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  background-color: #FFF; 
+  box-shadow: 1px 3px 5px #888888; 
+}
+
+.userTitle {
+  background-color: #212C2E;
+  padding: 1rem;
+  margin: 0px;
+  color: white;
+  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  width: 100%;
+  text-align: center;
+}
+
 .barGraph2 {
   grid-area: graph;
 }

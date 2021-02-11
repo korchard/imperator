@@ -41,17 +41,14 @@ const Analytical = () => {
           {companyInfo}
         </div>
         <div className="userArea">
-        {location.params.type === 'single' &&
-          <>
           <input 
             className="search-input" 
             placeholder="Search users" 
             value={search}
             onChange={(e) => setSearch(e.target.value)} />
-          <button onClick={searchAllUsers}>Search Aurelius</button>
-          <AnalyticalUsers />
-          </>
-        }
+          <button className="btnI" onClick={searchAllUsers}>Find</button>
+          {location.params.type === 'single' &&
+            <AnalyticalUsers />}
         </div>
         <div className="barGraph2">
           {graph}
