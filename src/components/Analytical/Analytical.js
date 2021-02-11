@@ -30,20 +30,24 @@ const Analytical = () => {
   }
 
   return (
-    <div className='container'>
-      <h1>Analytical</h1> 
-        <div>
-          {allUserSearch}
-        </div>
-        <div className="companyArea">
-          {companyInfo}
-        </div>
-        <div className="userArea">
-          {location.params.type === 'single' &&
-            <AnalyticalUsers />}
-        </div>
-        <div className="barGraph2">
-          {graph}
+    <div className='flexbox4'>
+        <div className='gridbox4'> 
+        <div className='headerArea'>
+          <h1>Analytical</h1> 
+            <div>
+              {allUserSearch}
+            </div>
+            <div className="companyArea">
+              {companyInfo}
+            </div>
+            <div className="userArea">
+              {location.params.type === 'single' &&
+                <AnalyticalUsers />}
+            </div>
+            <div className="barGraph2">
+              {graph}
+            </div>
+          </div>
         </div>
       </div>
   );
