@@ -70,7 +70,7 @@ return (
           },
         ]}
         type='bar'
-        width='900'
+        width='100%'
         height='350'
       />
           </div>
