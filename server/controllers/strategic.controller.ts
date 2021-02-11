@@ -9,18 +9,18 @@ const strategic = async (req: Request, res: Response): Promise<void> => {
     const data = await CompanyDB.aggregate([
       {
         $group: {
-          _id: '$billing.plan',
+          _id: "$billing.plan",
           avgLength: {
             $avg: {
-              $subtract: [
-                { $toDate: { $multiply: ['$billing.trialStart', 1000] } },
-                { $toDate: { $multiply: ['$billing.trialEnd', 1000] } },
-              ],
-            },
-          },
-        },
-      },
-      { $sort: { _id: 1 } },
+            $trunc: {
+              $divide: [{ $subtract: [
+                  { $toDate: { $multiply: ['$billing.trialEnd', 1000] } },
+                  { $toDate: { $multiply: ['$billing.trialStart', 1000] } },
+                ], }, 1000 * 60 * 60 * 24]
+            }
+          }
+        }}
+      }, { $sort: { _id: 1 } },
     ]);
     console.log(data);
     res.send(data);

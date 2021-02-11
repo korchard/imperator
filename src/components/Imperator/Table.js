@@ -1,15 +1,10 @@
 import React from 'react';
 import { useTable, usePagination, useSortBy } from 'react-table';
 import { useHistory } from 'react-router-dom';
-import Moment from 'react-moment'
+import Moment from 'react-moment';
 import { DiGoogleAnalytics } from 'react-icons/di';
 
-const Table = ({
-  data,
-  fetchData,
-  loading,
-  pageCount: controlledPageCount,
-}) => {
+const Table = ({ data, pageCount: controlledPageCount }) => {
   const history = useHistory();
 
   const getConfig = (imperator) => {
@@ -34,10 +29,9 @@ const Table = ({
             Cell: ({ cell }) => (
               <span className='company'>
                 {cell.row.values.company}
-                <button className='coBtn' onClick={goToAnalytical}>
-                  <DiGoogleAnalytics/>
-                  &nbsp;
-                  Details
+                <button className='coBtn' onClick={()=>goToAnalytical(cell.row.values._id)}>
+                  <DiGoogleAnalytics />
+                  &nbsp; Details
                 </button>
               </span>
             ),
@@ -66,7 +60,11 @@ const Table = ({
             accessor: 'activeUntil',
             Cell: (props) => {
               const custom_date = formatData(props.value);
-              return <span><Moment format='MM/DD/YY'>{custom_date}</Moment></span>;
+              return (
+                <span>
+                  <Moment format='MM/DD/YY'>{custom_date}</Moment>
+                </span>
+              );
             },
           },
           {
@@ -126,26 +124,16 @@ const Table = ({
     nextPage,
     previousPage,
     setPageSize,
-    // Get the state from the instance
     state: { pageIndex, pageSize },
   } = useTable(
     {
-      initialState: { pageIndex: 0 }, // Pass our hoisted table state
-      manualPagination: true, // Tell the usePagination
-      // hook that we'll handle our own data fetching
-      // This means we'll also have to provide our own
-      // pageCount.
-      pageCount: controlledPageCount,
+      initialState: { pageIndex: 0 },
       columns,
       data,
     },
     useSortBy,
     usePagination
   );
-
-  React.useEffect(() => {
-    fetchData({ pageIndex, pageSize });
-  }, [fetchData, pageIndex, pageSize]);
 
   const formatData = (date) => {
     date = date.split('T');
@@ -155,7 +143,7 @@ const Table = ({
   };
 
   const goToAnalytical = (id) => {
-    history.push(`/analytical/:single/:${id}`);
+    history.push(`/analytical/single/${id}`);
   };
 
   // Render the UI for your table
@@ -183,7 +171,7 @@ const Table = ({
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {rows.map((row, i) => {
+          {page.map((row, i) => {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
@@ -210,26 +198,26 @@ const Table = ({
       <div className='pagination'>
         <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
           {'<<'}
-        </button>
+        </button>{' '}
         <button onClick={() => previousPage()} disabled={!canPreviousPage}>
           {'<'}
-        </button>
+        </button>{' '}
         <button onClick={() => nextPage()} disabled={!canNextPage}>
           {'>'}
-        </button>
+        </button>{' '}
         <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-          {'>>'}
+          {'>>'}{' '}
         </button>
         <span>
-          &nbsp; Page &nbsp;
+          Page{' '}
           <strong>
             {pageIndex + 1} of {pageOptions.length}
           </strong>
         </span>
         <span>
-          | Go to page: &nbsp;
+          | Go to page:{' '}
           <input
-            className="pagInput"
+            className='pagInput'
             type='number'
             defaultValue={pageIndex + 1}
             onChange={(e) => {
@@ -240,7 +228,7 @@ const Table = ({
           />
         </span>
         <select
-          className="pagSelect"
+          className='pagSelect'
           value={pageSize}
           onChange={(e) => {
             setPageSize(Number(e.target.value));

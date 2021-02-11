@@ -1,8 +1,13 @@
+.imperator-card { 
+  box-shadow: 1px 3px 5px #888888; 
+  padding: 20px; 
+}
+
 .search-imperator {
+  grid-area: search;
   display: inline-block;
   width: 100%;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin-bottom: 13px;
 }
 
 .btnI {
@@ -53,7 +58,6 @@
   width: 100%;
   font-variant-caps: all-petite-caps;
   margin: auto;
-  margin-top: 2%;
   font-size: 1.2em;
   margin-right: 30px;
 }
@@ -89,7 +93,7 @@ th.sortArrow {
 }
 
 table > thead > tr:nth-child(1) > th {
-  font-size: 1.4em;
+  font-size: 1.2em;
 }
 
 @media only screen and (max-width: 760px),
@@ -231,15 +235,19 @@ Label the data
 }
 
 .gridbox2 {
-  /* display: grid; */
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: minmax(100px, auto);
   gap: 0.75rem;
   margin-right: 30px;
   grid-template-areas:
     "header header"
-    "search-imperator search-imperator"
+    "search search"
     "tableGrid tableGrid";
+}
+
+.tableGrid {
+  grid-area: tableGrid;
 }
 
 .headerArea {

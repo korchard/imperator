@@ -20,13 +20,21 @@
 
 .headerArea {
   grid-area: header;
+  padding-bottom: 0;
   color: rgb(33, 44, 46);
+}
+
+.operationalTitle {
+  margin: 0;
 }
 
 .barGraph {
   grid-area: main-left;
   background-color: #fff;
-  box-shadow: 1px 3px 5px #888888;
+  margin-top: 0;
+  padding-top: 0;
+  background-color: #FFF; 
+  box-shadow: 1px 3px 5px #888888; 
   text-align: center;
 }
 
@@ -53,6 +61,7 @@
   font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   text-align: center;
+  font-variant-caps: all-petite-caps;
 }
 
 @supports (display: grid) {
@@ -68,6 +77,7 @@
   }
 }
 
-.yearSelectUsersByMonth {
-  margin-left: 15px;
+
+.yearSelectUsersByMonth { 
+  margin-left: 15px; 
 }
