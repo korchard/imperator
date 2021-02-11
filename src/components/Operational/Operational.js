@@ -9,7 +9,7 @@ const Operational = () => {
     <div className='flexbox'>
       <div className='gridbox'>
         <div className='headerArea'>
-          <h1>Operational</h1>
+          <h1 className="operationalTitle">Operational</h1>
         </div>
         <div className='barGraph'>
           <h4 className="title">Total Actions All Companies</h4>
