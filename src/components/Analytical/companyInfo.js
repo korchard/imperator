@@ -8,8 +8,6 @@ const CompanyInfo = () => {
   const [editMode, setEditMode] = useState(false)
   const [customerId, setCustomerId] = useState('')
   
-  
-  console.log('CompanyInfo', companyInfo)
 
   const editCustomerId = (customerId) => {
     dispatch({ 

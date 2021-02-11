@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
+import UserCard from './userCard'
+import './Analytical.css'
 
 const AllUserSearch = () => {
   const dispatch = useDispatch();
   const userSearch = useSelector((store) => store.aureliusUserSearch)  
   const [search, setSearch] = useState();  
+  
 
   const searchAllUsers = () => {
     dispatch({ type: 'FETCH_AURELIUS_USER', payload: search })
@@ -26,10 +29,8 @@ console.log('Search Results', userSearch);
                 {
                     userSearch.map(item => {
                         return (
-                            <div>
-                                <div className='singleCardContainer'>
-                                {item.firstname} {item.lastname}
-                                </div>
+                            <div className='singleCardContainer'>
+                                <UserCard item={item} />
                             </div>
                         )
                     })
