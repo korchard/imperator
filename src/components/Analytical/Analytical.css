@@ -125,3 +125,19 @@
   color: rgb(33, 44, 46);
   font-variant-caps: all-petite-caps;
 }
+
+.singleGraph {
+  grid-area: footer;
+  margin-bottom: 30px;
+  background-color: #FFF; 
+  box-shadow: 1px 3px 5px #888888; 
+  text-align: center;
+}
+
+.allGraph {
+  grid-area: footer;
+  margin-bottom: 30px;
+  background-color: #FFF; 
+  box-shadow: 1px 3px 5px #888888; 
+  text-align: center;
+}
