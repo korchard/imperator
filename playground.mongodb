@@ -656,6 +656,21 @@ use('aurelius');
 // ]);
 
 // db.companies.aggregate([
+<<<<<<< HEAD
+=======
+//   {$project: {
+//     _id: 0,
+//     'billing.plan': "Trial", 
+//     company: 1,
+//     start: { $toDate:{$multiply: ["$billing.trialEnd", 1000]}},
+//     end: { $toDate:{$multiply: ["$billing.trialStart", 1000]}},
+//     }
+//   },
+
+// ]);
+
+// db.companies.aggregate([
+>>>>>>> main
 //       {$count: "hashtags"},
 //       {$count: "projects"},
 //       {$count: "collections"}
@@ -675,6 +690,7 @@ use('aurelius');
 //               }
 //             }
 //         ]
+<<<<<<< HEAD
 
 // // ----------paid plans ending this month-------
 // db.companies.aggregate(
@@ -775,3 +791,31 @@ db.companies.aggregate([
 //         },
 //       },
 //       { $sort: { _id: 1 } },
+=======
+//      )
+
+db.companies.aggregate(
+        [
+          {$match: {
+            'billing.plan': {$ne: 'Trial'
+          }}},
+          {$project: {
+            _id: 0,
+            company: 1,
+            day: {$dayOfMonth: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}},
+            month: {$month: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}},
+            year: {$year: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}}
+          }},
+          {$match: {
+          "month":new Date().getMonth() +1,
+          "year": new Date().getFullYear()
+          }
+        },
+        {$sort: {
+          "day": 1
+        }}
+        ]
+     )
+
+    
+>>>>>>> main
