@@ -34,7 +34,8 @@ const Analytical = () => {
         <div className='gridbox4'> 
         <div className='headerArea'>
           <h1>Analytical</h1> 
-            <div>
+          </div>
+            <div className="userSearch">
               {allUserSearch}
             </div>
             <div className="companyArea">
@@ -48,7 +49,6 @@ const Analytical = () => {
               {graph}
             </div>
           </div>
-        </div>
       </div>
   );
 }
