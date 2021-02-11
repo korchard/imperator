@@ -11,6 +11,7 @@ const strategicPaidPlan = async (req: Request, res: Response): Promise<void> => 
           {$project: {
             _id: 0,
             company: 1,
+            day: {$dayOfMonth: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}},
             month: {$month: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}},
             year: {$year: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}}
           }},
@@ -18,7 +19,10 @@ const strategicPaidPlan = async (req: Request, res: Response): Promise<void> => 
           "month":new Date().getMonth() +1,
           "year": new Date().getFullYear()
           }
-        }
+        },
+        {$sort: {
+          "day": 1
+        }}
         ]
      )
      res.send(data)

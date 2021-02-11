@@ -692,21 +692,23 @@ use('aurelius');
 db.companies.aggregate(
         [
           {$match: {
-            'billing.plan': { $or: [ { <expression1> }, { <expression2> }, ... , { <expressionN> } ] }
-          }},
+            'billing.plan': {$ne: 'Trial'
+          }}},
           {$project: {
             _id: 0,
-            
             company: 1,
+            day: {$dayOfMonth: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}},
             month: {$month: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}},
             year: {$year: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}}
           }},
           {$match: {
-          
           "month":new Date().getMonth() +1,
           "year": new Date().getFullYear()
           }
-        }
+        },
+        {$sort: {
+          "day": 1
+        }}
         ]
      )
 
