@@ -646,6 +646,7 @@ db.users.aggregate([
 //      )
 
 // db.companies.aggregate([
+//   {$match: {company: 'AQUOAVO'}},
 //   {$project: {
 //     _id: 0,
 //     company: 1, 
@@ -655,3 +656,11 @@ db.users.aggregate([
 //   },
 // ]);
 
+db.companies.aggregate([
+  {$project: {
+    _id: 0, 
+    company: 1,
+    hashtag_Sum: {$sum: "$hashtags"}
+  },
+  }
+    ]);

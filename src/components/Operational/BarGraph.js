@@ -47,7 +47,6 @@ const BarGraph = () => {
         },
         labels: {
           style: {
-            
             colors: '#212C2E',
           },
         },
@@ -86,11 +85,16 @@ const BarGraph = () => {
           {
             name: 'total actions',
             data: [
-              totalActionData.documents.count,
-              totalActionData.hashtags.count,
-              totalActionData.insights.count,
-              totalActionData.notes.count,
-              totalActionData.projects.count,
+              432,
+              105,
+              300,
+              666,
+              900,
+              // totalActionData.documents.count,
+              // totalActionData.hashtags.count,
+              // totalActionData.insights.count,
+              // totalActionData.notes.count,
+              // totalActionData.projects.count,
             ],
           },
         ]}
