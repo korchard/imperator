@@ -10,7 +10,7 @@ const strategic = async (req: Request, res: Response): Promise<void> => {
       {
         $group: {
           _id: "$billing.plan",
-          avLength: {
+          avgLength: {
             $avg: {
             $trunc: {
               $divide: [{ $subtract: [
