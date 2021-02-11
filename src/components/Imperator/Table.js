@@ -29,7 +29,7 @@ const Table = ({ data, pageCount: controlledPageCount }) => {
             Cell: ({ cell }) => (
               <span className='company'>
                 {cell.row.values.company}
-                <button className='coBtn' onClick={goToAnalytical}>
+                <button className='coBtn' onClick={()=>goToAnalytical(cell.row.values._id)}>
                   <DiGoogleAnalytics />
                   &nbsp; Details
                 </button>
@@ -143,7 +143,7 @@ const Table = ({ data, pageCount: controlledPageCount }) => {
   };
 
   const goToAnalytical = (id) => {
-    history.push(`/analytical/:single/:${id}`);
+    history.push(`/analytical/single/${id}`);
   };
 
   // Render the UI for your table
