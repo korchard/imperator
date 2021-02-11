@@ -6,31 +6,31 @@
 // Select the database to use.
 use('aurelius');
 
-db.users.aggregate([
-  {
-    $match: {
-      'email': 'earlinedotson@macronaut.com'
-    }
-  }, {
-    $lookup: {
-      from: 'companies', 
-      localField: 'company', 
-      foreignField: 'company', 
-      as: 'UserCompany'
-    }
-  }, {
-    $unwind: {
-      'path': '$UserCompany'
-    }
-  }, {
-    $project: {
-      'email': 1, 
-      'company': 1, 
-      'firstname': 1, 
-      'lastname': 1
-    }
-  }
-]);
+// db.users.aggregate([
+//   {
+//     $match: {
+//       'email': 'earlinedotson@macronaut.com'
+//     }
+//   }, {
+//     $lookup: {
+//       from: 'companies', 
+//       localField: 'company', 
+//       foreignField: 'company', 
+//       as: 'UserCompany'
+//     }
+//   }, {
+//     $unwind: {
+//       'path': '$UserCompany'
+//     }
+//   }, {
+//     $project: {
+//       'email': 1, 
+//       'company': 1, 
+//       'firstname': 1, 
+//       'lastname': 1
+//     }
+//   }
+// ]);
 
 
 // const query = {_id: '6018596184af92843a7bb1c0'}
@@ -655,3 +655,8 @@ db.users.aggregate([
 //   },
 // ]);
 
+db.companies.aggregate([
+      {$count: "hashtags"},
+      {$count: "projects"},
+      {$count: "collections"}
+    ]);
