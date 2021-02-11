@@ -33,7 +33,7 @@ function Strategic() {
           <h4 className="titles">Paid Plans Ending This Month</h4>
           {paidPlan.map(plan => {
             return (
-              <p>{plan.company}<span className="planRender">{plan.month}/{plan.day}/{plan.year}</span></p>
+              <p className="col2">{plan.company}<span className="col1">{plan.month}/{plan.day}/{plan.year}</span></p>
             )
           }
           )}
@@ -43,7 +43,7 @@ function Strategic() {
           <h4 className="titles">Trials Ending This Month</h4>
           {trialPlan.map(plan => {
             return (
-              <p>{plan.company} <span className="planRender">{plan.month}/{plan.day}/{plan.year}</span></p>
+              <p className="col2">{plan.company} <span className="col1">{plan.month}/{plan.day}/{plan.year}</span></p>
             )
           }
           )}
