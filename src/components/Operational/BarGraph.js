@@ -19,16 +19,17 @@ const BarGraph = () => {
       },
       plotOptions: {
         bar: {
+          horizontal: true, 
           distributed: true,
           borderRadius: 6,
-          dataLabels: {
-            position: 'top',
-          },
+          // dataLabels: {
+          //   position: 'right',
+          // },
         },
       },
       colors: ['#2EA2B2', '#0B354D', '#EE5F1B', '#8a97a5dc', '#09588E'],
       dataLabels: {
-        enabled: true,
+        enabled: false, 
         offsetY: -15,
         style: {
           fontSize: '12px',
