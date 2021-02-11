@@ -14,7 +14,6 @@ function Strategic() {
     dispatch({ type: 'GET_PLAN_LENGTH_AVERAGE' });
     dispatch({ type: 'GET_PAID_PLANS' });
     dispatch({ type: 'GET_TRIAL_PLANS' });
-
   }, [])
 
   return (
@@ -27,30 +26,29 @@ function Strategic() {
 
         <div className="strategicGraph">
           <h4 className="titles">Average Plan Length By Types</h4>
-        <StrategicGraph />
+          <StrategicGraph />
         </div>
-       
-          <div className="paidContainer">
-            <h4 className="titles">Paid Plans Ending This Month</h4>
-            {paidPlan.map(plan => {
-              return (
-                <p>{plan.company}</p>
-              )
-            }
-            )}
-          </div>
 
-          <div className="trialContainer">
-            <h4  className="titles">Trials Ending This Month</h4>
-            {trialPlan.map(plan => {
-              return (
-                <p>{plan.company}</p>
-              )
-            }
-            )}
-          </div>
+        <div className="paidContainer">
+          <h4 className="titles">Paid Plans Ending This Month</h4>
+          {paidPlan.map(plan => {
+            return (
+              <p>{plan.company}</p>
+            )
+          }
+          )}
+        </div>
 
-     
+        <div className="trialContainer">
+          <h4 className="titles">Trials Ending This Month</h4>
+          {trialPlan.map(plan => {
+            return (
+              <p>{plan.company}</p>
+            )
+          }
+          )}
+        </div>
+
       </div>
     </div>
   );

@@ -20,7 +20,6 @@
 
 .headerArea {
   grid-area: header;
-  margin-bottom: 0;
   padding-bottom: 0;
   color: rgb(33, 44, 46);
 }
@@ -28,7 +27,6 @@
 .operationalTitle {
   margin: 0;
 }
-
 
 .barGraph {
   grid-area: main-left;

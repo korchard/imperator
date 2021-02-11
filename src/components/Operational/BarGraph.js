@@ -19,17 +19,14 @@ const BarGraph = () => {
       },
       plotOptions: {
         bar: {
-          horizontal: true, 
+          horizontal: true,
           distributed: true,
           borderRadius: 6,
-          // dataLabels: {
-          //   position: 'right',
-          // },
         },
       },
       colors: ['#2EA2B2', '#0B354D', '#EE5F1B', '#8a97a5dc', '#09588E'],
       dataLabels: {
-        enabled: false, 
+        enabled: false,
         offsetY: -15,
         style: {
           fontSize: '12px',
@@ -48,7 +45,7 @@ const BarGraph = () => {
         },
         labels: {
           style: {
-            
+
             colors: '#212C2E',
           },
         },
@@ -68,15 +65,6 @@ const BarGraph = () => {
       legend: {
         show: false,
       },
-      // title: {
-      //   text: 'Total Actions All Companies',
-      //   floating: true,
-      //   offsetY: 330,
-      //   align: 'center',
-      //   style: {
-      //     color: 'rgb(33, 44, 46)',
-      //   },
-      // },
     },
   });
   return (
