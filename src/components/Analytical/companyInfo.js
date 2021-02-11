@@ -24,13 +24,12 @@ const CompanyInfo = () => {
 
   return (
     <div className='companyInfoContainer'>
-        <div className='companyInfoHeader'>
-          <div>Company: {companyInfo.company}</div>
+        <div className='coTitle'>
+          Company: {companyInfo.company}
         </div>
         <div className='planInfo'>
-          <div>Plan: {companyInfo.billing?.plan}</div>
-          <div>Status: {companyInfo.billing?.status}</div>
-        </div>
+          Plan: {companyInfo.billing?.plan}
+          Status: {companyInfo.billing?.status}
         <div className='customerInfo'>
         {editMode ? 
           <>
@@ -41,30 +40,29 @@ const CompanyInfo = () => {
             />
           <button onClick={() => editCustomerId(customerId)}>Edit ID</button>
           </> :
-          <div>Customer ID: {companyInfo.billing?.customerId}</div>  
+          <>Customer ID: {companyInfo.billing?.customerId}</>
         }
         {editMode ? null : 
             <button onClick={() => setEditMode(!editMode)}>Update</button>
         }
-          <div>
             Active Until: <Moment format='MM/DD/YYYY'>{companyInfo.activeUntil}</Moment>
-          </div>
           {companyInfo.jira && 
-          <div className='configInfo'>
-           <div>Jira Information:</div> 
-           <div>Token: {companyInfo.jira.api_token}</div> 
-           <div>Domain: {companyInfo.jira.domain} </div>
-           <div>Email: {companyInfo.jira.email}</div>
+        <div className='configInfo'>
+           Jira Information:<br></br> 
+           Token: {companyInfo.jira.api_token}<br></br> 
+           Domain: {companyInfo.jira.domain}<br></br>
+           Email: {companyInfo.jira.email}<br></br>
         </div>
           }
           {companyInfo.zapier && 
-          <div className='configInfo'>
+        <div className='configInfo'>
            Zapier Information: 
            Token: {companyInfo.zapier.api_token} 
            Domain: {companyInfo.zapier.domain} 
            Email: {companyInfo.zapier.email}
         </div>
           }
+          </div>
         </div>
     </div>
   );
