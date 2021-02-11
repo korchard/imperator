@@ -27,6 +27,7 @@ const AllCompanyGraph = () => {
           endingShape: 'rounded'
         },
       },
+      colors: ['#09588E'],
       dataLabels: {
         enabled: false
       },
@@ -64,7 +65,7 @@ const AllCompanyGraph = () => {
       (totalActionData.hashtags.count + totalActionData.documents.count + totalActionData.insights.count + totalActionData.notes.count + totalActionData.projects.count)
     ]
   return (
-    <>
+    <div className="allGraph">
       <h4 className="title">Average Company Actions</h4>
       <Chart options={opt.options} series={[
         { 
@@ -72,7 +73,7 @@ const AllCompanyGraph = () => {
           data: actions
         }
         ]} type="bar" height={350} />
-    </>
+    </div>
   );
 }
 

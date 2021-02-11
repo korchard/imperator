@@ -35,6 +35,7 @@ const SingleCompanyGraph = () => {
           endingShape: 'rounded'
         },
       },
+      colors: ['#09588E', '#EE5F1B'],
       dataLabels: {
         enabled: false
       },
@@ -89,7 +90,7 @@ const SingleCompanyGraph = () => {
     const companyName = companyUsers[0]?.company
 
   return (
-    <>
+    <div className="singleGraph">
     {/* this is where we pass the company name  */}
       <h4 className="title">Actions For {companyName}</h4>
       <Chart options={opt.options} series={[
@@ -102,7 +103,7 @@ const SingleCompanyGraph = () => {
           data: singleCompanyActions
         }
       ]} type="bar" height={350} />
-    </>
+    </div>
   );
 }
 
