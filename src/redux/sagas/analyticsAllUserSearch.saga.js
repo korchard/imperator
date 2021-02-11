@@ -1,10 +1,11 @@
 import axios from 'axios';
-import { takeEvery } from 'redux-saga/effects';
+import { takeEvery, put } from 'redux-saga/effects';
 
 // POST ROUTE - to reset password 
 function* fetchUserByEmail(action) {
     try {
-      yield axios.get(`/api/analytics/all/${action.payload}`);
+      const response = yield axios.get(`/api/analytics/all/${action.payload}`);
+      yield put({ type: 'SET_AURELIUS_USERS_SEARCH', payload: response.data })
     } catch (error) {
       console.log('Error in analytical user search', error);
     }

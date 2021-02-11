@@ -8,6 +8,7 @@ import monthlyUsersOverTime from './monthlyusers.reducer';
 import singleCompanyData from './singleCompany.reducer';
 import singleCompanyUsers from './singleCompanyUsers.reducer';
 import strategic from './strategic.reducer'
+import aureliusUserSearch from './aureliusUserSearch.reducer'
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   strategic, 
   singleCompanyData,
   singleCompanyUsers,
+  aureliusUserSearch
 });
 
 export default rootReducer;
