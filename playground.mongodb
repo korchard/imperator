@@ -649,14 +649,167 @@ use('aurelius');
 //   {$project: {
 //     _id: 0,
 //     company: 1, 
-//     start: { $toDate:{$multiply: ["$billing.trialEnd", 1000]}},
-//     end: { $toDate:{$multiply: ["$billing.trialStart", 1000]}},
+//     start: { $toDate:{$multiply: ["$billing.trialStart", 1000]}},
+//     end: { $toDate:{$multiply: ["$billing.trialEnd", 1000]}},
 //     }
 //   },
 // ]);
 
+// db.companies.aggregate([
+//   {$project: {
+//     _id: 0,
+//     'billing.plan': "Trial", 
+//     company: 1,
+//     start: { $toDate:{$multiply: ["$billing.trialEnd", 1000]}},
+//     end: { $toDate:{$multiply: ["$billing.trialStart", 1000]}},
+//     }
+//   },
+
+// ]);
+
+// db.companies.aggregate([
+//       {$count: "hashtags"},
+//       {$count: "projects"},
+//       {$count: "collections"}
+//     ]);
+
+// db.companies.aggregate(
+//         [
+//             {$project: {
+//                 _id: 0,
+//                 company: 1,
+//                 month: {$month: "$activeUntil"},
+//                 year: {$year: "$activeUntil"}
+//               }},
+//               {$match: {
+//               "month":new Date().getMonth() +1,
+//               "year": new Date().getFullYear()
+//               }
+//             }
+//         ]
+
+// // ----------paid plans ending this month-------
+// db.companies.aggregate(
+//         [
+//           {$match: {
+//             'billing.plan': {$ne: 'Trial'
+//           }}},
+//           {$project: {
+//             _id: 0,
+//             company: 1,
+//             day: {$dayOfMonth: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}},
+//             month: {$month: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}},
+//             year: {$year: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}}
+//           }},
+//           {$match: {
+//           "month":new Date().getMonth() +1,
+//           "year": new Date().getFullYear()
+//           },
+          
+//         },{$sort: {day: 1}}
+//         ]
+//      )
+
+// db.companies.aggregate([
+//       {
+//         $group: {
+//           _id: '$billing.plan',
+//           avgLength: {
+//             $avg: {
+//               $subtract: [
+//                 { $toDate: { $multiply: ['$billing.trialEnd', 1000] } },
+//                 { $toDate: { $multiply: ['$billing.trialStart', 1000] } },
+//               ],
+//             },
+//           },
+//         },
+//       },
+//       { $sort: { _id: 1 } },
+// ]);
+
 db.companies.aggregate([
-      {$count: "hashtags"},
-      {$count: "projects"},
-      {$count: "collections"}
-    ]);
+   {
+     $group: {
+       _id: "$billing.plan",
+       avLength: {
+         $avg: {
+         $trunc: {
+           $divide: [{ $subtract: [
+                { $toDate: { $trunc: [{$multiply: ['$billing.trialEnd', 1000]}, 2] } },
+                { $toDate: { $trunc: [{$multiply: ['$billing.trialStart', 1000]}, 2] } },
+              ], }, 1000 * 60 * 60 * 24]
+         },
+       }
+     }}
+   }, { $sort: { _id: 1 } },
+]);
+
+
+
+// db.companies.aggregate([
+//   {$project: {
+//     _id: 0,
+//     company: 1, 
+//     start: {$toDate: {$multiply: ["$billing.trialStart", 1000]}},
+//     end: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}},
+//     }
+//   },
+//   {$project: 
+//     {
+//       yearStart: { $year: "$start"},
+//       monthStart: { $month: "$start" },
+//       dayStart: { $dayOfMonth: "$start" },
+//       dayOfYearStart: { $dayOfYear: "$start" },
+//       yearEnd: { $year: "$end"},
+//       monthend: { $month: "$end" },
+//       dayEnd: { $dayOfMonth: "$end" },
+//       dayOfYearEnd: { $dayOfYear: "$end" },
+//     }
+//   },
+//   {$project: {
+//     yearDiff: {
+//       $subtract: ["$yearEnd", "$yearStart"],
+//     },
+//     dayDiff: {
+//       $subtract: ["$dayOfYearEnd", "$dayOfYearStart"],
+//     }
+//   }}
+// ]);
+
+// {
+//       $group: {
+//           _id: '$billing.plan',
+//           avgLength: {
+//             $avg: {
+//               $subtract: [ "$dayOfYearStart", "$dayOfYearEnd"],
+//             },
+//           },
+//         },
+//       },
+//       { $sort: { _id: 1 } },
+//      )
+
+db.companies.aggregate(
+        [
+          {$match: {
+            'billing.plan': {$ne: 'Trial'
+          }}},
+          {$project: {
+            _id: 0,
+            company: 1,
+            day: {$dayOfMonth: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}},
+            month: {$month: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}},
+            year: {$year: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}}
+          }},
+          {$match: {
+          "month":new Date().getMonth() +1,
+          "year": new Date().getFullYear()
+          }
+        },
+        {$sort: {
+          "day": 1
+        }}
+        ]
+     )
+
+    

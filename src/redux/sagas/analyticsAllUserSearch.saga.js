@@ -14,7 +14,7 @@ function* fetchUserByEmail(action) {
 function* editUserEmail(action) {
   try {
     yield axios.put(`/api/analytics/all/`, action.payload);
-    yield put({ type: 'FETCH_AURELIUS_USER' })
+    yield put({ type: 'FETCH_AURELIUS_USER', payload: action.payload.search })
   } catch (error) {
     console.log('Error in edit user email saga (analyticalAllUserSearch saga)', error)
   }

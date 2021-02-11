@@ -8,8 +8,7 @@ const UserCard = (props) => {
     const [newEmail, setNewEmail] = useState('')
 
     const editUserEmail = (initEmail, newEmail) => {
-        dispatch({ type: 'EDIT_USER_EMAIL', payload: {initEmail: initEmail, newEmail: newEmail}})
-        setEditMode(!editMode)
+        dispatch({ type: 'EDIT_USER_EMAIL', payload: {initEmail: initEmail, newEmail: newEmail, search: props.search}})
     }
 
 

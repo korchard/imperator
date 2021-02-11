@@ -11,7 +11,6 @@ const AllUserSearch = () => {
 
   const searchAllUsers = () => {
     dispatch({ type: 'FETCH_AURELIUS_USER', payload: search })
-    setSearch('')
 }
 
 console.log('Search Results', userSearch);
@@ -24,13 +23,13 @@ console.log('Search Results', userSearch);
                 onChange={(e) => setSearch(e.target.value)} 
 
             />
-            <button onClick={searchAllUsers}>Search Aurelius</button>
+            <button className="btnI" onClick={searchAllUsers}>Find</button>
             <div className='allCardContainer'>
                 {
                     userSearch.map(item => {
                         return (
                             <div className='singleCardContainer'>
-                                <UserCard item={item} />
+                                <UserCard item={item} search={search} />
                             </div>
                         )
                     })
