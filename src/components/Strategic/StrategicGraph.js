@@ -38,6 +38,7 @@ function StrategicGraph() {
         },
       },
       yaxis: {
+        categories: ['Days'],
         labels: {
           style: {
             colors: ['#212C2E'],
@@ -63,7 +64,7 @@ function StrategicGraph() {
               options={opt.options}
               series={[
                 {
-                  name: 'total actions',
+                  name: 'Average Length of Plan by Days',
                   data: [
                     trial, pro, premium, enterprise
                   ],
