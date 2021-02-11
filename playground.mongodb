@@ -656,8 +656,6 @@ use('aurelius');
 // ]);
 
 // db.companies.aggregate([
-<<<<<<< HEAD
-=======
 //   {$project: {
 //     _id: 0,
 //     'billing.plan': "Trial", 
@@ -670,7 +668,6 @@ use('aurelius');
 // ]);
 
 // db.companies.aggregate([
->>>>>>> main
 //       {$count: "hashtags"},
 //       {$count: "projects"},
 //       {$count: "collections"}
@@ -690,7 +687,6 @@ use('aurelius');
 //               }
 //             }
 //         ]
-<<<<<<< HEAD
 
 // // ----------paid plans ending this month-------
 // db.companies.aggregate(
@@ -791,7 +787,6 @@ db.companies.aggregate([
 //         },
 //       },
 //       { $sort: { _id: 1 } },
-=======
 //      )
 
 db.companies.aggregate(
@@ -818,4 +813,3 @@ db.companies.aggregate(
      )
 
     
->>>>>>> main
