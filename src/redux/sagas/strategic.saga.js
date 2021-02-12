@@ -31,10 +31,20 @@ function* getTrialPlans() {
   }
 } //end getTrialPlans
 
+// POST ROUTE - to email client from strategic plan
+function* sendEmail(action) {
+  try {
+    yield axios.post('api/strategic', action.payload);
+  } catch (error) {
+    console.log('Error in sendEmail saga:', error);
+  }
+} // end resetPassword
+
 function* strategicSaga() {
   yield takeEvery('GET_PLAN_LENGTH_AVERAGE', getPlanAverage);
   yield takeEvery('GET_PAID_PLANS', getPaidPlans);
   yield takeEvery('GET_TRIAL_PLANS', getTrialPlans);
+  yield takeEvery('SEND_EMAIL', sendEmail)
 }
 
 export default strategicSaga;
