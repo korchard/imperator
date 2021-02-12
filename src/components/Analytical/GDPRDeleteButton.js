@@ -1,8 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import swal from 'sweetalert';
 
-const GDPRDeleteButton = () => {
+const GDPRDeleteButton = (props) => {
+
+  const [buttonProperties, setButtonProperties ] = useState(); 
+  useSelector
+  useEffect(()=>{ 
+    if(props.type==='company') { 
+      setButtonProperties({ 
+        name: '', 
+        buttonStyles
+      })
+    } else if(props.type==='user') { 
+      setButtonProperties({ 
+        name: '', 
+        buttonStyles:''
+      })
+    }
+  }, []); 
 
   const deleteCompany = () => { 
     swal({
