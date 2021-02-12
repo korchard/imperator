@@ -1,18 +1,20 @@
+import './Analytical.css';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouteMatch } from 'react-router-dom';
 import SingleCompanyGraph from './singleCompanyGraph';
+import AllUserSearch from './allUserSearch';
 import AllCompanyGraph from './allCompanyGraph';
 import AnalyticalUsers from './AnalyticalUsers';
-import CompanyInfo from './companyInfo'
-import './Analytical.css'
-import AllUserSearch from './allUserSearch'
+import CompanyInfo from './companyInfo';
+import GDPRDeleteButton from './GDPRDeleteButton'; 
 
 const Analytical = () => {
   const location = useRouteMatch();
-  const [graph, setGraph] = useState()
-  const [companyInfo, setCompanyInfo] = useState()
-  const [allUserSearch, setAllUserSearch] = useState()
+  const [graph, setGraph] = useState();
+  const [companyInfo, setCompanyInfo] = useState();
+  const [allUserSearch, setAllUserSearch] = useState();
+  const [GDPRDelete, setGDPRDelete] = useState();
  
   
   useEffect(() => {
@@ -21,11 +23,12 @@ const Analytical = () => {
   
   const checkSingleOrAll = () => { 
     if (location.params.type === 'single')   { 
-      setGraph(<SingleCompanyGraph/>)
-      setCompanyInfo(<CompanyInfo />)
+      setGraph(<SingleCompanyGraph/>);
+      setCompanyInfo(<CompanyInfo />);
+      setGDPRDelete(<GDPRDeleteButton type="company"/>);
     } else if (location.params.type === 'all') { 
-      setGraph(<AllCompanyGraph/>)
-      setAllUserSearch(<AllUserSearch />)
+      setGraph(<AllCompanyGraph/>);
+      setAllUserSearch(<AllUserSearch />);
     }
   }
 
@@ -48,6 +51,7 @@ const Analytical = () => {
             <div className="barGraph2">
               {graph}
             </div>
+            {GDPRDelete}
           </div>
       </div>
   );
