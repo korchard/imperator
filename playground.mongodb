@@ -646,6 +646,7 @@ use('aurelius');
 //      )
 
 // db.companies.aggregate([
+//   {$match: {company: 'AQUOAVO'}},
 //   {$project: {
 //     _id: 0,
 //     company: 1, 
@@ -776,6 +777,16 @@ db.companies.aggregate([
 //   }}
 // ]);
 
+
+db.companies.aggregate([
+  {$project: {
+    _id: 0, 
+    company: 1,
+    hashtag_Sum: {$sum: "$hashtags"}
+  },
+  }
+    ]);
+
 // {
 //       $group: {
 //           _id: '$billing.plan',
@@ -813,3 +824,4 @@ db.companies.aggregate(
      )
 
     
+
