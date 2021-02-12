@@ -7,11 +7,13 @@
   width: 100%;
   height: auto;
   box-shadow: 1px 3px 5px #888888;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  margin-bottom: 30px;
   background-color: #fff;
   box-shadow: 1px 3px 5px #888888;
+  width: 100%;
+  font-variant-caps: all-petite-caps;
+  font-size: 18px;
 }
 
 .coTitle {
@@ -180,4 +182,8 @@
   font-size: 16px;
   padding-left: 5px;
   width: 125px;
+}
+
+.company-info-p { 
+  margin: 0; 
 }
