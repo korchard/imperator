@@ -25,7 +25,7 @@ const Analytical = () => {
     if (location.params.type === 'single')   { 
       setGraph(<SingleCompanyGraph/>);
       setCompanyInfo(<CompanyInfo />);
-      setGDPRDelete(<GDPRDeleteButton type="single"/>);
+      setGDPRDelete(<GDPRDeleteButton type="company"/>);
     } else if (location.params.type === 'all') { 
       setGraph(<AllCompanyGraph/>);
       setAllUserSearch(<AllUserSearch />);

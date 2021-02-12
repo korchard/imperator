@@ -3,20 +3,17 @@ import { useSelector } from 'react-redux';
 import swal from 'sweetalert';
 
 const GDPRDeleteButton = (props) => {
+  const [buttonProperties, setButtonProperties ] = useState(''); 
+  const [buttonInputValue, setButtonInputValue ] = useState(''); 
+  const singleCompanyData = useSelector((store) => store.singleCompanyData);
 
-  const [buttonProperties, setButtonProperties ] = useState(); 
-  useSelector
   useEffect(()=>{ 
     if(props.type==='company') { 
-      setButtonProperties({ 
-        name: '', 
-        buttonStyles
-      })
+      setButtonProperties('btnI');
+      setButtonInputValue(singleCompanyData.company)
     } else if(props.type==='user') { 
-      setButtonProperties({ 
-        name: '', 
-        buttonStyles:''
-      })
+      setButtonProperties('coBtn');
+      setButtonInputValue(singleCompanyData.company)
     }
   }, []); 
 
@@ -29,13 +26,9 @@ const GDPRDeleteButton = (props) => {
     }).then(()=>
       swal({
         title: 'Final Warning',
-        text: `Enter the company name to delete`,
+        text: `Enter the ${singleCompanyData.company} to delete`,
         content: {
-          element: "input",
-          attributes: {
-            placeholder: "Company name",
-            type: "password",
-          },
+          element: "input"
         },
         // text: 'GDPR Delete is irreversible, all company data including users, projects, and billing will be completely deleted',
         dangerMode: true,
@@ -44,8 +37,9 @@ const GDPRDeleteButton = (props) => {
     )
 }
   return (
-      <button className="btnI"
-              onClick={deleteCompany}
+      <button 
+        className={buttonProperties}
+        onClick={deleteCompany}
       >
         GDPR DELETE
       </button>
