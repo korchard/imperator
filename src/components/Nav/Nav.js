@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import './Nav.css';
-import mapStoreToProps from '../../redux/mapStoreToProps';
 //  login
 import { AiOutlineLogin } from 'react-icons/ai';
 // operational
@@ -71,15 +70,15 @@ const Nav = (props) => {
               </Link>
             </div>
             <div>
-              <Link className='nav-link' to='/strategic'>
-                <SiMicrostrategy />
-                <span className='icon-btn'>Strategic</span>
-              </Link>
-            </div>
-            <div>
               <Link className='nav-link' to='/analytical/all/1'>
                 <DiGoogleAnalytics />
                 <span className='icon-btn'>Analytical</span>
+              </Link>
+            </div>
+            <div>
+              <Link className='nav-link' to='/strategic'>
+                <SiMicrostrategy />
+                <span className='icon-btn'>Strategic</span>
               </Link>
             </div>
             <div>

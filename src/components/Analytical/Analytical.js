@@ -7,14 +7,12 @@ import AllUserSearch from './allUserSearch';
 import AllCompanyGraph from './allCompanyGraph';
 import AnalyticalUsers from './AnalyticalUsers';
 import CompanyInfo from './companyInfo';
-import GDPRDeleteButton from './GDPRDeleteButton';
 
 const Analytical = () => {
   const location = useRouteMatch();
   const [graph, setGraph] = useState();
   const [companyInfo, setCompanyInfo] = useState();
   const [allUserSearch, setAllUserSearch] = useState();
-  const [GDPRDelete, setGDPRDelete] = useState();
 
   useEffect(() => {
     checkSingleOrAll();
@@ -24,7 +22,6 @@ const Analytical = () => {
     if (location.params.type === 'single') {
       setGraph(<SingleCompanyGraph />);
       setCompanyInfo(<CompanyInfo />);
-      setGDPRDelete(<GDPRDeleteButton type='company' />);
     } else if (location.params.type === 'all') {
       setGraph(<AllCompanyGraph />);
       setAllUserSearch(<AllUserSearch />);
@@ -45,7 +42,6 @@ const Analytical = () => {
           </div>
         ) : null}
         <div className='barGraph2'>{graph}</div>
-        {/* {GDPRDelete} */}
       </div>
     </div>
   );
