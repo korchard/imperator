@@ -9,27 +9,30 @@ const Table = ({ data, pageCount: controlledPageCount }) => {
 
   const getConfig = (imperator) => {
     if (imperator.jira && imperator.zapier) {
-      return 'jira, zapier';
+      return 'JIRA & ZAPIER';
     } else if (imperator.jira && !imperator.zapier) {
-      return 'jira';
+      return 'JIRA';
     } else if (imperator.zapier && !imperator.jira) {
-      return 'zapier';
+      return 'ZAPIER';
     }
   };
 
   const columns = React.useMemo(
     () => [
       {
-        Header: 'Company Info',
+        Header: 'COMPANY INFO',
         className: 'title',
         columns: [
           {
-            Header: 'Company Name',
+            Header: 'COMPANY NAME',
             accessor: 'company',
             Cell: ({ cell }) => (
               <span className='company'>
                 {cell.row.values.company}
-                <button className='coBtn' onClick={()=>goToAnalytical(cell.row.values._id)}>
+                <button
+                  className='coBtn'
+                  onClick={() => goToAnalytical(cell.row.values._id)}
+                >
                   <DiGoogleAnalytics />
                   &nbsp; Details
                 </button>
@@ -37,26 +40,15 @@ const Table = ({ data, pageCount: controlledPageCount }) => {
             ),
           },
           {
-            Header: '_id',
-            accessor: '_id',
-            className: 'companyId',
-            Cell: ({ cell }) => (
-              <span className='companyId' aria-hidden='true'>
-                {cell.row.values._id}
-              </span>
-            ),
-            style: { display: 'none' },
-          },
-          {
-            Header: 'Billing Plan',
+            Header: 'BILLING PLAN',
             accessor: 'billing.plan',
           },
           {
-            Header: 'Billing Status',
+            Header: 'BILLING STATUS',
             accessor: 'billing.status',
           },
           {
-            Header: 'Active Until',
+            Header: 'ACTIVE UNTIL',
             accessor: 'activeUntil',
             Cell: (props) => {
               const custom_date = formatData(props.value);
@@ -68,40 +60,51 @@ const Table = ({ data, pageCount: controlledPageCount }) => {
             },
           },
           {
-            Header: 'Configurations',
+            Header: 'CONFIGURATIONS',
             accessor: getConfig,
           },
           {
-            Header: 'Projects',
+            Header: 'PROJECTS',
             accessor: 'projects total',
           },
           {
-            Header: 'Notes',
+            Header: 'NOTES',
             accessor: 'notes total',
           },
           {
-            Header: 'Recs',
-            accessor: 'recommandations total',
+            Header: 'RECS',
+            accessor: 'recommendations total',
           },
           {
-            Header: 'Insights',
+            Header: 'INSIGHTS',
             accessor: 'insights total',
           },
           {
-            Header: 'Hashtags',
+            Header: 'HASHTAGS',
             accessor: 'hashtags total',
           },
           {
-            Header: 'Collections',
+            Header: 'COLLECTIONS',
             accessor: 'collections total',
           },
           {
-            Header: 'Documents',
+            Header: 'DOCUMENTS',
             accessor: 'documents total',
           },
           {
-            Header: 'Users',
+            Header: 'USERS',
             accessor: 'total users',
+          },
+          {
+            Header: '_id',
+            accessor: '_id',
+            className: 'companyId',
+            Cell: ({ cell }) => (
+              <span className='companyId' aria-hidden='true'>
+                {cell.row.values._id}
+              </span>
+            ),
+            style: { display: 'none' },
           },
         ],
       },

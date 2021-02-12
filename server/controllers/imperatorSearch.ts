@@ -20,10 +20,10 @@ const imperatorSearch = async (req: Request, res: Response): Promise<void> => {
       {
         $project: {
           _id: 1,
-          company: 1,
-          'billing.status': 1,
-          'billing.customerId': 1,
-          'billing.plan': 1,
+          company: { $toUpper: '$company' },
+          'billing.status': { $toUpper: '$billing.status' },
+          'billing.customerId': { $toUpper: '$billing.customerId' },
+          'billing.plan': { $toUpper: '$billing.plan' },
           'billing.trialStart': 1,
           activeUntil: 1,
           jira: 1,
@@ -34,7 +34,7 @@ const imperatorSearch = async (req: Request, res: Response): Promise<void> => {
           'notes total': { $size: '$notes' },
           'insights total': { $size: '$insights' },
           'collections total': { $size: '$collections' },
-          'recommandations total': { $size: '$recommendations' },
+          'recommendations total': { $size: '$recommendations' },
         },
       },
     ]);
