@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import './Nav.css';
-import mapStoreToProps from '../../redux/mapStoreToProps';
 //  login
 import { AiOutlineLogin } from 'react-icons/ai';
 // operational
