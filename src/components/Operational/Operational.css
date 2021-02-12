@@ -7,8 +7,8 @@
 
 .gridbox1 {
   display: grid;
-  grid-template-columns: 0.15fr, 1fr, 1fr;
-  grid-template-rows: minmax(50px, auto);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: minmax(60px, auto) repeat(2, 1fr);
   gap: 0.75rem;
   margin-right: 30px;
   font-variant-caps: all-petite-caps;
@@ -29,8 +29,8 @@
   background-color: #fff;
   margin-top: 0;
   padding-top: 0;
-  background-color: #FFF; 
-  box-shadow: 1px 3px 5px #888888; 
+  background-color: #fff;
+  box-shadow: 1px 3px 5px #888888;
   text-align: center;
 }
 
@@ -73,7 +73,6 @@
   }
 }
 
-
-.yearSelectUsersByMonth { 
-  margin-left: 15px; 
+.yearSelectUsersByMonth {
+  margin-left: 15px;
 }

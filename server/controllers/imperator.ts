@@ -3,28 +3,29 @@ import { CompanyDB } from '../models/documents/Company';
 
 const imperator = async (req: Request, res: Response): Promise<void> => {
   try {
-    // this needs to be an AGGREGATION, not a FIND
-    const data = await CompanyDB.find(
-      {},
+    const data = await CompanyDB.aggregate([
       {
-        _id: 1,
-        email: 1,
-        company: 1,
-        'billing.status': 1,
-        'billing.plan': 1,
-        activeUntil: 1,
-        jira: 1,
-        zapier: 1,
-        'hashtags total': { $size: '$hashtags' },
-        'documents total': { $size: '$documents' },
-        'projects total': { $size: '$projects' },
-        'notes total': { $size: '$notes' },
-        'insights total': { $size: '$insights' },
-        'collections total': { $size: '$collections' },
-        'recommandations total': { $size: '$recommendations' },
-        'total users': { $size: '$teamMembers' },
-      }
-    );
+        $project: {
+          _id: 1,
+          company: { $toUpper: '$company' },
+          'billing.status': { $toUpper: '$billing.status' },
+          'billing.customerId': { $toUpper: '$billing.customerId' },
+          'billing.plan': { $toUpper: '$billing.plan' },
+          'billing.trialStart': 1,
+          activeUntil: 1,
+          jira: 1,
+          zapier: 1,
+          'hashtags total': { $size: '$hashtags' },
+          'documents total': { $size: '$documents' },
+          'projects total': { $size: '$projects' },
+          'notes total': { $size: '$notes' },
+          'insights total': { $size: '$insights' },
+          'collections total': { $size: '$collections' },
+          'recommendations total': { $size: '$recommendations' },
+          'total users': { $size: '$teamMembers' },
+        },
+      },
+    ]);
     res.send(data);
   } catch (error) {
     console.error('Error getting imperator data:', error);

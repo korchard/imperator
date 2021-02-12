@@ -1,11 +1,6 @@
 /* ---------------- Analytical,js ---------------- */
 
 /* ---------------- companyInfo,js ---------------- */
-
-.coArea {
-  grid-area: company;
-}
-
 .companyInfoContainer {
   display: flex;
   flex-wrap: wrap;
@@ -24,62 +19,11 @@
   padding: 1rem;
   margin: 0px;
   color: white;
-  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   font-weight: 700;
   width: 100%;
   text-align: center;
-  font-variant-caps: all-petite-caps;
-}
-
-.planInfo {
-  margin: 20px;
-  width: 100%;
-  font-variant-caps: all-petite-caps;
-  /* display: flex; */
-}
-
-.billingInfo {
-  font-size: 18px;
-  /* float: left; */
-}
-
-.billingHeader {
-  font-size: 18px;
-  font-variant-caps: all-petite-caps;
-}
-
-.configInfo {
-  font-size: 18px;
-  /* float: right; */
-}
-
-.configHeader {
-  font-size: 18px;
-  font-variant-caps: all-petite-caps;
-}
-
-.userArea {
-  grid-area: users;
-}
-
-.userSearch {
-  grid-area: company;
-  /* float: right; */
-  /* margin-left: 30%; */
-}
-
-.userInfoContainer {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  height: auto;
-  box-shadow: 1px 3px 5px #888888;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 30px;
-  background-color: #fff;
-  box-shadow: 1px 3px 5px #888888;
 }
 
 .userTitle {
@@ -87,7 +31,7 @@
   padding: 1rem;
   margin: 0px;
   color: white;
-  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   font-weight: 700;
   width: 100%;
@@ -102,22 +46,56 @@
   margin-left: 75px;
 }
 
+.userRoot {
+  display: flex;
+  justify-content: space-evenly;
+  white-space: nowrap;
+  margin-right: 5px;
+}
+
+.userLi {
+  width: 100%;
+}
+
 .gridbox4 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: minmax(50px, auto);
   gap: 0.75rem;
   margin-right: 30px;
   grid-template-areas:
-    "header header search"
-    "company users users"
-    "graph graph graph";
+    'header header header'
+    'search company users'
+    'graph graph graph';
 }
 
 .headerArea {
   grid-area: header;
   color: rgb(33, 44, 46);
-  font-variant-caps: all-petite-caps;
+}
+
+.planInfo {
+  margin: 20px;
+  width: 100%;
+}
+.userArea {
+  grid-area: users;
+  overflow: scroll;
+  max-height: 40vh;
+  overflow-x: hidden;
+  box-shadow: 1px 3px 5px #888888;
+}
+
+.userArea ul {
+  list-style: none;
+}
+
+.userSearch {
+  grid-area: search;
+  max-height: 40vh;
+}
+
+.coArea {
+  grid-area: company;
+  max-height: 40vh;
 }
 
 /* ---------------- allUserSearch.js ---------------- */
@@ -138,7 +116,7 @@
   align-items: center;
   box-shadow: 1px 3px 5px #888888;
   border: 2px solid rgb(33, 44, 46);
-  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   font-weight: 700;
 }
@@ -172,87 +150,29 @@
 }
 
 .input {
-  -webkit-writing-mode: horizontal-tb !important;
-  text-rendering: auto;
-  color: -internal-light-dark(black, white);
-  letter-spacing: normal;
-  word-spacing: normal;
-  text-transform: none;
-  text-indent: 0px;
-  text-shadow: none;
-  display: inline-block;
-  text-align: start;
-  appearance: textfield;
-  background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
-  -webkit-rtl-ordering: logical;
   cursor: text;
   margin: 0em;
-  font: 400 13.3333px Arial;
-  padding: 1px 2px;
-  border-width: 2px;
-  border-style: inset;
-  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
-  border-image: initial;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  font: 400 13.3333px 'Roboto';
   color: #024058;
   height: 40px;
   border-radius: 2px;
   border: solid 2px #acbcc4;
   background-color: rgba(221, 233, 233, 0.5);
   font-size: 16px;
-  font-weight: 500;
-  padding: 0 16px;
-  -webkit-letter-spacing: 0.19px;
-  -moz-letter-spacing: 0.19px;
-  -ms-letter-spacing: 0.19px;
-  letter-spacing: 0.19px;
-  -webkit-transition: border 0.3s;
-  transition: border 0.3s;
-  padding-left: 30px;
+  padding-left: 5px;
   width: 300px;
 }
 
 .editInput {
-  -webkit-writing-mode: horizontal-tb !important;
-  text-rendering: auto;
-  color: -internal-light-dark(black, white);
-  letter-spacing: normal;
-  word-spacing: normal;
-  text-transform: none;
-  text-indent: 0px;
-  text-shadow: none;
-  display: inline-block;
-  text-align: start;
-  appearance: textfield;
-  background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
-  -webkit-rtl-ordering: logical;
   cursor: text;
   margin: 0em;
-  font: 400 13.3333px Arial;
-  padding: 1px 2px;
-  border-width: 2px;
-  border-style: inset;
-  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
-  border-image: initial;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  font: 400 13.3333px 'Roboto';
   color: #024058;
   height: 30px;
   border-radius: 2px;
   border: solid 2px #acbcc4;
   background-color: rgba(221, 233, 233, 0.5);
   font-size: 16px;
-  font-weight: 500;
-  padding: 0 16px;
-  -webkit-letter-spacing: 0.19px;
-  -moz-letter-spacing: 0.19px;
-  -ms-letter-spacing: 0.19px;
-  letter-spacing: 0.19px;
-  -webkit-transition: border 0.3s;
-  transition: border 0.3s;
-  padding-left: 30px;
+  padding-left: 5px;
   width: 125px;
 }
