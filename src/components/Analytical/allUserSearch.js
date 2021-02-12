@@ -13,6 +13,10 @@ const AllUserSearch = () => {
     dispatch({ type: 'FETCH_AURELIUS_USER', payload: search })
 }
 
+const clearAllUsers = () => {
+    dispatch({ type: 'CLEAR_USER_SEARCH' });
+}
+
     return (
         <div>
             <input 
@@ -21,6 +25,7 @@ const AllUserSearch = () => {
                 onChange={(e) => setSearch(e.target.value)} 
 
             />
+            <button className="btnI" onClick={clearAllUsers}>Clear</button>
             <button className="btnI" onClick={searchAllUsers}>Find</button>
             <div className='allCardContainer'>
                 {
