@@ -96,6 +96,10 @@ table > thead > tr:nth-child(1) > th {
   font-size: 1.2em;
 }
 
+th:nth-child(1) {
+  width: 12%;
+}
+
 @media only screen and (max-width: 760px),
   (min-device-width: 768px) and (max-device-width: 1024px) {
   /* Force table to not be like tables anymore */
@@ -237,7 +241,7 @@ Label the data
 .gridbox2 {
   display: grid;
   grid-template-columns: 0.15fr, 1fr, 1fr;
-  grid-template-rows: minmax(100px, auto);
+  grid-template-rows: minmax(50px, auto);
   gap: 0.75rem;
   margin-right: 30px;
   grid-template-areas:
