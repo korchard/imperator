@@ -206,12 +206,12 @@ const Table = ({ data, pageCount: controlledPageCount }) => {
           {'>'}
         </button>{' '}
         <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-          {'>>'}{' '}
-        </button>
+          {'>>'}
+        </button>{' '}
         <span>
           Page{' '}
           <strong>
-            {pageIndex + 1} of {pageOptions.length}
+            {pageIndex + 1} of {pageOptions.length}{' '}
           </strong>
         </span>
         <span>
@@ -226,7 +226,7 @@ const Table = ({ data, pageCount: controlledPageCount }) => {
             }}
             style={{ width: '100px' }}
           />
-        </span>
+        </span>{' '}
         <select
           className='pagSelect'
           value={pageSize}
