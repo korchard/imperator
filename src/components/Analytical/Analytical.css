@@ -19,7 +19,7 @@
   padding: 1rem;
   margin: 0px;
   color: white;
-  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   font-weight: 700;
   width: 100%;
@@ -31,7 +31,7 @@
   padding: 1rem;
   margin: 0px;
   color: white;
-  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   font-weight: 700;
   width: 100%;
@@ -62,9 +62,9 @@
   gap: 0.75rem;
   margin-right: 30px;
   grid-template-areas:
-    'header header header'
-    'search company users'
-    'graph graph graph';
+    "header header header"
+    "search company users"
+    "graph graph graph";
 }
 
 .headerArea {
@@ -116,7 +116,7 @@
   align-items: center;
   box-shadow: 1px 3px 5px #888888;
   border: 2px solid rgb(33, 44, 46);
-  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   font-weight: 700;
 }
@@ -152,7 +152,7 @@
 .input {
   cursor: text;
   margin: 0em;
-  font: 400 13.3333px 'Roboto';
+  font: 400 13.3333px "Roboto";
   color: #024058;
   height: 40px;
   border-radius: 2px;
@@ -166,7 +166,7 @@
 .editInput {
   cursor: text;
   margin: 0em;
-  font: 400 13.3333px 'Roboto';
+  font: 400 13.3333px "Roboto";
   color: #024058;
   height: 30px;
   border-radius: 2px;

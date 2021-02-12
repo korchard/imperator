@@ -13,9 +13,9 @@
   margin-right: 30px;
   font-variant-caps: all-petite-caps;
   grid-template-areas:
-    'header header'
-    'main-left main-right'
-    'footer footer';
+    "header header"
+    "main-left main-right"
+    "footer footer";
 }
 
 .headerArea {
@@ -54,7 +54,7 @@
   padding: 1rem;
   margin: 0px;
   color: white;
-  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   text-align: center;
   font-variant-caps: all-petite-caps;
@@ -65,10 +65,10 @@
     .gridbox {
       grid-template-columns: 1fr;
       grid-template-areas:
-        'header'
-        'main-left'
-        'main-right'
-        'footer';
+        "header"
+        "main-left"
+        "main-right"
+        "footer";
     }
   }
 }
