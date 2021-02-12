@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import swal from 'sweetalert';
 
+// to use this button component pass the tag 1 or 2 props 
+// 1. type,         type can be 'user' or company =============> <GDPRDeleteButton type='company'/>
+// 2. userEmail     if type is user pass a prop of user email with the users email. <GDPRDeleteButton type='user' userEmail='example@example.io'/>
+
 const GDPRDeleteButton = (props) => {
   const [buttonProperties, setButtonProperties ] = useState(''); 
   const [buttonInputValue, setButtonInputValue ] = useState(''); 
@@ -10,10 +14,10 @@ const GDPRDeleteButton = (props) => {
   useEffect(()=>{ 
     if(props.type==='company') { 
       setButtonProperties('btnI');
-      setButtonInputValue(singleCompanyData.company)
+      setButtonInputValue(singleCompanyData.company);
     } else if(props.type==='user') { 
       setButtonProperties('coBtn');
-      setButtonInputValue(singleCompanyData.company)
+      setButtonInputValue(props.userEmail);
     }
   }, []); 
 
