@@ -46,13 +46,13 @@ const CompanyInfo = () => {
             <p className='company-info-p'>Active Until: <Moment format='MM/DD/YYYY'>{companyInfo.activeUntil}</Moment></p>
         </div>
         <div className='configInfo'>
-        <h4 className="configHeader">Configurations</h4>
+        <h4 className="billingHeader">Configurations</h4>
           {companyInfo.jira && 
           <>
-            Jira Information:<br></br> 
-            Token: {companyInfo.jira.api_token}<br></br> 
-            Domain: {companyInfo.jira.domain}<br></br>
-            Email: {companyInfo.jira.email}<br></br>
+            <p className='company-info-p'>Jira Information:</p> 
+             <p className='company-info-p'>Token: {companyInfo.jira.api_token}</p>  
+             <p className='company-info-p'>Domain: {companyInfo.jira.domain}</p> 
+             <p className='company-info-p'>Email: {companyInfo.jira.email}</p> 
             </>
           }
           {companyInfo.zapier && 
@@ -64,7 +64,6 @@ const CompanyInfo = () => {
            </>
           }
         </div>
-        {/* <GDPRDeleteButton type='company'/> */}
     </div>
   );
 }
