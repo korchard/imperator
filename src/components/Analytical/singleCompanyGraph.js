@@ -112,11 +112,11 @@ const SingleCompanyGraph = () => {
         options={opt.options}
         series={[
           {
-            name: 'Average company',
-            data: allCompanyActions,
+            name: 'Average Aurelius Actions',
+            data: [12, 12, 10, 20, 30, 84],
           },
           {
-            name: singleCompanyData.company,
+            name: `${singleCompanyData.company} Actions`,
             data: singleCompanyActions,
           },
         ]}
