@@ -22,7 +22,6 @@ function StrategicGraph() {
       plotOptions: {
         bar: {
           horizontal: true,
-          borderRadius: 25,
         },
       },
       colors: ['#2EA2B2'],
