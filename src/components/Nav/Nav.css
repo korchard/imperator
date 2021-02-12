@@ -1,4 +1,3 @@
-
 .nav {
   display: flex;
   -webkit-flex-direction: column;
@@ -15,7 +14,7 @@
   -webkit-transition: width 0.1s;
   transition: width 0.3s;
   width: 190px;
-  position: fixed;
+  position: absolute;
   z-index: 1;
   margin-left: 5px;
 }
@@ -49,11 +48,11 @@
 }
 
 .nav-link:hover {
-  color: #EE5F1B;
+  color: #ee5f1b;
 }
 
 .arrow:hover {
-  color: #EE5F1B;
+  color: #ee5f1b;
 }
 
 .navOpen .icon-btn {
@@ -87,13 +86,11 @@
   margin-left: 10px;
 }
 
-
-
 #logoutBtn {
   border: none;
   cursor: pointer;
   outline: 0;
-  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 0.96em;
   font-weight: 500;
 }
