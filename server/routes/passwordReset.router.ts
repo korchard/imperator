@@ -7,7 +7,6 @@ const router: express.Router = express.Router();
 
 router.post(
   '/',
-  rejectUnauthenticated,
   (req: Request, res: Response, next: express.NextFunction): void => {
     console.log('email', req.body);
 
