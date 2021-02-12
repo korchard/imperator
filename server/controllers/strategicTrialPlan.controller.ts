@@ -9,8 +9,7 @@ const strategicTrialPlan = async (req: Request, res: Response): Promise<void> =>
             'billing.plan': 'Trial'
           }},
           {$project: {
-            _id: 0,
-            
+            _id: 1,
             company: 1,
             day: {$dayOfMonth: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}},
             month: {$month: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}},
