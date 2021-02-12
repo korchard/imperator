@@ -25,7 +25,7 @@ const Imperator = () => {
 
   return (
     <div className='flexbox2'>
-      <div className='gridbox2'>
+      <div>
         <div className='headerArea'>
           <h1>Imperator</h1>
         </div>

@@ -44,10 +44,10 @@ const Analytical = () => {
             <div className="companyArea">
               {companyInfo}
             </div>
-            <div className="userArea">
+            {/* <div className="userArea">
               {location.params.type === 'single' &&
                 <AnalyticalUsers />}
-            </div>
+            </div> */}
             <div className="barGraph2">
               {graph}
             </div>
