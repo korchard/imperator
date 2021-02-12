@@ -1,7 +1,10 @@
 import { Request, Response } from 'express';
 import { UserDB } from '../models/documents/User';
 
-export const analyticsAllUserSearch = async (req: Request, res: Response): Promise<void> => {
+export const analyticsAllUserSearch = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   try {
     const data = await UserDB.aggregate([
       {
@@ -16,18 +19,16 @@ export const analyticsAllUserSearch = async (req: Request, res: Response): Promi
           },
         },
       },
-    {
-      $project: {
-        'email': 1, 
-        'company': 1, 
-        'firstname': 1, 
-        'lastname': 1
-      }
-    }
+      {
+        $project: {
+          email: 1,
+          company: 1,
+          name: 1,
+        },
+      },
     ]);
     res.send(data);
   } catch (error) {
     console.error('Error getting imperator data:', error);
   }
 };
-
