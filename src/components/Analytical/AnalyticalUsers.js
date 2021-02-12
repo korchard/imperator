@@ -17,8 +17,8 @@ const AnalyticalUsers = () => {
         {companyUsers.map((user) => {
           return (
             <div className='userRoot' key={user.users_data._id}>
-              <li className='userLi'>Name: {user.users_data.name}</li>
-              <li className='userLi'>Email: {user.users_data.email}</li>
+              <li className='userLi'>{user.users_data.name}</li>
+              <li className='userLi'>{user.users_data.email}</li>
             </div>
           );
         })}
