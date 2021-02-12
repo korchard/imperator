@@ -8,7 +8,7 @@
 .gridbox {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: minmax(60px, auto) repeat(2, 1fr);
+  grid-template-rows: minmax(50px, auto) repeat(2, 1fr);
   gap: 0.75rem;
   margin-right: 30px;
   grid-template-areas:
