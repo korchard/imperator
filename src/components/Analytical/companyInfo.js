@@ -50,7 +50,7 @@ const CompanyInfo = () => {
         {companyInfo.zapier && 
           <p className='company-info-p'>Configuration: Zapier</p>
         }
-        <div style={{marginTop: '5px'}}>
+        <div style={{marginTop: '40px'}}>
           <GDPRDeleteButton type='company'/>
         </div>
       </div>
