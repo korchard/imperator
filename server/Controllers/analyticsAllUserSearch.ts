@@ -25,7 +25,7 @@ export const analyticsAllUserSearch = async (
           company: 1,
           name: 1,
         },
-      }, { $limit: 10 }
+      }, { $limit: 6 }
     ]);
     res.send(data);
   } catch (error) {

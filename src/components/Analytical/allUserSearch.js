@@ -16,7 +16,6 @@ const AllUserSearch = () => {
 
 const clearAllUsers = () => {
     dispatch({ type: 'CLEAR_USER_SEARCH' });
-    setSearch('');
 }
 
     return (
@@ -25,7 +24,7 @@ const clearAllUsers = () => {
                 className="input" 
                 placeholder="Search Aurelius By User Email" 
                 onChange={(e) => setSearch(e.target.value)} 
-
+                value={search}
             />
             <button className="btnI" onClick={clearAllUsers}>Clear</button>
             <button className="btnI" onClick={searchAllUsers}>Find</button>

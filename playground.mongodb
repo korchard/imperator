@@ -819,26 +819,26 @@ use('aurelius');
 //         ]
     //  )
 
-db.users.aggregate([
-      {
-        $search: {
-          autocomplete: {
-            query: `Aquaovo`,
-            path: 'email', //local field to look for the query input
-            fuzzy: {
-              maxEdits: 2,
-              prefixLength: 2,
-            },
-          },
-        },
-      },
-      {
-        $project: {
-          email: 1,
-          company: 1,
-          name: 1,
-        },
-      },
-      {$limit: 10}
-    ]); 
+// db.users.aggregate([
+//       {
+//         $search: {
+//           autocomplete: {
+//             query: `Aquaovo`,
+//             path: 'email', //local field to look for the query input
+//             fuzzy: {
+//               maxEdits: 2,
+//               prefixLength: 2,
+//             },
+//           },
+//         },
+//       },
+//       {
+//         $project: {
+//           email: 1,
+//           company: 1,
+//           name: 1,
+//         },
+//       },
+//       {$limit: 10}
+//     ]); 
 
