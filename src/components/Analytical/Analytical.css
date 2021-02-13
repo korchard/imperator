@@ -15,9 +15,9 @@
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 0.1fr repeat(2, 1fr);
   grid-template-areas:
-    'header header search search'
-    'company company users users'
-    'graph graph graph graph';
+    "header header search search"
+    "company company users users"
+    "graph graph graph graph";
   height: 100vh;
 }
 
@@ -33,6 +33,12 @@
   grid-area: company;
   min-height: 40vh;
   box-shadow: 1px 3px 5px #888888;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #fff;
+  font-variant-caps: all-petite-caps;
+  font-size: 18px;
+  padding-bottom: 20px;
   max-height: 40vh;
 }
 
@@ -41,7 +47,7 @@
   padding: 1rem;
   margin: 0px;
   color: #fff;
-  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   font-weight: 700;
   text-align: center;
@@ -97,6 +103,7 @@
   width: 12em;
   font-size: 1em;
   justify-content: center;
+  cursor: pointer;
 }
 
 /* 
@@ -117,7 +124,7 @@
   padding: 1rem;
   margin: 0px;
   color: #fff;
-  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   font-weight: 700;
   width: 100%;
@@ -168,7 +175,7 @@
 .input {
   cursor: text;
   margin: 0em;
-  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
   font: 400 13.3333px;
   color: #024058;
   height: 40px;
@@ -184,7 +191,7 @@
 .customEditInput {
   cursor: text;
   margin: 0em;
-  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
   font: 400 13.3333px;
   color: #024058;
   height: 20px;
@@ -218,7 +225,7 @@
   align-items: center;
   box-shadow: 1px 3px 5px #888888;
   border: 2px solid rgb(33, 44, 46);
-  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   font-weight: 700;
 }
@@ -255,7 +262,7 @@
 .editInput {
   cursor: text;
   margin: 0em;
-  font: 400 13.3333px 'Roboto';
+  font: 400 13.3333px "Roboto";
   color: #024058;
   height: 30px;
   border-radius: 2px;
@@ -266,6 +273,44 @@
   width: 125px;
 }
 
+.company-info-p {
+  margin: 0;
+  display: block;
+}
+
+.billingHeader1 {
+  margin: 0;
+  margin-top: 15px;
+  padding: 0;
+}
+
+.userTable {
+  border: none;
+}
+
+.user {
+  background-color: white;
+}
+
+.editBtn {
+  background-color: #024058;
+  border-radius: 2px;
+  border: 1px solid #024058;
+  box-shadow: none;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 1;
+  min-height: 25px;
+  text-align: center;
+  -webkit-transition: color 0.2s, border 0.2s;
+  transition: color 0.2s, border 0.2s;
+  letter-spacing: 0.19px;
+  white-space: nowrap;
+  padding-left: 2px;
+  margin-left: 6px;
+  cursor: pointer;
+}
 /* 
 ************ MOBILE SECTION*********** 
 */
@@ -275,11 +320,11 @@
       grid-template-columns: 1fr;
       grid-template-rows: 5%;
       grid-template-areas:
-        'header'
-        'search'
-        'company'
-        'users'
-        'graph';
+        "header"
+        "search"
+        "company"
+        "users"
+        "graph";
     }
     .companyArea {
       min-height: unset;

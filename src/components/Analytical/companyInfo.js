@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Moment from 'react-moment';
 import GDPRDeleteButton from './GDPRDeleteButton';
+import './Analytical.css'
 
 const CompanyInfo = () => {
   const dispatch = useDispatch();
@@ -23,36 +24,26 @@ const CompanyInfo = () => {
 
   return (
     <>
+
       <div className='coTitle'>COMPANY: {companyInfo.company}</div>
       <div className='billingInfo'>
         <h4 className='billingHeader1'>BILLING INFORMATION</h4>
         <p>Plan: {companyInfo.billing?.plan} </p>
         <p>Status: {companyInfo.billing?.status}</p>
-        {editMode ? (
+        {editMode ? 
           <>
-            <input
-              className='customEditInput'
-              // value={companyInfo.billing?.customerId}
-              onChange={(e) => setCustomerId(e.target.value)}
-              type='text'
-            />
-            <button
-              className='planBtn'
-              onClick={() => editCustomerId(customerId)}
-            >
-              Edit ID
-            </button>
-          </>
-        ) : (
-          <p className='customID'>
-            Customer ID: {companyInfo.billing?.customerId}
-          </p>
-        )}
-        {editMode ? null : (
-          <button className='planBtn' onClick={() => setEditMode(!editMode)}>
-            Update
-          </button>
-        )}
+            <input 
+              onChange={(e) => setCustomerId(e.target.value)} 
+              type='text' 
+              />
+            <button className="editBtn" onClick={() => editCustomerId(customerId)}>Edit ID</button>
+            <button className="editBtn" onClick={() =>setEditMode(!editMode)}>Cancel</button>
+          </> :
+           <>Customer ID: {companyInfo.billing?.customerId}</>
+        }
+        {editMode ? null : 
+            <button className="editBtn" onClick={() => setEditMode(!editMode)}>Update</button>
+        }
         <p>
           Active Until:{' '}
           <Moment format='MM/DD/YYYY'>{companyInfo.activeUntil}</Moment>
@@ -64,7 +55,7 @@ const CompanyInfo = () => {
         </div>
       </div>
     </>
-  );
+  )
 };
 
 export default CompanyInfo;

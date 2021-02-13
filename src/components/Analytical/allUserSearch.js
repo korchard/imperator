@@ -5,8 +5,9 @@ import './Analytical.css';
 
 const AllUserSearch = () => {
   const dispatch = useDispatch();
-  const userSearch = useSelector((store) => store.aureliusUserSearch);
-  const [search, setSearch] = useState();
+  const userSearch = useSelector((store) => store.aureliusUserSearch)  
+  const [search, setSearch] = useState('');  
+  
 
   const searchAllUsers = () => {
     dispatch({ type: 'FETCH_AURELIUS_USER', payload: search });
@@ -14,15 +15,17 @@ const AllUserSearch = () => {
 
   const clearAllUsers = () => {
     dispatch({ type: 'CLEAR_USER_SEARCH' });
-  };
+    setSearch('')
 
-  return (
-      <>
-        <div className="inputContainer">
-            <input
-                className='input'
-                placeholder='Search Aurelius By User Email'
-                onChange={(e) => setSearch(e.target.value)}
+}
+
+    return (
+        <>
+        <div>
+            <input 
+                className="input" 
+                placeholder="Search Users By Email" 
+                onChange={(e) => setSearch(e.target.value)} 
                 value={search}
             />
             <button className='btnI' onClick={clearAllUsers}>
@@ -41,7 +44,7 @@ const AllUserSearch = () => {
             );
             })}
         </div>
-    </>
+        </>
   );
 };
 

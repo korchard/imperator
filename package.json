@@ -34,7 +34,8 @@
     "remove": "^0.1.5",
     "request": "^2.88.2",
     "save-dev": "^0.0.1-security",
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^10.14.1"
   },
   "scripts": {
     "start": "npm run tsc && node dist/server.js",
