@@ -17,28 +17,30 @@ const AllUserSearch = () => {
   };
 
   return (
-    <>
-      <input
-        className='input'
-        placeholder='Search Aurelius By User Email'
-        onChange={(e) => setSearch(e.target.value)}
-        value={search}
-      />
-      <button className='btnI' onClick={clearAllUsers}>
-        Clear
-      </button>
-      <button className='btnI' onClick={searchAllUsers}>
-        Find
-      </button>
-      <div className='allCardContainer'>
-        {userSearch.map((item, i) => {
-          return (
-            <div className='singleCardContainer' key={i}>
-              <UserCard item={item} search={search} />
-            </div>
-          );
-        })}
-      </div>
+      <>
+        <div className="inputContainer">
+            <input
+                className='input'
+                placeholder='Search Aurelius By User Email'
+                onChange={(e) => setSearch(e.target.value)}
+                value={search}
+            />
+            <button className='btnI' onClick={clearAllUsers}>
+                Clear
+            </button>
+            <button className='btnI' onClick={searchAllUsers}>
+                Find
+            </button>
+        </div>
+        <div className='allCardContainer'>
+            {userSearch.map((item, i) => {
+            return (
+                <div className='singleCardContainer' key={i}>
+                <UserCard item={item} search={search} />
+                </div>
+            );
+            })}
+        </div>
     </>
   );
 };
