@@ -1,46 +1,6 @@
-/* ---------------- Analytical,js ---------------- */
-
-/* ---------------- companyInfo,js ---------------- */
-.companyInfoContainer {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  height: auto;
-  box-shadow: 1px 3px 5px #888888;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: #fff;
-  font-variant-caps: all-petite-caps;
-  font-size: 18px;
-  padding-bottom: 20px; 
-}
-
-.coTitle {
-  background-color: #212c2e;
-  padding: 1rem;
-  margin: 0px;
-  color: #fff;
-  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  width: 100%;
-  text-align: center;
-  font-variant-caps: all-petite-caps;
-}
-
-.userTitle {
-  background-color: #212c2e;
-  padding: 1rem;
-  margin: 0px;
-  color: #fff;
-  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  width: 100%;
-  text-align: center;
-  font-variant-caps: all-petite-caps;
-}
-
+/* 
+************ROOT SECTION*********** 
+*/
 .flexbox4 {
   display: flex;
   flex-direction: column;
@@ -48,27 +8,17 @@
   margin-left: 75px;
 }
 
-.userRoot {
-  display: flex;
-  justify-content: space-evenly;
-  white-space: nowrap;
-  margin-right: 5px;
-  font-size: 14px;
-}
-
-.userLi {
-  width: 100%;
-  padding: 5px;
-}
-
 .gridbox4 {
   display: grid;
   gap: 0.75rem;
   margin-right: 30px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 0.1fr repeat(2, 1fr);
   grid-template-areas:
-    "header header header"
-    "company users search"
-    "graph graph graph";
+    'header header search search'
+    'company company users users'
+    'graph graph graph graph';
+  height: 100vh;
 }
 
 .headerArea {
@@ -76,36 +26,171 @@
   color: rgb(33, 44, 46);
 }
 
-.planInfo {
-  margin: 20px;
-  width: 100%;
-  font-variant-caps: all-petite-caps;
-  font-size: 18px;
+/* 
+************BILLING COMPANY SECTION*********** 
+*/
+.companyArea {
+  grid-area: company;
+  min-height: 40vh;
+  box-shadow: 1px 3px 5px #888888;
+  max-height: 40vh;
 }
+
+.coTitle {
+  background-color: #212c2e;
+  padding: 1rem;
+  margin: 0px;
+  color: #fff;
+  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.billingInfo {
+  margin-left: 2em;
+  font-size: 1.5em;
+}
+
+.billingInfo p {
+  margin: 0;
+}
+
+.billingHeader1 {
+  margin-bottom: 0.6em;
+  padding: 0;
+}
+
+.customID {
+  margin: 0;
+  display: inline-flex;
+}
+
+.planBtn {
+  background-color: #024058;
+  border-radius: 2px;
+  border: 1px solid #024058;
+  box-shadow: none;
+  color: #fff;
+  min-height: 25px;
+  text-align: center;
+  -webkit-transition: color 0.2s, border 0.2s;
+  transition: color 0.2s, border 0.2s;
+  letter-spacing: 0.19px;
+  white-space: nowrap;
+  margin-left: 10px;
+  justify-content: center;
+}
+
+.gdprHolderCompany {
+  margin-top: 1em;
+}
+
+.gdprBtnCompany {
+  background-color: #c10000;
+  border-radius: 2px;
+  border: 1px solid #024058;
+  color: #fff;
+  min-height: 2em;
+  width: 13em;
+  font-size: 1em;
+  justify-content: center;
+}
+
+/* 
+************ USER COMPANY LIST SECTION*********** 
+*/
 
 .userArea {
   grid-area: users;
   overflow: scroll;
-  min-height: 35vh;
+  min-height: 40vh;
   max-height: 40vh;
   overflow-x: hidden;
   box-shadow: 1px 3px 5px #888888;
 }
 
+.userTitle {
+  background-color: #212c2e;
+  padding: 1rem;
+  margin: 0px;
+  color: #fff;
+  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  width: 100%;
+  text-align: center;
+}
+
 .userArea ul {
   list-style: none;
+  width: 100%;
 }
+
+.userRoot {
+  display: flex;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.userLi {
+  width: 100%;
+}
+
+.gdprBtnUser {
+  background-color: #024058;
+  border-radius: 2px;
+  border: 1px solid #024058;
+  box-shadow: none;
+  color: #fff;
+  min-height: 25px;
+  text-align: center;
+  -webkit-transition: color 0.2s, border 0.2s;
+  transition: color 0.2s, border 0.2s;
+  letter-spacing: 0.19px;
+  white-space: nowrap;
+  margin-left: 10px;
+  justify-content: center;
+}
+
+/* 
+************SEARCH COMPANY SECTION*********** 
+*/
 
 .userSearch {
   grid-area: search;
-  min-height: 35vh;
-  max-height: 40vh;
+  align-self: end;
+  display: inline-flex;
 }
 
-.coArea {
-  grid-area: company;
-  min-height: 35vh;
-  max-height: 40vh;
+.input {
+  cursor: text;
+  margin: 0em;
+  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+  font: 400 13.3333px;
+  color: #024058;
+  height: 40px;
+  border-radius: 2px;
+  border: solid 2px #acbcc4;
+  background-color: rgba(221, 233, 233, 0.5);
+  font-size: 16px;
+  padding-left: 5px;
+  width: 100%;
+  min-width: 150px;
+}
+
+.customEditInput {
+  cursor: text;
+  margin: 0em;
+  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+  font: 400 13.3333px;
+  color: #024058;
+  height: 20px;
+  border-radius: 2px;
+  background-color: rgba(221, 233, 233, 0.5);
+  font-size: 16px;
+  padding-left: 5px;
+  min-width: 150px;
 }
 
 /* ---------------- allUserSearch.js ---------------- */
@@ -125,7 +210,7 @@
   align-items: center;
   box-shadow: 1px 3px 5px #888888;
   border: 2px solid rgb(33, 44, 46);
-  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   font-weight: 700;
 }
@@ -159,25 +244,10 @@
   justify-content: center;
 }
 
-.input {
-  cursor: text;
-  margin: 0em;
-  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
-  font: 400 13.3333px;
-  color: #024058;
-  height: 40px;
-  border-radius: 2px;
-  border: solid 2px #acbcc4;
-  background-color: rgba(221, 233, 233, 0.5);
-  font-size: 16px;
-  padding-left: 5px;
-  width: 300px;
-}
-
 .editInput {
   cursor: text;
   margin: 0em;
-  font: 400 13.3333px "Roboto";
+  font: 400 13.3333px 'Roboto';
   color: #024058;
   height: 30px;
   border-radius: 2px;
@@ -188,21 +258,23 @@
   width: 125px;
 }
 
-.company-info-p { 
-  margin: 0; 
-  display: block;
-}
-
-.billingHeader1 {
-  margin: 0;
-  margin-top: 15px;
-  padding: 0;
-}
- 
-.userTable { 
-  border: none;
-}
-
-.user { 
-  background-color: white;
+/* 
+************ MOBILE SECTION*********** 
+*/
+@supports (display: grid) {
+  @media screen and (max-width: 850px) {
+    .gridbox4 {
+      grid-template-columns: 1fr;
+      grid-template-rows: 5%;
+      grid-template-areas:
+        'header'
+        'search'
+        'company'
+        'users'
+        'graph';
+    }
+    .companyArea {
+      min-height: unset;
+    }
+  }
 }

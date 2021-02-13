@@ -13,14 +13,19 @@ const AnalyticalUsers = () => {
 
   return (
     <>
-      <div className='userTitle'>User List for {companyUsers[0]?.company}</div>
+      <div className='userTitle'>USER LIST FOR {companyUsers[0]?.company}</div>
       <ul>
         {companyUsers.map((user) => {
           return (
             <div className='userRoot' key={user.users_data._id}>
               <li className='userLi'>{user.users_data.name}</li>
-              <li style={{textAlign: 'left'}} className='userLi'>{user.users_data.email}</li>
-              <li style={{textAlign: 'right'}} className='userLi'><GDPRDeleteButton type='user' userEmail={user.users_data.email}/></li>
+              <li className='userLi'>{user.users_data.email}</li>
+              <li className='userLi'>
+                <GDPRDeleteButton
+                  type='user'
+                  userEmail={user.users_data.email}
+                />
+              </li>
             </div>
           );
         })}
