@@ -7,7 +7,7 @@
   width: 100%;
   height: auto;
   box-shadow: 1px 3px 5px #888888;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   background-color: #fff;
   font-variant-caps: all-petite-caps;
@@ -58,6 +58,7 @@
 
 .userLi {
   width: 100%;
+  padding: 5px;
 }
 
 .gridbox4 {
@@ -66,7 +67,7 @@
   margin-right: 30px;
   grid-template-areas:
     "header header header"
-    "search company users"
+    "company users search"
     "graph graph graph";
 }
 
@@ -185,4 +186,19 @@
 
 .company-info-p { 
   margin: 0; 
+  display: block;
+}
+
+.billingHeader1 {
+  margin: 0;
+  margin-top: 15px;
+  padding: 0;
+}
+ 
+.userTable { 
+  border: none;
+}
+
+.user { 
+  background-color: white;
 }

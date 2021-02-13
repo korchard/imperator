@@ -22,9 +22,9 @@ const Analytical = () => {
     if (location.params.type === 'single') {
       setGraph(<SingleCompanyGraph />);
       setCompanyInfo(<CompanyInfo />);
+      setAllUserSearch(<AllUserSearch />);
     } else if (location.params.type === 'all') {
       setGraph(<AllCompanyGraph />);
-      setAllUserSearch(<AllUserSearch />);
     }
   };
 
