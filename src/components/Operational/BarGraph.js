@@ -21,7 +21,6 @@ const BarGraph = () => {
         bar: {
           horizontal: true,
           distributed: true,
-          borderRadius: 6,
         },
       },
       colors: ['#2EA2B2', '#0B354D', '#EE5F1B', '#8a97a5dc', '#09588E'],

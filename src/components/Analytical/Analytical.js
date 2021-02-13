@@ -29,19 +29,21 @@ const Analytical = () => {
   };
 
   return (
-    <div className='flexbox4'>
-      <div className='gridbox4'>
-        <div className='headerArea'>
-          <h1>Analytical</h1>
-        </div>
-        <div className='userSearch'>{allUserSearch}</div>
-        <div className='companyArea'>{companyInfo}</div>
-        {location.params.type === 'single' ? (
-          <div className='userArea'>
-            {location.params.type === 'single' && <AnalyticalUsers />}
+    <div>
+      <div className='flexbox4'>
+        <div className='gridbox4'>
+          <div className='headerArea'>
+            <h1>Analytical</h1>
           </div>
-        ) : null}
-        <div className='barGraph2'>{graph}</div>
+          <div className='userSearch'>{allUserSearch}</div>
+          <div className='companyArea'>{companyInfo}</div>
+          {location.params.type === 'single' ? (
+            <div className='userArea'>
+              {location.params.type === 'single' && <AnalyticalUsers />}
+            </div>
+          ) : null}
+          <div className='barGraph2'>{graph}</div>
+        </div>
       </div>
     </div>
   );

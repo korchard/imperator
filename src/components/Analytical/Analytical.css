@@ -1,11 +1,37 @@
-/* ---------------- Analytical,js ---------------- */
-
-/* ---------------- companyInfo,js ---------------- */
-.companyInfoContainer {
+/* 
+************ROOT SECTION*********** 
+*/
+.flexbox4 {
   display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  height: auto;
+  flex-direction: column;
+  max-width: 100%;
+  margin-left: 75px;
+}
+
+.gridbox4 {
+  display: grid;
+  gap: 0.75rem;
+  margin-right: 30px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 0.1fr repeat(2, 1fr);
+  grid-template-areas:
+    "header header search search"
+    "company company users users"
+    "graph graph graph graph";
+  height: 100vh;
+}
+
+.headerArea {
+  grid-area: header;
+  color: rgb(33, 44, 46);
+}
+
+/* 
+************BILLING COMPANY SECTION*********** 
+*/
+.companyArea {
+  grid-area: company;
+  min-height: 40vh;
   box-shadow: 1px 3px 5px #888888;
   justify-content: flex-start;
   align-items: center;
@@ -13,6 +39,7 @@
   font-variant-caps: all-petite-caps;
   font-size: 18px;
   padding-bottom: 20px;
+  max-height: 40vh;
 }
 
 .coTitle {
@@ -23,9 +50,73 @@
   font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   font-weight: 700;
-  width: 100%;
   text-align: center;
-  font-variant-caps: all-petite-caps;
+}
+
+.billingInfo {
+  margin-left: 2em;
+  font-size: 1.2em;
+  margin-top: 70px;
+}
+
+.billingInfo p {
+  margin: 0;
+}
+
+.billingHeader1 {
+  margin-bottom: 0.6em;
+  padding: 0;
+}
+
+.customID {
+  margin: 0;
+  display: inline-flex;
+}
+
+.planBtn {
+  background-color: #024058;
+  border-radius: 2px;
+  border: 1px solid #024058;
+  box-shadow: none;
+  color: #fff;
+  min-height: 25px;
+  text-align: center;
+  -webkit-transition: color 0.2s, border 0.2s;
+  transition: color 0.2s, border 0.2s;
+  letter-spacing: 0.19px;
+  white-space: nowrap;
+  margin-left: 10px;
+  justify-content: center;
+}
+
+.gdprHolderCompany {
+  margin-top: 1em;
+}
+
+.gdprBtnCompany {
+  background-color: #970303;
+  border-radius: 2px;
+  border: 1px solid #024058;
+  color: #fff;
+  margin-top: 5px;
+  min-height: 2em;
+  width: 12em;
+  font-size: 1em;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* 
+************ USER COMPANY LIST SECTION*********** 
+*/
+
+.userArea {
+  grid-area: users;
+  overflow: scroll;
+  min-height: 40vh;
+  max-height: 40vh;
+  overflow-x: hidden;
+  box-shadow: 1px 3px 5px #888888;
 }
 
 .userTitle {
@@ -38,85 +129,97 @@
   font-weight: 700;
   width: 100%;
   text-align: center;
-  font-variant-caps: all-petite-caps;
-}
-
-.flexbox4 {
-  display: flex;
-  flex-direction: column;
-  max-width: 100%;
-  margin-left: 75px;
-}
-
-.userRoot {
-  display: flex;
-  justify-content: space-evenly;
-  white-space: nowrap;
-  margin-right: 5px;
-  font-size: 14px;
-}
-
-.userLi {
-  width: 100%;
-  padding: 5px;
-}
-
-.gridbox4 {
-  display: grid;
-  gap: 0.75rem;
-  margin-right: 30px;
-  grid-template-areas:
-    "header header header"
-    "company users search"
-    "graph graph graph";
-}
-
-.headerArea {
-  grid-area: header;
-  color: rgb(33, 44, 46);
-}
-
-.planInfo {
-  margin: 20px;
-  width: 100%;
-  font-variant-caps: all-petite-caps;
-  font-size: 18px;
-}
-
-.userArea {
-  grid-area: users;
-  overflow: scroll;
-  max-height: 40vh;
-  overflow-x: hidden;
-  box-shadow: 1px 3px 5px #888888;
 }
 
 .userArea ul {
   list-style: none;
+  width: 100%;
 }
+
+.userRoot {
+  display: flex;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.userLi {
+  width: 100%;
+}
+
+.gdprBtnUser {
+  background-color: #024058;
+  border-radius: 2px;
+  border: 1px solid #024058;
+  box-shadow: none;
+  color: #fff;
+  min-height: 25px;
+  text-align: center;
+  -webkit-transition: color 0.2s, border 0.2s;
+  transition: color 0.2s, border 0.2s;
+  letter-spacing: 0.19px;
+  white-space: nowrap;
+  margin-left: 10px;
+  justify-content: center;
+}
+
+/* 
+************SEARCH COMPANY SECTION*********** 
+*/
 
 .userSearch {
   grid-area: search;
-  max-height: 40vh;
+  align-self: end;
+  /* display: inline-flex; */
 }
 
-.coArea {
-  grid-area: company;
-  max-height: 40vh;
+.input {
+  cursor: text;
+  margin: 0em;
+  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
+  font: 400 13.3333px;
+  color: #024058;
+  height: 40px;
+  border-radius: 2px;
+  border: solid 2px #acbcc4;
+  background-color: rgba(221, 233, 233, 0.5);
+  font-size: 16px;
+  padding-left: 5px;
+  width: 65%;
+  min-width: 150px;
+}
+
+.customEditInput {
+  cursor: text;
+  margin: 0em;
+  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
+  font: 400 13.3333px;
+  color: #024058;
+  height: 20px;
+  border-radius: 2px;
+  background-color: rgba(221, 233, 233, 0.5);
+  font-size: 16px;
+  padding-left: 5px;
+  min-width: 150px;
 }
 
 /* ---------------- allUserSearch.js ---------------- */
 
+.inputContainer {
+  margin-top: 20px;
+  display: inline-block;
+  width: 80%;
+}
+
 .allCardContainer {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
 .singleCardContainer {
   height: auto;
   margin: 20px;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -137,7 +240,7 @@
 
 .updateEditBtn {
   background-color: #024058;
-  border-radius: 6px;
+  border-radius: 2px;
   border: 4px solid #024058;
   box-shadow: none;
   color: #fff;
@@ -152,22 +255,8 @@
   white-space: nowrap;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 3px;
   justify-content: center;
-}
-
-.input {
-  cursor: text;
-  margin: 0em;
-  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
-  font: 400 13.3333px;
-  color: #024058;
-  height: 40px;
-  border-radius: 2px;
-  border: solid 2px #acbcc4;
-  background-color: rgba(221, 233, 233, 0.5);
-  font-size: 16px;
-  padding-left: 5px;
-  width: 300px;
 }
 
 .editInput {
@@ -220,4 +309,25 @@
   white-space: nowrap;
   padding-left: 2px;
   margin-left: 6px;
+  cursor: pointer;
+}
+/* 
+************ MOBILE SECTION*********** 
+*/
+@supports (display: grid) {
+  @media screen and (max-width: 850px) {
+    .gridbox4 {
+      grid-template-columns: 1fr;
+      grid-template-rows: 5%;
+      grid-template-areas:
+        "header"
+        "search"
+        "company"
+        "users"
+        "graph";
+    }
+    .companyArea {
+      min-height: unset;
+    }
+  }
 }
