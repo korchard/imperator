@@ -44,6 +44,7 @@ const GDPRDeleteButton = (props) => {
       <button 
         className={buttonProperties}
         onClick={deleteCompany}
+        style={{marginLeft: '0px'}}
       >
         GDPR DELETE
       </button>
