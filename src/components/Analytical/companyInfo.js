@@ -38,7 +38,7 @@ const CompanyInfo = () => {
               />
             <button className="coBtn" onClick={() => editCustomerId(customerId)}>Edit ID</button>
           </> :
-            <p className='company-info-p'>Customer ID: {companyInfo.billing?.customerId}</p>
+           <>Customer ID: {companyInfo.billing?.customerId}</>
         }
         {editMode ? null : 
             <button className="coBtn" onClick={() => setEditMode(!editMode)}>Update</button>
