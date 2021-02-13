@@ -599,29 +599,29 @@ use('aurelius');
 // ]);
 
 
-db.companies.aggregate([
-    {
-    $project: {
-      "_id": 0, 
-      "company": { $toUpper: "$company" }, 
-      "billing.status": { $toUpper: "$billing.status" },
-      "billing.customerId": { $toUpper: "$billing.customerId" },
-      "billing.plan": { $toUpper: "$billing.plan" },
-      "billing.trialStart": 1,
-      "activeUntil": 1,
-      "jira": 1,
-      "zapier": 1,
-      "hashtags total": {$size: "$hashtags"},
-      "documents total": {$size: "$documents"},
-      "projects total": {$size: "$projects"},
-      "notes total": {$size: "$notes"},
-      "insights total": {$size: "$insights"},
-      "collections total": {$size: "$collections"},
-      "recommandations total": {$size: "$recommendations"},
-      'total users': { $size: '$teamMembers' },
-    },
-  }
-]);
+// db.companies.aggregate([
+//     {
+//     $project: {
+//       "_id": 0, 
+//       "company": { $toUpper: "$company" }, 
+//       "billing.status": { $toUpper: "$billing.status" },
+//       "billing.customerId": { $toUpper: "$billing.customerId" },
+//       "billing.plan": { $toUpper: "$billing.plan" },
+//       "billing.trialStart": 1,
+//       "activeUntil": 1,
+//       "jira": 1,
+//       "zapier": 1,
+//       "hashtags total": {$size: "$hashtags"},
+//       "documents total": {$size: "$documents"},
+//       "projects total": {$size: "$projects"},
+//       "notes total": {$size: "$notes"},
+//       "insights total": {$size: "$insights"},
+//       "collections total": {$size: "$collections"},
+//       "recommandations total": {$size: "$recommendations"},
+//       'total users': { $size: '$teamMembers' },
+//     },
+//   }
+// ]);
 
 
 // db.companies.aggregate(
@@ -819,5 +819,26 @@ db.companies.aggregate([
 //         ]
     //  )
 
-    
+// db.users.aggregate([
+//       {
+//         $search: {
+//           autocomplete: {
+//             query: `Aquaovo`,
+//             path: 'email', //local field to look for the query input
+//             fuzzy: {
+//               maxEdits: 2,
+//               prefixLength: 2,
+//             },
+//           },
+//         },
+//       },
+//       {
+//         $project: {
+//           email: 1,
+//           company: 1,
+//           name: 1,
+//         },
+//       },
+//       {$limit: 10}
+//     ]); 
 

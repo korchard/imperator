@@ -10,7 +10,7 @@ const AllUserSearch = () => {
   
 
   const searchAllUsers = () => {
-    dispatch({ type: 'FETCH_AURELIUS_USER', payload: search })
+    dispatch({ type: 'FETCH_AURELIUS_USER', payload: search });
 }
 
 const clearAllUsers = () => {
@@ -23,7 +23,7 @@ const clearAllUsers = () => {
                 className="input" 
                 placeholder="Search Aurelius By User Email" 
                 onChange={(e) => setSearch(e.target.value)} 
-
+                value={search}
             />
             <button className="btnI" onClick={clearAllUsers}>Clear</button>
             <button className="btnI" onClick={searchAllUsers}>Find</button>
