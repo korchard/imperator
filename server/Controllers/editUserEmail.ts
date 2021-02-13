@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { UserDB } from '../models/documents/User';
 import mongoose from 'mongoose'
 
+mongoose.set('useFindAndModify', false);
 
 export const editUserEmail = async (
   req: Request,
@@ -10,12 +11,6 @@ export const editUserEmail = async (
   try { 
       console.log('req body edit', req.body)
       const {initEmail, newEmail} = req.body
-    //   const filter = {_id: "6018596184af92843a7bb1c0"};
-    //   const updatedDocument = {
-    //       $set: {
-    //           "billing.customerId": `test`
-    //       }
-    //   }
     await UserDB.findOneAndUpdate(
         {"email": `${initEmail}`},
         {"email": `${newEmail}`},

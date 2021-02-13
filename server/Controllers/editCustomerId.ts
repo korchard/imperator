@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { CompanyDB } from '../models/documents/Company';
 import mongoose from 'mongoose'
 
+mongoose.set('useFindAndModify', false);
 
 export const editCustomerId = async (
   req: Request,
@@ -10,12 +11,6 @@ export const editCustomerId = async (
   try { 
       console.log('req body edit', req.body)
       const {customerId, initCustomerId} = req.body
-    //   const filter = {_id: "6018596184af92843a7bb1c0"};
-    //   const updatedDocument = {
-    //       $set: {
-    //           "billing.customerId": `test`
-    //       }
-    //   }
     await CompanyDB.findOneAndUpdate(
         {"billing.customerId": `${initCustomerId}`},
         {"billing.customerId": `${customerId}`},
@@ -24,6 +19,6 @@ export const editCustomerId = async (
     res.sendStatus(201);
 
   } catch (error) {
-    console.error('Error editing customer id: ', error);
+    console.error('Error editing customer id controller: ', error);
   }
 };

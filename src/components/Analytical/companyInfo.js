@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Moment from 'react-moment'
 import GDPRDeleteButton from './GDPRDeleteButton';
+import './Analytical.css'
 
 const CompanyInfo = () => {
   const dispatch = useDispatch();
@@ -32,16 +33,16 @@ const CompanyInfo = () => {
         {editMode ? 
           <>
             <input 
-              // value={companyInfo.billing?.customerId} 
               onChange={(e) => setCustomerId(e.target.value)} 
               type='text' 
               />
-            <button className="coBtn" onClick={() => editCustomerId(customerId)}>Edit ID</button>
+            <button className="editBtn" onClick={() => editCustomerId(customerId)}>Edit ID</button>
+            <button className="editBtn" onClick={() =>setEditMode(!editMode)}>Cancel</button>
           </> :
            <>Customer ID: {companyInfo.billing?.customerId}</>
         }
         {editMode ? null : 
-            <button className="coBtn" onClick={() => setEditMode(!editMode)}>Update</button>
+            <button className="editBtn" onClick={() => setEditMode(!editMode)}>Update</button>
         }
         <p className='company-info-p'>Active Until: <Moment format='MM/DD/YYYY'>{companyInfo.activeUntil}</Moment></p>
         {companyInfo.jira && 

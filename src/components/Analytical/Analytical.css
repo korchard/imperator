@@ -12,7 +12,7 @@
   background-color: #fff;
   font-variant-caps: all-petite-caps;
   font-size: 18px;
-  padding-bottom: 20px; 
+  padding-bottom: 20px;
 }
 
 .coTitle {
@@ -184,8 +184,8 @@
   width: 125px;
 }
 
-.company-info-p { 
-  margin: 0; 
+.company-info-p {
+  margin: 0;
   display: block;
 }
 
@@ -194,11 +194,30 @@
   margin-top: 15px;
   padding: 0;
 }
- 
-.userTable { 
+
+.userTable {
   border: none;
 }
 
-.user { 
+.user {
   background-color: white;
+}
+
+.editBtn {
+  background-color: #024058;
+  border-radius: 2px;
+  border: 1px solid #024058;
+  box-shadow: none;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 1;
+  min-height: 25px;
+  text-align: center;
+  -webkit-transition: color 0.2s, border 0.2s;
+  transition: color 0.2s, border 0.2s;
+  letter-spacing: 0.19px;
+  white-space: nowrap;
+  padding-left: 2px;
+  margin-left: 6px;
 }
