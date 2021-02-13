@@ -10,11 +10,13 @@ const AllUserSearch = () => {
   
 
   const searchAllUsers = () => {
-    dispatch({ type: 'FETCH_AURELIUS_USER', payload: search })
+    dispatch({ type: 'FETCH_AURELIUS_USER', payload: search });
+    setSearch('');
 }
 
 const clearAllUsers = () => {
     dispatch({ type: 'CLEAR_USER_SEARCH' });
+    setSearch('');
 }
 
     return (
