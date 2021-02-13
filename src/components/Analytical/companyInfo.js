@@ -1,61 +1,70 @@
-import {useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import Moment from 'react-moment'
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Moment from 'react-moment';
 import GDPRDeleteButton from './GDPRDeleteButton';
 
 const CompanyInfo = () => {
   const dispatch = useDispatch();
   const companyInfo = useSelector((store) => store.singleCompanyData);
-  const [editMode, setEditMode] = useState(false)
-  const [customerId, setCustomerId] = useState('')  
+  const [editMode, setEditMode] = useState(false);
+  const [customerId, setCustomerId] = useState('');
 
   const editCustomerId = (customerId) => {
-    dispatch({ 
-      type: 'EDIT_CUSTOMER_ID', 
+    dispatch({
+      type: 'EDIT_CUSTOMER_ID',
       payload: {
         initCustomerId: companyInfo.billing.customerId,
-        customerId: customerId, 
-        companyId: companyInfo._id
-      }})
-    setEditMode(!editMode)
-  }
+        customerId: customerId,
+        companyId: companyInfo._id,
+      },
+    });
+    setEditMode(!editMode);
+  };
 
   return (
-    <div className='companyInfoContainer'>
-      <div className='coTitle'>
-        Company: {companyInfo.company}
-      </div>
-      <div className="billingInfo" style={{marginLeft: '30px'}}>
-        <h4 className="billingHeader1">Billing Information</h4>
-        <p className='company-info-p'>Plan: {companyInfo.billing?.plan} </p>
-        <p className='company-info-p'>Status: {companyInfo.billing?.status}</p>
-        {editMode ? 
+    <>
+      <div className='coTitle'>COMPANY: {companyInfo.company}</div>
+      <div className='billingInfo'>
+        <h4 className='billingHeader1'>BILLING INFORMATION</h4>
+        <p>Plan: {companyInfo.billing?.plan} </p>
+        <p>Status: {companyInfo.billing?.status}</p>
+        {editMode ? (
           <>
-            <input 
-              // value={companyInfo.billing?.customerId} 
-              onChange={(e) => setCustomerId(e.target.value)} 
-              type='text' 
-              />
-            <button className="coBtn" onClick={() => editCustomerId(customerId)}>Edit ID</button>
-          </> :
-           <>Customer ID: {companyInfo.billing?.customerId}</>
-        }
-        {editMode ? null : 
-            <button className="coBtn" onClick={() => setEditMode(!editMode)}>Update</button>
-        }
-        <p className='company-info-p'>Active Until: <Moment format='MM/DD/YYYY'>{companyInfo.activeUntil}</Moment></p>
-        {companyInfo.jira && 
-          <p className='company-info-p'>Configuration: Jira</p> 
-        }
-        {companyInfo.zapier && 
-          <p className='company-info-p'>Configuration: Zapier</p>
-        }
-        <div style={{marginTop: '40px'}}>
-          <GDPRDeleteButton type='company'/>
+            <input
+              className='customEditInput'
+              // value={companyInfo.billing?.customerId}
+              onChange={(e) => setCustomerId(e.target.value)}
+              type='text'
+            />
+            <button
+              className='planBtn'
+              onClick={() => editCustomerId(customerId)}
+            >
+              Edit ID
+            </button>
+          </>
+        ) : (
+          <p className='customID'>
+            Customer ID: {companyInfo.billing?.customerId}
+          </p>
+        )}
+        {editMode ? null : (
+          <button className='planBtn' onClick={() => setEditMode(!editMode)}>
+            Update
+          </button>
+        )}
+        <p>
+          Active Until:{' '}
+          <Moment format='MM/DD/YYYY'>{companyInfo.activeUntil}</Moment>
+        </p>
+        {companyInfo.jira && <p>Configuration: JIRA</p>}
+        {companyInfo.zapier && <p>Configuration: ZAPIER</p>}
+        <div className='gdprHolderCompany'>
+          <GDPRDeleteButton type='company' />
         </div>
       </div>
-    </div>
+    </>
   );
-}
+};
 
 export default CompanyInfo;
