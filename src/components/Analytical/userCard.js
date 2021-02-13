@@ -30,7 +30,7 @@ const UserCard = (props) => {
                     className='editInput'
                     />
                 <button className='updateEditBtn' onClick={() => editUserEmail(email, newEmail)}>Edit Email</button>
-                <button onClick={() => setEditMode(!editMode)}>Cancel</button>
+                <button className='updateEditBtn' onClick={() => setEditMode(!editMode)}>Cancel</button>
             </>
             :
             <>
