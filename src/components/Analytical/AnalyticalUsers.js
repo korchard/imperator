@@ -19,8 +19,8 @@ const AnalyticalUsers = () => {
           return (
             <div className='userRoot' key={user.users_data._id}>
               <li className='userLi'>{user.users_data.name}</li>
-              <li className='userLi'>{user.users_data.email}</li>
-              <li className='userLi'><GDPRDeleteButton type='user' userEmail={user.users_data.email}/></li>
+              <li style={{textAlign: 'left'}} className='userLi'>{user.users_data.email}</li>
+              <li style={{textAlign: 'right'}} className='userLi'><GDPRDeleteButton type='user' userEmail={user.users_data.email}/></li>
             </div>
           );
         })}

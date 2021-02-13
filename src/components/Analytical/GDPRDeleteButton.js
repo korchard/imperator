@@ -30,7 +30,7 @@ const GDPRDeleteButton = (props) => {
     }).then(()=>
       swal({
         title: 'Final Warning',
-        text: `Enter the ${singleCompanyData.company} to delete`,
+        text: `Enter the ${buttonInputValue} to delete`,
         content: {
           element: "input"
         },
