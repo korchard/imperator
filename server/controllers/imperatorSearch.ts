@@ -35,6 +35,7 @@ const imperatorSearch = async (req: Request, res: Response): Promise<void> => {
           'insights total': { $size: '$insights' },
           'collections total': { $size: '$collections' },
           'recommendations total': { $size: '$recommendations' },
+          'total users': { $size: '$teamMembers' }
         },
       },
     ]);

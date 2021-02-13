@@ -23,7 +23,8 @@ export const analyticsAllUserSearch = async (
         $project: {
           email: 1,
           company: 1,
-          name: 1,
+          firstname: 1,
+          lastname: 1
         },
       },
     ]);
