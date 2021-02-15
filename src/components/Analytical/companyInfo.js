@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Moment from 'react-moment';
 import GDPRDeleteButton from './GDPRDeleteButton';
-import './Analytical.css'
+import './Analytical.css';
+import Swal from 'sweetalert2';
 
 const CompanyInfo = () => {
   const dispatch = useDispatch();
@@ -10,7 +11,23 @@ const CompanyInfo = () => {
   const [editMode, setEditMode] = useState(false);
   const [customerId, setCustomerId] = useState('');
 
-  const editCustomerId = (customerId) => {
+  const editCustomerId = (companyName, initCustomerId, customerId) => {
+    Swal.fire({
+      title: 'Wait!',
+      text: `Are you sure you want to change the Customer ID for ${companyName} from ${initCustomerId} to ${customerId}?`,
+      icon: 'warning',
+      heightAuto: false,
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+            'Success!',
+            'Customer ID Updated',
+            'success',
+            false
+        ) // end Swal IF
     dispatch({
       type: 'EDIT_CUSTOMER_ID',
       payload: {
@@ -20,6 +37,15 @@ const CompanyInfo = () => {
       },
     });
     setEditMode(!editMode);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Customer ID not updated',
+          'error',
+          false
+      )
+  } //end else if
+}) // end Swal .then
   };
 
   return (
@@ -36,7 +62,7 @@ const CompanyInfo = () => {
               onChange={(e) => setCustomerId(e.target.value)} 
               type='text' 
               />
-            <button className="editBtn" onClick={() => editCustomerId(customerId)}>Edit ID</button>
+            <button className="editBtn" onClick={() => editCustomerId(companyInfo.company, companyInfo.billing?.customerId, customerId)}>Edit ID</button>
             <button className="editBtn" onClick={() =>setEditMode(!editMode)}>Cancel</button>
           </> :
            <>Customer ID: {companyInfo.billing?.customerId}</>
