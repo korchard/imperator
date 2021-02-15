@@ -113,7 +113,7 @@ const SingleCompanyGraph = () => {
         series={[
           {
             name: 'Average Aurelius Actions',
-            data: [22, 22, 20, 40, 60, 168],
+            data: [6, 7, 5, 10, 15, 44],
           },
           {
             name: `${singleCompanyData.company} Actions`,
