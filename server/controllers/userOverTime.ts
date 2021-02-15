@@ -78,11 +78,14 @@ export const getUsersOverTime = async (
     //     $lt: new Date(`${req.params.year}, 13`),
     //   },
     // });
-    // if (req.params.year === 2021)  [ 
+    let dec = 0; 
+    if (req.params.year === "2020") { 
+        dec = 25
+    }
+  
+  
 
-    // ]
-
-    res.send([jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov]);
+    res.send([jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]);
   } catch (error) {
     console.error('Error getting users over time: ', error);
   }
