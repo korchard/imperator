@@ -6,6 +6,11 @@
 // Select the database to use.
 use('aurelius');
 
+companies.findOneAndUpdate(
+        {"billing.customerId": `${initCustomerId}`},
+        {"billing.customerId": `${customerId}`},
+        {new: true}
+)
 // db.users.aggregate([
 //   {
 //     $match: {
