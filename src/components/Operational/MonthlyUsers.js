@@ -21,6 +21,16 @@ export const MonthlyUsers = () => {
 
   const [opt, setOptions] = useState({
     options: {
+      // plotOptions: {
+      //   donut: {
+      //     dataLabels: {
+      //       total: {
+      //         show: true,
+      //         label: 'Total Plan Breakdown'
+      //       }
+      //     },
+      //   },
+      // },
       series: [
         {
           name: `Added Users By Month (${year})`,
@@ -87,6 +97,7 @@ export const MonthlyUsers = () => {
         series={[
           {
             ...opt.options.series,
+            name: `Added Users By Month (${year})`,
             data: monthsData,
           },
         ]}
