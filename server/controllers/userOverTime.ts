@@ -72,13 +72,17 @@ export const getUsersOverTime = async (
         $lt: new Date(`${req.params.year}, 12`),
       },
     });
-    const dec = await UserDB.countDocuments({
-      timestamp: {
-        $gte: new Date(`${req.params.year}, 12`),
-        $lt: new Date(`${req.params.year}, 13`),
-      },
-    });
-    res.send([jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]);
+    // const dec = await UserDB.countDocuments({
+    //   timestamp: {
+    //     $gte: new Date(`${req.params.year}, 12`),
+    //     $lt: new Date(`${req.params.year}, 13`),
+    //   },
+    // });
+    // if (req.params.year === 2021)  [ 
+
+    // ]
+
+    res.send([jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov]);
   } catch (error) {
     console.error('Error getting users over time: ', error);
   }
