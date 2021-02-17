@@ -1,3 +1,4 @@
+// stores user email search results
 const aureliusUserSearch = (state = [], action) => {
     switch (action.type) {
       case 'SET_AURELIUS_USERS_SEARCH':
@@ -9,4 +10,6 @@ const aureliusUserSearch = (state = [], action) => {
     }
 };
 
+// aureliusUserSearch will be on the redux state at:
+// state.aureliusUserSearch
 export default aureliusUserSearch;

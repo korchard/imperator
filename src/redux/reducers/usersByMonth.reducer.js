@@ -1,3 +1,4 @@
+// stores......
 const usersByMonth = (state = [], action) => {
   switch (action.type) {
     case 'SET_USERS_BY_MONTH':
@@ -7,4 +8,6 @@ const usersByMonth = (state = [], action) => {
   }
 };
 
+// usersByMonth will be on the redux state at:
+// state.usersByMonth
 export default usersByMonth;
