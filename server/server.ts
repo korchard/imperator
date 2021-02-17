@@ -10,6 +10,7 @@ import analyticRouter from './routes/company.analytics.router';
 import passwordResetRouter from './routes/passwordReset.router';
 import monthlyUsersRouter from './routes/monthlyUsers.router';
 import strategicRouter from './routes/strategic.router';
+import emailRouter from './routes/email.router';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -49,6 +50,7 @@ app.use('/api/imperator', imperatorRouter);
 app.use('/api/analytics', analyticRouter);
 app.use('/api/strategic', strategicRouter);
 app.use('/api/reset', passwordResetRouter);
+app.use('/api/email', emailRouter);
 
 // Serve static files
 app.use(express.static('build'));

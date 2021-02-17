@@ -7,6 +7,7 @@ import { DiGoogleAnalytics } from 'react-icons/di';
 const Table = ({ data, pageCount: controlledPageCount }) => {
   const history = useHistory();
 
+  //rendering of configurations in table column
   const getConfig = (imperator) => {
     if (imperator.jira && imperator.zapier) {
       return 'JIRA & ZAPIER';
@@ -16,7 +17,7 @@ const Table = ({ data, pageCount: controlledPageCount }) => {
       return 'ZAPIER';
     }
   };
-
+  //table headers - accessor references data keys in imperator reducer
   const columns = React.useMemo(
     () => [
       {
@@ -112,6 +113,7 @@ const Table = ({ data, pageCount: controlledPageCount }) => {
     []
   );
 
+  //pagination, table props, sort feature
   const {
     getTableProps,
     getTableBodyProps,
@@ -138,6 +140,7 @@ const Table = ({ data, pageCount: controlledPageCount }) => {
     usePagination
   );
 
+  //format active until date
   const formatData = (date) => {
     date = date.split('T');
     return new Date(Date.parse(date))
@@ -145,6 +148,7 @@ const Table = ({ data, pageCount: controlledPageCount }) => {
       .replace(/ \w+-\d+ \(.*\)$/, '');
   };
 
+  //details button - routes to specific company clicked
   const goToAnalytical = (id) => {
     history.push(`/analytical/single/${id}`);
   };

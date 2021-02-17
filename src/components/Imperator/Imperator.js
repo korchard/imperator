@@ -9,16 +9,18 @@ const Imperator = () => {
   const [search, setSearch] = useState('');
   const [pageCount, setPageCount] = React.useState(0);
 
+  //get all companies data on page load
   useEffect(() => {
     dispatch({ type: 'FETCH_IMPERATOR' });
   }, []);
 
+  //get search results
   const searchCo = () => {
     dispatch({ type: 'FETCH_COMPANY_SEARCH', payload: search });
-    console.log('search is', search);
     setSearch('');
   };
 
+  //clear button, get all companies back
   const clearSearch = () => {
     dispatch({ type: 'FETCH_IMPERATOR' });
   };

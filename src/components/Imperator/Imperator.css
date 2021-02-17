@@ -1,11 +1,35 @@
-.imperator-card {
-  box-shadow: 1px 3px 5px #888888;
-  padding: 20px;
+/* --------------------------------------------------------------------------------
+Grid 
+-------------------------------------------------------------------------------- */
+.flexbox2 {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-self: center;
-  width: 100%;
+  max-width: 100%;
+  margin-left: 75px;
+  margin-right: 30px;
+}
+
+.gridbox2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(60px, auto) 1fr;
+  gap: 0.75rem;
+  margin-right: 30px;
+  grid-template-areas:
+    'header'
+    'search'
+    'tableGrid';
+}
+
+
+/* --------------------------------------------------------------------------------
+Grid Area
+-------------------------------------------------------------------------------- */
+
+.headerArea {
+  grid-area: header;
+  color: rgb(33, 44, 46);
+  font-variant-caps: all-petite-caps;
 }
 
 .search-imperator {
@@ -14,6 +38,14 @@
   margin-bottom: 13px;
 }
 
+.tableGrid {
+  grid-area: tableGrid;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------------
+Find & Clear Button
+-------------------------------------------------------------------------------- */
 .btnI {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -35,6 +67,10 @@
   margin-left: 10px;
 }
 
+/* --------------------------------------------------------------------------------
+Pagination
+-------------------------------------------------------------------------------- */
+
 .pagination {
   padding: 0.5rem;
   font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
@@ -50,6 +86,52 @@
   background-color: #003145;
   color: white;
   padding: 3px;
+}
+
+/* --------------------------------------------------------------------------------
+Table Styling
+-------------------------------------------------------------------------------- */
+.company {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 10px;
+}
+
+.companyId {
+  width: 1px;
+  height: 1px;
+  font-size: 0.1px;
+}
+
+.coBtn {
+  background-color: #024058;
+  border-radius: 2px;
+  border: 1px solid #024058;
+  box-shadow: none;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 1;
+  min-height: 25px;
+  text-align: center;
+  -webkit-transition: color 0.2s, border 0.2s;
+  transition: color 0.2s, border 0.2s;
+  letter-spacing: 0.19px;
+  white-space: nowrap;
+  padding-left: 2px;
+  margin-right: 10px;
+}
+
+.imperator-card {
+  box-shadow: 1px 3px 5px #888888;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  width: 100%;
 }
 
 .table {
@@ -89,6 +171,9 @@ table > thead > tr:nth-child(1) > th {
   font-size: 1.8em;
 }
 
+/* --------------------------------------------------------------------------------
+Small Screen Break
+-------------------------------------------------------------------------------- */
 @media only screen and (max-width: 760px),
   (min-device-width: 768px) and (max-device-width: 1024px) {
   /* Force table to not be like tables anymore */
@@ -196,69 +281,3 @@ Label the data
   }
 }
 
-.company {
-  margin-left: 10px;
-}
-
-.coBtn {
-  background-color: #024058;
-  border-radius: 2px;
-  border: 1px solid #024058;
-  box-shadow: none;
-  color: #fff;
-  font-size: 10px;
-  font-weight: 300;
-  line-height: 1;
-  min-height: 25px;
-  text-align: center;
-  -webkit-transition: color 0.2s, border 0.2s;
-  transition: color 0.2s, border 0.2s;
-  letter-spacing: 0.19px;
-  white-space: nowrap;
-  padding-left: 2px;
-  margin-right: 10px;
-}
-
-.company {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.flexbox2 {
-  display: flex;
-  flex-direction: column;
-  max-width: 100%;
-  margin-left: 75px;
-  margin-right: 30px;
-}
-
-.gridbox2 {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: minmax(60px, auto) 1fr;
-  gap: 0.75rem;
-  margin-right: 30px;
-  grid-template-areas:
-    'header'
-    'search'
-    'tableGrid';
-}
-
-.tableGrid {
-  grid-area: tableGrid;
-  width: 100%;
-}
-
-.headerArea {
-  grid-area: header;
-  color: rgb(33, 44, 46);
-  font-variant-caps: all-petite-caps;
-}
-
-.companyId {
-  width: 1px;
-  height: 1px;
-  font-size: 0.1px;
-}

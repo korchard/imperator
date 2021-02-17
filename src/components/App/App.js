@@ -37,41 +37,41 @@ const App = () => {
           {/* Visiting localhost:3000/about will show the about page. */}
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
             exact
             path='/operational'
             component={Operational}
           />
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
             exact
             path='/imperator'
             component={Imperator}
           />
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
             exact
             path='/strategic'
             component={Strategic}
           />
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
             exact
             path='/analytical/:type/:id'
             component={Analytical}
           />
 
-          <Route exact path='/passwordReset' component={PasswordReset} />
+          <Route
+            exact
+            path='/passwordReset'
+            component={PasswordReset}
+          />
 
           {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
             be taken to the component and path supplied. */}
           <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
+            // - if logged in, redirects to "/operational"
             // - else shows LoginPage at /login
             exact
             path='/login'
@@ -80,7 +80,7 @@ const App = () => {
           />
           <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
+            // - if logged in, redirects to "/operational"
             // - else shows RegisterPage at "/registration"
             exact
             path='/registration'
