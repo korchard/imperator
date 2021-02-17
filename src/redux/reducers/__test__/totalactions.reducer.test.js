@@ -31,8 +31,3 @@ describe('Testing the totalActions Reducer', () => {
   });
 });
 
-// switch (action.type) {
-//     case 'SET_TOTAL_ACTIONS':
-//       return action.payload;
-//     default:
-//       return state;
