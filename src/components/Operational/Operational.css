@@ -60,6 +60,11 @@
   font-variant-caps: all-petite-caps;
 }
 
+.yearSelectUsersByMonth {
+  margin-left: 15px;
+}
+
+
 @supports (display: grid) {
   @media screen and (max-width: 1050px) {
     .gridbox {
@@ -73,6 +78,3 @@
   }
 }
 
-.yearSelectUsersByMonth {
-  margin-left: 15px;
-}

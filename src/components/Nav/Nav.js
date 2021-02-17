@@ -7,7 +7,7 @@ import './Nav.css';
 import { AiOutlineLogin } from 'react-icons/ai';
 // operational
 import { BsFillGearFill } from 'react-icons/bs';
-// anyitcal
+// analytical
 import { DiGoogleAnalytics } from 'react-icons/di';
 // strategic
 import { SiMicrostrategy } from 'react-icons/si';
@@ -38,13 +38,13 @@ const Nav = (props) => {
   }
 
   return (
-    <div className={open ? 'nav' : 'navOpen'}>
+    <div className={open ? 'navOpen' : 'nav'}>
       <div className='arrowContainer'>
         {open ? (
           <BiLeftArrow className='arrow' onClick={() => setOpen(!open)} />
         ) : (
-          <BiRightArrow className='arrow' onClick={() => setOpen(!open)} />
-        )}
+            <BiRightArrow className='arrow' onClick={() => setOpen(!open)} />
+          )}
       </div>
       <div>
         <img src='../img/logo.svg' alt='logo' className='nav-logo'></img>
@@ -64,7 +64,7 @@ const Nav = (props) => {
             </div>
           </>
         )}
-        {/* Show the link to the info page and the logout button if the user is logged in */}
+        {/* Show the link to the views and the logout button if the user is logged in */}
         {user._id && (
           <>
             <div>
