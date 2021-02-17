@@ -19,7 +19,7 @@ export const singleCompany = async (
           email: { $toUpper: '$email' },
           company: { $toUpper: '$company' },
           'billing.status': { $toUpper: '$billing.status' },
-          'billing.customerId': { $toUpper: '$billing.customerId' },
+          'billing.customerId': '$billing.customerId',
           'billing.plan': { $toUpper: '$billing.plan' },
           'billing.trialStart': 1,
           'billing.trialEnd': 1,
