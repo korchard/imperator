@@ -50,7 +50,8 @@
     border: none;
     text-decoration: underline;
     color: rgb(11, 53, 77);
-    text-align: center;
+    float: right;
+    padding-right: 10px;
   }
   
   .formPanel {

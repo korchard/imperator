@@ -36,47 +36,48 @@ const RegisterForm = () => {
             {errors.registrationMessage}
           </h3>
         )}
-      <div>
-        <label htmlFor='username'>
-          Username:
-          <input
-            type='text'
-            name='username'
-            className='registerForm'
-            value={newUser.username}
-            required
-            onChange={(e) =>
-              setNewUser({ ...newUser, username: e.target.value })
-            }
-          />
-        </label>
-      </div>
-      <div>
-        <label htmlFor='password'>
-          Password:
-          <input
-            type='password'
-            name='password'
-            className='registerForm'
-            value={newUser.password}
-            required
-            onChange={(e) =>
-              setNewUser({ ...newUser, password: e.target.value })
-            }
-          />
-        </label>
-      </div>
-      <div>
-          <Link
-            className="linkBtnLogin"
-            to='/login'>
-              Login
-          </Link>
+        <div>
+          <label htmlFor='username'>
+            Username:
+            <input
+              type='text'
+              name='username'
+              className='registerForm'
+              value={newUser.username}
+              required
+              onChange={(e) =>
+                setNewUser({ ...newUser, username: e.target.value })
+              }
+            />
+          </label>
         </div>
-      <div>
-        <input className='btn' type='submit' name='submit' value='Register' />
-      </div>
-    </form>
+        <div>
+          <label htmlFor='password'>
+            Password:
+            <input
+              type='password'
+              name='password'
+              className='registerForm'
+              value={newUser.password}
+              required
+              onChange={(e) =>
+                setNewUser({ ...newUser, password: e.target.value })
+              }
+            />
+          </label>
+        </div>
+        <div>
+          &nbsp;
+            <Link
+              className="linkBtnLogin"
+              to='/login'>
+                Login
+            </Link>
+        </div>
+        <div>
+          <input className='btn' type='submit' name='submit' value='Register' />
+        </div>
+      </form>
     </div>
   );
 };
