@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { CompanyDB } from '../models/documents/Company';
 
-// comment
+// This aggregation is the user list display for a company on the analytical dashboard 
 export const singleCompanyUsers = async (
   req: Request,
   res: Response

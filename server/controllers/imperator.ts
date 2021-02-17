@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { CompanyDB } from '../models/documents/Company';
 
+
+// This is the aggregation for the imperator table
 const imperator = async (req: Request, res: Response): Promise<void> => {
   try {
     const data = await CompanyDB.aggregate([
