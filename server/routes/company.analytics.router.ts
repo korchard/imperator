@@ -10,8 +10,8 @@ const router: express.Router = express.Router();
 
 router.get('/:id', rejectUnauthenticated, singleCompany);
 router.get('/all/:search', rejectUnauthenticated, analyticsAllUserSearch);
-router.put('/all', rejectUnauthenticated, editUserEmail);
 router.get('/users/:id', rejectUnauthenticated, singleCompanyUsers);
 router.put('/:id', editCustomerId);
+router.put('/all', rejectUnauthenticated, editUserEmail);
 
 export default router;
