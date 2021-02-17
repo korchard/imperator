@@ -51,7 +51,7 @@ const PasswordReset: React.FC<SwalOptions> = () => {
                     <div>
                         <label htmlFor='email'>
                             Email:
-                    <input
+                            <input
                                 className="loginForm"
                                 type='text'
                                 name='email'
@@ -64,7 +64,7 @@ const PasswordReset: React.FC<SwalOptions> = () => {
                     <div>
                         <label htmlFor='email'>
                             Confirm Email:
-                    <input
+                            <input
                                 className="loginForm"
                                 type='text'
                                 name='confirm'
