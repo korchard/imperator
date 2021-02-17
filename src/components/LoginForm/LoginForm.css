@@ -47,6 +47,14 @@
   color: rgb(11, 53, 77);
 }
 
+.linkBtnReg {
+  border: none;
+  text-decoration: underline;
+  color: rgb(11, 53, 77);
+  float: right;
+  padding-right: 10px;
+}
+
 .formPanel {
   z-index: 99;
 }
