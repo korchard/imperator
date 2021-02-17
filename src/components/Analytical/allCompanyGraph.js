@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Chart from 'react-apexcharts';
 
+// graph of the total actions of all companies in aurelius
 const AllCompanyGraph = () => {
   
   const totalActionData = useSelector((store) => store.totalAction);

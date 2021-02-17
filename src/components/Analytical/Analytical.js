@@ -7,6 +7,7 @@ import AllCompanyGraph from './allCompanyGraph';
 import AnalyticalUsers from './AnalyticalUsers';
 import CompanyInfo from './companyInfo';
 
+// the analytical page, here company details can be viewed and edited
 const Analytical = () => {
   const location = useRouteMatch();
   const [graph, setGraph] = useState();
@@ -41,7 +42,7 @@ const Analytical = () => {
               {location.params.type === 'single' && <AnalyticalUsers />}
             </div>
           ) : null}
-          {/* TODO need to add a way to load some type of data or hide the page */}
+          {/* TODO for Joesph need to add a way to load some type of data or hide the page */}
           <div className='barGraph2'>{graph}</div>
         </div>
       </div>

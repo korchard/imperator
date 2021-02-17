@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
 import GDPRDeleteButton from './GDPRDeleteButton';
 
+// a list of users within the company currently displayed on the analytical page
 const AnalyticalUsers = () => {
   const companyUsers = useSelector((redux) => redux.singleCompanyUsers);
-
   return (
     <>
       <div className='userTitle'>USER LIST FOR {companyUsers[0]?.company}</div>
