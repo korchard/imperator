@@ -1,0 +1,22 @@
+#############################################
+# BASE PRODUCTION DOCKERFILE SETTINGS
+#############################################
+# Base image we are modifying from https://hub.docker.com/
+FROM node:12-alpine
+# Creating App Directory
+RUN mkdir -p /app
+WORKDIR /app
+#############################################
+# COPY DEPENDENCIES TO CONTAINER BE & FE
+#############################################
+COPY ./client/package.json /app/client/package.json
+COPY package.json /app
+
+# install and cache server dependencies
+RUN npm install
+COPY . /app
+RUN npm run build
+COPY ./build /app/build
+
+# Run final command to kick off server
+CMD ["npm", "run", "start"]

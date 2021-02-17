@@ -10,6 +10,7 @@
     "cookie-session": "^2.0.0-beta.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "moment": "^2.29.1",
     "mongoose": "^5.11.13",
     "mongoose-lean-defaults": "^1.0.1",
     "mongoose-lean-getters": "^0.1.2",
