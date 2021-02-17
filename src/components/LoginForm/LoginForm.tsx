@@ -86,7 +86,7 @@ const LoginForm: React.FC<Props> = () => {
               className="linkBtnReg"
               to='/registration'>
                 Register
-            </Link>
+          </Link>
         </div>
         <div>
           <button className='btn' type='submit' name='submit' value='Log In'>

@@ -1,0 +1,59 @@
+/* --------------------- Register Page ------------------------------ */
+.registerContainer {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(11, 53, 77);
+    position: absolute;
+    background: linear-gradient(
+          to bottom right,
+          transparent 49.8%,
+          rgb(87, 190, 202) 50%
+        )
+        0 250px/100% 25%,
+      linear-gradient(rgb(87, 190, 202), rgb(11, 53, 77)) bottom/100%
+        calc(75% - 250px);
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+  
+  /* --------------------- Register Form ------------------------------- */
+  
+  .register {
+    width: 100%;
+    height: auto;
+    padding-top: 12rem;
+    color: rgb(11, 53, 77);
+    position: absolute;
+    z-index: 99;
+  }
+  
+  .nav-logo2 {
+    height: 70px;
+    width: 70px;
+    margin: 32px 9px 32px 9px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+  
+  .registerForm {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    padding: 5px;
+    display: block;
+  }
+  
+  .linkBtnLogin {
+    border: none;
+    text-decoration: underline;
+    color: rgb(11, 53, 77);
+    text-align: center;
+  }
+  
+  .formPanel {
+    z-index: 99;
+  }
+  

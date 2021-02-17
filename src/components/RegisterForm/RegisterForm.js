@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import './RegisterForm.css';
 
 const RegisterForm = () => {
   const errors = useSelector((store) => store.errors);
@@ -25,19 +27,22 @@ const RegisterForm = () => {
   };
 
   return (
-    <form className='formPanel' onSubmit={registerUser}>
-      <h2>Register User</h2>
-      {errors.registrationMessage && (
-        <h3 className='alert' role='alert'>
-          {errors.registrationMessage}
-        </h3>
-      )}
+    <div className='register'>
+      <form className='formPanel' onSubmit={registerUser}>
+        <img src='../img/logo.svg' alt='logo' className='nav-logo2'></img>
+        <h2>Register</h2>
+        {errors.registrationMessage && (
+          <h3 className='alert' role='alert'>
+            {errors.registrationMessage}
+          </h3>
+        )}
       <div>
         <label htmlFor='username'>
           Username:
           <input
             type='text'
             name='username'
+            className='registerForm'
             value={newUser.username}
             required
             onChange={(e) =>
@@ -52,6 +57,7 @@ const RegisterForm = () => {
           <input
             type='password'
             name='password'
+            className='registerForm'
             value={newUser.password}
             required
             onChange={(e) =>
@@ -61,9 +67,17 @@ const RegisterForm = () => {
         </label>
       </div>
       <div>
+          <Link
+            className="linkBtnLogin"
+            to='/login'>
+              Login
+          </Link>
+        </div>
+      <div>
         <input className='btn' type='submit' name='submit' value='Register' />
       </div>
     </form>
+    </div>
   );
 };
 
