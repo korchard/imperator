@@ -1,6 +1,7 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
+//Generator used to get total counts for plans from api/planCount
 function* fetchTotalCounts() {
   try {
     const response = yield axios.get(`/api/planCount`);
@@ -21,11 +22,14 @@ function* fetchTotalActions() {
   }
 } //end fetchTotalCounts
 
+//Generator used to get total users by month from api/userOvertime
 function* getUsersByMonth(action) {
   try {
-    const response = yield axios.get(`/api/userOverTime/${action.payload.year}`);
+    const response = yield axios.get(
+      `/api/userOverTime/${action.payload.year}`
+    );
     yield put({ type: 'SET_MONTHLY_USERS', payload: response.data });
-    console.log(response.data)
+    console.log(response.data);
   } catch (error) {
     console.log('Error with getting monthlyUsers:', error);
   }

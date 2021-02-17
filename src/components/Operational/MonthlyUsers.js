@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Chart from 'react-apexcharts';
 
 export const MonthlyUsers = () => {
-  const [year, setYear] = useState(2021)
+  const [year, setYear] = useState(2021);
   const monthlyUsersOverTime = useSelector(
     (redux) => redux.monthlyUsersOverTime
   );
@@ -21,16 +21,6 @@ export const MonthlyUsers = () => {
 
   const [opt, setOptions] = useState({
     options: {
-      // plotOptions: {
-      //   donut: {
-      //     dataLabels: {
-      //       total: {
-      //         show: true,
-      //         label: 'Total Plan Breakdown'
-      //       }
-      //     },
-      //   },
-      // },
       series: [
         {
           name: `Added Users By Month (${year})`,
@@ -66,7 +56,6 @@ export const MonthlyUsers = () => {
       ],
       yaxis: {
         opposite: true,
-
       },
       legend: {
         horizontalAlign: 'left',
@@ -79,17 +68,16 @@ export const MonthlyUsers = () => {
 
   return (
     <>
-      <div style={{ textAlign: "left", padding: '10px' }}>
-        <select className="pagSelect"
-          onChange={e => {
-            setYear(e.target.value)
+      <div style={{ textAlign: 'left', padding: '10px' }}>
+        <select
+          className='pagSelect'
+          onChange={(e) => {
+            setYear(e.target.value);
           }}
         >
-          {
-            [2021, 2020, 2019, 2018, 2017, 2016, 2015].map((year) =>
-              <option value={year}>{year}</option>
-            )
-          }
+          {[2021, 2020, 2019, 2018, 2017, 2016, 2015].map((year) => (
+            <option value={year}>{year}</option>
+          ))}
         </select>
       </div>
       <Chart
@@ -105,7 +93,6 @@ export const MonthlyUsers = () => {
         width='99%'
         height='350'
       />
-
     </>
   );
 };

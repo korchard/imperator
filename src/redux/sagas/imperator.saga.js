@@ -11,9 +11,8 @@ function* fetchImperatorData() {
   }
 } //end fetchImperatorData
 
-function* fetchCompanySearch(action){
+function* fetchCompanySearch(action) {
   try {
-    // console.log('payload', action.payload)
     const response = yield axios.get(`/api/imperator/search/${action.payload}`);
     yield put({ type: 'SET_IMPERATOR', payload: response.data });
     console.log(response.data);

@@ -16,6 +16,6 @@ describe('Test our monthlyUser route', () => {
     expect(userResponse.status).toBe(200);
 
     const dataResponse = await testServer(app).get('/api/userOverTime');
-    expect(dataResponse).toBe(12);
+    expect(dataResponse.body.length).toBe(12);
   });
 });

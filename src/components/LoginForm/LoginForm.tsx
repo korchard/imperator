@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
-// import { jsx, css } from '@emotion/react';
 import './LoginForm.css';
 
 type Props = {

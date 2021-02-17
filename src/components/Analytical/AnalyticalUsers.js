@@ -1,15 +1,8 @@
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import GDPRDeleteButton from './GDPRDeleteButton';
 
 const AnalyticalUsers = () => {
-  const [users, setUsers] = useState('');
-  const dispatch = useDispatch();
   const companyUsers = useSelector((redux) => redux.singleCompanyUsers);
-
-  useEffect(() => {
-    // dispatch({ type: 'FETCH_COMPANY_USERS' });
-  }, []);
 
   return (
     <>
