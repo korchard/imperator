@@ -34,7 +34,7 @@ function* getTrialPlans() {
 // POST ROUTE - to email client from strategic plan
 function* sendEmail(action) {
   try {
-    yield axios.post('api/strategic', action.payload);
+    yield axios.post('api/email', action.payload);
   } catch (error) {
     console.log('Error in sendEmail saga:', error);
   }
