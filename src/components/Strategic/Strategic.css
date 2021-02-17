@@ -91,8 +91,6 @@
   font-variant-caps: all-petite-caps;
 }
 
-
-
 @supports (display: grid) {
   @media screen and (max-width: 1050px) {
     .gridbox {
