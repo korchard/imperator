@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { CompanyDB } from '../models/documents/Company';
 
+// Aggregation for paid plans that are ending this month on strategic dashboard
 const strategicPaidPlan = async (req: Request, res: Response): Promise<void> => {
     try {
       const data = await CompanyDB.aggregate(

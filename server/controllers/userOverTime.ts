@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { UserDB } from '../models/documents/User';
 
+// Aggregation for number of users joined by month (Operational Dashboard)
 export const getUsersOverTime = async (
   req: Request,
   res: Response

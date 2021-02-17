@@ -1,6 +1,8 @@
 import { CompanyDB } from '../models/documents/Company';
 import { Request, Response } from 'express';
 
+// Aggregation for total actions of all companies in Aurelius (Operational Dashboard)
+// There are 0's in the project portion because we hard coded those values for the presentation
 export const getTotalActions = async (req: Request, res: Response) => {
   try {
     const data = await CompanyDB.aggregate([

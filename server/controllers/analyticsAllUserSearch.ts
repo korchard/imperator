@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { UserDB } from '../models/documents/User';
 
+// This aggregation is the user search by email on the analytical dashboard
 export const analyticsAllUserSearch = async (
   req: Request,
   res: Response
