@@ -1,4 +1,4 @@
-// store imperator data for the table
+// stores specific company's data info
 const singleCompanyData = (state = {}, action) => {
     switch (action.type) {
       case 'SET_SINGLE_COMPANY_DATA':
@@ -8,4 +8,6 @@ const singleCompanyData = (state = {}, action) => {
     }
 };
   
+// singleCompanyData will be on the redux state at:
+// state.singleCompanyData
 export default singleCompanyData;
