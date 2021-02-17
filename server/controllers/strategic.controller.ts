@@ -1,9 +1,6 @@
 import { Request, Response } from 'express';
 import { CompanyDB } from '../models/documents/Company';
 
-// month: {$month: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}},
-//     year: {$year: {$toDate: {$multiply: ["$billing.trialEnd", 1000]}}}
-
 const strategic = async (req: Request, res: Response): Promise<void> => {
   try {
     const data = await CompanyDB.aggregate([
@@ -20,6 +17,7 @@ const strategic = async (req: Request, res: Response): Promise<void> => {
                       { $toDate: { $multiply: ['$billing.trialStart', 1000] } },
                     ],
                   },
+                  //converting it to a date we can use
                   1000 * 60 * 60 * 24,
                 ],
               },
