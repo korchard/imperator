@@ -26,14 +26,39 @@ Before you get started, make sure you have the following software installed on y
 
 Go to mongodb and sign up for a free tier cluster. Add a MONGO_URI to a .env file
 
-## Development Setup Instructions
+## Local Setup Instructions
 
 - Run `npm install`
 - Create a `.env` file at the root of the project and paste this line into the file:
   ```
   SERVER_SESSION_SECRET=superDuperSecret
+  NODE_ENV = development
+  MONGO_URI=mongo uri
+  **FOR TESTING PURPOSE ONLY**
+  TEST_USER=username for website
+  TEST_PASSWORD=password for website
+  TEST_EMAIL=email for sending emails
   ```
   While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
 - Run `npm run server`
 - Run `npm run client`
 - Navigate to `localhost:3000`
+
+## How To Deploy To Heroku
+
+### Heroku Prerequisite
+
+1. Sign up for an account on [Heroku.com](https://www.heroku.com/)
+2. Install Heroku CLI by typing `brew tap heroku/brew && brew install heroku` in Terminal
+
+- [Additional installation notes and troubleshooting](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
+
+> Note: Your project also needs to have a git repository.
+
+Run the following commands from within your project folder.
+
+1. Authenticate by typing `heroku login` in Terminal
+2. In terminal, navigate to your project folder and type `heroku create`
+3. Type `git remote -v` to ensure it added successfully
+4. In terminal, type `git push heroku master`
+5. Our website is now live! However... we also have a database
