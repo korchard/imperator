@@ -17,6 +17,7 @@ const Table = ({ data, pageCount: controlledPageCount }) => {
       return 'ZAPIER';
     }
   };
+  
   //table headers - accessor references data keys in imperator reducer
   const columns = React.useMemo(
     () => [
