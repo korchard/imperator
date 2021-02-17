@@ -22,17 +22,14 @@ function Strategic() {
 
   return (
     <div className="flexbox">
-
       <div className="gridbox">
         <div className="headerArea">
           <h1>Strategic</h1>
         </div>
-
         <div className="strategicGraph">
           <h4 className="titles">Average Plan Length By Types</h4>
           <StrategicGraph />
         </div>
-
         <div className="paidContainer">
           <h4 className="titles">Paid Plans Ending This Month</h4>
           {paidPlan.map(plan => {
@@ -50,25 +47,23 @@ function Strategic() {
           }
           )}
         </div>
-
         <div className="trialContainer">
           <h4 className="titles">Trials Ending This Month</h4>
           {trialPlan.map(plan => {
-            return (
-              <p className="col1">{plan.company}
-                <span className="col2">{plan.month}/{plan.day}/{plan.year}
-                  <button
-                    onClick={() => sendEmail(plan._id)}
-                    className="emailBtn">
-                    Email
-                </button>
-                </span>
-              </p>
-            )
-          }
+              return (
+                <p className="col1">{plan.company}
+                  <span className="col2">{plan.month}/{plan.day}/{plan.year}
+                    <button
+                      onClick={() => sendEmail(plan._id)}
+                      className="emailBtn">
+                      Email
+                  </button>
+                  </span>
+                </p>
+              )
+            }
           )}
         </div>
-
       </div>
     </div>
   );
