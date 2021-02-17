@@ -16,9 +16,9 @@ function* fetchUser() {
     const response = yield axios.get('/api/user', config);
     yield put({ type: 'SET_USER', payload: response.data });
   } catch (error) {
-    console.log('User get request failed', error);
+    console.log('Error with fetchUser in user.saga', error);
   }
-} // end fetchUser
+} 
 
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);

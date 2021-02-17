@@ -9,7 +9,7 @@ function* getPlanAverage() {
   } catch (error) {
     console.log('Error with getPlanAverage in strategic.saga', error);
   }
-} //end getPlanAverage
+} 
 
 // GET ROUTE - all paid plans expiring this month
 function* getPaidPlans() {
@@ -19,7 +19,7 @@ function* getPaidPlans() {
   } catch (error) {
     console.log('Error with getPaidPlans in strategic.saga', error);
   }
-} //end getPaidPlans
+} 
 
 // GET ROUTE - Get all trial plans expiring this month
 function* getTrialPlans() {
@@ -29,7 +29,7 @@ function* getTrialPlans() {
   } catch (error) {
     console.log('Error with getTrialPlans in strategic.saga', error);
   }
-} //end getTrialPlans
+} 
 
 // POST ROUTE - to email client from strategic plan
 function* sendEmail(action) {
@@ -38,7 +38,7 @@ function* sendEmail(action) {
   } catch (error) {
     console.log('Error with sendEmail in strategic.saga', error);
   }
-} // end sendEmail
+} 
 
 function* strategicSaga() {
   yield takeEvery('GET_PLAN_LENGTH_AVERAGE', getPlanAverage);

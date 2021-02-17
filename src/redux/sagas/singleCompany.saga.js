@@ -10,7 +10,7 @@ function* getSingleCompanyData(action){
   } catch (error) {
     console.log('Error with getSingleCompanyData in singleCompany.saga', error);
   }
-} // end getSingleCompanyData
+} 
 
 // PUT ROUTE - changes the customer billing id
 function* editCustomerId(action){
@@ -20,7 +20,7 @@ function* editCustomerId(action){
   }catch (error) {
     console.log('Error with editCustomerId in singleCompany.saga', error);
   }
-} // end editCustomerId
+} 
 
 // GET ROUTE - grabs all users for a specific company
 function* fetchCompanyUsers(action){
@@ -30,7 +30,7 @@ function* fetchCompanyUsers(action){
   } catch (error) {
     console.log('Error with fetchCompanyUsers in singleCompany.saga', error);
   }
-} // end fetchCompanyUsers
+} 
 
 function* singleCompanySaga() {
   yield takeEvery('FETCH_SINGLE_COMPANY_DATA', getSingleCompanyData);
