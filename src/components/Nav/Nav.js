@@ -19,6 +19,8 @@ import { AiOutlineLogout } from 'react-icons/ai';
 import { BiRightArrow } from 'react-icons/bi';
 //drawer close
 import { BiLeftArrow } from 'react-icons/bi';
+//register person
+import { IoMdPersonAdd } from 'react-icons/io';
 
 const Nav = (props) => {
   const user = useSelector((redux) => redux.user);
@@ -49,10 +51,18 @@ const Nav = (props) => {
       </div>
       <div className='nav-right'>
         {user._id ? null : (
-          <Link className='nav-link' to={loginLinkData.path}>
-            <AiOutlineLogin />
-            <span className='icon-btn'>{loginLinkData.text}</span>
-          </Link>
+          <>
+            <Link className='nav-link' to={loginLinkData.path}>
+              <AiOutlineLogin />
+              <span className='icon-btn'>{loginLinkData.text}</span>
+            </Link>
+            <div>
+              <Link className='nav-link' to='/registration'>
+                <IoMdPersonAdd />
+                <span className='icon-btn'>Register</span>
+              </Link>
+            </div>
+          </>
         )}
         {/* Show the link to the info page and the logout button if the user is logged in */}
         {user._id && (

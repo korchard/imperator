@@ -78,6 +78,11 @@ const BarGraph = () => {
               300,
               666,
               900,
+              /*
+               * TODO
+               * uncomment these when deployed to client as their database is set up for this style!
+               * and remove the fake data above used as a placeholder for presentation.
+               */
               // totalActionData.documents.count,
               // totalActionData.hashtags.count,
               // totalActionData.insights.count,

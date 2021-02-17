@@ -1,6 +1,5 @@
 import './Analytical.css';
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
 import SingleCompanyGraph from './singleCompanyGraph';
 import AllUserSearch from './allUserSearch';
@@ -42,6 +41,7 @@ const Analytical = () => {
               {location.params.type === 'single' && <AnalyticalUsers />}
             </div>
           ) : null}
+          {/* TODO need to add a way to load some type of data or hide the page */}
           <div className='barGraph2'>{graph}</div>
         </div>
       </div>
