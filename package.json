@@ -34,6 +34,8 @@
   },
   "scripts": {
     "start": "npm run tsc && node dist/server.js",
+    "build-ts": "tsc",
+    "postinstall": "npm run build-ts",
     "client": "react-scripts start",
     "server": "nodemon -e ts --ignore './dist' -x npm run server:ts",
     "server:ts": "tsc -p tsconfig.node.json && node dist/server.js",
