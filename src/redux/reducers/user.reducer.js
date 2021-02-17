@@ -1,3 +1,4 @@
+// stores user session info
 const userReducer = (state = {}, action) => {
   switch (action.type) {
     case 'SET_USER':
