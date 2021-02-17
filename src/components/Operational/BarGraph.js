@@ -6,6 +6,7 @@ const BarGraph = () => {
   const dispatch = useDispatch();
   const totalActionData = useSelector((store) => store.totalAction);
 
+  //get information for total actions graph on page load
   useEffect(() => {
     dispatch({ type: 'FETCH_TOTAL_ACTIONS' });
   }, []);

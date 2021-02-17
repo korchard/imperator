@@ -7,9 +7,9 @@ const PlanTypeGraph = () => {
   const planCount = useSelector((redux) => redux.planCount)
   const [year, setYear] = useState(2021)
 
+  //donut percentage graph
   useEffect(() => {
     dispatch({ type: 'FETCH_PLAN_COUNTS' })
-
   }, [])
 
   const [opt, setOpt] = useState({
@@ -17,7 +17,6 @@ const PlanTypeGraph = () => {
       chart: {
         height: 280,
         type: "donut",
-
       },
       series: [],
       plotOptions: {
@@ -35,10 +34,12 @@ const PlanTypeGraph = () => {
     }
   })
 
+  //gets total number of plans 
   const planTotal = planCount.reduce((total, item) => {
     return total + item.count
   }, 0)
 
+  //gets average for graph
   const enterprisePercentage = (planCount[0]?.count / planTotal) * 100;
   const trialPercentage = (planCount[1]?.count / planTotal) * 100;
   const premiumPercentage = (planCount[2]?.count / planTotal) * 100;
