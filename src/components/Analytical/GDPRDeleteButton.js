@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
 // to use this button component pass the tag 1 or 2 props
 // 1. type,         type can be 'user' or company =============> <GDPRDeleteButton type='company'/>
@@ -22,24 +22,32 @@ const GDPRDeleteButton = (props) => {
   }, []);
 
   const deleteCompany = () => {
-    swal({
-      title: 'Warning',
-      text:
-        'GDPR Delete is irreversible, all company data including users, projects, and billing will be completely deleted. This action is final.',
-      dangerMode: true,
-      buttons: true,
-    }).then(() =>
-      swal({
-        title: 'Final Warning',
-        text: `Enter the ${buttonInputValue} to delete`,
-        content: {
-          element: 'input',
-        },
-        // text: 'GDPR Delete is irreversible, all company data including users, projects, and billing will be completely deleted',
-        dangerMode: true,
-        buttons: true,
-      })
-    );
+    Swal.fire({
+      title: 'Wait!',
+      text: `Are you sure you want to delete this company permanently?`,
+      icon: 'warning',
+      heightAuto: false,
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'Cancel'
+  }).then((result) => {
+      if (result.value) {
+          Swal.fire(
+              'Success!',
+              'Company permanently deleted',
+              'success',
+              false
+          ) // end Swal IF
+          // TODO - This is the skeleton for the GDPR delete from the db with a sweetalert2
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+              'Cancelled',
+              'Company not deleted',
+              'error',
+              false
+          )
+      } //end else if
+  }) // end Swal .then
   };
   return (
     <button className={buttonProperties} onClick={deleteCompany}>
