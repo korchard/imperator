@@ -33,7 +33,7 @@
     "sweetalert2": "^10.14.1"
   },
   "scripts": {
-    "start": "npm run tsc && node dist/server.js",
+    "start": "node dist/server.js",
     "build-ts": "tsc",
     "postinstall": "npm run build-ts",
     "client": "react-scripts start",
