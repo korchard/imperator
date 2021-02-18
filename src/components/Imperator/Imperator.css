@@ -94,7 +94,7 @@ Table Styling
 .company {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
   margin-left: 10px;
 }
@@ -168,7 +168,7 @@ th.sortArrow {
 }
 
 table > thead > tr:nth-child(1) > th {
-  font-size: 1.8em;
+  font-size: 1.5em;
 }
 
 /* --------------------------------------------------------------------------------
