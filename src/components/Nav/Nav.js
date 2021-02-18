@@ -79,12 +79,13 @@ const Nav = (props) => {
                 <span className='icon-btn'>Imperator</span>
               </Link>
             </div>
-            <div>
+            {/* TODO -- uncomment if you want to add analytical back to navbar */}
+            {/* <div>
               <Link className='nav-link' to='/analytical/all/1'>
                 <DiGoogleAnalytics />
                 <span className='icon-btn'>Analytical</span>
               </Link>
-            </div>
+            </div> */}
             <div>
               <Link className='nav-link' to='/strategic'>
                 <SiMicrostrategy />
