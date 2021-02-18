@@ -7,11 +7,11 @@ Imperator is an internal tool to easily see client information in one place. Wit
 [@Brady](https://github.com/bradybaker)
 [@Malik](https://github.com/MalikElate)
 [@Josie](https://github.com/freder48)
-[@Kim](https://github.com/korchard)
+[@James](https://github.com/jposeyjr)
 
 ## Built With
 
-Typescript, Javascript, React, Redux, Node, Express, MongoDB, and Passport
+Typescript, Javascript, React, Redux, Node, Express, MongoDB, and Passport, ApexCharts
 
 ## Prerequisites
 
