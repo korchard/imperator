@@ -1,4 +1,4 @@
-// store imperator data for the table
+// stores data for the table
 const imperator = (state = [], action) => {
   switch (action.type) {
     case 'SET_IMPERATOR':
@@ -8,4 +8,6 @@ const imperator = (state = [], action) => {
   }
 };
 
+// imperator will be on the redux state at:
+// state.imperator
 export default imperator;

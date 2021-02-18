@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { CompanyDB } from '../models/documents/Company';
 
+
+// This is the fuzzy search aggregation for the imperator table = by vcompany name
 const imperatorSearch = async (req: Request, res: Response): Promise<void> => {
   try {
     const data = await CompanyDB.aggregate([

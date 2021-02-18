@@ -1,4 +1,4 @@
-// store user message information
+// stores total actions graph info
 const initState = {
   Total_Companies: 0,
   documents: {
@@ -27,4 +27,6 @@ const totalActions = (state = initState, action) => {
   }
 };
 
+// totalActions will be on the redux state at:
+// state.totalActions
 export default totalActions;

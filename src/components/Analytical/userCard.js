@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
-import {useDispatch} from 'react-redux';
+import { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import './Analytical.css'
 import Swal from 'sweetalert2';
 
+// the cards render after searching for users on the analytical page
 const UserCard = (props) => {
     const dispatch = useDispatch()
     const [editMode, setEditMode] = useState(false) 

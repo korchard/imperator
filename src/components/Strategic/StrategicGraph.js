@@ -65,6 +65,7 @@ function StrategicGraph() {
                 {
                   name: 'Average Length of Plan by Days',
                   data: [
+                    // TODO - replace '30' with 'trial'
                     30, pro, premium, enterprise
                   ],
                 },

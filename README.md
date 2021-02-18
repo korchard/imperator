@@ -62,3 +62,10 @@ Run the following commands from within your project folder.
 3. Type `git remote -v` to ensure it added successfully
 4. In terminal, type `git push heroku main`
 5. Our website is now live! However... we also have a database
+
+## Screenshots
+
+![Operational](screenshots/operational.png)
+![Imperator](screenshots/imperator.png)
+![Analytical](screenshots/analytical.png)
+![Strategic](screenshots/strategic.png)

@@ -5,6 +5,7 @@ import GDPRDeleteButton from './GDPRDeleteButton';
 import './Analytical.css';
 import Swal from 'sweetalert2';
 
+// company info card displays basic info about the company on the analytical page. edits can be made from here
 const CompanyInfo = () => {
   const dispatch = useDispatch();
   const companyInfo = useSelector((store) => store.singleCompanyData);

@@ -1,17 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Chart from 'react-apexcharts';
 
 export const MonthlyUsers = () => {
   const [year, setYear] = useState(2021);
-  const monthlyUsersOverTime = useSelector(
-    (redux) => redux.monthlyUsersOverTime
-  );
+  const monthlyUsersOverTime = useSelector((redux) => redux.monthlyUsersOverTime);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    getUsersByMonth();
-  }, [year]);
+  useEffect(() => { getUsersByMonth();}, [year]);
 
   const [user, setUser] = useState({});
 

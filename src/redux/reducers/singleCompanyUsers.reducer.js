@@ -1,3 +1,4 @@
+// stores a specific company's users
 const singleCompanyUsers = (state = [], action) => {
     switch (action.type) {
       case 'SET_SINGLE_COMPANY_USERS':
@@ -7,4 +8,6 @@ const singleCompanyUsers = (state = [], action) => {
     }
 };
 
+// singleCompanyUsers will be on the redux state at:
+// state.singleCompanyUsers
 export default singleCompanyUsers;

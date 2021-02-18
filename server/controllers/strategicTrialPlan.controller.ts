@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { CompanyDB } from '../models/documents/Company';
 
+// Aggregation for trails that are ending this month on strategic dashboard 
 const strategicTrialPlan = async (req: Request, res: Response): Promise<void> => {
     try {
       const data = await CompanyDB.aggregate(

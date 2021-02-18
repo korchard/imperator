@@ -83,9 +83,9 @@ const LoginForm: React.FC<Props> = () => {
             Forgot Password?
           </Link>
           <Link
-              className="linkBtnReg"
-              to='/registration'>
-                Register
+            className="linkBtnReg"
+            to='/registration'>
+            Register
           </Link>
         </div>
         <div>

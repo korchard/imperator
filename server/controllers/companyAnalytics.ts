@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { CompanyDB } from '../models/documents/Company';
 
+// This aggregation is the company information displayed for a specific 
+// company on the analytical dashboard 
 export const singleCompany = async (
   req: Request,
   res: Response

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import './PasswordReset.css';
 
 interface IEmail {
@@ -21,17 +21,16 @@ const PasswordReset: React.FC<SwalOptions> = () => {
     const dispatch = useDispatch();
 
     const reset = () => {
-        console.log('Clicked reset password', email);
         if (email.email === email.confirm) {
             dispatch({ type: 'RESET_PASSWORD', payload: email });
             setEmail({ email: '', confirm: '' });
-            swal({
+            Swal.fire({
                 title: "Thank you!",
                 text: "You will receive an email to reset your password.",
                 icon: "success",
             });
         } else {
-            swal({
+            Swal.fire({
                 title: "Whoops!",
                 text: "Please ensure email is accurate",
                 icon: "warning",
@@ -52,7 +51,7 @@ const PasswordReset: React.FC<SwalOptions> = () => {
                     <div>
                         <label htmlFor='email'>
                             Email:
-                    <input
+                            <input
                                 className="loginForm"
                                 type='text'
                                 name='email'
@@ -65,7 +64,7 @@ const PasswordReset: React.FC<SwalOptions> = () => {
                     <div>
                         <label htmlFor='email'>
                             Confirm Email:
-                    <input
+                            <input
                                 className="loginForm"
                                 type='text'
                                 name='confirm'

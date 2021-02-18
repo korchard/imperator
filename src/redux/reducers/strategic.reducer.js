@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-// store paid plans ending this month
+// stores paid plans ending this month
 const paidPlans = (state = [], action) => {
     switch (action.type) {
       case 'SET_PAID_PLANS':
@@ -10,7 +10,7 @@ const paidPlans = (state = [], action) => {
     }
 };
 
-// store trial plans ending this month
+// stores trial plans ending this month
 const trialPlans = (state = [], action) => {
     switch (action.type) {
       case 'SET_TRIAL_PLANS':
@@ -20,6 +20,7 @@ const trialPlans = (state = [], action) => {
     }
 };
 
+// stores average plan length graph info
 const strategicGraph = (state = [] , action) => {
     switch (action.type) {
       case 'SET_PLAN_LENGTH_AVERAGE':
@@ -29,8 +30,10 @@ const strategicGraph = (state = [] , action) => {
     }
   };
   
-
-
+// strategic will be on the redux state at:
+// state.strategic.paidPlans
+// state.strategic.trialPlans
+// state.strategic.strategicGraph
 export default combineReducers({
   paidPlans,
   trialPlans,

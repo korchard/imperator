@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { CompanyDB } from '../models/documents/Company';
 
+
+// Aggregation for average plan length by type graph on strategic dashboard
 const strategic = async (req: Request, res: Response): Promise<void> => {
   try {
     const data = await CompanyDB.aggregate([

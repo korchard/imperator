@@ -8,11 +8,7 @@ const router: express.Router = express.Router();
 
 router.get('/', rejectUnauthenticated, imperator);
 
-router.get(
-  '/search/:query',
-  rejectUnauthenticated,
-  imperatorSearch,
-  (req: Request, res: Response): void => {
+router.get('/search/:query', rejectUnauthenticated, imperatorSearch, (req: Request, res: Response): void => {
     res.sendStatus(201);
   }
 );

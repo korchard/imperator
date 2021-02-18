@@ -1,4 +1,4 @@
-// store imperator data for the table
+// stores monthly users graph info
 const monthlyUsersOverTime = (state = [], action) => {
     switch (action.type) {
       case 'SET_MONTHLY_USERS':
@@ -8,4 +8,6 @@ const monthlyUsersOverTime = (state = [], action) => {
     }
 };
   
+// monthlyUsersOverTime will be on the redux state at:
+// state.monthlyUsersOverTime
 export default monthlyUsersOverTime;
