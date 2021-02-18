@@ -32,7 +32,7 @@ services:
     ports:
       - 5000:5000 # expose ports - HOST:CONTAINER
     environment:
-      PORT: ${PORT}
+      PORT: ${DOCKER_PORT}
       MONGO_URI: ${DOCKER_MONGO_URI}
       SERVER_SESSION_SECRET: ${SERVER_SESSION_SECRET}
       CHOKIDAR_USEPOLLING: 'true'
