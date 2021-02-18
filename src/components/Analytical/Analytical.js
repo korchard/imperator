@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import SingleCompanyGraph from './singleCompanyGraph';
 import AllUserSearch from './allUserSearch';
-import AllCompanyGraph from './allCompanyGraph';
+// import AllCompanyGraph from './allCompanyGraph';
 import AnalyticalUsers from './AnalyticalUsers';
 import CompanyInfo from './companyInfo';
 
@@ -23,9 +23,11 @@ const Analytical = () => {
       setGraph(<SingleCompanyGraph />);
       setCompanyInfo(<CompanyInfo />);
       setAllUserSearch(<AllUserSearch />);
-    } else if (location.params.type === 'all') {
-      setGraph(<AllCompanyGraph />);
-    }
+    } 
+  // TODO -- if you want to be able to view ALL company analytics on a graph uncomment this
+    // else if (location.params.type === 'all') {
+    //   setGraph(<AllCompanyGraph />);
+    // }
   };
 
   return (
