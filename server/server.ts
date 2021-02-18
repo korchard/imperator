@@ -59,7 +59,7 @@ app.use(express.static('build'));
 const PORT: number | string = process.env.PORT || 5000;
 /** Listen * */
 if (process.env.NODE_ENV !== 'test') {
-  app.listen(5000, () => {
+  app.listen(PORT, () => {
     console.log(`Server running in TS running on port:${PORT}`);
   });
 }
